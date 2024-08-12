@@ -1,0 +1,49 @@
+/* FEATURES  */
+
+.features {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #F5FDFD;
+}
+
+.features-text {
+  text-align: center;
+}
+
+.features-text h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.features-text p {
+  color: #555;
+}
+
+.features-part {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.feature {
+  padding: 1.25rem;
+  border-radius: .25rem;
+  min-width: 20%;
+  text-align: center;
+  order: .5px solid rgb(0, 0, 0, 0.1);
+}
+
+
+.feature h3{
+  font-weight: 400;
+}
+
+.feature img {
+  display: block;
+  width: 26%;
+  margin: auto;
+}
+
+.feature .small {
+  font-size: .7rem;
+}

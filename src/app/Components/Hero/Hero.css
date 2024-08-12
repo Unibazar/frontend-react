@@ -1,0 +1,43 @@
+.hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.hero-text {
+  min-width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  color: #555;
+  text-transform: capitalize;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+.hero-text a{
+  background-color: #08a9a0;
+  color: #fff;
+  padding: 1.2rem 4rem;
+}
+
+.hero-img {
+  min-width: 40%;
+}
+
+.hero-img img {
+  width: 100%;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import LogoImage from '../../../Assets/unibazar_logo.png'
 import {FaInstagram} from 'react-icons/fa'
 import {FaTwitter} from 'react-icons/fa'
 import {FaLinkedin} from 'react-icons/fa'
@@ -11,7 +12,7 @@ function Footer() {
     <div className='bg-gray-50 h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-20'>
       <div className='p-5'>
         <ul>
-          <Image src={require('../../Assets/unibazar_logo.png')} alt='logo'></Image>
+          <Image src={LogoImage} alt='logo'></Image>
          <p className='text-gray-500 text-2xl pb-4 pt-4'>
          Sellkro is online platform which is used to sell your products from various E-commerce platforms.
          </p>

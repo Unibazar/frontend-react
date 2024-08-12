@@ -1,0 +1,31 @@
+/*  FACILITY  */
+
+.facilities {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.facilities-img {
+  min-width: 32%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 40%;
+}
+
+.info h2 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.info p {
+  color: #455a64;
+}
+
+.info .info-color{
+  color: #08a9a0;
+}
