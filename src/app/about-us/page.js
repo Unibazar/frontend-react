@@ -1,7 +1,7 @@
-import ContactUs from '../components/AppContactUs/ContactUs.js';
-import Footer from '../components/Footer/Footer.js';
-import JoinUs from '../components/JoinUsSection/JoinUs.js';
-import MeetFounder from '../components/MeetFounderSection/MeetFounder.js';
+import ContactUs from '../component/AppContactUs/ContactUs.js';
+import Footer from '../component/Footer/Footer.js';
+import JoinUs from '../component/JoinUsSection/JoinUs.js';
+import MeetFounder from '../component/MeetFounderSection/MeetFounder.js';
 export default function AboutUs() {
   return (
     <div>
