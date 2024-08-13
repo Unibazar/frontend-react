@@ -9,7 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "next": "^14.2.5",
+=======
+    "@font/nunito": "^1.0.3",
+    "@next/font": "^14.2.5",
+    "next": "14.2.5",
+>>>>>>> 729dcd6c50c2c8feec7b1d8e9614f4051e42f6a4
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1"
