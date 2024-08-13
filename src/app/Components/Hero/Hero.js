@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import HeroImage from '../../../Assets/unibazar-home images/hero-img.png';
+import HeroImage from '../../assets/unibazar-home-images/hero-img.png';
 import './Hero.css';
 const Hero = () => {
   return (

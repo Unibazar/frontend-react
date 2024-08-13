@@ -1,13 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import FlipkartLogo from '../../../Assets/unibazar-home images/flipkart-logo.png';
-import MeeshoLogo from '../../../Assets/unibazar-home images/meesho-logo.png';
-import ShopifyLogo from '../../../Assets/unibazar-home images/shopify-logo.png';
-import MyntraLogo from '../../../Assets/unibazar-home images/myntra-logo.png';
-import SnapdealLogo from '../../../Assets/unibazar-home images/snapdea-logo.png';
-import NykaaLogo from '../../../Assets/unibazar-home images/nykaa-logo.png';
-import LimeRoadLogo from '../../../Assets/unibazar-home images/limeRoad-logo.png';
-import AjioLogo from '../../../Assets/unibazar-home images/ajio-logo.png';
+import FlipkartLogo from '../../assets/unibazar-home-images/flipkart-logo.png';
+import MeeshoLogo from '../../assets/unibazar-home-images/meesho-logo.png';
+import ShopifyLogo from '../../assets/unibazar-home-images/shopify-logo.png';
+import MyntraLogo from '../../assets/unibazar-home-images/myntra-logo.png';
+import SnapdealLogo from '../../assets/unibazar-home-images/snapdea-logo.png';
+import NykaaLogo from '../../assets/unibazar-home-images/nykaa-logo.png';
+import LimeRoadLogo from '../../assets/unibazar-home-images/limeRoad-logo.png';
+import AjioLogo from '../../assets/unibazar-home-images/ajio-logo.png';
 import './Enterprises.css';
 const Enterprises = () => {
   return (

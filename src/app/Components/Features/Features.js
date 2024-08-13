@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import FeatureIcon1 from '../../../Assets/unibazar-home images/feature-Icon1.png';
-import FeatureIcon2 from '../../../Assets/unibazar-home images/feature-Icon2.png';
-import FeatureIcon3 from '../../../Assets/unibazar-home images/feature-Icon3.png';
+import FeatureIcon1 from '../../assets/unibazar-home-images/feature-Icon1.png';
+import FeatureIcon2 from '../../assets/unibazar-home-images/feature-Icon2.png';
+import FeatureIcon3 from '../../assets/unibazar-home-images/feature-Icon3.png';
 import './Features.css';
 const Features = () => {
   return (
