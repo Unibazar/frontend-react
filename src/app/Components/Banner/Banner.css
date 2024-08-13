@@ -1,0 +1,16 @@
+/*  BANNAR   */
+
+.bannar {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #077360;
+  padding: 2rem;
+}
+
+.bannar-img {
+  min-width: 45%;
+}
+
+.bannar-img img {
+  width: 100%;
+}

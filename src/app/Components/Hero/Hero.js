@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import HeroImage from '../../assets/unibazar-home-images/hero-img.png';
 import './Hero.css';
+import '../ResponsiveStyle/Responsive.css'
 const Hero = () => {
   return (
     <>

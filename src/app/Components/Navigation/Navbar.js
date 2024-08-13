@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import LogoImage from '../../assets/unibazar_logo.png';
 import './Navbar.css';
+import '../ResponsiveStyle/Responsive.css'
 const Navbar = () => {
   return (
     <>

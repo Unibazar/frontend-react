@@ -1,5 +1,6 @@
 import React from 'react';
 import './OnlineBooking.css';
+import '../ResponsiveStyle/Responsive.css'
 const OnlineBooking = () => {
   return (
     <>

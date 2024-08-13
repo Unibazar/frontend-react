@@ -8,6 +8,7 @@
 
 .facilities-img {
   min-width: 32%;
+  max-width: 345px;
 }
 
 .info {

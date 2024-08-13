@@ -9,6 +9,7 @@ import NykaaLogo from '../../assets/unibazar-home-images/nykaa-logo.png';
 import LimeRoadLogo from '../../assets/unibazar-home-images/limeRoad-logo.png';
 import AjioLogo from '../../assets/unibazar-home-images/ajio-logo.png';
 import './Enterprises.css';
+import '../ResponsiveStyle/Responsive.css'
 const Enterprises = () => {
   return (
     <>
