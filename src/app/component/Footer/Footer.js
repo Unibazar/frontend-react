@@ -5,7 +5,7 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 import logo from '../../assets/unibazar_logo.png';
-function Footer() {
+const Footer = () => {
   return (
     <>
       <div className="bg-gray-50 h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-5">

@@ -1,22 +1,25 @@
+import AppContactUs from '../component/AppContactUs/AppContactUs.js';
 import Enterprises from '../component/Enterprises/Enterprises.js';
+import Footer from '../component/Footer/Footer.js';
+import Joinus from '../component/JoinUsSection/JoinUs.js';
+import MeetFounder from '../component/MeetFounderSection/MeetFounder.js';
 import Navbar from '../component/Navigation/Navbar.js';
 import Aboutus from '../components/Aboutus/Aboutus.js';
-import AppContactUs from '../components/AppContactUs/AppContactUs.js';
 import Ethics from '../components/Ethics/Ethics.js';
-import Footer from '../components/Footer/Footer.js';
-import JoinUs from '../components/JoinUsSection/JoinUs.js';
-import MeetFounder from '../components/MeetFounderSection/MeetFounder.js';
+import Story from '../components/Story/Story.js';
+
 export default function AboutUs() {
   return (
     <div>
       <Navbar/>
       <Aboutus/>
       <Enterprises/>
+      <Story/>
       <Ethics/>
-      <MeetFounder />
-      <JoinUs />
-      <AppContactUs />
-      <Footer />
+      <MeetFounder/>
+      <Joinus/>
+      <AppContactUs/>
+      <Footer/>
     </div>
   );
 }
