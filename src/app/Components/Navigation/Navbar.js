@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import LogoImage from '../../../Assets/unibazar_logo.png';
+import LogoImage from '../../assets/unibazar_logo.png';
 import './Navbar.css';
 const Navbar = () => {
   return (
