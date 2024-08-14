@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="p-5 max-w-md">
           <ul>
             <Image src={logo} alt="logo"></Image>
-            <p className="text-gray-600 font-light text-1xl pb-4 pt-4 ">Sellkro is online platform which is used to sell your products from various E-commerce platforms.</p>
+            <p className="text-gray-600 font-light text-1xl pb-4 pt-4 ">Unibazar is online platform which is used to sell your products from various E-commerce platforms.</p>
             <div className="flex gap-6 pb-4">
               {/* Section for icons */}
               <FaInstagram className="text-1xl cursor-pointer hover:text-yellow-600" />
@@ -57,6 +57,6 @@ const Footer = () => {
       </div>
     </>
   );
-}
+};
 
 export default Footer;
