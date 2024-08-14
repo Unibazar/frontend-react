@@ -11,20 +11,27 @@ import Banner from '../components/Banner/Banner.js';
 import Pricing from '../components/Pricing/Pricing.js';
 import FAQ from '../components/FAQ/FAQ.js';
 import Signup from '../components/Signup/Signup.js';
+import AppNavBar from '@/components/common/AppNavBar.js';
+import Container from '@mui/material/Container';
+
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <Enterprises />
-      <OnlineBooking />
-      <Features />
-      <Facilities />
-      <Working />
-      <Banner />
-      <Pricing />
-      <FAQ />
-      <Signup />
+      <AppNavBar />
+      <Container maxWidth="lg">
+        {/* <Navbar /> */}
+        <Hero />
+        <Enterprises />
+        <OnlineBooking />
+        <Features />
+        <Facilities />
+        <Working />
+        <Banner />
+        <Pricing />
+        <FAQ />
+        <Signup />
+      </Container>
+
       <Footer />
     </div>
   );

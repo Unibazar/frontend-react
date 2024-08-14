@@ -1,8 +1,45 @@
-/* MEDIA QUARY @media (max-width: 1020px) {
-  * {
-    flex-wrap: wrap;
-  }
+/* MEDIA QUARY */
 
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 64px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.logo-wrap {
+  max-width: 100%;
+  width: 15%;
+}
+.nav-links-ul {
+  display: flex;
+  gap: 8px;
+}
+.nav-link-item {
+  font-size: 18px;
+  padding: 0px 8px;
+}
+.nav-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 18px;
+}
+.login-button {
+  padding: 8px 26px !important;
+  border-radius: 4px !important;
+  background-color: #f4f4f4;
+  outline: 1px solid #ececec;
+}
+.register-button {
+  padding: 8px 26px !important;
+  border-radius: 4px !important;
+  background-color: #008080;
+  outline: 2px solid #026718;
+  color: #ffffff;
+}
+/* @media (max-width: 1020px) {
   .navbar {
     flex-wrap: wrap;
     justify-content: flex-start;
