@@ -1,16 +1,16 @@
 import React from 'react';
-import Footer from './component/Footer/Footer.js';
-import Navbar from './component/Navigation/Navbar.js';
-import Hero from './component/Hero/Hero.js';
-import Enterprises from './component/Enterprises/Enterprises.js';
-import OnlineBooking from './component/OnlineBooking/OnlineBooking.js';
-import Features from './component/Features/Features.js';
-import Facilities from './component/Facilities/Facilities.js';
-import Working from './component/Working/Working.js';
-import Banner from './component/Banner/Banner.js';
-import Pricing from './component/Pricing/Pricing.js';
-import FAQ from './component/FAQ/FAQ.js';
-import Signup from './component/Signup/Signup.js';
+import Footer from '../components/Footer/Footer.js';
+import Navbar from '../components/Navigation/Navbar.js';
+import Hero from '../components/Hero/Hero.js';
+import Enterprises from '../components/Enterprises/Enterprises.js';
+import OnlineBooking from '../components/OnlineBooking/OnlineBooking.js';
+import Features from '../components/Features/Features.js';
+import Facilities from '../components/Facilities/Facilities.js';
+import Working from '../components/Working/Working.js';
+import Banner from '../components/Banner/Banner.js';
+import Pricing from '../components/Pricing/Pricing.js';
+import FAQ from '../components/FAQ/FAQ.js';
+import Signup from '../components/Signup/Signup.js';
 export default function Home() {
   return (
     <div>
