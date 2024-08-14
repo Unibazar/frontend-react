@@ -7,18 +7,17 @@ import OnlineBooking from '../components/OnlineBooking/OnlineBooking.js';
 import Features from '../components/Features/Features.js';
 import Facilities from '../components/Facilities/Facilities.js';
 import Working from '../components/Working/Working.js';
-import Banner from '../components/Banner/Banner.js';
+// import Banner from '../components/Banner/Banner.js';
 import Pricing from '../components/Pricing/Pricing.js';
 import FAQ from '../components/FAQ/FAQ.js';
 import Signup from '../components/Signup/Signup.js';
 import AppNavBar from '@/components/common/AppNavBar.js';
-import Container from '@mui/material/Container';
 
 export default function Home() {
   return (
     <div>
       <AppNavBar />
-      <Container maxWidth="lg">
+      <div className="section">
         {/* <Navbar /> */}
         <Hero />
         <Enterprises />
@@ -26,12 +25,11 @@ export default function Home() {
         <Features />
         <Facilities />
         <Working />
-        <Banner />
+        {/* <Banner /> */}
         <Pricing />
         <FAQ />
         <Signup />
-      </Container>
-
+      </div>
       <Footer />
     </div>
   );
