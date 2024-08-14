@@ -7,6 +7,7 @@ import Navbar from '../component/Navigation/Navbar.js';
 import Aboutus from '../components/Aboutus/Aboutus.js';
 import Ethics from '../components/Ethics/Ethics.js';
 import Story from '../components/Story/Story.js';
+import WhyUnibazar from '../components/Why-unibazar/WhyUnibazar.js';
 
 export default function AboutUs() {
   return (
@@ -16,6 +17,7 @@ export default function AboutUs() {
       <Enterprises/>
       <Story/>
       <Ethics/>
+      <WhyUnibazar/>
       <MeetFounder/>
       <Joinus/>
       <AppContactUs/>
