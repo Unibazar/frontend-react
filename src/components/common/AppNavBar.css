@@ -106,3 +106,9 @@
     margin-top: 1rem;
   }
 } */
+
+@media (max-width: 720px) {
+  .logo-wrap {
+    width: 42%;
+  }
+}
