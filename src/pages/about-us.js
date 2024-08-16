@@ -7,11 +7,16 @@ import Navbar from '../components/Navigation/Navbar.js';
 import Aboutus from '../components/Aboutus/Aboutus.js';
 import Ethics from '../components/Ethics/Ethics.js';
 import Story from '../components/Story/Story.js';
+import Head from 'next/head';
 
 export default function AboutUs() {
   return (
     <div>
-      <Navbar />
+      <Head>
+        <title>About us | Unibazar</title>
+        <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
+      </Head>
+      {/* <Navbar /> */}
       <Aboutus />
       <Enterprises />
       <Story />
@@ -19,7 +24,7 @@ export default function AboutUs() {
       <MeetFounder />
       <Joinus />
       <AppContactUs />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
