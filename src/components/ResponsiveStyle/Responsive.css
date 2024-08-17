@@ -1,4 +1,4 @@
-/* MEDIA QUARY @media (max-width: 1020px) {
+ @media (max-width: 1020px) {
   * {
     flex-wrap: wrap;
   }
@@ -68,4 +68,4 @@
   .work-part .work {
     margin-top: 1rem;
   }
-} */
+}
