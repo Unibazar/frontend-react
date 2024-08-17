@@ -8,7 +8,7 @@ const FAQ = () => {
     <>
       <div className="faqs">
         <div className="faqs-text">
-            <h2>Fairly asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
         </div>
 
         <div className="faqs-part">

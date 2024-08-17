@@ -1,15 +1,21 @@
-import AppNavBar from "@/components/common/AppNavBar";
-import ContactDetails from "@/components/contact-us/ContactDetails/ContactDetails";
-import ContactSupport from "@/components/contact-us/ContactSupport/ContactSupport";
-import Footer from "@/components/Footer/Footer";
+
+import Signup from "../components/Signup/Signup";
+import ContactDetails from "../components/contact-us/ContactDetails/ContactDetails";
+import ContactSupport from "../components/contact-us/ContactSupport/ContactSupport";
+import FAQ from "../components/FAQ/FAQ";
+import Head from 'next/head';
 
 export default function ContactUs() {
   return (
     <div>
-      <AppNavBar/>
+      <Head>
+        <title>Contact us | Unibazar</title>
+        <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
+      </Head>
       <ContactSupport/>
       <ContactDetails/>
-      <Footer/>
+      <FAQ/>
+      <Signup/>
     </div>
   );
 }

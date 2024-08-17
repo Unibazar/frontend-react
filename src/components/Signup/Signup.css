@@ -1,5 +1,5 @@
 /* SIGNUP  */
-
+/*
 .signup {
   display: flex;
   justify-content: space-around;
@@ -11,7 +11,7 @@
   min-width: 30%;
 }
 
-.signup-img img {
+.signup-img Image{
   width: 100%;
 }
 
@@ -28,4 +28,4 @@
 
 .signup-text h1{
   font-size: 1.75rem;
-}
+}*/
