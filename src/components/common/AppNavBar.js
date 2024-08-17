@@ -3,6 +3,7 @@ import Image from 'next/image';
 import LogoImage from '../../../public/unibazar-logo.png';
 import Link from 'next/link';
 import './AppNavBar.css';
+import '../ResponsiveStyle/Responsive.css'
 function AppNavBar() {
   return (
     <nav className="navbar-container">
@@ -26,12 +27,12 @@ function AppNavBar() {
             <Link href="/">Pricing</Link>
           </li>
           <li className="nav-link-item">
-            <Link href="/">Contact us</Link>
+            <Link href="/contact-us">Contact us</Link>
           </li>
         </ul>
       </div>
       <div className="nav-buttons">
-        <Link href="/login" className="login-button">
+        <Link href="/sign-in" className="login-button">
           Login
         </Link>
         <Link href="/signup" className="register-button">
