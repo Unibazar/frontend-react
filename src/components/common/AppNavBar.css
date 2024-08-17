@@ -106,3 +106,12 @@
     margin-top: 1rem;
   }
 } */
+
+@media (max-width: 720px) {
+  .navbar-container {
+    padding: 20px 16px;
+  }
+  .logo-wrap {
+    width: 42%;
+  }
+}
