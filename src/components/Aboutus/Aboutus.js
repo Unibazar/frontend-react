@@ -12,7 +12,7 @@ const Aboutus = () => {
             <p className="font-light text-1xl pb-4 pt-4">
               Discover how Unibazar can transform your <br /> multi-platform selling experience.
             </p>
-            <button type="button">Get Start for Free</button>
+            <button className='btn' type="button">Get Start for Free</button>
           </div>
           <Image src={AboutusImage} alt="wait"></Image>
         </div>

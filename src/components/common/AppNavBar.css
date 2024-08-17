@@ -39,7 +39,7 @@
   outline: 2px solid #026718;
   color: #ffffff;
 }
-/* @media (max-width: 1020px) {
+@media (max-width: 1020px) {
   .navbar {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -105,7 +105,7 @@
   .work-part .work {
     margin-top: 1rem;
   }
-} */
+}
 
 @media (max-width: 720px) {
   .navbar-container {
