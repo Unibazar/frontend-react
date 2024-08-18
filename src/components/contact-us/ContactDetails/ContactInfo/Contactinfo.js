@@ -7,7 +7,7 @@ import LocationImg from '../../../../assets/unibazar-contactus-images/map.png'
 import Bgcircle1 from '../../../../assets/unibazar-contactus-images/bgCircle/Ellipse 793.png'
 import Bgcircle2 from '../../../../assets/unibazar-contactus-images/bgCircle/Ellipse 794.png'
 import { FaInstagram } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 const Contactinfo = () => {
@@ -23,12 +23,12 @@ const Contactinfo = () => {
             <PhoneInTalkIcon className='filled'></PhoneInTalkIcon>
             <p className='text-normal pl-2'>+91-123-456-7890</p>
           </div>
-          <div className='flex md:flex-row'>
+          <div className='flex md:flex-row '>
             <EmailIcon className='filled'></EmailIcon>
             <p className='text-normal pl-2'>support@unibazar.com</p>
           </div>
-          <div className='flex md:flex-row'>
-            <LocationOnIcon className='filled'></LocationOnIcon>
+          <div className='flex md:flex-row '>
+            <LocationOnIcon className='filled '></LocationOnIcon>
             <p className='text-normal pl-2'>123 E-commerce St, Business City, India</p>
           </div>
         </div>
@@ -39,14 +39,14 @@ const Contactinfo = () => {
           <p className='font-bold text-xl'>9 AM TO 6PM IST</p>
         </div>
         <div className='w-full relative p-5'>
-          <div className='w-full absolute z-10 pl-96 pt-24'>
+          <div className='w-full absolute z-10 flex md:flex-col justify-end justify-items-end items-end pt-24'>
             <Image src={Bgcircle2} alt='bg-circle' className='z-10'></Image>
             <Image src={Bgcircle1} alt='bg-circle' className='z-20'></Image>
           </div>
           <Image src={LocationImg} alt='map' className='w-full object-cover pr-16' ></Image>
                        {/* Section for icons */}
           <div className="flex gap-6 pt-16">
-              <FaTwitter className="text-1xl cursor-pointer rounded-full hover:text-blue-600" />
+              <FaXTwitter className="text-1xl cursor-pointer rounded-full hover:text-blue-600" />
               <FaInstagram className="text-1xl cursor-pointer rounded-full hover:text-yellow-600" />
               <FaFacebook className="text-1xl cursor-pointer rounded-full hover:text-blue-600" />
               <FaLinkedin className="text-1xl cursor-pointer rounded-full hover:text-blue-600" />

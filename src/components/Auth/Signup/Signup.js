@@ -8,8 +8,8 @@ import GoogleImg from '../../../assets/google.png'
 import {IoMdEyeOff} from 'react-icons/io'
 import Link from 'next/link'
 
-import './Signin.css'
-const Signin = () => {
+import './Signup.css'
+const Signup = () => {
   return (
     <>
       <div className="w-full flex md:flex-row flex-col justify-around p-5">
@@ -18,10 +18,12 @@ const Signin = () => {
           <Image src={SigninImg} alt="Signin_Image" ></Image>
         </div>
         <div className="w-full  p-5">
-          <h1 className="text-3xl font-bold text-center">Sign In</h1>
-          <p className='w-full text-normal text-gray-500 text-center py-3'>Please sign in to continue our app</p>
+          <h1 className="text-3xl font-bold text-center">Sign up</h1>
+          <p className='w-full text-normal text-gray-500 text-center py-3'>Please fill the details and create account</p>
           <form className="flex flex-col justify-center items-center gap-3">
             <input type="text" placeholder="Email" className="w-full p-2 mb-
+            5 border bg-gray-100 rounded-2xl " />
+            <input type="text" placeholder="Confirm-Email" className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl " />
             <div className='w-full flex flex-row justify-between p-2 mb-5 border bg-gray-100 rounded-2xl'>
               <input type="password" placeholder="Password" className="w-auto outline-0 border-0 bg-gray-100 " />
@@ -31,10 +33,10 @@ const Signin = () => {
             </div>
            
            {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
-            <p className='w-full text-normal text-blue-500 text-right py-3'>Forget Password?</p>
+            <p className='w-full text-normal text-gray-500 text-left py-3'>Password must be 8 character</p>
             <button className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
-            2 px-4 rounded-2xl py-3">Sign In</button>
-            <p className='w-full text-gray-600 py-5 text-center'>Don't have an account ? <Link href='/sign-up' className='text-blue-500'>Sign up</Link><br/>Or connect</p>
+            2 px-4 rounded-2xl py-3">Sign Up</button>
+            <p className='w-full text-gray-600 py-5 text-center'>Already have an account ? <Link href='/sign-in' className='text-blue-500'>Sign in</Link><br/>Or connect</p>
             <div className='w-full flex md:flex-row items-center justify-center justify-items-center gap-1 py-3'>
               <Image src={FbImg} alt='facbook-image'></Image>
               <Image src={AppleImg} alt='facbook-image'></Image>
@@ -47,4 +49,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signup

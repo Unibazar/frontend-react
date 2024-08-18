@@ -6,7 +6,7 @@ const Aboutus = () => {
   return (
     <>
       <div className=" h-1/2 w-full flex md:flex-row flex-col items-start p-5">
-        <div className=" w-full flex md:flex-row flex-col justify-between ">
+        <div className=" w-full flex md:flex-row flex-col justify-between p-5 ">
           <div className="p-5">
             <h1>ABOUT US</h1>
             <p className="font-light text-1xl pb-4 pt-4">

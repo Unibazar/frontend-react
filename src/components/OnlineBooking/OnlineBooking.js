@@ -1,6 +1,7 @@
 import React from 'react';
 import './OnlineBooking.css';
 import '../ResponsiveStyle/Responsive.css'
+import Link from 'next/link';
 const OnlineBooking = () => {
   return (
     <>
@@ -13,11 +14,11 @@ const OnlineBooking = () => {
           </p>
         </div>
 
-        <div className="nav-buttons online-booking-btn">
-          <a href="#" className="main-bg-button">
+        <div className="flex md:flex-row flex-col gap-1">
+          <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
             Signup for free
-          </a>
-          <a href="#" className="white-bg-button">
+          </Link>
+          <a href="#" className="white-bg-button px-4 py-2 text-teal-700">
             Contact Now
           </a>
         </div>

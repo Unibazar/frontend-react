@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaInstagram } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 import logo from '../../assets/unibazar_logo.png';
+import './Footer.css'
 const Footer = () => {
   return (
     <>
@@ -16,16 +17,16 @@ const Footer = () => {
             <div className="flex gap-6 pb-4">
               {/* Section for icons */}
               <FaInstagram className="text-1xl cursor-pointer hover:text-yellow-600" />
-              <FaTwitter className="text-1xl cursor-pointer hover:text-blue-600" />
+              <FaXTwitter className="text-1xl cursor-pointer hover:text-blue-600" />
               <FaLinkedin className="text-1xl cursor-pointer hover:text-blue-600" />
               <FaYoutube className="text-1xl cursor-pointer hover:text-red-600" />
             </div>
           </ul>
         </div>
-        <div className=" flex md:flex-row justify-between ">
+        <div className=" flex md:flex-row justify-between company-support ">
           <div className="p-5">
             <ul>
-              <p className="text-gray-800 font-normal text-1xl pb-4">COMPANY</p>
+              <p className="text-gray-800 font-bold text-1xl pb-4">COMPANY</p>
               <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">About us</li>
               <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Blog</li>
               <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Contact us</li>
@@ -35,7 +36,7 @@ const Footer = () => {
           </div>
           <div className="p-5">
             <ul>
-              <p className="text-gray-800 font-normal text-1xl pb-4">SUPPORT</p>
+              <p className="text-gray-800 font-bold text-1xl pb-4">SUPPORT</p>
               <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Help center</li>
               <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Terms of service</li>
               <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Legal</li>
@@ -44,9 +45,9 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="p-5">
+        <div className="p-5 contact-info">
           <ul>
-            <p className="text-gray-800 font-normal text-1xl pb-4 ">CONTACT INFO</p>
+            <p className="text-gray-800 font-bold text-1xl pb-4 ">CONTACT INFO</p>
             <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Phone: +91-123-456-7890</li>
             <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">
               Email: <a href="">support@unibazar.com</a>

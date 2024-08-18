@@ -33,12 +33,5 @@ body {
   }
 } */
 
-.section {
-  padding: 0px 64px;
-}
 
-@media (max-width: 720px) {
-  .section {
-    padding: 0px 16px;
-  }
-}
+

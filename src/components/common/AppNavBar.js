@@ -42,9 +42,9 @@ function AppNavBar() {
         <Link href="/sign-in" className="login-button">
           Login
         </Link>
-        <a href="#register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+        <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
           Register
-        </a>
+        </Link>
       </div>
       <div className="md:hidden flex items-center">
         <button onClick={toggleMenu} className="text-gray-600 hover:text-teal-700 focus:outline-none">
@@ -57,39 +57,39 @@ function AppNavBar() {
         <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-md">
           <ul className="flex flex-col items-center space-y-4 p-4">
             <li>
-              <a href="#home" className="text-gray-600 hover:text-teal-700">
+              <Link href="/" className="text-gray-600 hover:text-teal-700">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="text-gray-600 hover:text-teal-700">
+              <Link href="/about-us" className="text-gray-600 hover:text-teal-700">
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#features" className="text-gray-600 hover:text-teal-700">
+              <Link href="/features" className="text-gray-600 hover:text-teal-700">
                 Features
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#pricing" className="text-gray-600 hover:text-teal-700">
+              <Link href="/pricing" className="text-gray-600 hover:text-teal-700">
                 Pricing
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="text-gray-600 hover:text-teal-700">
+              <Link href="/contact-us" className="text-gray-600 hover:text-teal-700">
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#login" className="text-gray-600 hover:text-teal-700">
+              <Link href="/sign-in" className="text-gray-600 hover:text-teal-700">
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+              <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

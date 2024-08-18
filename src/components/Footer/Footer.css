@@ -1,0 +1,9 @@
+@media (max-width:720px){
+  .company-support{
+    text-align: center;
+    margin-left: 30px;
+  }
+  .contact-info{
+    text-align: center;
+  }
+}

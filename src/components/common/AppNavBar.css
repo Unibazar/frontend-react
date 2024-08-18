@@ -114,4 +114,7 @@
   .logo-wrap {
     width: 42%;
   }
+  .nav-buttons{
+    display: none;
+  }
 }
