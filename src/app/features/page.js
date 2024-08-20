@@ -1,4 +1,5 @@
 import Image from "next/image"
+import FrequentlyAskedQuestions from "../Components/FaQ/FrequentlyAskedQuestions"
 const page = () => {
   return (
     <div className='bg-white text-black min-h-screen py-20'>
@@ -25,7 +26,7 @@ const page = () => {
       </section>
       <section className="flex flex-col items-center mt-20 max-md:px-4">
         <span className="font-medium text-[25px]">Our Features</span>
-        <p className="hidden max-md:block text-center text-[14px] opacity-[70%] max-md:mt-5">Unibazar offers a suite of powerful features designed to simplify and streamline your e-commerce operations. Here’s what you can expect</p>
+        <p className="hidden max-md:block text-center text-[14px] opacity-[70%] max-md:mt-5">Unibazar offers a suite of powerful features designed <br className="max-[400px]:hidden"/> to simplify and streamline your e-commerce operations. <br className="max-[400px]:hidden"/> Here’s what you can expect</p>
         <div className="mt-20 grid grid-cols-3 gap-x-28 gap-y-20 max-lg:gap-x-14 max-md:grid-cols-1"> 
           <div className="flex flex-col gap-2 items-center text-center">
           <svg className="w-[50px] max-md:w-[80px]" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +35,7 @@ const page = () => {
 </svg>
           <span className="text-[16px] font-medium">Easy Integration</span>
           <p className="text-[#7A7D9C] text-[12px] max-md:hidden">Connect All Your Platforms <br/> Effortlessly</p>
-          <p className="hidden max-md:block text-[#7A7D9C] text-[15px]">Manage all your listings from a single interface, saving you time and effort</p>
+          <p className="hidden max-md:block text-[#7A7D9C] text-[15px]">Manage all your listings from a single interface, <br className="max-[400px]:hidden"/> saving you time and effort</p>
           </div>
           <div className="flex flex-col gap-2 items-center text-center">
           <svg className="w-[50px] max-md:w-[80px]" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +44,7 @@ const page = () => {
 </svg> 
           <span className="text-[16px] font-medium">Unified Dashboard  </span>
           <p className="text-[#7A7D9C] text-[12px] max-md:hidden">Centralized Management Hub</p>
-          <p className="hidden max-md:block text-[#7A7D9C] text-[15px]">Stay informed and in control of your e-commerce operations from one central location</p>
+          <p className="hidden max-md:block text-[#7A7D9C] text-[15px]">Stay informed and in control of your e-commerce <br className="max-[400px]:hidden"/> operations from one central location</p>
           </div>
           <div className="flex flex-col gap-2 items-center text-center">
           <svg className="w-[50px] max-md:w-[80px]" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@ const page = () => {
 </svg>
           <span className="text-[16px] font-medium">Real-time Analytics </span>
           <p className="text-[#7A7D9C] text-[12px] max-md:hidden">Actionable Insights at Your Fingertips</p>
-          <p className="hidden max-md:block text-[#7A7D9C] text-[15px]">Optimize your operations with data-driven insights to drive growth and profitability</p>
+          <p className="hidden max-md:block text-[#7A7D9C] text-[15px]">Optimize your operations with data-driven <br className="max-[400px]:hidden"/> insights to drive growth and profitability</p>
           </div>
           <div className="flex flex-col gap-2 items-center text-center max-md:hidden">
           <svg className="w-[50px] max-md:w-[80px]" viewBox="0 0 43 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +81,74 @@ const page = () => {
           </div>
         </div>
       </section>
+      <section className="mt-32 ">
+        {/* Text Container */}
+        <div className="bg-[#F5FDFD] text-center py-6 max-md:px-3">
+          <span className="font-medium text-[25px] leading-3">Unlock the Power of Seamless E-commerce Management </span>
+          <p className="opacity-[70%] text-[12px] mt-3">At Unibazar, we offer a suite of powerful features designed to simplify and streamline your e-commerce operations. <br className="max-md:hidden"/> Discover how Unibazar can transform your multi-platform selling experience with the following features</p>          
+        </div>
+        {/* Vector Container Start */}
+        <div className="flex items-center justify-evenly max-md:flex-col-reverse my-14 max-md:px-5">
+          <Image src={"/vector1.png"} width={300} height={300} alt="vector image1" className="max-sm:w-full max-sm:h-auto"/>
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Easy Integration</small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">Connect All Your Platforms <br className="max-md:hidden"/> Effortlessly</span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">Unibazar allows you to link multiple e-commerce platforms like <br className="max-md:hidden"/> Myntra, Meesho, and your own website with just a few clicks</p>
+          </div>
+        </div>
+        {/* Vector Container End */}
+                {/* Vector Container Start */}
+                <div className="flex items-center justify-evenly max-md:flex-col my-14 max-md:px-5">
+          <div className="flex flex-col  max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Unified Dashboard </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">Centralized Management <br className="max-md:hidden"/> Hub</span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">Access a comprehensive dashboard that provides a holistic <br className="max-md:hidden"/> view of your sales, inventory, and orders across all connected <br/> platforms</p>
+          </div>
+          <Image src={"/vector2.png"} width={300} height={300} alt="vector image1" className="max-sm:w-full max-sm:h-auto"/>
+        </div>
+        {/* Vector Container End */}
+                {/* Vector Container Start */}
+                <div className="flex items-center justify-evenly max-md:flex-col-reverse my-14 max-md:px-5">
+          <Image src={"/vector3.png"} width={300} height={300} alt="vector image1" className="max-sm:w-full max-sm:h-auto"/>
+          <div className="flex flex-col  max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Real-time Analytics </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">Actionable Insights at Your <br className="max-md:hidden"/> Fingertips </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">Leverage real-time data and analytics to track sales performance, <br className="max-md:hidden"/> monitor inventory levels, and make informed business decisions</p>
+          </div>
+        </div>
+        {/* Vector Container End */}
+                {/* Vector Container Start */}
+                <div className="flex items-center justify-evenly max-md:flex-col my-14 max-md:px-5">
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+          <small className="text-[#08A9A0] max-md:text-[14px]">Inventory Management</small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">Keep Your Stock in Sync </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">Automatically synchronize inventory levels across <br className="max-md:hidden"/> all your sales channels</p>
+          </div>
+          <Image src={"/vector4.png"} width={300} height={300} alt="vector image1" className="max-sm:w-full max-sm:h-auto"/>
+        </div>
+        {/* Vector Container End */}
+                        {/* Vector Container Start */}
+                        <div className="flex items-center justify-evenly max-md:flex-col-reverse my-14 max-md:px-5">
+          <Image src={"/vector5.png"} width={300} height={300} alt="vector image1" className="max-sm:w-full max-sm:h-auto"/>
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+          <small className="text-[#08A9A0] max-md:text-[14px]">Seamless Product Listing </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">List Once, Sell Everywhere </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">Understand sales trends, platform performance, and <br className="max-md:hidden"/> customer behavior to make strategic decisions</p>
+          </div>
+        </div>
+        {/* Vector Container End */}
+                        {/* Vector Container Start */}
+                        <div className="flex items-center justify-evenly max-md:flex-col my-14 max-md:px-5">
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">User-friendly Interface </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">Designed for Ease of <br className="max-md:hidden"/> Use</span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">Leverage real-time analytics to make informed <br className="max-md:hidden"/> business decisions. </p>
+          </div>
+          <Image src={"/vector6.png"} width={300} height={300} alt="vector image1" className="max-sm:w-full max-sm:h-auto"/>
+        </div>
+        {/* Vector Container End */}
+      </section>
+      <FrequentlyAskedQuestions/>
     </div>
   )
 }
