@@ -5,11 +5,11 @@ import LettersendImg from '../../../../assets/unibazar-contactus-images/letter_s
 const ContactInput = () => {
   return (
     <>
-      <div className=" w-full p-5">
+      <div className=" w-full md:pr-28 p-5">
         <Box
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '35ch' },
+          '& > :not(style)': { m: 2, width: '25ch' },
         }}
         className='text-left justify-start justify-items-start'
         >
@@ -43,9 +43,9 @@ const ContactInput = () => {
             placeholder="(123) 456-7890"
           />
         </Box>
-        <div className='w-full items-start justify-items-start text-start  pl-5 pt-8'>
-          <p className='text-normal font-bold '>Select Subject ?</p>
-          <div className='w-full flex md:flex-row gap-1  justify-around'>
+        <div className='w-full items-start justify-items-start text-start  pl-3 pt-8'>
+          <p className='text-sm font-bold '>Select Subject ?</p>
+          <div className='w-full flex md:flex-row text-sm gap-2  justify-start'>
          
             <input type="radio" id="option1" name="subject" value="General inquiry"/> General inquiry
             <input type="radio" id="option2" name="subject" value="General inquiry"/> General inquiry
@@ -54,7 +54,7 @@ const ContactInput = () => {
           
           </div>
         </div>
-        <div className='w-full flex items-start justify-items-start pl-5 pt-8 '>
+        <div className='w-full flex items-start justify-items-start md:pr-20 pl-3 pt-8 '>
           <TextField
             id="message"
             name="message"
@@ -66,7 +66,7 @@ const ContactInput = () => {
             fullWidth
           />
         </div>
-        <div className='w-full flex justify-items-end justify-end pt-3'>
+        <div className='w-full flex justify-items-end justify-end md:pr-20 pt-3'>
           <Button
             type="submit"
             className='px-4 py-2 flex text-white bg-teal-700 rounded hover:bg-teal-800  '
@@ -74,7 +74,7 @@ const ContactInput = () => {
             Send Message
           </Button>
         </div>
-        <div className='w-full flex justify-items-end justify-end pr-5'>
+        <div className='w-full flex justify-items-end justify-end md:pr-20 pr-5'>
          <Image src={LettersendImg} alt='letter-send-img'></Image>
         </div>
       </div>
