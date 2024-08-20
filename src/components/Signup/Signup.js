@@ -15,7 +15,7 @@ const Signup = () => {
             Organize your business with 24/7 automated yor products, <br/> reminders, payments, and more.
           </p>
           <div className="p-5">
-            <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">Signup for Free</Link>
+            <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">Signup for Free</Link>
           </div>
         </div>
       </div>

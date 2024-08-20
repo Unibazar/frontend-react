@@ -17,7 +17,7 @@ const Hero = () => {
             Discover how Unibazar can transform your <br /> multi-platform selling experience.
           </p>
           <div className="pt-3 p-3">
-          <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">Get Start For Free</Link>
+          <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">Get Start For Free</Link>
           </div>
         </div>
 

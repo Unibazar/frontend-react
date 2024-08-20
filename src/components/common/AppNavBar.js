@@ -39,10 +39,10 @@ function AppNavBar() {
         </ul>
       </div>
       <div className="nav-buttons">
-        <Link href="/sign-in" className="login-button">
+        <Link href="/login" className="login-button">
           Login
         </Link>
-        <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+        <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
           Register
         </Link>
       </div>
@@ -82,12 +82,12 @@ function AppNavBar() {
               </Link>
             </li>
             <li>
-              <Link href="/sign-in" className="text-gray-600 hover:text-teal-700">
+              <Link href="/login" className="text-gray-600 hover:text-teal-700">
                 Login
               </Link>
             </li>
             <li>
-              <Link href="/sign-up" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+              <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
                 Register
               </Link>
             </li>

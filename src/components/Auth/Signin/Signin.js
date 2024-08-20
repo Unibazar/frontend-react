@@ -12,9 +12,14 @@ import './Signin.css'
 const Signin = () => {
   return (
     <>
+      <div >
+        <div className="logo pt-12 pl-12">
+        <Image src={LogoImage} alt="Logo" className='w-36' />
+        </div>
+      </div>
       <div className="w-full flex md:flex-row flex-col justify-center justify-items-center items-start p-10">
         <div className=" w-full md:ml-20 md:mt-10 p-5  mainimg">
-          {/*<Image src={LogoImage} alt="Logo" className='w-20' />*/}
+          
           <Image src={SigninImg} alt="Signin_Image" ></Image>
         </div>
         <div className=" md:mr-10 md:pr-28  w-full p-5">
@@ -34,7 +39,7 @@ const Signin = () => {
             <p className='w-full text-normal text-blue-500 text-right p-1 pb-2'><Link href='/forgot-password' >Forget Password?</Link></p>
             <button className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
             2 px-4 rounded-2xl py-3">Sign In</button>
-            <p className='w-full text-gray-600 py-5 text-center'>Don't have an account ? <Link href='/sign-up' className='text-blue-500'>Sign up</Link><br/>Or connect</p>
+            <p className='w-full text-gray-600 py-5 text-center'>Don't have an account ? <Link href='/register' className='text-blue-500'>Sign up</Link><br/>Or connect</p>
             <div className='w-full flex md:flex-row items-center justify-center justify-items-center gap-1 py-3'>
               <Image src={FbImg} alt='facbook-image'></Image>
               <Image src={AppleImg} alt='facbook-image'></Image>
