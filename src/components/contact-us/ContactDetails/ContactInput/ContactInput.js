@@ -5,12 +5,13 @@ import LettersendImg from '../../../../assets/unibazar-contactus-images/letter_s
 const ContactInput = () => {
   return (
     <>
-      <div className="p-3 w-full">
+      <div className=" w-full p-5">
         <Box
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
+          '& > :not(style)': { m: 1, width: '35ch' },
         }}
+        className='text-left justify-start justify-items-start'
         >
         
           <TextField
@@ -42,27 +43,18 @@ const ContactInput = () => {
             placeholder="(123) 456-7890"
           />
         </Box>
-        <div className='w-full items-start justify-items-start text-start  pl-4 pt-8'>
-          <p className='text-normal font-bold p-3 '>Select Subject ?</p>
-          <div className='w-full flex md:flex-row flex-col justify-around'>
-            <input
-              type="radio"
-              name='service'
-              value="General inquiry1"
-            />General inquiry1
-            <input
-              type="radio"
-              name='service'
-              value="General inquiry2"
-            />General inquiry2
-            <input
-              type="radio"
-              name='service'
-              value="General inquiry3"
-            />General inquiry3
+        <div className='w-full items-start justify-items-start text-start  pl-5 pt-8'>
+          <p className='text-normal font-bold '>Select Subject ?</p>
+          <div className='w-full flex md:flex-row gap-1  justify-around'>
+         
+            <input type="radio" id="option1" name="subject" value="General inquiry"/> General inquiry
+            <input type="radio" id="option2" name="subject" value="General inquiry"/> General inquiry
+            <input type="radio" id="option3" name="subject" value="General inquiry"/> General inquiry
+            <input type="radio" id="option4" name="subject" value="General inquiry"/> General inquiry
+          
           </div>
         </div>
-        <div className='w-full flex items-start justify-items-start pl-6 pt-8 '>
+        <div className='w-full flex items-start justify-items-start pl-5 pt-8 '>
           <TextField
             id="message"
             name="message"
@@ -77,12 +69,12 @@ const ContactInput = () => {
         <div className='w-full flex justify-items-end justify-end pt-3'>
           <Button
             type="submit"
-            className='px-2 py-2 flex text-white bg-teal-700 rounded hover:bg-teal-800  '
+            className='px-4 py-2 flex text-white bg-teal-700 rounded hover:bg-teal-800  '
           >
             Send Message
           </Button>
         </div>
-        <div className='w-full flex justify-items-end justify-end'>
+        <div className='w-full flex justify-items-end justify-end pr-5'>
          <Image src={LettersendImg} alt='letter-send-img'></Image>
         </div>
       </div>
