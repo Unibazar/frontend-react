@@ -12,11 +12,16 @@ import Pricing from '../components/Pricing/Pricing.js';
 import FAQ from '../components/FAQ/FAQ.js';
 import Signup from '../components/Signup/Signup.js';
 import AppNavBar from '@/components/common/AppNavBar.js';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <div>
-      <AppNavBar />
+      <Head>
+        <title>Unibazar</title>
+        <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
+      </Head>
+      {/* <AppNavBar /> */}
       <div className="section">
         {/* <Navbar /> */}
         <Hero />
@@ -30,7 +35,7 @@ export default function Home() {
         <FAQ />
         <Signup />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

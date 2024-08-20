@@ -1,6 +1,6 @@
 import React from 'react';
-import './OnlineBooking.css';
-import '../ResponsiveStyle/Responsive.css'
+// import '../../styles/components/OnlineBooking.css';
+// import '../../styles/components/Responsive.css';
 const OnlineBooking = () => {
   return (
     <>

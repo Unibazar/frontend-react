@@ -8,8 +8,8 @@ import SnapdealLogo from '../../assets/unibazar-home-images/snapdea-logo.png';
 import NykaaLogo from '../../assets/unibazar-home-images/nykaa-logo.png';
 import LimeRoadLogo from '../../assets/unibazar-home-images/limeRoad-logo.png';
 import AjioLogo from '../../assets/unibazar-home-images/ajio-logo.png';
-import './Enterprises.css';
-import '../ResponsiveStyle/Responsive.css'
+// import '../../styles/components/Enterprises.css';
+// import '../../styles/components/Responsive.css';
 const Enterprises = () => {
   return (
     <>

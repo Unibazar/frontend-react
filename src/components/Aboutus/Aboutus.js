@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import AboutusImage from '../../assets/unibazar-aboutus-images/aboutus.png';
-import './Aboutus.css';
+// import '../../styles/components/Aboutus.css';
 const Aboutus = () => {
   return (
     <>

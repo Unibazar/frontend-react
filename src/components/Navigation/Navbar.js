@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import LogoImage from '../../assets/unibazar_logo.png';
-import Link from "next/link"
-import './Navbar.css';
-import '../ResponsiveStyle/Responsive.css'
+import Link from 'next/link';
+// import '../../styles/components/Navbar.css';
+// import '../../styles/components/Responsive.css';
 const Navbar = () => {
   return (
     <>
@@ -13,21 +13,22 @@ const Navbar = () => {
         </div>
         <div className="navigation">
           <ul className="nav-links">
-            <li><Link href="/">
+            <li>
+              <Link href="/">
                 <span>Home</span>
               </Link>
             </li>
-            <li><Link href="/about-us">
-              About</Link>
+            <li>
+              <Link href="/about-us">About</Link>
             </li>
-            <li><Link href="/">
-              Features</Link>
+            <li>
+              <Link href="/">Features</Link>
             </li>
-            <li><Link href="/">
-              Pricing</Link>
+            <li>
+              <Link href="/">Pricing</Link>
             </li>
-            <li><Link href="/">
-              Contact us</Link>
+            <li>
+              <Link href="/">Contact us</Link>
             </li>
           </ul>
         </div>

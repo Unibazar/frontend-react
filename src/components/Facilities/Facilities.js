@@ -4,8 +4,8 @@ import FacilityImg1 from '../../assets/unibazar-home-images/feature-img1.png';
 import FacilityImg2 from '../../assets/unibazar-home-images/feature-img2.png';
 import FacilityImg3 from '../../assets/unibazar-home-images/feature-img3.png';
 import FacilityImg4 from '../../assets/unibazar-home-images/feature-img4.png';
-import './Facilities.css';
-import '../ResponsiveStyle/Responsive.css'
+// import '../../styles/components/Facilities.css';
+// import '../../styles/components/Responsive.css';
 const Facilities = () => {
   return (
     <>
@@ -29,7 +29,8 @@ const Facilities = () => {
             <p className="info-color">Keep Your Stock in Sync</p>
             <h2>Inventory Management</h2>
             <p>
-              Automatically synchronize inventory levels across all your sales channels.<br/> Receive notifications for low stock and out-of-stock items <br /> to ensure you never miss a sale
+              Automatically synchronize inventory levels across all your sales channels.
+              <br /> Receive notifications for low stock and out-of-stock items <br /> to ensure you never miss a sale
             </p>
           </div>
 

@@ -3,8 +3,8 @@ import Image from 'next/image';
 import FeatureIcon1 from '../../assets/unibazar-home-images/feature-Icon1.png';
 import FeatureIcon2 from '../../assets/unibazar-home-images/feature-Icon2.png';
 import FeatureIcon3 from '../../assets/unibazar-home-images/feature-Icon3.png';
-import './Features.css';
-import '../ResponsiveStyle/Responsive.css'
+// import '../../styles/components/Features.css';
+// import '../../styles/components/Responsive.css';
 const Features = () => {
   return (
     <>

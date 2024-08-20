@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import LogoImage from '../../../public/unibazar-logo.png';
 import Link from 'next/link';
-import './AppNavBar.css';
+// import '../../styles/components/AppNavBar.css';
 function AppNavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
