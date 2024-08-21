@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('../styles/components/Aboutus.css');
+/* @import url('../styles/components/Aboutus.css');
 @import url('../styles/components/AppNavBar.css');
 @import url('../styles/components/AppContactus.css');
 @import url('../styles/components/Banner.css');
@@ -19,7 +19,7 @@
 @import url('../styles/components/Signup.css');
 @import url('../styles/components/Story.css');
 @import url('../styles/components/WhyUnibazar.css');
-@import url('../styles/components/Working.css');
+@import url('../styles/components/Working.css'); */
 
 /* :root {
   --foreground-rgb: 0, 0, 0;

@@ -3,47 +3,59 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import LogoImage from '../../../public/unibazar-logo.png';
 import Link from 'next/link';
-// import '../../styles/components/AppNavBar.css';
+import styles from './AppNavBar.module.css';
+import { usePathname } from 'next/navigation';
 function AppNavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const pathname = usePathname();
+  const isActive = href => pathname === href;
   return (
-    <nav className="navbar-container ">
-      <div className="logo-wrap">
-        <Image src={LogoImage} alt="logo" className="navbar-logo"></Image>
+    <nav className={styles.navbarContainer}>
+      <div className={styles.logoWrap}>
+        <Image src={LogoImage} alt="logo" className={styles.navbarLogo}></Image>
       </div>
 
       <div className="hidden md:flex space-x-6 text-gray-600">
-        <ul className="nav-links-ul">
-          <li className="nav-link-item">
-            <Link href="/">
+        <ul className={styles.navLinksUl}>
+          <li className={styles.navLinkItem}>
+            <Link href="/" className={isActive('/') ? ' text-teal-500' : 'text-gray-600'}>
               <span>Home</span>
             </Link>
           </li>
-          <li className="nav-link-item">
-            <Link href="/about-us">About</Link>
+          <li className={styles.navLinkItem}>
+            <Link href="/about-us" className={isActive('/about-us') ? ' text-teal-500' : 'text-gray-600'}>
+              About
+            </Link>
           </li>
-          <li className="nav-link-item">
-            <Link href="/">Features</Link>
+          <li className={styles.navLinkItem}>
+            <Link href="/" className={isActive('/features') ? ' text-teal-500' : 'text-gray-600'}>
+              Features
+            </Link>
           </li>
-          <li className="nav-link-item">
-            <Link href="/">Pricing</Link>
+          <li className={styles.navLinkItem}>
+            <Link href="/" className={isActive('/pricing') ? ' text-teal-500' : 'text-gray-600'}>
+              Pricing
+            </Link>
           </li>
-          <li className="nav-link-item">
-            <Link href="/">Contact us</Link>
+          <li className={styles.navLinkItem}>
+            <Link href="/contact-us" className={isActive('/contact-us') ? ' text-teal-500' : 'text-gray-600'}>
+              Contact us
+            </Link>
           </li>
         </ul>
       </div>
-      <div className="hidden md:flex items-center space-x-4">
-        <a href="#login" className="text-gray-600 hover:text-teal-700">
+      <div className={styles.navButtons}>
+        <Link href="/login" className={styles.loginButton}>
           Login
-        </a>
-        <a href="#register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+        </Link>
+        <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
           Register
-        </a>
+        </Link>
       </div>
       <div className="md:hidden flex items-center">
         <button onClick={toggleMenu} className="text-gray-600 hover:text-teal-700 focus:outline-none">
@@ -56,39 +68,39 @@ function AppNavBar() {
         <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-md">
           <ul className="flex flex-col items-center space-y-4 p-4">
             <li>
-              <a href="#home" className="text-gray-600 hover:text-teal-700">
+              <Link href="/" className={`${isActive('/') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="text-gray-600 hover:text-teal-700">
+              <Link href="/about-us" className={`${isActive('/about-us') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#features" className="text-gray-600 hover:text-teal-700">
+              <Link href="/features" className={`${isActive('/features') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 Features
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#pricing" className="text-gray-600 hover:text-teal-700">
+              <Link href="/pricing" className={`${isActive('/pricing') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 Pricing
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="text-gray-600 hover:text-teal-700">
+              <Link href="/contact-us" className={`${isActive('/contact-us') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#login" className="text-gray-600 hover:text-teal-700">
+              <Link href="/login" className={`${isActive('/login') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+              <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
