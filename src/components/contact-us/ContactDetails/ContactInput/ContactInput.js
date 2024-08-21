@@ -45,7 +45,7 @@ const ContactInput = () => {
         </Box>
         <div className='w-full items-start justify-items-start text-start  pl-3 pt-8'>
           <p className='text-sm font-bold '>Select Subject ?</p>
-          <div className='w-full flex md:flex-row text-sm gap-2  justify-start'>
+          <div className='w-full flex md:flex-row text-sm gap-4 flex-wrap justify-start'>
          
             <input type="radio" id="option1" name="subject" value="General inquiry"/> General inquiry
             <input type="radio" id="option2" name="subject" value="General inquiry"/> General inquiry

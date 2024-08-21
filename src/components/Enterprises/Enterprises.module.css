@@ -6,32 +6,43 @@
   background-color: #F5FDFD;
 }
 
-.enterprise-text {
+.enterpriseText {
   text-align: center;
 }
 
-.enterprise-text p{
+.enterpriseText p{
   margin-top: 0;
   margin-bottom: 3rem;
   color: #555;
 }
 
 
-.enterprise-text h2{
+.enterpriseText h2{
   margin: 0;
   font-size: 1.75rem;
 }
 
-.enterprise-image {
+.enterpriseImage {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.enterprise-img {
+.enterpriseImg {
   width: 8%;
 }
 
-.enterprise-img img {
+.enterpriseImg img {
  width: 100%;
 }
+
+@media (max-width: 720px) {
+  .enterpriseImg {
+    width: 32%;
+  }
+  .enterpriseImage{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+} 

@@ -6,28 +6,28 @@
   flex-direction: column;
 }
 
-.faqs-text{
+.faqsText{
   text-align: center;
   margin: 3.1rem .7rem;
   color: #555;
 }
 
-.faqs-text h2 {
+.faqsText h2 {
  font-size: 1.75rem;
  margin: auto;
  color: #000;
 }
 
-.faqs-part {
+.faqsPart {
   display: flex;
   justify-content: space-evenly;
 }
 
-.faq-sides{
+.faqSides{
   min-width: 40%;
 }
 
-.faqs-item {
+.faqsItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,13 @@
   margin-bottom: 1rem;
 }
 
-.faqs-item img{
+.faqsItem img{
   width: 6%;
   height: 6%;
 }
+
+@media (max-width: 720px) {
+  .faqsPart{
+    flex-direction: column;
+  }
+}  

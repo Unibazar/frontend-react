@@ -4,7 +4,7 @@ export default function SignIn(){
   return(
     <div>
        <Head>
-        <title>Sign in | Unibazar</title>
+        <title>Log in | Unibazar</title>
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
       </Head>
       <Signin/>

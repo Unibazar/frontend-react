@@ -8,17 +8,17 @@ import GoogleImg from '../../../assets/google.png'
 import {IoMdEyeOff} from 'react-icons/io'
 import Link from 'next/link'
 
-import './Signup.css'
+import styles from './SignUp.module.css'
 const Signup = () => {
   return (
     <>
       <div >
-        <div className="logo pt-12 pl-12">
-        <Image src={LogoImage} alt="Logo" className='w-36' />
+        <div className={`${styles.logo} pt-12 pl-12`}>
+        <Link href='/'><Image src={LogoImage} alt="Logo" className='w-36' /></Link> 
         </div>
       </div>
       <div className="w-full flex md:flex-row flex-col justify-around p-10">
-        <div className="w-full md:ml-20 md:mt-10 p-5 mainimg">
+        <div className={`${styles.mainimg} w-full md:ml-20 md:mt-10 p-5 `}>
           <Image src={SigninImg} alt="Signin_Image" ></Image>
         </div>
         <div className="md:mr-10 md:pr-28  w-full p-5">

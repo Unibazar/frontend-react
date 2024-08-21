@@ -5,7 +5,7 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 import logo from '../../assets/unibazar_logo.png';
-import './Footer.css'
+import styles from './Footer.module.css'
 const Footer = () => {
   return (
     <>
@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
           </ul>
         </div>
-        <div className=" flex md:flex-row justify-between company-support ">
+        <div className={`${styles.companySupport} flex md:flex-row justify-between `}>
           <div className="p-5">
             <ul>
               <p className="text-gray-800 font-bold text-1xl pb-4">COMPANY</p>
@@ -45,7 +45,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="p-5 contact-info">
+        <div className={`${styles.contactInfo} p-5`}>
           <ul>
             <p className="text-gray-800 font-bold text-1xl pb-4 ">CONTACT INFO</p>
             <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Phone: +91-123-456-7890</li>

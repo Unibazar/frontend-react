@@ -1,5 +1,4 @@
 import React from 'react'
-import './Contactdetails.css'
 import Contactinfo from './ContactInfo/Contactinfo'
 import ContactInput from './ContactInput/ContactInput'
 const ContactDetails = () => {

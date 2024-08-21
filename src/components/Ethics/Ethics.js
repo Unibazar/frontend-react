@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import MissionImage from '../../assets/unibazar-aboutus-images/mission.png'
 import ValueImage from '../../assets/unibazar-aboutus-images/value.png'
-import './Ethics.css'
 const Ethics = () => {
   return (
     <>

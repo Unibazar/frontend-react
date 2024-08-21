@@ -1,6 +1,6 @@
 /* MEDIA QUARY */
 
-.navbar-container {
+.navbarContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,31 +8,31 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 }
 
-.logo-wrap {
+.logoWrap {
   max-width: 100%;
   width: 15%;
 }
-.nav-links-ul {
+.navLinksUl {
   display: flex;
   gap: 8px;
 }
-.nav-link-item {
+.navLinkItem {
   font-size: 18px;
   padding: 0px 8px;
 }
-.nav-buttons {
+.navButtons {
   display: flex;
   gap: 16px;
   align-items: center;
   font-size: 18px;
 }
-.login-button {
+.loginButton {
   padding: 8px 26px !important;
   border-radius: 4px !important;
   background-color: #f4f4f4;
   outline: 1px solid #ececec;
 }
-.register-button {
+.registerButton {
   padding: 8px 26px !important;
   border-radius: 4px !important;
   background-color: #008080;
@@ -108,13 +108,13 @@
 } */
 
 @media (max-width: 720px) {
-  .navbar-container {
+  .navbarContainer {
     padding: 20px 16px;
   }
-  .logo-wrap {
+  .logoWrap {
     width: 42%;
   }
-  .nav-buttons{
+  .navButtons{
     display: none;
   }
 }

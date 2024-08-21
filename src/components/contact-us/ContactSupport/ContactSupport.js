@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import ContactSupportImg from '../../../assets/unibazar-contactus-images/contactSupport.svg'
-import './ContactSupport.css'
 import Link from 'next/link'
 const ContactSupport = () => {
   return (

@@ -1,15 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
-
-body{
-  font-family:'Nunito', sans-serif;
-}
-h1{
+.heading{
   margin-top: 10px;
   font-size:xx-large;
   margin-top: 20px;
   font-weight: bold;
 }
-button{
+.btn{
   margin-top: 20px;
   background-color: #08A9A0;
   color: white;

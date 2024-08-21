@@ -13,7 +13,7 @@ import { FaFacebook } from 'react-icons/fa';
 const Contactinfo = () => {
   return (
     <>
-      <div className="bg-teal-700 md:w-2/3 w-full md:h-min  flex rounded-xl md:flex-col text-white text-left md:ml-36">
+      <div className="bg-teal-700 md:w-2/3 w-full md:h-min  flex-col rounded-xl  text-white text-left md:ml-36">
         <div className=" p-5">
           <p className="text-3xl">Contact Information</p>
           <p className='text-normal '>say someting to start a live chat !</p>

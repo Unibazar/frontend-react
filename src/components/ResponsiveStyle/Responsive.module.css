@@ -8,11 +8,11 @@
     justify-content: flex-start;
   }
 
-  .nav-links {
+  .navLinks {
     display: none;
   }
 
-  .navbar .nav-buttons {
+  .navbar .navButtons {
     display: none;
   }
 
@@ -25,23 +25,23 @@
     text-align: center;
   }
 
-  .hero-text .nav-buttons {
+  .heroText .navButtons {
     margin: auto;
   }
 
-  .hero-img {
+  .heroImg {
     margin-top: 2rem;
   }
 
-  .enterprise-img {
+  .enterpriseImg {
     width: 32%;
   }
 
-  .online-booking-btn {
+  .onlineBookingBtn {
     flex-wrap: nowrap;
   }
 
-  .online-booking-btn a {
+  .onlinebookingBtn a {
     padding: 1rem 2rem;
   }
 
@@ -49,7 +49,7 @@
     flex-wrap: wrap-reverse;
   }
 
-  .bannar-img {
+  .bannerImg {
     margin: 0.3rem;
   }
 
@@ -57,15 +57,15 @@
     margin-top: 1rem;
   }
 
-  .signup-text {
+  .signupText {
     text-align: center;
   }
 
-  .signup-text .nav-buttons {
+  .signupText .navButtons {
     margin: auto;
   }
 
-  .work-part .work {
+  .workPart .work {
     margin-top: 1rem;
   }
 } 

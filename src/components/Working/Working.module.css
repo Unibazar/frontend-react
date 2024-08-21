@@ -6,20 +6,20 @@
   flex-direction: column;
 }
 
-.working-text{
+.workingText{
   text-align: center;
 }
 
-.working-text p {
+.workingText p {
   color: #455a64;
 }
 
-.working-text h1 {
+.workingText h1 {
   margin: 0rem;
   font-size: 1.75rem;
 }
 
-.work-part {
+.workPart {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -42,3 +42,16 @@
   text-align: center;
   font-size: .7rem;
 }
+
+@media (max-width: 720px) {
+  .workPart {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .workPart .work {
+    margin-top: 1rem;
+  }
+  .work{
+    width: 200px;
+  }
+} 

@@ -3,8 +3,9 @@ import Image from 'next/image'
 import SigninImg from '../../../assets/signin-image.svg'
 import ForgotPassImg from '../../../assets/forgotPass.png'
 import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png'
+import Link from 'next/link'
 
-import './ForgotPassword.css'
+import styles from './ForgotPassword.module.css'
 
 function Popup({ onClose }) {
   const styles = {
@@ -53,12 +54,12 @@ function ForgotPassword() {
   return (
     <>
        <div >
-        <div className="logo pt-12 pl-12">
-        <Image src={LogoImage} alt="Logo" className='w-36' />
+        <div className={`${styles.logo} pt-12 pl-12`}>
+        <Link href='/'><Image src={LogoImage} alt="Logo" className='w-36' /></Link> 
         </div>
       </div>
       <div className="w-full flex md:flex-row flex-col justify-center justify-items-center items-start p-10">
-        <div className=" w-full md:ml-20 md:mt-10 p-5  mainimg">
+        <div className={`${styles.mainimg} w-full md:ml-20 md:mt-10 p-5 `}>
           <Image src={SigninImg} alt="Signin_Image" />
         </div>
         <div className=" md:mr-10 md:pr-28 md:mt-20 justify-center justify-items-center items-center w-full p-5">

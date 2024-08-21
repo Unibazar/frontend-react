@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import BackgroundImage from '../../assets/unibazar-aboutus-images/story.png'
-import './Story.css'
 const Story = () => {
   return (
     <>

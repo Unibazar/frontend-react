@@ -6,15 +6,15 @@
   flex-direction: column;
 }
 
-.pricing-text{
+.pricingText{
   text-align: center;
 }
 
-.pricing-text h1{
+.pricingText h1{
 font-size: 1.75rem;
 }
 
-.pricing-part {
+.pricingPart {
   display: flex;
   justify-content: space-evenly;
   padding: .7rem;
@@ -34,7 +34,7 @@ font-size: 1.75rem;
   margin: 0;
 }
 
-.temp .very-small {
+.temp .verySmall {
   padding: 2rem;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
@@ -44,3 +44,17 @@ font-size: 1.75rem;
 .btn {
   margin: auto;
 }
+
+@media (max-width: 720px) {
+  .temp {
+    margin-top: 1rem;
+  }
+  .pricingPart{
+    display: flex;
+    flex-direction: column;
+  }
+  .temp .verySmall {
+    padding: 0rem;
+  }
+  
+} 
