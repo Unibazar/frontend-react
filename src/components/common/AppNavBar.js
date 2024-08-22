@@ -16,9 +16,9 @@ function AppNavBar() {
   const isActive = href => pathname === href;
   return (
     <nav className={styles.navbarContainer}>
-      <div className={styles.logoWrap}>
+      <Link href="/" className={styles.logoWrap}>
         <Image src={LogoImage} alt="logo" className={styles.navbarLogo}></Image>
-      </div>
+      </Link>
 
       <div className="hidden md:flex space-x-6 text-gray-600">
         <ul className={styles.navLinksUl}>
