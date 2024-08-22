@@ -24,23 +24,26 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 1rem;
+  margin-top: 20px;
+  gap: 20px;
 }
 
 .work {
-  min-width: 18%;
-  padding: 2rem 1.5rem;
+  padding: 2rem;
   box-shadow: 0 0.12rem 0.25rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  flex: 1 1 0;
 }
 
-.work img {
-  display: block;
-  width: 12%;
-  margin: auto;
+.workIcon {
+  width: 30px;
 }
-
 .work p {
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 14px;
 }
 
 @media (max-width: 720px) {
@@ -48,10 +51,7 @@
     flex-wrap: wrap;
     flex-direction: column;
   }
-  .workPart .work {
-    margin-top: 1rem;
-  }
   .work {
-    width: 200px;
+    width: 100%;
   }
 }

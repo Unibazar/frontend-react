@@ -16,22 +16,22 @@ const Working = () => {
 
         <div className={styles.workPart}>
           <div className={styles.work}>
-            <Image src={WorkIcon1} alt="wait.."></Image>
+            <Image className={styles.workIcon} src={WorkIcon1} alt="wait.."></Image>
             <p>Register </p>
           </div>
 
           <div className={styles.work}>
-            <Image src={WorkIcon2} alt="wait.."></Image>
+            <Image className={styles.workIcon} src={WorkIcon2} alt="wait.."></Image>
             <p>Link Your platforms</p>
           </div>
 
           <div className={styles.work}>
-            <Image src={WorkIcon3} alt="wait.."></Image>
+            <Image className={styles.workIcon} src={WorkIcon3} alt="wait.."></Image>
             <p>Prepare your space</p>
           </div>
 
           <div className={styles.work}>
-            <Image src={WorkIcon4} alt="wait.."></Image>
+            <Image className={styles.workIcon} src={WorkIcon4} alt="wait.."></Image>
             <p>Manage listing</p>
           </div>
         </div>
