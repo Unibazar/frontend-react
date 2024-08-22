@@ -43,9 +43,9 @@ const ContactInput = () => {
             placeholder="(123) 456-7890"
           />
         </Box>
-        <div className='w-full items-start justify-items-start text-start  pl-3 pt-8'>
-          <p className='text-sm font-bold '>Select Subject ?</p>
-          <div className='w-full flex md:flex-row text-sm gap-4 flex-wrap justify-start'>
+        <div className='w-full items-start justify-items-start text-start  md:pl-3 pl-1 pt-8'>
+          <p className='text-sm font-bold pb-2 '>Select Subject ?</p>
+          <div className='w-full flex md:flex-row text-sm md:gap-4 gap-2 flex-wrap justify-start'>
          
             <input type="radio" id="option1" name="subject" value="General inquiry"/> General inquiry
             <input type="radio" id="option2" name="subject" value="General inquiry"/> General inquiry

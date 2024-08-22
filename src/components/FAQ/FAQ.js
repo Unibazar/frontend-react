@@ -52,35 +52,6 @@ const FAQ = () => {
               <Image src={Add} alt="add.."></Image>
             </div>
           </div>
-
-          <div className="faqs-item">
-            <p>Does it work offline?</p>
-            <Image src={Add} alt="add.."></Image>
-          </div>
-
-          <div className="faqs-item">
-            <p>Is my data secure?</p>
-            <Image src={Add} alt="add.."></Image>
-          </div>
-        </div>
-
-        <div className="faq-sides">
-          <div className="faqs-item">
-            <p>Is there a mobile app</p>
-            <Image src={Add} alt="add.."></Image>
-          </div>
-          <div className="faqs-item">
-            <p>Is there a mobile app</p>
-            <Image src={Add} alt="add.."></Image>
-          </div>
-          <div className="faqs-item">
-            <p>Is there a mobile app</p>
-            <Image src={Add} alt="add.."></Image>
-          </div>
-          <div className="faqs-item">
-            <p>Is there a mobile app</p>
-            <Image src={Add} alt="add.."></Image>
-          </div>
         </div>
       </div>
     </>

@@ -7,12 +7,21 @@ import AppleImg from '../../../assets/apple.png'
 import GoogleImg from '../../../assets/google.png'
 import {IoMdEyeOff} from 'react-icons/io'
 import Link from 'next/link'
+import { IoChevronBackOutline } from "react-icons/io5";
+import { useRouter } from 'next/router';
 
 import styles from './SignUp.module.css'
 const Signup = () => {
+  const router = useRouter();
+  const handleBackClick = () => {
+    router.back();
+  };  
   return (
     <>
       <div >
+      <div className='md:hidden pt-12 pl-10  w-full flex'>
+        <IoChevronBackOutline className='bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center' onClick={handleBackClick}/>
+        </div>
         <div className={`${styles.logo} pt-12 pl-12`}>
         <Link href='/'><Image src={LogoImage} alt="Logo" className='w-36' /></Link> 
         </div>

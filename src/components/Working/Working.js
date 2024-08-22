@@ -34,11 +34,6 @@ const Working = () => {
             <Image src={WorkIcon4} alt="wait.."></Image>
             <p>Manage listing</p>
           </div>
-
-          <div className="work">
-            <Image src={WorkIcon4} alt="wait.."></Image>
-            <p>Manage listing</p>
-          </div>
         </div>
       </div>
     </>

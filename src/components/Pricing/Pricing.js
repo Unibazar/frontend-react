@@ -21,7 +21,7 @@ const Pricing = () => {
               Inventory Management  <b>- No</b> <br />
               Customer Support Level  <b> basic</b> <br />
             </p>
-            <div className={`${styles.btn} ${styles.navButtons}`}>
+            <div className={`${styles.btn} ${styles.navButtons} md:w-full md:h-full items-end flex justify-center`}>
               <a href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
                 Get started
               </a>
@@ -39,7 +39,7 @@ const Pricing = () => {
               Customer Support Level-  <b>Priority</b>
               <br />
             </p>
-            <div className={`${styles.btn} ${styles.navButtons}`}>
+            <div className={`${styles.btn} ${styles.navButtons}md:w-full md:h-full items-end flex justify-center`}>
               <a href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
                 Subscription
               </a>
@@ -56,7 +56,7 @@ const Pricing = () => {
               Inventory Management  <b>- Yes</b> <br />
               Customer Support Level <b>- Premium </b> <br />
             </p>
-            <div className={`${styles.btn} ${styles.navButtons}`}>
+            <div className={`${styles.btn} ${styles.navButtons} md:w-full md:h-full items-end flex justify-center`}>
               <a href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
                 Contact Us
               </a>
