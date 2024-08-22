@@ -21,35 +21,35 @@ export default function Home() {
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
       </Head>
       {/* <AppNavBar /> */}
-      <div className="section">
-        {/* <Navbar /> */}
-        <Hero />
-        <br />
-        <br />
-        <Enterprises />
-        <br />
-        <br />
-        <OnlineBooking />
-        <br />
-        <br />
-        <Features />
-        <br />
-        <br />
-        <Facilities />
-        <br />
-        <br />
-        <Working />
-        <br />
-        <br />
-        {/* <Banner /> */}
-        <Pricing />
-        <br />
-        <br />
-        <FAQ />
-        <br />
-        <br />
-        <Signup />
-      </div>
+      {/* <div className="section"> */}
+      {/* <Navbar /> */}
+      <Hero />
+      <br />
+      <br />
+      <Enterprises />
+      <br />
+      <br />
+      <OnlineBooking />
+      <br />
+      <br />
+      <Features />
+      <br />
+      <br />
+      <Facilities />
+      <br />
+      <br />
+      <Working />
+      <br />
+      <br />
+      {/* <Banner /> */}
+      <Pricing />
+      <br />
+      <br />
+      <FAQ />
+      <br />
+      <br />
+      <Signup />
+      {/* </div> */}
       {/* <Footer /> */}
     </div>
   );
