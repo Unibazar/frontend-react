@@ -1,0 +1,49 @@
+/*  FAQ'S   */
+
+.faqs {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.faqsText{
+  text-align: center;
+  margin: 3.1rem .7rem;
+  color: #555;
+}
+
+.faqsText h2 {
+ font-size: 1.75rem;
+ margin: auto;
+ color: #000;
+}
+
+.faqsPart {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.faqSides{
+  min-width: 40%;
+}
+
+.faqsItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 2rem;
+  background-color: #F3F1F1;
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+}
+
+.faqsItem img{
+  width: 6%;
+  height: 6%;
+}
+
+@media (max-width: 720px) {
+  .faqsPart{
+    flex-direction: column;
+  }
+}  

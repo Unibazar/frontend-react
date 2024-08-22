@@ -1,0 +1,48 @@
+/* ENTERPRISES STYLING */
+
+
+.enterprise {
+  padding: 2rem;
+  background-color: #F5FDFD;
+}
+
+.enterpriseText {
+  text-align: center;
+}
+
+.enterpriseText p{
+  margin-top: 0;
+  margin-bottom: 3rem;
+  color: #555;
+}
+
+
+.enterpriseText h2{
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.enterpriseImage {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.enterpriseImg {
+  width: 8%;
+}
+
+.enterpriseImg img {
+ width: 100%;
+}
+
+@media (max-width: 720px) {
+  .enterpriseImg {
+    width: 32%;
+  }
+  .enterpriseImage{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+} 
