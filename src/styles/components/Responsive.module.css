@@ -1,0 +1,71 @@
+ @media (max-width: 720px) {
+  * {
+    flex-wrap: wrap;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navbar .navButtons {
+    display: none;
+  }
+
+  .logo {
+    width: 40%;
+    margin-left: 1rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .heroText .navButtons {
+    margin: auto;
+  }
+
+  .heroImg {
+    margin-top: 2rem;
+  }
+
+  .enterpriseImg {
+    width: 32%;
+  }
+
+  .onlineBookingBtn {
+    flex-wrap: nowrap;
+  }
+
+  .onlinebookingBtn a {
+    padding: 1rem 2rem;
+  }
+
+  .facility .wrap {
+    flex-wrap: wrap-reverse;
+  }
+
+  .bannerImg {
+    margin: 0.3rem;
+  }
+
+  .temp {
+    margin-top: 1rem;
+  }
+
+  .signupText {
+    text-align: center;
+  }
+
+  .signupText .navButtons {
+    margin: auto;
+  }
+
+  .workPart .work {
+    margin-top: 1rem;
+  }
+} 

@@ -1,0 +1,120 @@
+/* MEDIA QUARY */
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 64px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.logoWrap {
+  max-width: 100%;
+  width: 15%;
+}
+.navLinksUl {
+  display: flex;
+  gap: 8px;
+}
+.navLinkItem {
+  font-size: 18px;
+  padding: 0px 8px;
+}
+.navButtons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 18px;
+}
+.loginButton {
+  padding: 8px 26px !important;
+  border-radius: 4px !important;
+  background-color: #f4f4f4;
+  outline: 1px solid #ececec;
+}
+.registerButton {
+  padding: 8px 26px !important;
+  border-radius: 4px !important;
+  background-color: #008080;
+  outline: 2px solid #026718;
+  color: #ffffff;
+}
+/* @media (max-width: 1020px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar .nav-buttons {
+    display: none;
+  }
+
+  .logo {
+    width: 40%;
+    margin-left: 1rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero-text .nav-buttons {
+    margin: auto;
+  }
+
+  .hero-img {
+    margin-top: 2rem;
+  }
+
+  .enterprise-img {
+    width: 32%;
+  }
+
+  .online-booking-btn {
+    flex-wrap: nowrap;
+  }
+
+  .online-booking-btn a {
+    padding: 1rem 2rem;
+  }
+
+  .facility .wrap {
+    flex-wrap: wrap-reverse;
+  }
+
+  .bannar-img {
+    margin: 0.3rem;
+  }
+
+  .temp {
+    margin-top: 1rem;
+  }
+
+  .signup-text {
+    text-align: center;
+  }
+
+  .signup-text .nav-buttons {
+    margin: auto;
+  }
+
+  .work-part .work {
+    margin-top: 1rem;
+  }
+} */
+
+@media (max-width: 720px) {
+  .navbarContainer {
+    padding: 20px 16px;
+  }
+  .logoWrap {
+    width: 42%;
+  }
+  .navButtons{
+    display: none;
+  }
+}
