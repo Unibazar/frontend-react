@@ -1,12 +1,12 @@
 /* WORKING  */
 
 .working {
-  padding: 2rem;
+  /* padding: 2rem; */
   display: flex;
   flex-direction: column;
 }
 
-.workingText{
+.workingText {
   text-align: center;
 }
 
@@ -28,8 +28,8 @@
 
 .work {
   min-width: 18%;
-  padding:2rem 1.5rem;
-  box-shadow: 0 .12rem .25rem rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+  box-shadow: 0 0.12rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 .work img {
@@ -40,7 +40,7 @@
 
 .work p {
   text-align: center;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 @media (max-width: 720px) {
@@ -51,7 +51,7 @@
   .workPart .work {
     margin-top: 1rem;
   }
-  .work{
+  .work {
     width: 200px;
   }
-} 
+}
