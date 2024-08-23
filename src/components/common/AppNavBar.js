@@ -38,7 +38,7 @@ function AppNavBar() {
             </Link>
           </li>
           <li className={styles.navLinkItem}>
-            <Link href="/" className={isActive('/pricing') ? ' text-teal-500' : 'text-gray-600'}>
+            <Link href="/pricing" className={isActive('/pricing') ? ' text-teal-500' : 'text-gray-600'}>
               Pricing
             </Link>
           </li>
