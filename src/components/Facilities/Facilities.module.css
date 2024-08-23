@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 .facilitiesImg {
@@ -28,15 +28,15 @@
   color: #455a64;
 }
 
-.info .infoColor{
+.info .infoColor {
   color: #08a9a0;
 }
 
-@media (max-width:720px){
-  .wrap  {
-    flex-wrap: wrap-reverse;
-  };
-  .down{
+@media (max-width: 720px) {
+  .wrap {
+    /* flex-wrap: wrap-reverse; */
+  }
+  .down {
     flex-wrap: wrap-reverse;
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Pring.module.css';
+import styles from './Pricing.module.css';
 const Pricing = () => {
   return (
     <>
@@ -12,6 +12,7 @@ const Pricing = () => {
           <div className={styles.temp}>
             <p>FREE</p>
             <p>$0</p>
+            <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- 3</b> <br />
               Product Management Limit  <b>- 50</b> <br />
@@ -30,6 +31,7 @@ const Pricing = () => {
           <div className={styles.temp}>
             <p>PRO</p>
             <p>$10</p>
+            <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- 5</b> <br />
               Product Management Limit <b>- 500</b>  <br />
@@ -48,6 +50,7 @@ const Pricing = () => {
           <div className={styles.temp}>
             <p>ENTERPRISE</p>
             <p>Custom Pricing</p>
+            <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- Unlimited</b>  <br />
               Product Management Limit <b>- Unlimited</b> <br />

@@ -13,7 +13,7 @@ const OnlineBooking = () => {
           </p>
         </div>
 
-        <div className="flex md:flex-row flex-col gap-1">
+        <div className="flex md:flex-row flex-col gap-4">
           <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
             Signup for free
           </Link>
