@@ -49,21 +49,21 @@ const ComparePlan = () => {
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='min-w-[250px] outline outline-1 outline-gray-100 text-left'>
                 Number of Linked Platforms
                 </TableCell>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-center min-w-[250px] outline outline-1 outline-gray-100 '>
                   <div className='w-full text-center justify-center justify-items-center items-center flex '>3</div>
                 </TableCell>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-center min-w-[250px] outline outline-1 outline-gray-100 '>
                 <div className='w-full text-center justify-center justify-items-center items-center flex '>5</div>
                 </TableCell>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-center min-w-[250px] outline outline-1 outline-gray-100 '>
                 <div className='w-full text-center justify-center justify-items-center items-center flex '>Unlimited</div>
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Product Management Limit
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>
@@ -77,7 +77,7 @@ const ComparePlan = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Dashboard Access
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>
@@ -91,7 +91,7 @@ const ComparePlan = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Real-Time Analytics
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>
@@ -105,7 +105,7 @@ const ComparePlan = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Inventory Management
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>
@@ -119,7 +119,7 @@ const ComparePlan = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Customer Support Level
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>
@@ -133,7 +133,7 @@ const ComparePlan = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Customizable Reports
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>
@@ -147,7 +147,7 @@ const ComparePlan = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className='text-center outline outline-1 outline-gray-100 '>
+                <TableCell className='text-left outline outline-1 outline-gray-100 '>
                 Dedicated Account Manager
                 </TableCell>
                 <TableCell className='text-center outline outline-1 outline-gray-100 '>

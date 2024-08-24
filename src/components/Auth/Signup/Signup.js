@@ -1,11 +1,11 @@
-import React from 'react'
+import {useState} from 'react'
 import Image from 'next/image'
 import SigninImg from '../../../assets/signin-image.svg'
 import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png'
 import FbImg from '../../../assets/fb.png'
 import AppleImg from '../../../assets/apple.png'
 import GoogleImg from '../../../assets/google.png'
-import {IoMdEyeOff} from 'react-icons/io'
+import {IoMdEyeOff, IoMdEye} from 'react-icons/io'
 import Link from 'next/link'
 import { IoChevronBackOutline } from "react-icons/io5";
 import { useRouter } from 'next/router';
@@ -16,6 +16,19 @@ const Signup = () => {
   const handleBackClick = () => {
     router.back();
   };  
+
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+
   return (
     <>
       <div >
@@ -34,14 +47,24 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className='w-full text-normal text-gray-500 text-center py-3'>Please fill the details and create account</p>
           <form className="flex flex-col justify-center items-center gap-3">
+            <input type="text" placeholder="Name" className="w-full p-2 mb-
+            5 border bg-gray-100 rounded-2xl " />
             <input type="text" placeholder="Email" className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl " />
-            <input type="text" placeholder="Confirm-Email" className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl " />
             <div className='w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl'>
-              <input type="password" placeholder="Password" className="w-auto outline-0 border-0 bg-gray-100 " />
-              <div className=' w-auto items-center'>
-                <IoMdEyeOff style={{'color':'gray'}}/>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                className="w-auto outline-0 border-0 bg-gray-100"
+              />
+              <div className="w-auto items-center justify-center justify-items-center text-center pt-1">
+                {showPassword ? (
+                  <IoMdEye style={{ color: 'gray' }} className='cursor-pointer' onClick={handleTogglePasswordVisibility} />
+                ) : (
+                  <IoMdEyeOff style={{ color: 'gray' }} className='cursor-pointer'  onClick={handleTogglePasswordVisibility} />
+                )}
               </div>
             </div>
            
