@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Hero = () => {
   return (
     <>
-      <div className="w-full flex md:flex-row flex-col justify-between py-10 ">
+      <div className="w-full flex md:flex-row flex-col justify-between p-16 ">
         <div className="w-full">
           <h1 className="w-full font-bold uppercase text-gray-600 text-4xl p-3">
             Unlock the Power of Seamless
