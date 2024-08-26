@@ -6,11 +6,12 @@ import Link from 'next/link';
 const Hero = () => {
   return (
     <>
-      <div className="w-full flex md:flex-row flex-col justify-between p-10 ">
+      <div className="w-full flex md:flex-row flex-col justify-between py-10 ">
         <div className="w-full">
           <h1 className="w-full font-bold uppercase text-gray-600 text-4xl p-3">
-          Unlock the Power of Seamless<br />
-          E-commerce Management 
+            Unlock the Power of Seamless
+            <br />
+            E-commerce Management
           </h1>
           <p className="w-full capitalize text-normal mb-4 p-3">
             Discover how Unibazar can transform your <br /> multi-platform selling experience.
