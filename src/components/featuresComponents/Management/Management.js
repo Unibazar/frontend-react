@@ -17,7 +17,7 @@ const Management = () => {
       </p>
     </div>
         <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col-reverse my-5 max-md:px-5">
-          <Image src={Easy} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <Image src={Easy}  alt="vector image1" className="max-sm:w-full max-sm:h-auto md:w-80 w-48" />
           <div className="flex flex-col max-md:my-10 max-md:w-full">
             <small className="text-[#08A9A0] max-md:text-[14px]">Easy Integration</small>
             <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">
@@ -40,12 +40,12 @@ const Management = () => {
               Access a comprehensive dashboard that provides a holistic <br className="max-md:hidden" /> view of your sales, inventory, and orders across all connected <br /> platforms
             </p>
           </div>
-          <Image src={Dashboard} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <Image src={Dashboard} alt="vector image1" className="max-sm:w-full max-sm:h-auto md:w-96 w-48" />
         </div>
         {/* Vector Container End */}
         {/* Vector Container Start */}
         <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col-reverse my-14 max-md:px-5">
-          <Image src={Analytics} height={200}  alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <Image src={Analytics}   alt="vector image1" className="max-sm:w-full max-sm:h-auto md:w-96 w-48" />
           <div className="flex flex-col  max-md:my-10 max-md:w-full">
             <small className="text-[#08A9A0] max-md:text-[14px]">Real-time Analytics </small>
             <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">
@@ -66,12 +66,12 @@ const Management = () => {
               Automatically synchronize inventory levels across <br className="max-md:hidden" /> all your sales channels
             </p>
           </div>
-          <Image src={Managements} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <Image src={Managements}  alt="vector image1" className="max-sm:w-full max-sm:h-auto md:w-96 w-48 md:h-80" />
         </div>
         {/* Vector Container End */}
         {/* Vector Container Start */}
         <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col-reverse my-14 max-md:px-5">
-          <Image src={Products} height={200}  alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <Image src={Products}   alt="vector image1" className="max-sm:w-full max-sm:h-auto md:w-96 w-48" />
           <div className="flex flex-col max-md:my-10 max-md:w-full">
             <small className="text-[#08A9A0] max-md:text-[14px]">Seamless Product Listing </small>
             <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">List Once, Sell Everywhere </span>
@@ -89,10 +89,10 @@ const Management = () => {
               Designed for Ease of <br className="max-md:hidden" /> Use
             </span>
             <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
-              Leverage real-time analytics to make informed <br className="max-md:hidden" /> business decisions. 
+              Leverage real-time analytics to make informed <br className="max-md:hidden"/>   business decisions. 
             </p>
           </div>
-          <Image src={Interface} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <Image src={Interface}  alt="vector image1" className="max-sm:w-full max-sm:h-auto md:w-96 w-48" />
         </div>
         {/* Vector Container End */}
       </div>
