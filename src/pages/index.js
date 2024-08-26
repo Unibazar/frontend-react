@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../components/Footer/Footer.js';
 import Hero from '../components/Hero/Hero.js';
 import Enterprises from '../components/Enterprises/Enterprises.js';
@@ -13,7 +13,9 @@ import Signup from '../components/Signup/Signup.js';
 import AppNavBar from '@/components/common/AppNavBar.js';
 import Head from 'next/head';
 
+
 export default function Home() {
+
   return (
     <div>
       <Head>
@@ -21,35 +23,35 @@ export default function Home() {
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
       </Head>
       {/* <AppNavBar /> */}
-      <div className="section">
-        {/* <Navbar /> */}
-        <Hero />
-        <br />
-        <br />
-        <Enterprises />
-        <br />
-        <br />
-        <OnlineBooking />
-        <br />
-        <br />
-        <Features />
-        <br />
-        <br />
-        <Facilities />
-        <br />
-        <br />
-        <Working />
-        <br />
-        <br />
-        {/* <Banner /> */}
-        <Pricing />
-        <br />
-        <br />
-        <FAQ />
-        <br />
-        <br />
-        <Signup />
-      </div>
+      {/* <div className="section"> */}
+      {/* <Navbar /> */}
+      <Hero />
+      <br />
+      <br />
+      <Enterprises />
+      <br />
+      <br />
+      <OnlineBooking />
+      <br />
+      <br />
+      <Features />
+      <br />
+      <br />
+      <Facilities />
+      <br />
+      <br />
+      <Working />
+      <br />
+      <br />
+      {/* <Banner /> */}
+      <Pricing />
+      <br />
+      <br />
+      <FAQ />
+      <br />
+      <br />
+      <Signup />
+      {/* </div> */}
       {/* <Footer /> */}
     </div>
   );
