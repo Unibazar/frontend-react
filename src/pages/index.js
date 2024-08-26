@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../components/Footer/Footer.js';
 import Hero from '../components/Hero/Hero.js';
 import Enterprises from '../components/Enterprises/Enterprises.js';
@@ -13,7 +13,9 @@ import Signup from '../components/Signup/Signup.js';
 import AppNavBar from '@/components/common/AppNavBar.js';
 import Head from 'next/head';
 
+
 export default function Home() {
+
   return (
     <div>
       <Head>
