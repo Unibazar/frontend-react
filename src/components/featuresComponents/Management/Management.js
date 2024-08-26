@@ -1,0 +1,103 @@
+import React from 'react'
+import Image from 'next/image'
+import Easy from '../../../assets/unibazar-features-images/Easy.png'
+import Dashboard from '../../../assets/unibazar-features-images/Dashboard.png'
+import Analytics from '../../../assets/unibazar-features-images/Analytics.png'
+import Managements from '../../../assets/unibazar-features-images/Management.png'
+import Products from '../../../assets/unibazar-features-images/Products.png'
+import Interface from '../../../assets/unibazar-features-images/Interface.png'
+const Management = () => {
+  return (
+    <>
+    <div className="w-full mt-10">
+    <div className="bg-[#F5FDFD] text-center py-6 max-md:px-3">
+      <span className="font-medium text-[25px] leading-3">Unlock the Power of Seamless E-commerce Management </span>
+      <p className="opacity-[70%] text-[12px] mt-3">
+        At Unibazar, we offer a suite of powerful features designed to simplify and streamline your e-commerce operations. <br className="max-md:hidden" /> Discover how Unibazar can transform your multi-platform selling experience with the following features
+      </p>
+    </div>
+        <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col-reverse my-5 max-md:px-5">
+          <Image src={Easy} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Easy Integration</small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">
+              Connect All Your Platforms <br className="max-md:hidden" /> Effortlessly
+            </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
+              Unibazar allows you to link multiple e-commerce platforms like <br className="max-md:hidden" /> Myntra, Meesho, and your own website with just a few clicks
+            </p>
+          </div>
+        </div>
+        {/* Vector Container End */}
+        {/* Vector Container Start */}
+        <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col my-14 max-md:px-5">
+          <div className="flex flex-col  max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Unified Dashboard </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">
+              Centralized Management <br className="max-md:hidden" /> Hub
+            </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
+              Access a comprehensive dashboard that provides a holistic <br className="max-md:hidden" /> view of your sales, inventory, and orders across all connected <br /> platforms
+            </p>
+          </div>
+          <Image src={Dashboard} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+        </div>
+        {/* Vector Container End */}
+        {/* Vector Container Start */}
+        <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col-reverse my-14 max-md:px-5">
+          <Image src={Analytics} height={200}  alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <div className="flex flex-col  max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Real-time Analytics </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">
+              Actionable Insights at Your <br className="max-md:hidden" /> Fingertips 
+            </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
+              Leverage real-time data and analytics to track sales performance, <br className="max-md:hidden" /> monitor inventory levels, and make informed business decisions
+            </p>
+          </div>
+        </div>
+        {/* Vector Container End */}
+        {/* Vector Container Start */}
+        <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col my-14 max-md:px-5">
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Inventory Management</small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">Keep Your Stock in Sync </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
+              Automatically synchronize inventory levels across <br className="max-md:hidden" /> all your sales channels
+            </p>
+          </div>
+          <Image src={Managements} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+        </div>
+        {/* Vector Container End */}
+        {/* Vector Container Start */}
+        <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col-reverse my-14 max-md:px-5">
+          <Image src={Products} height={200}  alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">Seamless Product Listing </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">List Once, Sell Everywhere </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
+              Understand sales trends, platform performance, and <br className="max-md:hidden" /> customer behavior to make strategic decisions
+            </p>
+          </div>
+        </div>
+        {/* Vector Container End */}
+        {/* Vector Container Start */}
+        <div className="flex items-center justify-evenly md:gap-32 max-md:flex-col my-14 max-md:px-5">
+          <div className="flex flex-col max-md:my-10 max-md:w-full">
+            <small className="text-[#08A9A0] max-md:text-[14px]">User-friendly Interface </small>
+            <span className="font-semibold text-[20px] leading-7 my-2 max-md:text-[25px]">
+              Designed for Ease of <br className="max-md:hidden" /> Use
+            </span>
+            <p className="opacity-[70%] text-[12px] max-md:text-[14px]">
+              Leverage real-time analytics to make informed <br className="max-md:hidden" /> business decisions. 
+            </p>
+          </div>
+          <Image src={Interface} height={200} alt="vector image1" className="max-sm:w-full max-sm:h-auto" />
+        </div>
+        {/* Vector Container End */}
+      </div>
+      </>
+  )
+}
+
+export default Management
