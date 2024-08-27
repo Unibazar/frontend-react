@@ -3,9 +3,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from "react-icons/md";
+import styles from "../dashboard.module.css"
 
 export default function Tags({ title, icon: Icon, subLinks ,to}) {
     const path = usePathname();
+    const CommingPath = to?.split('?')[0];
+     
     const [toggleLinks, setToggleLinks] = useState(false);
 
     const handleToggleLinks = ()=>{
@@ -15,7 +18,7 @@ export default function Tags({ title, icon: Icon, subLinks ,to}) {
 
     return (
         <div className='group'>
-            <div className={`links px-2 md:px-4 py-1 group-hover:border-opacity-100 border-l-4 border-opacity-0 border-[#65B2B2] ${path==to && "activeLink"}`}>
+            <div className={`links px-2 md:px-4 py-1 group-hover:border-opacity-100 border-l-4 border-opacity-0 border-[#65B2B2] ${path==CommingPath && styles.activeLink}`}>
                 <Link href={`${to}`}  onClick={handleToggleLinks} className='p-1 lg:p-2 w-full rounded-lg group-hover:bg-zinc-200 cursor-pointer flex items-center gap-0 md:gap-4'>
                     <Icon className="w-full md:w-fit"/>
                     <h1 className='hidden md:block text-sm lg:text-lg'>{title}</h1>
