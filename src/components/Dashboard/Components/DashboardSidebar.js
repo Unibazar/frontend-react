@@ -8,10 +8,10 @@ import { FaRegHeart } from "react-icons/fa6";
 import { TiMessages } from "react-icons/ti";
 import { MdOutlineTableRows } from "react-icons/md";
 import Image from 'next/image';
-import Logo from "../../../../../public/unibazar-logo.png";
-import SmLogo from '../../../../../public/unibazar-image.png';
+import Logo from "../../../../public/unibazar-logo.png";
+import SmLogo from '../../../../public/unibazar-image.png';
 
-export default function Sidebar() {
+export default function DashboardSidebar() {
     const tagsData = [
         {
             title: "Dashboard",
@@ -21,7 +21,7 @@ export default function Sidebar() {
         },
         {
             title: "Products",
-            to:"/dashboard/products",
+            to:"/dashboard/products?q=list",
             icon: RiLayoutGridLine,
         },
         {

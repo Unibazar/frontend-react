@@ -2,7 +2,7 @@ import { IoIosMenu } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 
-export default function Navbar() {
+export default function DashboardNavbar() {
     return (
         <div className='flex items-center justify-between w-full p-4 sticky top-0 bg-white'>
             <div className="left flex items-center gap-2 md:gap-4">
