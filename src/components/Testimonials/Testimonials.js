@@ -21,7 +21,7 @@ const Testimonials = ()=>{
             Hear from Our Satisfied Users 
           </p>
         </div>
-        <div className="w-full flex flex-row justify-around items-start overflow-y-auto md:gap-0 gap-4">
+        <div className="w-full p-5 flex flex-row justify-around items-start overflow-y-auto md:gap-0 gap-4">
           <div className="max-w-[340px] min-w-[300px] rounded-xl shadow-md outline outline-2 outline-gray-200">
             <div className="justify-between flex flex-row p-5">
               <div className="flex gap-5">
