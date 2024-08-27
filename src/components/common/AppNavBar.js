@@ -1,10 +1,14 @@
-'use client';
-import React, { useState } from 'react';
+"use client"
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import LogoImage from '../../../public/unibazar-logo.png';
 import Link from 'next/link';
 import styles from './AppNavBar.module.css';
 import { usePathname } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUser } from '@/redux/slice/userSlice';
+
 function AppNavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,13 +16,26 @@ function AppNavBar() {
     setIsOpen(!isOpen);
   };
 
+  const { user, isLoading, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+
+  const handleLogout = () => {
+
+    localStorage.removeItem('jwtToken');
+
+    dispatch(loadUser());
+
+  }
+
   const pathname = usePathname();
   const isActive = href => pathname === href;
+
   return (
     <nav className={styles.navbarContainer}>
-      <div className={styles.logoWrap}>
+      <Link href="/" className={styles.logoWrap}>
         <Image src={LogoImage} alt="logo" className={styles.navbarLogo}></Image>
-      </div>
+      </Link>
 
       <div className="hidden md:flex space-x-6 text-gray-600">
         <ul className={styles.navLinksUl}>
@@ -33,12 +50,12 @@ function AppNavBar() {
             </Link>
           </li>
           <li className={styles.navLinkItem}>
-            <Link href="/" className={isActive('/features') ? ' text-teal-500' : 'text-gray-600'}>
+            <Link href="/features" className={isActive('/features') ? ' text-teal-500' : 'text-gray-600'}>
               Features
             </Link>
           </li>
           <li className={styles.navLinkItem}>
-            <Link href="/" className={isActive('/pricing') ? ' text-teal-500' : 'text-gray-600'}>
+            <Link href="/pricing" className={isActive('/pricing') ? ' text-teal-500' : 'text-gray-600'}>
               Pricing
             </Link>
           </li>
@@ -49,14 +66,17 @@ function AppNavBar() {
           </li>
         </ul>
       </div>
-      <div className={styles.navButtons}>
-        <Link href="/login" className={styles.loginButton}>
-          Login
-        </Link>
-        <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
-          Register
-        </Link>
-      </div>
+      {
+        user ? <button className={styles.loginButton} onClick={() => handleLogout()}> Logout </button> :
+          <div className={styles.navButtons}>
+            <Link href="/login" className={styles.loginButton}>
+              Login
+            </Link>
+            <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
+              Register
+            </Link>
+          </div>
+      }
       <div className="md:hidden flex items-center">
         <button onClick={toggleMenu} className="text-gray-600 hover:text-teal-700 focus:outline-none">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

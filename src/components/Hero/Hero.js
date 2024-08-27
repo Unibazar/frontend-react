@@ -1,15 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import HeroImage from '../../assets/unibazar-home-images/hero-img.png';
-{
-  /*import './Hero.css';
-import '../ResponsiveStyle/Responsive.css'*/
-}
 import Link from 'next/link';
+
 const Hero = () => {
   return (
     <>
-      <div className="w-full flex md:flex-row flex-col justify-around items-center p-10 ">
+      <div className="w-full flex md:flex-row flex-col justify-around items-center  ">
         <div className="w-full ">
           <h1 className="w-full font-bold uppercase text-gray-600 text-4xl p-3">
             Simplify Your E-commerce <br /> Management with <br />
@@ -23,6 +20,8 @@ const Hero = () => {
               Get Start For Free
             </Link>
           </div>
+          <br />
+          <br />
         </div>
 
         <div className="w-full justify-center justify-items-center items-center">

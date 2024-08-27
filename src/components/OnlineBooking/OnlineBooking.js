@@ -13,13 +13,13 @@ const OnlineBooking = () => {
           </p>
         </div>
 
-        <div className="flex md:flex-row flex-col gap-1">
+        <div className="flex md:flex-row flex-col gap-4">
           <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
             Signup for free
           </Link>
-          <a href="#" className={`${styles.whiteBgButton} px-4 py-2 rounded text-teal-700`}>
+          <Link href="/contact-us" className={`${styles.whiteBgButton} px-4 py-2 rounded text-teal-700`}>
             Contact Now
-          </a>
+          </Link>
         </div>
       </div>
     </>
