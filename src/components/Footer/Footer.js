@@ -6,6 +6,7 @@ import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 import logo from '../../assets/unibazar_logo.png';
 import styles from './Footer.module.css'
+import Link from 'next/link'
 const Footer = () => {
   return (
     <>
@@ -27,32 +28,32 @@ const Footer = () => {
           <div className="p-5">
             <ul>
               <p className="text-gray-800 font-bold text-1xl pb-4">COMPANY</p>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">About us</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Blog</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Contact us</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Pricing</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Testimonials</li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/about-us'>About us</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/blog'>Blog</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/contact-us'>Contact us</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/pricing'>Pricing</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/testimonials'>Testimonials</Link></li>
             </ul>
           </div>
           <div className="p-5">
             <ul>
               <p className="text-gray-800 font-bold text-1xl pb-4">SUPPORT</p>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Help center</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Terms of service</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Legal</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Privacy policy</li>
-              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Status</li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/help-center'>Help center</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/t&c'>Terms of service</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/legal'>Legal</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/privacy-policy'>Privacy policy</Link></li>
+              <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer"><Link href='/pricing'>Pricing</Link>Status</li>
             </ul>
           </div>
         </div>
         <div className={`${styles.contactInfo} p-5`}>
           <ul>
             <p className="text-gray-800 font-bold text-1xl pb-4 ">CONTACT INFO</p>
-            <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Phone: +91-123-456-7890</li>
-            <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">
-              Email: <a href="">support@unibazar.com</a>
+            <li className="text-gray-600 text-md pb-2 font-light ">Phone: <span className='hover:text-blue-500 cursor-pointer'><Link href="tel:+91-123-456-7890">+91-123-456-7890</Link></span></li>
+            <li className="text-gray-600 text-md pb-2 font-light ">
+              Email: <span className='hover:text-blue-500 cursor-pointer'><Link href="mailto:support@unibazar.com">support@unibazar.com</Link></span>
             </li>
-            <li className="text-gray-600 text-md pb-2 font-light hover:text-blue-500 cursor-pointer">Location:123 E-commerce St, Business City, India</li>
+            <li className="text-gray-600 text-md pb-2 font-light ">Location: <span className='hover:text-blue-500 cursor-pointer'><Link href="https://www.google.com/maps/search/123 E-commerce St, Business City, India" target='_blank' rel='noopener noreferrer'>123 E-commerce St, Business City, India</Link></span></li>
           </ul>
         </div>
       </div>

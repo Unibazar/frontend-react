@@ -9,8 +9,7 @@ const ContactSupport = () => {
         <div className="p-10 pt-14">
           <p className="font-bold text-3xl">GET IN TOUCH WITH US</p>
           <p className="text-lg py-3 pb-8">
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            We're Here To Help You With Any Questions Or <br />
+            We&apos;re Here To Help You With Any Questions Or <br />
             Support You Need
           </p>
           <Link href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">

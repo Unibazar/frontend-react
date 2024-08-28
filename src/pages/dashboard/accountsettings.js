@@ -1,5 +1,6 @@
 import Head from "next/head";
 import DashboardLayout from "../../components/Dashboard/DashboardLayout";
+import AccountSettings from "../../components/Dashboard/DashboardPages/AccountSettingsPages/AccountSettings";
 
 
 export default function accountsettings() {
@@ -10,7 +11,7 @@ export default function accountsettings() {
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
       </Head>
       <DashboardLayout>
-        <div>accountsettings</div>
+        <AccountSettings/>
       </DashboardLayout>
     </>
   )
