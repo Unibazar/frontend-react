@@ -28,13 +28,12 @@ const Signup = () => {
   const onchangeData = e => {
     const name = e.target.name;
     const value = e.target.value;
-
     setUser({ ...data, [name]: value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    
     dispatch(register(data));
   };
 
@@ -58,12 +57,12 @@ const Signup = () => {
     router.back();
   };
 
-  const [password, setPassword] = useState('');
+  // const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
-  };
+  // const handlePasswordChange = e => {
+  //   setPassword(e.target.value);
+  // };
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -89,21 +88,27 @@ const Signup = () => {
         <div className="md:mr-10 md:pr-28  w-full p-5">
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please fill the details and create account</p>
-          <form className="flex flex-col justify-center items-center gap-3">
+          <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
             <input
               type="text"
               placeholder="Name"
+              name="name"
+              value={data.name}
+              onChange={e=>onchangeData(e)}
               className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl "
             />
             <input
               type="text"
               placeholder="Email"
+              name="email"
+              value={data.email}
+              onChange={e=>onchangeData(e)}
               className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl "
             />
             <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type={showPassword ? 'text' : 'password'} value={password} onChange={handlePasswordChange} placeholder="Password" className="w-auto outline-0 border-0 bg-gray-100" />
+              <input type={showPassword ? 'text' : 'password'} name="password" value={data.password} onChange={e=>onchangeData(e)} placeholder="Password" className="w-auto outline-0 border-0 bg-gray-100" />
               <div className="w-auto items-center justify-center justify-items-center text-center pt-1">{showPassword ? <IoMdEye style={{ color: 'gray' }} className="cursor-pointer" onClick={handleTogglePasswordVisibility} /> : <IoMdEyeOff style={{ color: 'gray' }} className="cursor-pointer" onClick={handleTogglePasswordVisibility} />}</div>
             </div>
 

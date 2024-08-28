@@ -21,7 +21,7 @@ export default function AccountSettings() {
       </div>
 
       {/* personal information  */}
-      <div onClick={()=>setShowPersonalBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3 text-2xl flex justify-between items-center">
+      <div onClick={()=>setShowPersonalBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
         <p className="capitalize">personal inforamtion</p>
         <IoIosArrowDown className={`duration-200 ease-linear ${showPersonalBox ? "rotate-180" : "rotate-0"}`} />
 
@@ -32,7 +32,7 @@ export default function AccountSettings() {
 
 
       {/* business information  */}
-      <div onClick={()=>setShowBusinessBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3 text-2xl flex justify-between items-center">
+      <div onClick={()=>setShowBusinessBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
         <p className="capitalize">business inforamtion</p>
         <IoIosArrowDown className={`duration-200 ease-linear ${showBusinessBox ? "rotate-180" : "rotate-0"}`} />
 
@@ -43,7 +43,7 @@ export default function AccountSettings() {
 
 
       {/* subscription plan  */}
-      <div onClick={()=>setShowSubscriptionBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3 text-2xl flex justify-between items-center">
+      <div onClick={()=>setShowSubscriptionBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
         <p className="capitalize">subscription plan</p>
         <IoIosArrowDown className={`duration-200 ease-linear ${showSubscriptionBox ? "rotate-180" : "rotate-0"}`} />
 
@@ -54,7 +54,7 @@ export default function AccountSettings() {
 
 
       {/* linked platforms  */}
-      <div onClick={()=>setShowPlatformBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3 text-2xl flex justify-between items-center">
+      <div onClick={()=>setShowPlatformBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
         <p className="capitalize">linked platforms</p>
         <IoIosArrowDown className={`duration-200 ease-linear ${showPlatformBox ? "rotate-180" : "rotate-0"}`} />
 

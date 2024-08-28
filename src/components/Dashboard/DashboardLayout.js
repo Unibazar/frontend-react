@@ -9,8 +9,8 @@ export default function DashboardLayout({ children }) {
     return (
         <>
             <div className="dashboard-layout main flex h-screen w-full relative">
-                <div className={`sidebar overflow-y-scroll ease-linear duration-200 bg-white ${showSidebar?"w-[20%]":"w-[0%]"} ${styles.sidebar}`}>
-                    <DashboardSidebar showSidebar={showSidebar}/>
+                <div className={`sidebar overflow-y-scroll ease-linear duration-200 absolute z-10 md:static bg-white  ${showSidebar?"max-[370px]:w-full w-3/4 sm:w-3/5 md:w-2/5 lg:w-1/3":"w-0"} ${styles.sidebar}`}>
+                    <DashboardSidebar setShowSidebar={setShowSidebar}/>
                 </div>
                 <div className={`main-content overflow-y-scroll ease-linear duration-200 w-full ${styles.mainContainer}`}>
                     <DashboardNavbar showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>    

@@ -9,8 +9,9 @@ import { TiMessages } from "react-icons/ti";
 import { MdOutlineTableRows } from "react-icons/md";
 import Image from 'next/image';
 import Logo from "../../../../public/unibazar-logo.png";
+import { IoCloseOutline } from "react-icons/io5";
 
-export default function DashboardSidebar() {
+export default function DashboardSidebar({setShowSidebar}) {
     const tagsData = [
         {
             title: "Dashboard",
@@ -60,8 +61,9 @@ export default function DashboardSidebar() {
     ]
     return (
         <div className='h-screen'>
-            <div className='logo px-5 py-5'>
+            <div className='logo px-5 py-5 flex justify-between items-center'>
                 <Image src={Logo} width={180} height={180} alt='unibazar Logo'/>
+                <button className='block md:hidden text-2xl' onClick={()=>setShowSidebar(false)}><IoCloseOutline/></button>
             </div>
 
             <div className="links mt-5">
