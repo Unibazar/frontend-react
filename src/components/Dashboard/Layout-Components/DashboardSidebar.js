@@ -9,7 +9,6 @@ import { TiMessages } from "react-icons/ti";
 import { MdOutlineTableRows } from "react-icons/md";
 import Image from 'next/image';
 import Logo from "../../../../public/unibazar-logo.png";
-import SmLogo from '../../../../public/unibazar-image.png';
 
 export default function DashboardSidebar() {
     const tagsData = [
@@ -62,8 +61,7 @@ export default function DashboardSidebar() {
     return (
         <div className='h-screen'>
             <div className='logo px-5 py-5'>
-                <Image className='hidden md:inline-block' src={Logo} width={180} height={180} alt='unibazar Logo'/>
-                <Image className='inline-block md:hidden' src={SmLogo} width={35} height={35} alt='Unibazar Image'/>
+                <Image src={Logo} width={180} height={180} alt='unibazar Logo'/>
             </div>
 
             <div className="links mt-5">
@@ -73,7 +71,7 @@ export default function DashboardSidebar() {
             </div>
 
             <div className='w-full h-[2px] bg-zinc-200 mt-7'></div>
-            <h1 className='mx-7 mt-4 text-bold text-zinc-500 hidden lg:block'>Additional</h1>
+            <h1 className='mx-7 mt-4 text-bold text-zinc-500'>Additional</h1>
 
             <div className="links mt-5">
                 {AdditionaltagsData.map((tag)=>(
