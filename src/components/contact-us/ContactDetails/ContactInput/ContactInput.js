@@ -5,7 +5,7 @@ import LettersendImg from '../../../../assets/unibazar-contactus-images/letter_s
 const ContactInput = () => {
   return (
     <>
-      <div className=" w-full md:pr-28 p-5">
+      <div className=" w-full md:mt-0 mt-12 md:pr-28 p-5">
         <Box
         component="form"
         sx={{
