@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import LogoImage from '../../../public/unibazar-logo.png';
+import LogoImage from '../../../public/unibazar-logo.svg';
 import Link from 'next/link';
 import styles from './AppNavBar.module.css';
 import { usePathname } from 'next/navigation';

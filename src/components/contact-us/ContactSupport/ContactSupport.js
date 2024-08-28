@@ -16,7 +16,9 @@ const ContactSupport = () => {
             Contact Support
           </Link>
         </div>
-        <Image src={ContactSupportImg} alt="wait" className="p-5"></Image>
+        <div className='md:w-96 justify-center justify-items-center flex'>
+          <Image src={ContactSupportImg} alt="wait" className=""></Image>
+        </div>
       </div>
     </>
   );

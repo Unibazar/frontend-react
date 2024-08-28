@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import PricingImage from '../../assets/unibazar-pricing-images/pricing.png';
+import PricingImage from '../../assets/unibazar-pricing-images/pricing.svg';
 {
   /*import './Hero.css';
 import '../ResponsiveStyle/Responsive.css'*/

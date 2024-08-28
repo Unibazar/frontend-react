@@ -23,13 +23,13 @@ const Features = () => {
         <div className={styles.featuresPart}>
           <div className={styles.feature}>
             <Image src={FeatureIcon1} alt="wait.."></Image>
-            <h3>Easy Integration</h3>
+            <h3 >Easy Integration</h3>
             <p className={styles.small}>
             Connect All Your Platforms Effortlessly
             </p>
           </div>
 
-          <div className={styles.feature}>
+          <div className={`${styles.feature} ${styles.outline}`}>
             <Image src={FeatureIcon2} alt="wait.."></Image>
             <h3>Unified Dashboard</h3>
             <p className={styles.small}>
@@ -53,7 +53,7 @@ const Features = () => {
             </p>
           </div>
 
-          <div className={styles.feature}>
+          <div className={`${styles.feature} ${styles.outline}`}>
             <Image src={FeatureIcon5} alt="wait.."></Image>
             <h3> Inventory Management</h3>
             <p className={styles.small}>
