@@ -12,7 +12,7 @@ export default function AccountSettings() {
       <DropDownBox title={"personal infomation"}/>
       <DropDownBox title={"business infomation"}/>
       <DropDownBox title={"subscription plan"}/>
-      <DropDownBox title={"linked platform"}/>
+      <DropDownBox title={"linked platformm"}/>
     </div>
   )
 }
