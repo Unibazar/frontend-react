@@ -10,8 +10,8 @@ const Pricing = () => {
 
         <div className={styles.pricingPart}>
           <div className={styles.temp}>
-            <p>FREE</p>
-            <p>$0</p>
+            <h1>FREE</h1>
+            <p className='text-xl font-bold'>$0</p>
             <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- 3</b> <br />
@@ -29,8 +29,8 @@ const Pricing = () => {
             </div>
           </div>
           <div className={styles.temp}>
-            <p>PRO</p>
-            <p>$10</p>
+            <h1>PRO</h1>
+            <p className='text-xl font-bold'>$10</p>
             <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- 5</b> <br />
@@ -48,8 +48,8 @@ const Pricing = () => {
             </div>
           </div>
           <div className={styles.temp}>
-            <p>ENTERPRISE</p>
-            <p>Custom Pricing</p>
+            <h1>ENTERPRISE</h1>
+            <p className='text-xl font-bold'>Custom Pricing</p>
             <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- Unlimited</b>  <br />

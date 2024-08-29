@@ -29,8 +29,8 @@ const Facilities = () => {
             <p className={styles.infoColor}>Keep Your Stock in Sync</p>
             <h2>Inventory Management</h2>
             <p>
-              Automatically synchronize inventory levels across all your sales channels.
-              <br /> Receive notifications for low stock and out-of-stock items <br /> to ensure you never miss a sale
+              Automatically synchronize inventory levels across all your sales <br />channels.
+               Receive notifications for low stock and out-of-stock items <br /> to ensure you never miss a sale
             </p>
           </div>
 

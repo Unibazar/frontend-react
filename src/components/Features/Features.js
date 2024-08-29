@@ -26,7 +26,7 @@ const Features = () => {
             </p>
           </div>
 
-          <div className={styles.feature}>
+          <div className={`${styles.feature}, ${styles.outline}`}>
             <Image src={FeatureIcon2} alt="wait.."></Image>
             <h3>Unified Dashboard</h3>
             <p className={styles.small}>
@@ -39,7 +39,7 @@ const Features = () => {
             <Image src={FeatureIcon3} alt="wait.."></Image>
             <h3>Real-time Analytics</h3>
             <p className={styles.small}>
-              Optimize your operations with data-driven insights to drive <br /> growth and profitability
+              Optimize your operations with data-driven <br />insights to drive  growth and profitability
             </p>
           </div>
         </div>
