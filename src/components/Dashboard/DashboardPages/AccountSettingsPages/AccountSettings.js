@@ -7,7 +7,6 @@ import SubscriptionPlan from "./AccountSetting-Components/SubscriptionPlan";
 import LinkedPlatform from "./AccountSetting-Components/LinkedPlatform";
 
 
-
 export default function AccountSettings() {
   const [showPersonalBox, setShowPersonalBox] = useState(false);
   const [showBusinessBox, setShowBusinessBox] = useState(false);

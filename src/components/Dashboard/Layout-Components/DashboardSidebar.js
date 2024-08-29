@@ -10,6 +10,7 @@ import { MdOutlineTableRows } from "react-icons/md";
 import Image from 'next/image';
 import Logo from "../../../../public/unibazar-logo.png";
 import { IoCloseOutline } from "react-icons/io5";
+import Link from 'next/link';
 
 export default function DashboardSidebar({setShowSidebar}) {
     const tagsData = [
@@ -21,7 +22,7 @@ export default function DashboardSidebar({setShowSidebar}) {
         },
         {
             title: "Products",
-            to:"/dashboard/products?q=list",
+            to:"/dashboard/products?q=add-product",
             icon: RiLayoutGridLine,
         },
         {
@@ -62,7 +63,7 @@ export default function DashboardSidebar({setShowSidebar}) {
     return (
         <div className='h-screen'>
             <div className='logo px-5 py-5 flex justify-between items-center'>
-                <Image src={Logo} width={180} height={180} alt='unibazar Logo'/>
+                <Link href={"/"}><Image src={Logo} width={180} height={180} alt='unibazar Logo'/></Link>
                 <button className='block md:hidden text-2xl' onClick={()=>setShowSidebar(false)}><IoCloseOutline/></button>
             </div>
 
