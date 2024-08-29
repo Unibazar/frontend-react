@@ -6,7 +6,8 @@ import { CgSortAz } from "react-icons/cg";
 
 export default function TableLayout({ tableData }) {
     return (
-        <div className="overflow-x-auto w-full shadow-md  rounded-md">
+        <>
+        {tableData.length > 0 && <div className="overflow-x-auto w-full shadow-md  rounded-md">
             <table className="mainContainer rounded-md w-full">
                 <thead className="MainHeader bg-zinc-100 text-zinc-500 ">
                     <tr className="text-xs md:text-lg">
@@ -90,6 +91,7 @@ export default function TableLayout({ tableData }) {
                     ))}
                 </tbody>
             </table>
-        </div>
+        </div>}
+        </>
     )
 }

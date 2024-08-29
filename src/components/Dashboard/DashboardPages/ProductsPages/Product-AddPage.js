@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -48,9 +49,9 @@ export default function ProductPage() {
       <div className='title flex flex-wrap justify-between items-center'>
         <h1 className='md:text-3xl text-lg font-semibold '>Products</h1>
         <div className=''>
-          <button className="box p-3 bg-[#08A9A0] text-white rounded-l-md text-sm">
-            Add New Products
-          </button>
+          <Link href="/dashboard/products?q=list" className="box p-3 bg-[#08A9A0] text-white rounded-l-md text-sm">
+          Show All Products
+          </Link>
         </div>
       </div>
 
