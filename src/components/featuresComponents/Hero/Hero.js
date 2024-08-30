@@ -6,18 +6,19 @@ import Link from 'next/link';
 const Hero = () => {
   return (
     <>
-      <div className="w-full flex md:flex-row flex-col md:justify-between justify-center md:p-16 p-3">
-        <div className="w-full">
-          <h1 className="w-full font-bold uppercase text-gray-800 text-4xl p-3">
-            Unlock the Power of <br /> Seamless
+
+<div className=" w-full flex md:flex-row flex-col justify-between items-end   ">
+        <div className=" w-full justify-items-end ">
+          <h1 className="w-full font-bold uppercase text-4xl p-3">
+          Unlock the Power of <br /> Seamless
             
             E-commerce <br/>Management
           </h1>
-          <p className="w-full capitalize text-normal mb-4 p-3">
-            Discover how Unibazar can transform your <br /> multi-platform selling experience.
+          <p className="w-full capitalize text-xl font-thin mb-4 p-3">
+          Discover how Unibazar can transform your <br /> multi-platform selling experience.
           </p>
           <div className="pt-3 p-3">
-            <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
+            <Link href="/register" className="px-12 py-4 text-white text-lg font-thin bg-teal-500 rounded-xl hover:bg-teal-600 ">
               Get Start For Free
             </Link>
           </div>
@@ -25,7 +26,7 @@ const Hero = () => {
           <br />
         </div>
 
-        <div className="">
+        <div className=" md:w-1/2 w-full justify-center md:justify-right justify-items-start items-start ">
           <Image src={HeroImage} alt="hero-image.."></Image>
         </div>
       </div>

@@ -4,7 +4,8 @@
   /* padding: 2rem; */
   display: flex;
   flex-direction: column;
-  padding-top:20px;
+  padding: 40px;
+  
   
 }
 
@@ -15,12 +16,14 @@
 
 .featuresText h1 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .featuresText p {
   color: #555;
-  font-size: 12px;
+  font-size: 14px;
+
 }
 
 .featuresPart {
@@ -31,7 +34,7 @@
 
 .feature {
   padding: 1.25rem;
-  min-width: 33%;
+  min-width: 30%;
   text-align: center;
   /* border: 0.5px solid rgb(0, 0, 0, 0.1); */
   display: flex;
@@ -44,6 +47,31 @@
 .outline{
   border-left: 2px solid rgba(236, 236, 236, 0.5) ;
   border-right: 2px solid rgba(236, 236, 236, 0.5);
+  padding: 1.25rem;
+  min-width: 30%;
+  text-align: center;
+  /* border: 0.5px solid rgb(0, 0, 0, 0.1); */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.outline h3 {
+  font-weight:600;
+  font-size: 22px;
+}
+
+.outline img {
+  display: block;
+  width: 16%;
+  margin: 0;
+}
+
+.outline .small {
+  font-size: 13px;
+  color: #727272;
 }
 
 .feature h3 {
@@ -58,7 +86,8 @@
 }
 
 .feature .small {
-  font-size: 0.9rem;
+  font-size: 13px;
+  color: #727272;
 }
 
 @media (max-width: 720px) {

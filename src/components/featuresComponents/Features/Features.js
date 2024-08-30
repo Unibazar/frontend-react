@@ -25,15 +25,15 @@ const Features = () => {
             <Image src={FeatureIcon1} alt="wait.."></Image>
             <h3 >Easy Integration</h3>
             <p className={styles.small}>
-            Connect All Your Platforms Effortlessly
+            Connect All Your Platforms<br/> Effortlessly
             </p>
           </div>
 
-          <div className={`${styles.feature} ${styles.outline}`}>
+          <div className={styles.outline}>
             <Image src={FeatureIcon2} alt="wait.."></Image>
             <h3>Unified Dashboard</h3>
             <p className={styles.small}>
-            Centralized Management Hub
+            Centralized Management Hub<br/>
             </p>
           </div>
 
@@ -41,7 +41,7 @@ const Features = () => {
             <Image src={FeatureIcon3} alt="wait.."></Image>
             <h3>Real-time Analytics</h3>
             <p className={styles.small}>
-            Actionable Insights at Your Fingertips
+            Actionable Insights at Your <br/>Fingertips
             </p>
           </div>
 
@@ -53,7 +53,7 @@ const Features = () => {
             </p>
           </div>
 
-          <div className={`${styles.feature} ${styles.outline}`}>
+          <div className={styles.outline}>
             <Image src={FeatureIcon5} alt="wait.."></Image>
             <h3> Inventory Management</h3>
             <p className={styles.small}>
