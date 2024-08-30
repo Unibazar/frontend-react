@@ -40,7 +40,6 @@ export default function Personalinformation() {
           <div className="flex p-4 mt-2 gap-7 flex-wrap items-center">
             <div className="relative w-[10rem] h-[10rem] border-2 rounded-full overflow-hidden bg-[#F5F7FA] flex items-center justify-center">
               {userPhotoSrc && <Image src={userPhotoSrc} height={50} width={50} alt="p1" className="w-full h-full object-cover" />}
-              {userPhotoSrc && <IoIosCloseCircle className="text-xl absolute -top-2 -right-2 text-red-500" onClick={() => { setUserPhotoSrc(''); setUserPhoto(null) }} />}
               {!userPhotoSrc && <FiPlusCircle className="text-2xl opacity-70" onClick={() => userPhotoRef.current.click()} />}
               <input type="file" className="hidden" name="userPhoto" ref={userPhotoRef} onChange={(e) => { setUserPhoto(e.target.files[0]); setUserPhotoSrc(URL.createObjectURL(e.target.files[0])) }} />
             </div>

@@ -5,7 +5,7 @@ import { RiMenuFold3Line } from "react-icons/ri";
 
 export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
     return (
-        <div className='flex items-center justify-between w-full p-4 sticky top-0 bg-white'>
+        <div className='flex items-center justify-between w-full p-4 sticky top-0 z-[99] bg-white'>
             <div className="left flex items-center gap-2 md:gap-4">
                 <button className="p-1 rounded-full hover:bg-zinc-200" onClick={()=>setShowSidebar(prev=>!prev)}>
                     {!showSidebar?<IoIosMenu className='text-lg md:text-3xl' />:

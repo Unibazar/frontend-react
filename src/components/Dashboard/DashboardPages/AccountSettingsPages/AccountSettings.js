@@ -5,6 +5,23 @@ import Personalinformation from "./AccountSetting-Components/Personalinformation
 import BusinessInformation from "./AccountSetting-Components/BusinessInformation";
 import SubscriptionPlan from "./AccountSetting-Components/SubscriptionPlan";
 import LinkedPlatform from "./AccountSetting-Components/LinkedPlatform";
+import Accordion from '@mui/material/Accordion';
+import { styled } from '@mui/material/styles';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+
+
+const CustomAccordion = styled(Accordion)(() => {
+  return {
+    boxShadow: 'none',
+    border: 'none',
+    marginTop: '15px',
+    borderRadius: '10px',
+    '&::before': {
+      display: 'none',
+    },
+  }
+})
 
 
 export default function AccountSettings() {
@@ -16,51 +33,55 @@ export default function AccountSettings() {
   return (
     <div className="h-full w-full  px-4 py-4 md:px-7 md:py-7">
       <div className='title flex flex-wrap justify-between items-center'>
-        <h1 className='md:text-3xl text-lg font-semibold '>Account Setting</h1>
+        <h1 className='md:text-3xl text-lg font-semibold '>Account Settings</h1>
       </div>
+
 
       {/* personal information  */}
-      <div onClick={()=>setShowPersonalBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
-        <p className="capitalize">personal inforamtion</p>
-        <IoIosArrowDown className={`duration-200 ease-linear ${showPersonalBox ? "rotate-180" : "rotate-0"}`} />
+      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">personal inforamtion</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-lg md:text-xl">
+          <Personalinformation />
+        </AccordionDetails>
+      </CustomAccordion>
 
-      </div>
-      <div className={`bg-white mainContainer duration-200 ease-linear overflow-hidden ${showPersonalBox ? "h-[750px]" : "h-0"}`}>
-          <Personalinformation/>
-      </div>
 
 
       {/* business information  */}
-      <div onClick={()=>setShowBusinessBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
-        <p className="capitalize">business inforamtion</p>
-        <IoIosArrowDown className={`duration-200 ease-linear ${showBusinessBox ? "rotate-180" : "rotate-0"}`} />
-
-      </div>
-      <div className={`bg-white mainContainer duration-200 ease-linear overflow-hidden ${showBusinessBox ? "h-[300px]" : "h-0"}`}>
-          <BusinessInformation/>
-      </div>
+      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">business inforamtion</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-lg md:text-xl">
+          <BusinessInformation />
+        </AccordionDetails>
+      </CustomAccordion>
+      
 
 
       {/* subscription plan  */}
-      <div onClick={()=>setShowSubscriptionBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
-        <p className="capitalize">subscription plan</p>
-        <IoIosArrowDown className={`duration-200 ease-linear ${showSubscriptionBox ? "rotate-180" : "rotate-0"}`} />
-
-      </div>
-      <div className={`bg-white mainContainer duration-200 ease-linear overflow-hidden ${showSubscriptionBox ? "h-[300px]" : "h-0"}`}>
-          <SubscriptionPlan/>
-      </div>
+      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">subscription plan</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-lg md:text-xl">
+          <SubscriptionPlan />
+        </AccordionDetails>
+      </CustomAccordion>
 
 
       {/* linked platforms  */}
-      <div onClick={()=>setShowPlatformBox(prev=>!prev)} className="box cursor-pointer bg-white mt-7 rounded-md p-3  text-lg md:text-2xl flex justify-between items-center">
-        <p className="capitalize">linked platforms</p>
-        <IoIosArrowDown className={`duration-200 ease-linear ${showPlatformBox ? "rotate-180" : "rotate-0"}`} />
+      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">linked platforms</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-lg md:text-xl">
+          <LinkedPlatform />
+        </AccordionDetails>
+      </CustomAccordion>
 
-      </div>
-      <div className={`bg-white mainContainer duration-200 ease-linear overflow-hidden ${showPlatformBox ? "h-[300px]" : "h-0"}`}>
-          <LinkedPlatform/>
-      </div>
     </div>
   )
 }
