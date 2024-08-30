@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <>
 
-<div className=" w-full flex md:flex-row flex-col justify-between items-end   ">
+      <div className=" w-full flex md:flex-row flex-col justify-between items-end   ">
         <div className=" w-full justify-items-end ">
           <h1 className="w-full font-bold uppercase text-4xl p-3">
           Unlock the Power of <br /> Seamless
