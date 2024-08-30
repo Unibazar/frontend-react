@@ -11,7 +11,7 @@ const Aboutus = () => {
           <h1 className="w-full font-bold uppercase text-4xl p-3">
           ABOUT US
           </h1>
-          <p className="w-full capitalize text-xl font-thin mb-4 p-3">
+          <p className="w-full capitalize text-base font-thin mb-4 p-3">
           Discover how Unibazar can transform your <br /> multi-platform selling experience.
           </p>
           <div className="pt-3 p-3">

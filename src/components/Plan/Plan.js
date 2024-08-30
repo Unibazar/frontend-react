@@ -15,7 +15,7 @@ const Plan = () => {
           <h1 className="w-full font-bold uppercase text-4xl p-3">
           Choose the Right Plan <br/>for Your Business
           </h1>
-          <p className="w-full capitalize text-xl font-thin mb-4 p-3">
+          <p className="w-full capitalize text-base font-thin mb-4 p-3">
           Flexible pricing plans to suit your needs. Start with our<br/> Free plan or unlock more features with our Pro and<br/> Enterprise plans.
           </p>
           <div className="pt-3 p-3">

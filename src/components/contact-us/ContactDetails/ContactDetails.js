@@ -7,7 +7,7 @@ const ContactDetails = () => {
       <div className='w-full justify-around text-center items-center p-5'>
         <p className='font-bold text-xl'>Contact Us</p>
         <p className='text-lg text-gray-600'>Any question or remarks? just write us a message!</p>
-        <div className='w-full flex md:flex-row flex-col justify-around p-3 pt-10'>
+        <div className='w-full flex md:flex-row flex-col justify-around  pt-10'>
           <Contactinfo/>
           <ContactInput/>
         </div>

@@ -5,19 +5,27 @@ import Link from 'next/link';
 const ContactSupport = () => {
   return (
     <>
-      <div className="w-full flex md:flex-row flex-col content-center justify-between p-5">
-        <div className="p-10 pt-14">
-          <p className="font-bold text-3xl">GET IN TOUCH WITH US</p>
-          <p className="text-lg py-3 pb-8">
-            We&apos;re Here To Help You With Any Questions Or <br />
-            Support You Need
+
+<div className=" w-full flex md:flex-row flex-col justify-between items-center  ">
+        <div className=" w-full justify-items-end items-end md:pt-10">
+          <h1 className="w-full font-bold uppercase text-4xl p-3">
+          GET IN TOUCH WITH US
+          </h1>
+          <p className="w-full capitalize text-base font-thin mb-4 p-3">
+          We&apos;re Here To Help You With Any Questions Or <br />
+          Support You Need
           </p>
-          <Link href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
+          <div className="pt-3 p-3">
+            <Link href="/register" className="px-12 py-4 text-white text-lg font-thin bg-teal-500 rounded-xl hover:bg-teal-600 ">
             Contact Support
-          </Link>
+            </Link>
+          </div>
+          <br />
+          <br />
         </div>
-        <div className='md:w-96 justify-center justify-items-center flex'>
-          <Image src={ContactSupportImg} alt="wait" className=""></Image>
+
+        <div className=" md:w-3/5 w-full justify-center md:justify-right ">
+          <Image src={ContactSupportImg} alt="hero-image.."></Image>
         </div>
       </div>
     </>

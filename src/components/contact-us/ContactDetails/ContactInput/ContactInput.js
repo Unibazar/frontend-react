@@ -9,7 +9,7 @@ const ContactInput = () => {
         <Box
         component="form"
         sx={{
-          '& > :not(style)': { m: 2, width: '25ch' },
+          '& > :not(style)': { m: 2, width: '22ch' },
         }}
         className='text-left justify-start justify-items-start'
         >
@@ -43,9 +43,9 @@ const ContactInput = () => {
             placeholder="(123) 456-7890"
           />
         </Box>
-        <div className='w-full items-start justify-items-start text-start  md:pl-3 pl-1 pt-8'>
+        <div className='w-full items-start justify-items-start text-start  md:pl-3 pl-1 pt-1'>
           <p className='text-sm font-bold pb-2 '>Select Subject ?</p>
-          <div className='w-full flex md:flex-row text-sm md:gap-4 gap-2 flex-wrap justify-start'>
+          <div className='w-full flex md:flex-row text-[13px] font-normal gap-2 flex-wrap justify-start'>
          
             <input type="radio" id="option1" name="subject" value="General inquiry"/> General inquiry
             <input type="radio" id="option2" name="subject" value="General inquiry"/> General inquiry
@@ -54,7 +54,7 @@ const ContactInput = () => {
           
           </div>
         </div>
-        <div className='w-full flex items-start justify-items-start md:pr-20 pl-3 pt-8 '>
+        <div className='w-full flex items-start justify-items-start md:pr-16 pl-3 pt-3 '>
           <TextField
             id="message"
             name="message"
@@ -66,13 +66,13 @@ const ContactInput = () => {
             fullWidth
           />
         </div>
-        <div className='w-full flex justify-items-end justify-end md:pr-20 pt-3'>
-          <Button
+        <div className='w-full flex justify-items-end justify-end md:pr-16 pt-3'>
+          <button
             type="submit"
-            className='px-4 py-2 flex text-white bg-teal-700 rounded hover:bg-teal-800  '
+            className='px-4 py-2 flex text-white bg-teal-700 rounded hover:bg-teal-800'
           >
             Send Message
-          </Button>
+          </button>
         </div>
         <div className='w-full flex justify-items-end justify-end md:pr-20 pr-5'>
          <Image src={LettersendImg} alt='letter-send-img'></Image>
