@@ -5,8 +5,8 @@ import styles from './AboutUs.module.css';
 const Aboutus = () => {
   return (
     <>
-      <div className=" h-1/2 w-full flex md:flex-row flex-col items-start p-5">
-        <div className=" w-full flex md:flex-row flex-col justify-between p-5 ">
+      <div className=" h-1/2 w-full flex md:flex-row flex-col items-start lg:py-8">
+        <div className=" w-full flex md:flex-row flex-col justify-between ">
           <div className="md:p-5">
             <h1 className={styles.heading}>ABOUT US</h1>
             <p className="font-light text-1xl pb-4 pt-4">
