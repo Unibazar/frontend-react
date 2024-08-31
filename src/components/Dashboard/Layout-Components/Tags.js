@@ -1,11 +1,11 @@
 'use client'
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import styles from "../dashboard.module.css"
 
-export default function Tags({ title, icon: Icon, subLinks ,to}) {
+export default function Tags({ title, icon: Icon, subLinks ,to }) {
     const path = usePathname();
     const CommingPath = to?.split('?')[0];
      
@@ -14,6 +14,14 @@ export default function Tags({ title, icon: Icon, subLinks ,to}) {
     const handleToggleLinks = ()=>{
         setToggleLinks(!toggleLinks);
     }
+
+    useEffect(() => {
+      if(path == CommingPath){
+        setToggleLinks(true);
+      }
+    }, [])
+    
+
 
 
     return (
@@ -26,7 +34,7 @@ export default function Tags({ title, icon: Icon, subLinks ,to}) {
                 </Link>
                     {subLinks && <div className='rounded-lg ml-8 overflow-hidden bg-white ease-linear duration-500' style={{maxHeight:`${toggleLinks?"300px":"0px"}`}}>
                         {subLinks?.map((link) => (
-                            <h1 key={link} className='hover:bg-zinc-200 cursor-pointer rounded-md mt-1 text-sm lg:text-lg p-4 md:p-1'>{link}</h1>
+                            <h1 key={link} className='hover:bg-zinc-200 cursor-pointer rounded-md mt-1 text-sm lg:text-lg p-2 md:p-1'>{link}</h1>
                         ))}
                     </div>}
             </div>

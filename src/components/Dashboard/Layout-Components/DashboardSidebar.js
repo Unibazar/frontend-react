@@ -22,7 +22,7 @@ export default function DashboardSidebar({setShowSidebar}) {
         },
         {
             title: "Products",
-            to:"/dashboard/products?q=add-product",
+            to:"/dashboard/products",
             icon: RiLayoutGridLine,
         },
         {
@@ -60,6 +60,7 @@ export default function DashboardSidebar({setShowSidebar}) {
             icon: MdOutlineTableRows,
         },
     ]
+ 
     return (
         <div className='h-screen'>
             <div className='logo px-5 py-5 flex justify-between items-center'>
@@ -69,7 +70,7 @@ export default function DashboardSidebar({setShowSidebar}) {
 
             <div className="links mt-5">
                 {tagsData.map((tag)=>(
-                    <Tags key={tag.title} title={tag.title} icon={tag.icon} subLinks={tag.subLinks} to={tag.to} />
+                    <Tags key={tag.title} title={tag.title} icon={tag.icon} subLinks={tag.subLinks} to={tag.to}/>
                 ))}
             </div>
 

@@ -13,12 +13,12 @@ export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
                 </button>
                 <div className="serachbox flex items-center bg-zinc-100 gap-4 py-1 md:py-2 rounded-full px-2 md:px-4">
                     <IoIosSearch />
-                    <input type="text" className='bg-transparent outline-none md:w-80 w-16' placeholder='Search' />
+                    <input type="text" className='bg-transparent outline-none md:w-80 w-full' placeholder='Search' />
                 </div>
             </div>
 
             <div className="right flex items-center gap-2 md:gap-4">
-                <FaBell className='text-lg md:text-2xl ' />
+                <FaBell className='text-lg md:text-2xl shrink-0' />
                 <img className='rounded-full w-8 md:w-12 h-8 md:h-12 object-cover' src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
             </div>
 

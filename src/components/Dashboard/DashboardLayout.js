@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DashboardNavbar from "./Layout-Components/DashboardNavbar";
 import DashboardSidebar from "./Layout-Components/DashboardSidebar";
 import styles from "./dashboard.module.css"
@@ -6,6 +6,27 @@ import styles from "./dashboard.module.css"
 
 export default function DashboardLayout({ children }) {
     const [showSidebar, setShowSidebar] = useState(true);
+
+
+    useEffect(() => {
+        if(window.innerWidth < 400){
+            setShowSidebar(false);
+          }
+        // Function to check and update the state based on screen width
+        const handleResize = () => {
+          if(window.innerWidth < 400){
+            setShowSidebar(false);
+          }
+        };
+
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener on component unmount
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+
     return (
         <>
             <div className="dashboard-layout main flex h-screen w-full relative">

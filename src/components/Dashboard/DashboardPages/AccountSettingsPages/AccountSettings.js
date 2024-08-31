@@ -25,10 +25,7 @@ const CustomAccordion = styled(Accordion)(() => {
 
 
 export default function AccountSettings() {
-  const [showPersonalBox, setShowPersonalBox] = useState(false);
-  const [showBusinessBox, setShowBusinessBox] = useState(false);
-  const [showSubscriptionBox, setShowSubscriptionBox] = useState(false);
-  const [showPlatformBox, setShowPlatformBox] = useState(false);
+
 
   return (
     <div className="h-full w-full  px-4 py-4 md:px-7 md:py-7">
@@ -38,11 +35,11 @@ export default function AccountSettings() {
 
 
       {/* personal information  */}
-      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
         <AccordionSummary expandIcon={<IoIosArrowDown />} >
           <p className="w-full font-semibold text-left capitalize">personal inforamtion</p>
         </AccordionSummary>
-        <AccordionDetails className="text-lg md:text-xl">
+        <AccordionDetails className="text-sm md:text-xl">
           <Personalinformation />
         </AccordionDetails>
       </CustomAccordion>
@@ -50,11 +47,11 @@ export default function AccountSettings() {
 
 
       {/* business information  */}
-      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
         <AccordionSummary expandIcon={<IoIosArrowDown />} >
           <p className="w-full font-semibold text-left capitalize">business inforamtion</p>
         </AccordionSummary>
-        <AccordionDetails className="text-lg md:text-xl">
+        <AccordionDetails className="text-sm md:text-xl">
           <BusinessInformation />
         </AccordionDetails>
       </CustomAccordion>
@@ -62,22 +59,22 @@ export default function AccountSettings() {
 
 
       {/* subscription plan  */}
-      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
         <AccordionSummary expandIcon={<IoIosArrowDown />} >
           <p className="w-full font-semibold text-left capitalize">subscription plan</p>
         </AccordionSummary>
-        <AccordionDetails className="text-lg md:text-xl">
+        <AccordionDetails className="text-sm md:text-xl">
           <SubscriptionPlan />
         </AccordionDetails>
       </CustomAccordion>
 
 
       {/* linked platforms  */}
-      <CustomAccordion className="w-full flex-col text-lg md:text-2xl">
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
         <AccordionSummary expandIcon={<IoIosArrowDown />} >
           <p className="w-full font-semibold text-left capitalize">linked platforms</p>
         </AccordionSummary>
-        <AccordionDetails className="text-lg md:text-xl">
+        <AccordionDetails className="text-sm md:text-xl">
           <LinkedPlatform />
         </AccordionDetails>
       </CustomAccordion>

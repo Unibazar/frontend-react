@@ -8,7 +8,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { IoIosCloseCircle } from "react-icons/io";
 
 
-export default function ProductPage() {
+export default function AddProductPage() {
   const [ProductData, setProductData] = useState({
     Name: "",
     Price: "",
