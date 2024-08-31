@@ -70,7 +70,7 @@ export default function DashboardSidebar({setShowSidebar}) {
 
             <div className="links mt-5">
                 {tagsData.map((tag)=>(
-                    <Tags key={tag.title} title={tag.title} icon={tag.icon} subLinks={tag.subLinks} to={tag.to}/>
+                    <Tags key={tag.title} title={tag.title} icon={tag.icon} subLinks={tag.subLinks} to={tag.to} setShowSidebar={setShowSidebar}/>
                 ))}
             </div>
 

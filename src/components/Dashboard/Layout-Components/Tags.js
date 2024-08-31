@@ -1,11 +1,11 @@
 'use client'
 import Link from 'next/link';
 import { usePathname, } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import styles from "../dashboard.module.css"
 
-export default function Tags({ title, icon: Icon, subLinks ,to }) {
+export default function Tags({ title, icon: Icon, subLinks ,to  , setShowSidebar}) {
     const path = usePathname();
     const CommingPath = to?.split('?')[0];
      
@@ -13,13 +13,11 @@ export default function Tags({ title, icon: Icon, subLinks ,to }) {
 
     const handleToggleLinks = ()=>{
         setToggleLinks(!toggleLinks);
+        
+        if(window.innerWidth < 400 && path!= CommingPath && !subLinks){
+            setShowSidebar(false);
+        }
     }
-
-    useEffect(() => {
-      if(path == CommingPath){
-        setToggleLinks(true);
-      }
-    }, [])
     
 
 
