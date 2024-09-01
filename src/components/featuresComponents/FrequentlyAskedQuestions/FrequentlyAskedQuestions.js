@@ -1,26 +1,11 @@
 'use client';
-import { useState } from 'react';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import Accordion from '@mui/material/Accordion';
-import {styled} from '@mui/material/styles';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
 
-const CustomAccordion = styled(Accordion)(()=>{
-  return {
-    boxShadow:'none',
-    border:'none',
-    backgroundColor:'rgba(244, 237, 241, 1)',
-  }  
-})
+import AccordionItem from '../../widgets/common/AccordionItem';
+
 
 
 const FrequentlyAskedQuestions = () => {
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
-  const handleClick = index => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+  
 
   const Faq = [
     {
@@ -52,44 +37,7 @@ const FrequentlyAskedQuestions = () => {
   return (
     <div className=" w-full  flex-col justify-center pb-10 ">
       <h2 className="w-full font-bold text-center  text-3xl py-10">Frequently Asked Questions</h2>
-      <div className="w-full flex md:flex-row flex-col md:gap-12  gap-4 justify-center">
-        <div className="w-full md:w-2/5 flex-col flex gap-4 ">
-          {Faq.slice(0, 3).map((faq, index) => (
-            <div key={index} className="w-full  flex " onClick={() => handleClick(index)}>
-              <CustomAccordion className="w-full  flex-col">
-                <AccordionSummary 
-                  expandIcon={expandedIndex === index ? <AiOutlineMinus className="w-auto" /> : <AiOutlinePlus className="w-auto" />}
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                >
-                  <p className="w-full font-normal text-left ">{faq.question}</p>
-                </AccordionSummary>
-                <AccordionDetails>
-                {expandedIndex === index && <p className="w-full font-light text-left text-gray-500">{faq.answer}</p>}
-                </AccordionDetails>
-              </CustomAccordion>   
-            </div>
-          ))}
-        </div>
-        <div className="w-full md:w-2/5 flex-col flex gap-4">
-          {Faq.slice(3,6).map((faq, index) => (
-            <div key={index} className="w-full  flex	" onClick={() => handleClick(index + 3)}>
-              <CustomAccordion className="w-full  flex-col">
-                <AccordionSummary 
-                  expandIcon={expandedIndex === index + 3 ? <AiOutlineMinus className="w-auto" /> : <AiOutlinePlus className="w-auto" />}
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                >
-                  <p className="w-full font-normal text-left ">{faq.question}</p>
-                </AccordionSummary>
-                <AccordionDetails>
-                {expandedIndex === index + 3 && <p className="w-full font-light text-left text-gray-500">{faq.answer}</p>}
-                </AccordionDetails>
-              </CustomAccordion>  
-            </div>
-          ))}
-        </div>
-      </div>
+      <AccordionItem faqData={Faq} indexA='0' indexB='3' indexC='3' indexD='6'/>
     </div>
   );
 };

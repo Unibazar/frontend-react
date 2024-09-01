@@ -1,5 +1,5 @@
 import FrequentlyAskedQuestions from '../components/featuresComponents/FrequentlyAskedQuestions/FrequentlyAskedQuestions';
-import Enterprises from '../components/Enterprises/Enterprises';
+import Enterprises from '../components/common/Enterprises/Enterprises';
 import Features from '../components/featuresComponents/Features/Features';
 import Management from '../components/featuresComponents/Management/Management';
 import Head from 'next/head';

@@ -1,4 +1,4 @@
-import Signup from '../components/Auth/Signup/Signup.js';
+import Register from '../components/Auth/Register/Register.js';
 import Head from 'next/head.js';
 export default function SignUp(){
   return(
@@ -7,7 +7,7 @@ export default function SignUp(){
         <title>Register | Unibazar</title>
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
       </Head>
-      <Signup/>
+      <Register/>
     </div>
   );
 }

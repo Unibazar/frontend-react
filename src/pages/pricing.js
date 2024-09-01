@@ -1,9 +1,9 @@
-import Testimonials from "../components/Testimonials/Testimonials"
-import Signup from "../components/Signup/Signup";
-import FAQ from "../components/FAQ/FAQ";
+import Testimonials from "../components/pricing/Testimonials/Testimonials"
+import Signup from "../components/home/Signup/Signup";
+import FAQ from "../components/common/FAQ/FAQ";
 import Head from 'next/head';
-import ChoosePlan from "../components/ChoosePlan/ChoosePlan";
-import ComparePlan from "../components/ComparePlan/ComparePlan";
+import ChoosePlan from "../components/pricing/ChoosePlan/ChoosePlan";
+import ComparePlan from "../components/pricing/ComparePlan/ComparePlan";
 import Hero from '../components/widgets/common/Hero.js';
 import HeroImage from '../assets/unibazar-pricing-images/pricing.svg';
 

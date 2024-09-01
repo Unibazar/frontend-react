@@ -1,7 +1,7 @@
 
-import Signup from "../components/Signup/Signup";
+import Signup from "../components/home/Signup/Signup";
 import ContactDetails from "../components/contact-us/ContactDetails/ContactDetails";
-import FAQ from "../components/FAQ/FAQ";
+import FAQ from "../components/common/FAQ/FAQ";
 import Head from 'next/head';
 import Hero from '../components/widgets/common/Hero.js';
 import HeroImage from '../assets/unibazar-contactus-images/contactSupport.svg';

@@ -3,7 +3,7 @@ import PageLayout from './layout';
 import ReduxProvider from '@/redux/ReduxProvider';
 
 export default function MyApp({ Component, pageProps, router }) {
-  const noLayoutPages = ['/login', '/register', '/forgot-password', '/otp', '/404'];
+  const noLayoutPages = ['/login', '/register', '/forgot-password', '/otp',];
   const isNoLayoutPage = noLayoutPages.includes(router.pathname);
 
   if (isNoLayoutPage) {

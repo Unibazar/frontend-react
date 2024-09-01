@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
-import { FaYoutube } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
 import logo from '../../../assets/unibazar_logo.svg';
 import styles from './Footer.module.css'
 import Link from 'next/link'
@@ -16,13 +16,13 @@ const Footer = () => {
             <li className=' md:w-16 w-16'>
              <Link href='/'><Image src={logo} alt="logo"></Image></Link>
             </li>
-            <li className="text-gray-600 font-light text-1xl pb-4 pt-4 ">Unibazar is online platform which is used to sell your products from various E-commerce platforms.</li>
+            <li className="text-gray-600 font-light text-1xl pb-4 pt-4 ">Unibazar is online platform which is <br/> used to sell your products from <br/> various E-commerce platforms.</li>
             <li className="flex gap-6 pb-4">
               {/* Section for icons */}
-              <FaInstagram className="text-1xl cursor-pointer hover:text-yellow-600" />
-              <FaXTwitter className="text-1xl cursor-pointer hover:text-blue-600" />
-              <FaLinkedin className="text-1xl cursor-pointer hover:text-blue-600" />
-              <FaYoutube className="text-1xl cursor-pointer hover:text-red-600" />
+              <FaXTwitter className="text-lg cursor-pointer hover:text-blue-600" />
+              <FaFacebook className="text-lg cursor-pointer hover:text-blue-600"/>
+              <FaInstagram className="text-lg cursor-pointer hover:text-yellow-600" />
+              <FaLinkedin className="text-lg cursor-pointer hover:text-blue-600" />
             </li>
           </ul>
         </div>
