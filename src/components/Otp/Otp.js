@@ -9,6 +9,7 @@ import styles from './Otp.module.css';
 import { useRouter } from 'next/router';
 import { otpVerification } from '@/redux/slice/userSlice';
 import Loader from '../Loader/Loader';
+import { toast } from 'react-toastify';
 
 const Otp = () => {
     const { user, isLoading, error } = useSelector((state) => state.user);
@@ -23,7 +24,7 @@ const Otp = () => {
 
         dispatch(otpVerification(otp.join('')));
 
-        console.log('Entered OTP:', otp.join(''));
+        // console.log('Entered OTP:', otp.join(''));
     };
 
     const handleBackClick = () => {
@@ -32,13 +33,14 @@ const Otp = () => {
 
     useEffect(() => {
         if (user && user.user.verified) {
-            router.replace('/');
+            toast.success('user register successfully!');
+            router.replace('/dashboard');
         }
 
-        console.log(user);
+        // console.log(user);
 
         if (error && error.message) {
-            alert(error.message);
+            toast.error(error.message);
         }
     }, [user, error])
 

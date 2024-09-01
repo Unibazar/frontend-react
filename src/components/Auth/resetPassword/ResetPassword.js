@@ -14,6 +14,7 @@ import styles from './ResetPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { login, loadUser, resetPassword } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
+import { toast } from 'react-toastify'
 const ResetPassword = ({ userToken }) => {
 
     const [newPassword, setNewPassword] = useState("");
@@ -44,11 +45,11 @@ const ResetPassword = ({ userToken }) => {
     useEffect(() => {
 
         if (user) {
-            router.replace('/');
+            router.replace('/dashboard');
         }
 
         if (error && error.message) {
-            alert(error.message);
+            toast.error(error.message);
         }
 
     }, [user, error])

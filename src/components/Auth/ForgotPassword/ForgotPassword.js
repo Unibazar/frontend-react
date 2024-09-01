@@ -11,6 +11,7 @@ import styles from './ForgotPassword.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { forgetPassword } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
+import { toast } from 'react-toastify'
 
 function Popup({ onClose }) {
   const styles = {
@@ -64,7 +65,7 @@ function ForgotPassword() {
     }
 
     if (error && error.message) {
-      alert(error.message);
+      toast.error(error.message);
     }
   }, [user, error])
 

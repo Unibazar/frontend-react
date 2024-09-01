@@ -14,6 +14,7 @@ import styles from './SignIn.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, loadUser } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
+import { toast } from 'react-toastify'
 const Signin = () => {
 
   const [password, setPassword] = useState("");
@@ -35,20 +36,21 @@ const Signin = () => {
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
 
     if (user) {
-      router.replace('/');
+      toast.success('user login successfully!');
+      router.replace('/dashboard');
     }
 
     if (error && error.message) {
-      alert(error.message);
+      toast.error(error.message);
     }
 
   }, [user, error])
@@ -74,9 +76,9 @@ const Signin = () => {
           <p className='w-full text-normal text-gray-500 text-center py-3'>Please sign in to continue our app</p>
           <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
             <input type="text" placeholder="Email" name='email' className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl " onChange={(e) => setEmail(e.target.value)} />
+            5 border bg-gray-100 rounded-2xl " onChange={(e) => setEmail(e.target.value)} required />
             <div className='w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl'>
-              <input type="password" placeholder="Password" name='password' className="w-auto outline-0 border-0 bg-gray-100 " onChange={(e) => setPassword(e.target.value)} />
+              <input type="password" placeholder="Password" name='password' className="w-auto outline-0 border-0 bg-gray-100 " onChange={(e) => setPassword(e.target.value)} required />
               <div className=' w-auto items-center'>
                 <IoMdEyeOff style={{ 'color': 'gray' }} />
               </div>

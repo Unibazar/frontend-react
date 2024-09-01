@@ -14,6 +14,7 @@ import styles from './SignUp.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { register, loadUser } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
+import { toast } from 'react-toastify'
 const Signup = () => {
 
   const [data, setUser] = useState({
@@ -40,11 +41,11 @@ const Signup = () => {
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
 
@@ -54,7 +55,7 @@ const Signup = () => {
     }
 
     if (error && error.message) {
-      alert(error.message);
+      toast.error(error.message);
     }
 
   }, [user, error])

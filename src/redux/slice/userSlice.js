@@ -8,12 +8,12 @@ export const register = createAsyncThunk(
     'user/register',
     async (userData, { rejectWithValue }) => {
         try {
-            console.log(userData);
+            // console.log(userData);
             const response = await axios.post(`${url}/api/user/register`, userData);
-            console.log(response);
+            // console.log(response);
             return response.data;
         } catch (error) {
-            console.log(error.response?.data);
+            // console.log(error.response?.data);
             return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
         }
     }
