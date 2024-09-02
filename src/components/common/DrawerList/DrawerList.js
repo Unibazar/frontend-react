@@ -9,7 +9,7 @@ export default function DrawerList({toggleDrawer , isActive}) {
     <Box role="presentation" onClick={toggleDrawer(false)}>
        <div className="w-[250px] bg-white">
               <Link href="/" className='flex justify-center items-center mt-5'>
-                <Image src={Logo} width={150} height={150} className='object-cover w-3/4'/>
+                <Image src={Logo} width={150} height={150} className='object-cover w-3/4' alt="unizabar logo"/>
               </Link>
           <ul className="flex flex-col items-center space-y-4 p-4">
             <li>
