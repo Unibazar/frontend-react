@@ -12,16 +12,18 @@
 
 .workingText p {
   color: #455a64;
+  font-size: 16px;
 }
 
 .workingText h1 {
   margin: 0rem;
-  font-size: 1.75rem;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .workPart {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
   margin-top: 20px;
@@ -29,6 +31,7 @@
 }
 
 .work {
+  max-width: 240px;
   padding: 2rem;
   box-shadow: 0 0.12rem 0.25rem rgba(0, 0, 0, 0.1);
   display: flex;
@@ -52,6 +55,6 @@
     flex-direction: column;
   }
   .work {
-    width: 80%;
+    min-width: 320px;
   }
 }

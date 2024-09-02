@@ -4,7 +4,7 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
-import logo from '../../assets/unibazar_logo.png';
+import logo from '../../assets/unibazar_logo.svg';
 import styles from './Footer.module.css'
 import Link from 'next/link'
 const Footer = () => {
@@ -13,15 +13,17 @@ const Footer = () => {
       <div className="bg-gray-50 h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-5">
         <div className="p-5 max-w-md">
           <ul>
-            <Image src={logo} alt="logo"></Image>
-            <p className="text-gray-600 font-light text-1xl pb-4 pt-4 ">Unibazar is online platform which is used to sell your products from various E-commerce platforms.</p>
-            <div className="flex gap-6 pb-4">
+            <li className=' md:w-16 w-16'>
+             <Link href='/'><Image src={logo} alt="logo"></Image></Link>
+            </li>
+            <li className="text-gray-600 font-light text-1xl pb-4 pt-4 ">Unibazar is online platform which is used to sell your products from various E-commerce platforms.</li>
+            <li className="flex gap-6 pb-4">
               {/* Section for icons */}
               <FaInstagram className="text-1xl cursor-pointer hover:text-yellow-600" />
               <FaXTwitter className="text-1xl cursor-pointer hover:text-blue-600" />
               <FaLinkedin className="text-1xl cursor-pointer hover:text-blue-600" />
               <FaYoutube className="text-1xl cursor-pointer hover:text-red-600" />
-            </div>
+            </li>
           </ul>
         </div>
         <div className={`${styles.companySupport} flex md:flex-row justify-between `}>

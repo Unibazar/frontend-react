@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import image from '../../assets/joinUs.png';
+import image from '../../assets/joinus.svg';
 import Link from 'next/link';
 const Joinus = () => {
   return (

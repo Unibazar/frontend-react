@@ -5,8 +5,8 @@ import Link from 'next/link';
 const ContactSupport = () => {
   return (
     <>
-      <div className="w-full flex md:flex-row flex-col content-center justify-between p-5">
-        <div className="p-10 pt-14">
+      <div className="w-full flex md:flex-row flex-col content-center justify-between lg:py-8">
+        <div className=" pt-8">
           <p className="font-bold text-3xl">GET IN TOUCH WITH US</p>
           <p className="text-lg py-3 pb-8">
             We&apos;re Here To Help You With Any Questions Or <br />
@@ -16,7 +16,9 @@ const ContactSupport = () => {
             Contact Support
           </Link>
         </div>
-        <Image src={ContactSupportImg} alt="wait" className="p-5"></Image>
+        <div className="md:w-96 justify-center justify-items-center flex">
+          <Image src={ContactSupportImg} alt="wait" className=""></Image>
+        </div>
       </div>
     </>
   );

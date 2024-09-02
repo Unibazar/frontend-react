@@ -20,7 +20,7 @@ export default function AboutUs() {
       <Enterprises />
       <Story />
       <Ethics />
-      <WhyUnibazar/>
+      <WhyUnibazar />
       <MeetFounder />
       <Joinus />
       <AppContactUs />

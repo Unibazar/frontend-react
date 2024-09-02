@@ -31,7 +31,6 @@
 
 .feature {
   padding: 1.25rem;
-  border-radius: 0.25rem;
   min-width: 33%;
   text-align: center;
   /* border: 0.5px solid rgb(0, 0, 0, 0.1); */
@@ -39,9 +38,17 @@
   flex-direction: column;
   gap: 8px;
   align-items: center;
+  margin-top: 10px;
 }
+
+.outline{
+  border-left: 2px solid rgba(236, 236, 236, 0.5) ;
+  border-right: 2px solid rgba(236, 236, 236, 0.5);
+}
+
 .feature h3 {
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 22px;
 }
 
 .feature img {
@@ -51,7 +58,7 @@
 }
 
 .feature .small {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 720px) {
@@ -71,5 +78,9 @@
   }
   .feature img{
     width: 12%;
+  }
+  .outline{
+    border-left:none;
+    border-right: none;
   }
 }
