@@ -3,35 +3,20 @@ import axios from 'axios';
 
 const url = 'http://localhost:5000';
 
-// Asynchronous action to handle user registration
-<<<<<<< HEAD
 export const register = createAsyncThunk(
-    'user/register',
-    async (userData, { rejectWithValue }) => {
-        try {
-            // console.log(userData);
-            const response = await axios.post(`${url}/api/user/register`, userData);
-            // console.log(response);
-            return response.data;
-        } catch (error) {
-            // console.log(error.response?.data);
-            return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
-        }
+  'user/register',
+  async (userData, { rejectWithValue }) => {
+    try {
+      // console.log(userData);
+      const response = await axios.post(`${url}/api/user/register`, userData);
+      // console.log(response);
+      return response.data;
+    } catch (error) {
+      // console.log(error.response?.data);
+      return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
     }
-);
-=======
-export const register = createAsyncThunk('user/register', async (userData, { rejectWithValue }) => {
-  try {
-    console.log(userData);
-    const response = await axios.post(`${url}/api/user/register`, userData);
-    console.log(response);
-    return response.data;
-  } catch (error) {
-    console.log(error.response?.data);
-    return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
   }
-});
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
+);
 
 export const otpVerification = createAsyncThunk('user/otp', async (otp, { rejectWithValue }) => {
   // console.log(otp);

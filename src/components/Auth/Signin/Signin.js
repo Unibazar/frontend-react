@@ -9,19 +9,12 @@ import { IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-
-<<<<<<< HEAD
 import styles from './SignIn.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, loadUser } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
 import { toast } from 'react-toastify'
-=======
-import styles from './SignIn.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, loadUser } from '@/redux/slice/userSlice';
-import Loader from '@/components/Loader/Loader';
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
+
 const Signin = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -40,11 +33,6 @@ const Signin = () => {
     dispatch(login({ email, password }));
   };
 
-<<<<<<< HEAD
-  }
-
-=======
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
   useEffect(() => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
@@ -83,27 +71,12 @@ const Signin = () => {
           <h1 className="text-3xl font-bold text-center">Sign In</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please sign in to continue our app</p>
           <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
-<<<<<<< HEAD
             <input type="text" placeholder="Email" name='email' className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl " onChange={(e) => setEmail(e.target.value)} required />
             <div className='w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl'>
               <input type="password" placeholder="Password" name='password' className="w-auto outline-0 border-0 bg-gray-100 " onChange={(e) => setPassword(e.target.value)} required />
               <div className=' w-auto items-center'>
                 <IoMdEyeOff style={{ 'color': 'gray' }} />
-=======
-            <input
-              type="text"
-              placeholder="Email"
-              name="email"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={e => setEmail(e.target.value)}
-            />
-            <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type="password" placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100 " onChange={e => setPassword(e.target.value)} />
-              <div className=" w-auto items-center">
-                <IoMdEyeOff style={{ color: 'gray' }} />
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
               </div>
             </div>
 
@@ -133,7 +106,7 @@ const Signin = () => {
             </div>
           </form>
         </div>
-      </div>
+      </div >
     </>
   );
 };

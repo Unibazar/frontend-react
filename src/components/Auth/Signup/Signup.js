@@ -9,19 +9,12 @@ import { IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-
-<<<<<<< HEAD
 import styles from './SignUp.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { register, loadUser } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
 import { toast } from 'react-toastify'
-=======
-import styles from './SignUp.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { register, loadUser } from '@/redux/slice/userSlice';
-import Loader from '@/components/Loader/Loader';
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
+
 const Signup = () => {
   const [data, setUser] = useState({
     name: '',
@@ -46,11 +39,6 @@ const Signup = () => {
     dispatch(register(data));
   };
 
-<<<<<<< HEAD
-  }
-
-=======
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
   useEffect(() => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
@@ -59,6 +47,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (user && user.success) {
+      toast.success('Otp send successfully!');
       router.replace('/otp');
     }
 

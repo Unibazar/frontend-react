@@ -24,44 +24,25 @@ const Otp = () => {
 
     dispatch(otpVerification(otp.join('')));
 
-<<<<<<< HEAD
-        // console.log('Entered OTP:', otp.join(''));
-    };
-=======
-    console.log('Entered OTP:', otp.join(''));
+    // console.log('Entered OTP:', otp.join(''));
   };
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
 
   const handleBackClick = () => {
     router.back();
   };
 
-<<<<<<< HEAD
-    useEffect(() => {
-        if (user && user.user.verified) {
-            toast.success('user register successfully!');
-            router.replace('/dashboard');
-        }
-
-        // console.log(user);
-
-        if (error && error.message) {
-            toast.error(error.message);
-        }
-    }, [user, error])
-=======
   useEffect(() => {
     if (user && user.user.verified) {
-      router.replace('/');
+      toast.success('user register successfully!');
+      router.replace('/dashboard');
     }
 
-    console.log(user);
+    // console.log(user);
 
     if (error && error.message) {
-      alert(error.message);
+      toast.error(error.message);
     }
-  }, [user, error]);
->>>>>>> 09094d0863b0ebc926addfa4e3051e83365d13b8
+  }, [user, error])
 
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
