@@ -1,4 +1,6 @@
 import { Box} from '@mui/material';
+import Image from 'next/image';
+import Logo from "../../../../public/unibazar-logo.png"
 
 import Link from 'next/link';
 
@@ -6,6 +8,9 @@ export default function DrawerList({toggleDrawer , isActive}) {
   return (
     <Box role="presentation" onClick={toggleDrawer(false)}>
        <div className="w-[250px] bg-white">
+              <Link href="/" className='flex justify-center items-center mt-5'>
+                <Image src={Logo} width={150} height={150} className='object-cover w-3/4'/>
+              </Link>
           <ul className="flex flex-col items-center space-y-4 p-4">
             <li>
               <Link href="/" className={`${isActive('/') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
