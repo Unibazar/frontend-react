@@ -40,7 +40,7 @@ const Otp = () => {
         if (error && error.message) {
             alert(error.message);
         }
-    }, [user, error])
+    }, [user, error, router])
 
     const handleOtpChange = (e, index) => {
         const value = e.target.value;

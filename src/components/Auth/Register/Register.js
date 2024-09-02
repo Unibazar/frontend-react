@@ -42,7 +42,7 @@ const Signup = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user && user.success) {
@@ -52,7 +52,7 @@ const Signup = () => {
     if (error && error.message) {
       alert(error.message);
     }
-  }, [user, error]);
+  }, [user, error, router]);
 
   const handleBackClick = () => {
     router.back();
