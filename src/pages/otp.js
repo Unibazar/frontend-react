@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Otp from '@/components/Otp/Otp';
+import Otp from '@/components/Otp/OtpComponent';
 
 const otp = () => {
   return (
