@@ -7,7 +7,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 import { useRouter } from 'next/router';
 
 import styles from './OTP.module.css'
-const OTP = () => {
+const OtpComponent = () => {
   const router = useRouter();
   const handleBackClick = () => {
     router.back();
@@ -91,4 +91,4 @@ const OTP = () => {
   )
 }
 
-export default OTP
+export default OtpComponent
