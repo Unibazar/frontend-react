@@ -1,13 +1,26 @@
-// src/pages/dashboard/products/index.js
-import React from 'react';
+import Head from "next/head";
+import AddProductPage from "../../components/Dashboard/DashboardPages/ProductsPages/Product-AddPage";
+import ListProductPage from "../../components/Dashboard/DashboardPages/ProductsPages/Product-ListPage";
+import { useSearchParams } from "next/navigation"
+import ProductHomePage from "../../components/Dashboard/DashboardPages/ProductsPages/Product-HomePage";
 
-const Products = () => {
+
+function Products() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q');
   return (
-    <div>
-      <h1>Products</h1>
-      {/* Add your product list here */}
-    </div>
-  );
-};
+    <>
+    <Head>
+        <title>Dashboard-Products | Unibazar</title>
+        <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
+    </Head>
+      <div>
+        {!query && <ProductHomePage/>}
+        {query == "list" && <ListProductPage /> }
+        {query =="add-product" &&  <AddProductPage />}
+      </div>
+    </>
+  )
+}
 
-export default Products;
+export default Products

@@ -1,0 +1,84 @@
+'use client'
+import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import Personalinformation from "./AccountSetting-Components/Personalinformation";
+import BusinessInformation from "./AccountSetting-Components/BusinessInformation";
+import SubscriptionPlan from "./AccountSetting-Components/SubscriptionPlan";
+import LinkedPlatform from "./AccountSetting-Components/LinkedPlatform";
+import Accordion from '@mui/material/Accordion';
+import { styled } from '@mui/material/styles';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+
+
+const CustomAccordion = styled(Accordion)(() => {
+  return {
+    boxShadow: 'none',
+    border: 'none',
+    marginTop: '15px',
+    borderRadius: '10px',
+    '&::before': {
+      display: 'none',
+    },
+  }
+})
+
+
+export default function AccountSettings() {
+
+
+  return (
+    <div className="h-full w-full  px-4 py-4 md:px-7 md:py-7">
+      <div className='title flex flex-wrap justify-between items-center'>
+        <h1 className='md:text-3xl text-lg font-semibold '>Account Settings</h1>
+      </div>
+
+
+      {/* personal information  */}
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">personal inforamtion</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-sm md:text-xl">
+          <Personalinformation />
+        </AccordionDetails>
+      </CustomAccordion>
+
+
+
+      {/* business information  */}
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">business inforamtion</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-sm md:text-xl">
+          <BusinessInformation />
+        </AccordionDetails>
+      </CustomAccordion>
+      
+
+
+      {/* subscription plan  */}
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">subscription plan</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-sm md:text-xl">
+          <SubscriptionPlan />
+        </AccordionDetails>
+      </CustomAccordion>
+
+
+      {/* linked platforms  */}
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
+        <AccordionSummary expandIcon={<IoIosArrowDown />} >
+          <p className="w-full font-semibold text-left capitalize">linked platforms</p>
+        </AccordionSummary>
+        <AccordionDetails className="text-sm md:text-xl">
+          <LinkedPlatform />
+        </AccordionDetails>
+      </CustomAccordion>
+
+    </div>
+  )
+}
