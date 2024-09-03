@@ -12,9 +12,11 @@ import { useRouter } from 'next/router';
 
 import styles from './ResetPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux'
-import { login, loadUser, resetPassword } from '@/redux/slice/userSlice'
+import { login, loadUser, resetPassword, clearUser } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 const ResetPassword = ({ userToken }) => {
 
     const [newPassword, setNewPassword] = useState("");
@@ -29,6 +31,11 @@ const ResetPassword = ({ userToken }) => {
     };
 
 
+
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -36,11 +43,15 @@ const ResetPassword = ({ userToken }) => {
 
     }
 
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
+    };
+
     useEffect(() => {
         if (localStorage.getItem('jwtToken')) {
             dispatch(loadUser());
         }
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
 
@@ -49,7 +60,10 @@ const ResetPassword = ({ userToken }) => {
         }
 
         if (error && error.message) {
-            toast.error(error.message);
+            setSnackbarMessage(error.message);
+            setSnackbarSeverity('error');
+            setSnackbarOpen(true);
+            dispatch(clearUser());
         }
 
     }, [user, error])
@@ -57,6 +71,11 @@ const ResetPassword = ({ userToken }) => {
     return (
         <>
             {isLoading && <Loader />}
+            <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+                <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </MuiAlert>
+            </Snackbar>
             <div >
                 <div className='md:hidden pt-12 pl-10  w-full flex'>
                     <IoChevronBackOutline className='bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center' onClick={handleBackClick} />

@@ -7,9 +7,10 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Otp.module.css';
 import { useRouter } from 'next/router';
-import { otpVerification } from '@/redux/slice/userSlice';
+import { clearUser, otpVerification } from '@/redux/slice/userSlice';
 import Loader from '../Loader/Loader';
-import { toast } from 'react-toastify';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const Otp = () => {
   const { user, isLoading, error } = useSelector(state => state.user);
@@ -19,12 +20,23 @@ const Otp = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  const showSnackbar = (message, severity) => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setSnackbarOpen(true);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-
     dispatch(otpVerification(otp.join('')));
-
-    // console.log('Entered OTP:', otp.join(''));
   };
 
   const handleBackClick = () => {
@@ -33,16 +45,15 @@ const Otp = () => {
 
   useEffect(() => {
     if (user && user.user.verified) {
-      toast.success('user register successfully!');
       router.replace('/dashboard');
+      showSnackbar('User registered successfully!', 'success');
     }
-
-    // console.log(user);
 
     if (error && error.message) {
-      toast.error(error.message);
+      showSnackbar(error.message, 'error');
+      dispatch(clearUser());
     }
-  }, [user, error])
+  }, [user, error]);
 
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
@@ -67,8 +78,7 @@ const Otp = () => {
   }, [timeLeft]);
 
   const handleResend = () => {
-    //    here will be logic for resend otp
-
+    // Logic for resending OTP
     setTimeLeft(120); // Reset the timer to 2 minutes
     setCanResend(false); // Disable the resend button
   };
@@ -76,6 +86,16 @@ const Otp = () => {
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10 w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />

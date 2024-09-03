@@ -9,27 +9,34 @@ import { IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-import styles from './SignIn.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { login, loadUser } from '@/redux/slice/userSlice'
-import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import styles from './SignIn.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, loadUser, clearUser } from '@/redux/slice/userSlice';
+import Loader from '@/components/Loader/Loader';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Signin = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
-
   const router = useRouter();
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   const handleBackClick = () => {
     router.back();
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
     dispatch(login({ email, password }));
   };
 
@@ -37,22 +44,32 @@ const Signin = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
-      toast.success('user login successfully!');
+      setSnackbarMessage('User logged in successfully!');
+      setSnackbarSeverity('success');
+      setSnackbarOpen(true);
       router.replace('/dashboard');
     }
 
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
-  }, [user, error]);
+  }, [user, error, router]);
 
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10  w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />

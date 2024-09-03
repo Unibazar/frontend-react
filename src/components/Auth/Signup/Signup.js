@@ -11,9 +11,10 @@ import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
 import styles from './SignUp.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { register, loadUser } from '@/redux/slice/userSlice'
+import { register, loadUser, clearUser } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Signup = () => {
   const [data, setUser] = useState({
@@ -23,8 +24,16 @@ const Signup = () => {
   });
   const router = useRouter();
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const onchangeData = e => {
     const name = e.target.name;
@@ -43,16 +52,21 @@ const Signup = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user && user.success) {
-      toast.success('Otp send successfully!');
+      setSnackbarMessage('Otp send successfully!');
+      setSnackbarSeverity('success');
+      setSnackbarOpen(true);
       router.replace('/otp');
     }
 
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
   }, [user, error]);
 
@@ -62,6 +76,11 @@ const Signup = () => {
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10  w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />

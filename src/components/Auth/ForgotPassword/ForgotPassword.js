@@ -9,9 +9,10 @@ import { useRouter } from 'next/router';
 
 import styles from './ForgotPassword.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { forgetPassword } from '@/redux/slice/userSlice'
+import { clearUser, forgetPassword } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 function Popup({ onClose }) {
   const styles = {
@@ -57,6 +58,13 @@ function ForgotPassword() {
   const { user, isLoading, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   useEffect(() => {
 
@@ -65,7 +73,10 @@ function ForgotPassword() {
     }
 
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
   }, [user, error])
 
