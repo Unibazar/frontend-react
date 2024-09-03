@@ -5,19 +5,20 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import FbImg from '../../../assets/fb.png';
 import AppleImg from '../../../assets/apple.png';
 import GoogleImg from '../../../assets/google.png';
-import { IoMdEyeOff } from 'react-icons/io';
+import { IoMdEyeOff, IoMdEye } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-import styles from './SignIn.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { login, loadUser } from '@/redux/slice/userSlice'
-import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import styles from './SignIn.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, loadUser } from '@/redux/slice/userSlice';
+import Loader from '@/components/Loader/Loader';
+import { toast } from 'react-toastify';
 
 const Signin = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const Signin = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
@@ -48,7 +49,9 @@ const Signin = () => {
     if (error && error.message) {
       toast.error(error.message);
     }
-  }, [user, error]);
+  }, [user, error, router]);
+
+  const handleShowPassword = () => [setShowPassword(!showPassword)];
 
   return (
     <>
@@ -71,12 +74,19 @@ const Signin = () => {
           <h1 className="text-3xl font-bold text-center">Sign In</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please sign in to continue our app</p>
           <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
-            <input type="text" placeholder="Email" name='email' className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl " onChange={(e) => setEmail(e.target.value)} required />
-            <div className='w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl'>
-              <input type="password" placeholder="Password" name='password' className="w-auto outline-0 border-0 bg-gray-100 " onChange={(e) => setPassword(e.target.value)} required />
-              <div className=' w-auto items-center'>
-                <IoMdEyeOff style={{ 'color': 'gray' }} />
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              className="w-full p-2 mb-
+            5 border bg-gray-100 rounded-2xl "
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+            <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
+              <input type={showPassword ? 'text' : 'password'} placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100  " onChange={e => setPassword(e.target.value)} />
+              <div className=" w-auto items-center" onClick={handleShowPassword}>
+                {showPassword ? <IoMdEye style={{ color: 'gray' }} /> : <IoMdEyeOff style={{ color: 'gray' }} />}
               </div>
             </div>
 
@@ -106,7 +116,7 @@ const Signin = () => {
             </div>
           </form>
         </div>
-      </div >
+      </div>
     </>
   );
 };
