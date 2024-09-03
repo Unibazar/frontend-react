@@ -5,15 +5,16 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import FbImg from '../../../assets/fb.png';
 import AppleImg from '../../../assets/apple.png';
 import GoogleImg from '../../../assets/google.png';
-import { IoMdEyeOff, IoMdEye } from 'react-icons/io';
+import { IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-
 import styles from './SignUp.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { register, loadUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
+import { toast } from 'react-toastify';
+
 const Signup = () => {
   const [data, setUser] = useState({
     name: '',
@@ -33,7 +34,7 @@ const Signup = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    
+
     dispatch(register(data));
   };
 
@@ -45,29 +46,18 @@ const Signup = () => {
 
   useEffect(() => {
     if (user && user.success) {
+      toast.success('Otp send successfully!');
       router.replace('/otp');
     }
 
     if (error && error.message) {
-      alert(error.message);
+      toast.error(error.message);
     }
   }, [user, error]);
 
   const handleBackClick = () => {
     router.back();
   };
-
-  // const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-
-  // const handlePasswordChange = e => {
-  //   setPassword(e.target.value);
-  // };
-
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   return (
     <>
       {isLoading && <Loader />}
@@ -88,28 +78,30 @@ const Signup = () => {
         <div className="md:mr-10 md:pr-28  w-full p-5">
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please fill the details and create account</p>
-          <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
+          <form className="flex flex-col justify-center items-center gap-3" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Name"
               name="name"
-              value={data.name}
-              onChange={e=>onchangeData(e)}
               className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl "
+              onChange={onchangeData}
+              required
             />
             <input
               type="text"
               placeholder="Email"
               name="email"
-              value={data.email}
-              onChange={e=>onchangeData(e)}
               className="w-full p-2 mb-
             5 border bg-gray-100 rounded-2xl "
+              onChange={onchangeData}
+              required
             />
             <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type={showPassword ? 'text' : 'password'} name="password" value={data.password} onChange={e=>onchangeData(e)} placeholder="Password" className="w-auto outline-0 border-0 bg-gray-100" />
-              <div className="w-auto items-center justify-center justify-items-center text-center pt-1">{showPassword ? <IoMdEye style={{ color: 'gray' }} className="cursor-pointer" onClick={handleTogglePasswordVisibility} /> : <IoMdEyeOff style={{ color: 'gray' }} className="cursor-pointer" onClick={handleTogglePasswordVisibility} />}</div>
+              <input type="password" placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100 " onChange={onchangeData} required />
+              <div className=" w-auto items-center">
+                <IoMdEyeOff style={{ color: 'gray' }} />
+              </div>
             </div>
 
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
