@@ -1,10 +1,16 @@
 import '@/styles/global.css';
 import PageLayout from './layout';
 import ReduxProvider from '@/redux/ReduxProvider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import DashboardLayout from './dashboard/layout';
 
 export default function MyApp({ Component, pageProps, router }) {
-  const noLayoutPages = ['/login', '/register', '/forgot-password', '/otp',];
-  const isNoLayoutPage = noLayoutPages.includes(router.pathname);
+  const noLayoutPages = ['/login', '/register', '/forgot-password', '/otp', '/404'];
+  const isDynamicRoute = router.pathname.startsWith('/reset/') && router.pathname.endsWith('/password');
+  const isNoLayoutPage = noLayoutPages.includes(router.pathname) || isDynamicRoute;
+  const dashboardRoutes = ['/dashboard', '/dashboard/products', '/dashboard/orderlist', '/dashboard/analytics', '/dashboard/accountsettings', '/dashboard/helpandsupport'];
+  const isDashboardLayoutPage = dashboardRoutes.includes(router.pathname);
 
   if (isNoLayoutPage) {
     return (
@@ -14,12 +20,29 @@ export default function MyApp({ Component, pageProps, router }) {
         </ReduxProvider>
       </>
     );
+  } else if (isDashboardLayoutPage) {
+    return (
+      <>
+        <ReduxProvider>
+          <DashboardLayout>
+            <Component {...pageProps} />
+          </DashboardLayout>
+        </ReduxProvider>
+      </>
+    );
   }
   return (
     <ReduxProvider>
-      <PageLayout>
-        <Component {...pageProps} />
-      </PageLayout>
+      {isNoLayoutPage ? (
+        <>
+          <Component {...pageProps} />
+        </>
+      ) : (
+        <PageLayout>
+          <Component {...pageProps} />
+        </PageLayout>
+      )}
+      <ToastContainer />
     </ReduxProvider>
   );
 }

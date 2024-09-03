@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "product": {
+          "type": "Hoodie",
+          "brand": "CozyWear",
+          "details": "size - M to XXL"
+        },
+        "startDate": "08/15/2024",
+        "lastModified": "08/20/2024",
+        "status": "In Progress",
+        "quantity": 24
+      },
+      {
+        "id": 2,
+        "product": {
+          "type": "Sneakers",
+          "brand": "SpeedRun",
+          "details": "size - 6 to 12"
+        },
+        "startDate": "07/22/2024",
+        "lastModified": "08/01/2024",
+        "status": "Available",
+        "quantity": 40
+      },
+      {
+        "id": 3,
+        "product": {
+          "type": "Cap",
+          "brand": "UrbanWear",
+          "details": "one size"
+        },
+        "startDate": "06/10/2024",
+        "lastModified": "06/15/2024",
+        "status": "Out of Stock",
+        "quantity": 0
+      },
+      {
+        "id": 4,
+        "product": {
+          "type": "Jacket",
+          "brand": "WarmUp",
+          "details": "size - S to L"
+        },
+        "startDate": "05/01/2024",
+        "lastModified": "05/15/2024",
+        "status": "Available",
+        "quantity": 30
+      },
+      {
+        "id": 5,
+        "product": {
+          "type": "Sunglasses",
+          "brand": "SunShine",
+          "details": "one size"
+        },
+        "startDate": "04/10/2024",
+        "lastModified": "04/20/2024",
+        "status": "In Progress",
+        "quantity": 15
+      },
+      {
+        "id": 6,
+        "product": {
+          "type": "Watch",
+          "brand": "TimeMaster",
+          "details": "one size"
+        },
+        "startDate": "03/25/2024",
+        "lastModified": "04/05/2024",
+        "status": "Out of Stock",
+        "quantity": 5
+      },
+      {
+        "id": 7,
+        "product": {
+          "type": "Backpack",
+          "brand": "CarryOn",
+          "details": "one size"
+        },
+        "startDate": "02/15/2024",
+        "lastModified": "02/25/2024",
+        "status": "Available",
+        "quantity": 20
+      },
+      {
+        "id": 8,
+        "product": {
+          "type": "Belt",
+          "brand": "SecureFit",
+          "details": "size - S to XL"
+        },
+        "startDate": "01/10/2024",
+        "lastModified": "01/20/2024",
+        "status": "In Progress",
+        "quantity": 50
+      },
+      {
+        "id": 9,
+        "product": {
+          "type": "Gloves",
+          "brand": "WarmHands",
+          "details": "size - M to L"
+        },
+        "startDate": "12/05/2023",
+        "lastModified": "12/15/2023",
+        "status": "Available",
+        "quantity": 35
+      },
+      {
+        "id": 10,
+        "product": {
+          "type": "Scarf",
+          "brand": "CozyWrap",
+          "details": "one size"
+        },
+        "startDate": "11/10/2023",
+        "lastModified": "11/20/2023",
+        "status": "Out of Stock",
+        "quantity": 0
+      } 
+]

@@ -2,21 +2,34 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import LogoImage from '../../../../public/unibazar-logo.svg';
+import LogoImage from '../../../../public/unibazar-logo.png';
+import profileImg from '../../../../public/profileImg.png';
 import Link from 'next/link';
 import styles from './AppNavBar.module.css';
 import { usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '@/redux/slice/userSlice';
+import { toast } from 'react-toastify';
 import { Button, Drawer } from '@mui/material';
 import DrawerList from '../DrawerList/DrawerList';
 
 function AppNavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
+    toast.success('user logged out successfully!');
 
     dispatch(loadUser());
   };
@@ -66,10 +79,19 @@ function AppNavBar() {
         </ul>
       </div>
       {user ? (
-        <button className={styles.loginButton} onClick={() => handleLogout()}>
-          {' '}
-          Logout{' '}
-        </button>
+        <div className={styles.profileContainer} onClick={toggleDropdown}>
+          <Image className={styles.profileImg} src={profileImg} alt="Profile Image" width={40} height={40} />
+          {isDropdownOpen && (
+            <div className={styles.dropdownMenu}>
+              <Link href="/account-management" className={styles.dropdownItem}>
+                Account Management
+              </Link>
+              <button onClick={handleLogout} className={styles.dropdownItem}>
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
       ) : (
         <div className={styles.navButtons}>
           <Link href="/login" className={styles.loginButton}>
