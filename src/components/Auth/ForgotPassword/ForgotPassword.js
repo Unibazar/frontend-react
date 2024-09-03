@@ -40,7 +40,7 @@ function Popup({ onClose }) {
         </div>
         <p className='text-bold text-xl text-center py-2 pt-1'>Check your email</p>
         <p className='text-normal text-gray-500 text-center'>We have send password recovery <br/> instruction to your email</p>
-        <button onClick={onClose}></button>
+        <button onClick={onClose}>close</button>
       </div>
     </div>
   );
