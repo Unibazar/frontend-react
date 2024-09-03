@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import image1 from '../../assets/Group21.png';
-import image2 from '../../assets/meet.png';
+import image2 from '../../assets/meet.svg';
 const MeetFounder = () => {
   return (
     <>

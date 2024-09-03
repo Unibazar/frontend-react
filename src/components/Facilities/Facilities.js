@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import FacilityImg1 from '../../assets/unibazar-home-images/feature-img1.png';
-import FacilityImg2 from '../../assets/unibazar-home-images/feature-img2.png';
-import FacilityImg3 from '../../assets/unibazar-home-images/feature-img3.png';
-import FacilityImg4 from '../../assets/unibazar-home-images/feature-img4.png';
+import FacilityImg1 from '../../assets/unibazar-home-images/feature-img1.svg';
+import FacilityImg2 from '../../assets/unibazar-home-images/feature-img2.svg';
+import FacilityImg3 from '../../assets/unibazar-home-images/feature-img3.svg';
+import FacilityImg4 from '../../assets/unibazar-home-images/feature-img4.svg';
 import styles from './Facilities.module.css';
 
 const Facilities = () => {
@@ -29,8 +29,8 @@ const Facilities = () => {
             <p className={styles.infoColor}>Keep Your Stock in Sync</p>
             <h2>Inventory Management</h2>
             <p>
-              Automatically synchronize inventory levels across all your sales channels.
-              <br /> Receive notifications for low stock and out-of-stock items <br /> to ensure you never miss a sale
+              Automatically synchronize inventory levels across all your sales <br />channels.
+               Receive notifications for low stock and out-of-stock items <br /> to ensure you never miss a sale
             </p>
           </div>
 

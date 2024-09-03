@@ -70,13 +70,13 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="w-full  flex-col justify-center pb-10 ">
-      <h2 className="w-full font-normal text-center text-2xl py-10">Frequently Asked Questions</h2>
-      <div className="w-full flex md:flex-row flex-col md:gap-20 gap-4 justify-center">
-        <div className="w-full md:w-1/2 flex-col flex gap-4 ">
+    <div className=" w-full  flex-col justify-center pb-10 ">
+      <h2 className="w-full font-bold text-center  text-3xl py-10">Frequently Asked Questions</h2>
+      <div className="w-full flex md:flex-row flex-col md:gap-12  gap-4 justify-center">
+        <div className="w-full md:w-2/5 flex-col flex gap-4 ">
           {Faq.slice(0, 6).map((faq, index) => (
-            <div key={index} className="w-full flex " onClick={() => handleClick(index)}>
-              <CustomAccordion className="w-full flex-col">
+            <div key={index} className="w-full  flex " onClick={() => handleClick(index)}>
+              <CustomAccordion className="w-full  flex-col">
                 <AccordionSummary 
                   expandIcon={expandedIndex === index ? <AiOutlineMinus className="w-auto" /> : <AiOutlinePlus className="w-auto" />}
                   aria-controls="panel1-content"
@@ -91,11 +91,10 @@ const FAQ = () => {
             </div>
           ))}
         </div>
-        <div className="w-full md:w-1/2 flex-col flex gap-4">
+        <div className="w-full md:w-2/5 flex-col flex gap-4">
           {Faq.slice(6, 11).map((faq, index) => (
-            <div key={index} className="w-full flex	" onClick={() => handleClick(index + 6)}>
-              <div className="w-full flex-col">
-              <CustomAccordion className="w-full flex-col">
+            <div key={index} className="w-full  flex	" onClick={() => handleClick(index + 6)}>
+              <CustomAccordion className="w-full  flex-col">
                 <AccordionSummary 
                   expandIcon={expandedIndex === index + 6 ? <AiOutlineMinus className="w-auto" /> : <AiOutlinePlus className="w-auto" />}
                   aria-controls="panel1-content"
@@ -107,7 +106,6 @@ const FAQ = () => {
                 {expandedIndex === index + 6 && <p className="w-full font-light text-left text-gray-500">{faq.answer}</p>}
                 </AccordionDetails>
               </CustomAccordion>  
-              </div>
             </div>
           ))}
         </div>
