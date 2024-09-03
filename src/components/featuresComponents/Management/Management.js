@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import Easy from '../../../assets/unibazar-features-images/Easy.png';
-import Dashboard from '../../../assets/unibazar-features-images/Dashboard.png';
-import Analytics from '../../../assets/unibazar-features-images/Analytics.png';
-import Managements from '../../../assets/unibazar-features-images/Management.png';
-import Products from '../../../assets/unibazar-features-images/Products.png';
-import Interface from '../../../assets/unibazar-features-images/Interface.png';
+import Easy from '../../../assets/unibazar-features-images/Easy.svg';
+import Dashboard from '../../../assets/unibazar-features-images/Dashboard.svg';
+import Analytics from '../../../assets/unibazar-features-images/Analytics.svg';
+import Managements from '../../../assets/unibazar-features-images/Management.svg';
+import Products from '../../../assets/unibazar-features-images/Products.svg';
+import Interface from '../../../assets/unibazar-features-images/Interface.svg';
 const Management = () => {
   return (
     <>

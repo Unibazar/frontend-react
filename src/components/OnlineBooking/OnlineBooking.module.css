@@ -12,13 +12,15 @@
 }
 
 .bookingText h2 {
-  font-size: 1.75rem;
+  font-size: 28px;
+  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 .bookingText p {
   text-align: center;
   color: #555;
+  font-size: 14px;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -30,4 +32,7 @@
 .whiteBgButton {
   color: #077360;
   border: 1px solid #077360;
+}
+.whiteBgButton:hover {
+  border: 1px solid #00382e;
 }

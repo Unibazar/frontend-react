@@ -25,22 +25,20 @@ export default function Home() {
       {/* <AppNavBar /> */}
       {/* <div className="section"> */}
       {/* <Navbar /> */}
-      <Hero />
+      <Hero  />
       <br />
       <br />
+      <Features />
       <Enterprises />
       <br />
       <br />
       <OnlineBooking />
       <br />
       <br />
-      <Features />
-      <br />
-      <br />
       <Facilities />
-      <br />
-      <br />
-      <Working />
+      <br/>
+      <br/>
+      <Working  />
       <br />
       <br />
       {/* <Banner /> */}

@@ -4,7 +4,7 @@
   /* padding: 2rem; */
   display: flex;
   flex-direction: column;
-  background-color: #f5fdfd;
+  background-color: #F5FDFD;
 }
 
 .featuresText {
@@ -13,18 +13,33 @@
 }
 
 .featuresText h1 {
-  margin: 0;
-  font-size: 1.75rem;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .featuresText p {
   color: #555;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .featuresPart {
   display: flex;
   justify-content: space-evenly;
+}
+
+.outline {
+  border-left: 2px solid rgba(236, 236, 236, 0.5) ;
+  border-right: 2px solid rgba(236, 236, 236, 0.5);
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  min-width: 20%;
+  text-align: center;
+  /* border: 0.5px solid rgb(0, 0, 0, 0.1); */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
 }
 
 .feature {
@@ -39,17 +54,35 @@
   align-items: center;
 }
 .feature h3 {
-  font-weight: 400;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.outline h3 {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .feature img {
   display: block;
-  width: 26%;
+  width: 16%;
   margin: auto;
 }
 
 .feature .small {
-  font-size: 0.7rem;
+  font-size: 13px;
+  color: #555;
+}
+
+.outline img {
+  display: block;
+  width: 16%;
+  margin: auto;
+}
+
+.outline .small {
+  font-size: 13px;
+  color: #555;
 }
 
 @media (max-width: 720px) {
@@ -63,4 +96,8 @@
   .FeatureIcon1 .FeatureIcon2 .FeatureIcon3 {
     width: 15%;
   }
-}
+  .outline {
+    border-left: none;
+    border-right: none;
+  } 
+} 
