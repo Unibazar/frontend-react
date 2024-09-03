@@ -1,22 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'http://localhost:5000';
+const url = 'https://backend-express-3fjm.onrender.com';
 
-export const register = createAsyncThunk(
-  'user/register',
-  async (userData, { rejectWithValue }) => {
-    try {
-      // console.log(userData);
-      const response = await axios.post(`${url}/api/user/register`, userData);
-      // console.log(response);
-      return response.data;
-    } catch (error) {
-      // console.log(error.response?.data);
-      return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
-    }
+export const register = createAsyncThunk('user/register', async (userData, { rejectWithValue }) => {
+  try {
+    // console.log(userData);
+    const response = await axios.post(`${url}/api/user/register`, userData);
+    // console.log(response);
+    return response.data;
+  } catch (error) {
+    // console.log(error.response?.data);
+    return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
   }
-);
+});
 
 export const otpVerification = createAsyncThunk('user/otp', async (otp, { rejectWithValue }) => {
   // console.log(otp);
