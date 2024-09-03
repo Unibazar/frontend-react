@@ -48,6 +48,7 @@ const Signin = () => {
 
   useEffect(() => {
     if (user) {
+      // console.log('hii');
       setSnackbarMessage('User logged in successfully!');
       setSnackbarSeverity('success');
       setSnackbarOpen(true);
