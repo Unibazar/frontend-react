@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import FacilityImg1 from '../../assets/unibazar-home-images/feature-img1.svg';
-import FacilityImg2 from '../../assets/unibazar-home-images/feature-img2.svg';
-import FacilityImg3 from '../../assets/unibazar-home-images/feature-img3.svg';
-import FacilityImg4 from '../../assets/unibazar-home-images/feature-img4.svg';
+import FacilityImg1 from '../../assets/unibazar-home-images/facility-img1.svg';
+import FacilityImg2 from '../../assets/unibazar-home-images/facility-img2.svg';
+import FacilityImg3 from '../../assets/unibazar-home-images/facility-img3.svg';
+import FacilityImg4 from '../../assets/unibazar-home-images/facility-img4.svg';
 import styles from './Facilities.module.css';
 
 const Facilities = () => {
