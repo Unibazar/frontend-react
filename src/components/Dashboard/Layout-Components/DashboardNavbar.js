@@ -2,7 +2,7 @@ import { IoIosMenu } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { RiMenuFold3Line } from "react-icons/ri";
-import ProfileIcon from "./ProfileIcon";
+import ProfileIcon from "../../common/ProfileIcon/ProfileIcon";
 
 export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
     return (
