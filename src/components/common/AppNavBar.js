@@ -24,7 +24,7 @@ function AppNavBar() {
   };
 
   return (
-    <nav className={`flex justify-between items-center py-5 px-4 md:px-16 border-b-2 ${user && "flex-row-reverse md:flex-row"} `}>
+    <nav className={`flex justify-between items-center py-4 px-4 md:px-16 border-b-2 ${user && "flex-row-reverse md:flex-row"} `}>
       <Link href="/" className={`w-[170px] md:w-[200px] ${user && "hidden md:inline"}`}>
         <Image src={LogoImage} alt="logo" className='w-full h-full'></Image>
       </Link>
