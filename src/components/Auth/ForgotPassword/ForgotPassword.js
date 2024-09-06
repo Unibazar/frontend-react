@@ -6,7 +6,7 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-
+import TextField from '@mui/material/TextField';
 import styles from './ForgotPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgetPassword } from '@/redux/slice/userSlice';
@@ -101,8 +101,8 @@ function ForgotPassword() {
             Enter your email account to reset <br />
             your password
           </p>
-          <form className="flex flex-col justify-center items-center gap-3">
-            <input type="text" placeholder="Email" className="w-full p-2 mb-5 border bg-gray-100 rounded-2xl " onChange={e => setEmail(e.target.value)} />
+          <form className="flex flex-col justify-center items-center gap-5">
+            <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={e => setEmail(e.target.value)} required />
 
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <button
@@ -111,7 +111,7 @@ function ForgotPassword() {
                 e.preventDefault();
                 dispatch(forgetPassword(email));
               }}
-              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold px-4 rounded-2xl py-3"
+              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold px-4 rounded-xl py-3"
             >
               Reset Password
             </button>

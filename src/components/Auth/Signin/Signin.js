@@ -5,15 +5,22 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import FbImg from '../../../assets/fb.png';
 import AppleImg from '../../../assets/apple.png';
 import GoogleImg from '../../../assets/google.png';
-import { IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-import styles from './SignIn.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { login, loadUser } from '@/redux/slice/userSlice'
-import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import styles from './SignIn.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, loadUser } from '@/redux/slice/userSlice';
+import Loader from '@/components/Loader/Loader';
+import { toast } from 'react-toastify';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Signin = () => {
   const [password, setPassword] = useState('');
@@ -50,6 +57,18 @@ const Signin = () => {
     }
   }, [user, error]);
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = event => {
+    event.preventDefault();
+  };
+
   return (
     <>
       {isLoading && <Loader />}
@@ -70,16 +89,27 @@ const Signin = () => {
         <div className=" md:mr-10 md:pr-28  w-full p-5">
           <h1 className="text-3xl font-bold text-center">Sign In</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please sign in to continue our app</p>
-          <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
-            <input type="text" placeholder="Email" name='email' className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl " onChange={(e) => setEmail(e.target.value)} required />
-            <div className='w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl'>
-              <input type="password" placeholder="Password" name='password' className="w-auto outline-0 border-0 bg-gray-100 " onChange={(e) => setPassword(e.target.value)} required />
-              <div className=' w-auto items-center'>
-                <IoMdEyeOff style={{ 'color': 'gray' }} />
-              </div>
+          <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-1 ">
+            <div className="flex flex-col  gap-3">
+              <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={e => setEmail(e.target.value)} required />
+              <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? 'text' : 'password'}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password *"
+                />
+              </FormControl>
             </div>
-
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <p className="w-full text-normal text-blue-500 text-right p-1 pb-2">
               <Link href="/forgot-password">Forget Password?</Link>
@@ -87,7 +117,7 @@ const Signin = () => {
             <button
               type="submit"
               className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
-            2 px-4 rounded-2xl py-3"
+            2 px-4 rounded-xl py-3"
             >
               Sign In
             </button>
@@ -106,7 +136,7 @@ const Signin = () => {
             </div>
           </form>
         </div>
-      </div >
+      </div>
     </>
   );
 };

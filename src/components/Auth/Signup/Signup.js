@@ -14,6 +14,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { register, loadUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
 import { toast } from 'react-toastify';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Signup = () => {
   const [data, setUser] = useState({
@@ -58,6 +66,19 @@ const Signup = () => {
   const handleBackClick = () => {
     router.back();
   };
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = event => {
+    event.preventDefault();
+  };
+
   return (
     <>
       {isLoading && <Loader />}
@@ -79,29 +100,26 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please fill the details and create account</p>
           <form className="flex flex-col justify-center items-center gap-3" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={onchangeData}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              name="email"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={onchangeData}
-              required
-            />
-            <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type="password" placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100 " onChange={onchangeData} required />
-              <div className=" w-auto items-center">
-                <IoMdEyeOff style={{ color: 'gray' }} />
-              </div>
+            <div className="flex flex-col  gap-3">
+              <TextField type="text" id="outlined-uncontrolled" label="Name" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
+              <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
+              <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? 'text' : 'password'}
+                  onChange={onchangeData}
+                  required
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password *"
+                />
+              </FormControl>
             </div>
 
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
@@ -109,7 +127,7 @@ const Signup = () => {
             <button
               type="submit"
               className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
-            2 px-4 rounded-2xl py-3"
+            2 px-4 rounded-xl py-3"
             >
               Sign Up
             </button>
@@ -121,7 +139,7 @@ const Signup = () => {
               <br />
               Or connect
             </p>
-            <div className="w-full flex md:flex-row items-center justify-center justify-items-center gap-1 py-3">
+            <div className="w-full flex md:flex-row items-center justify-center justify-items-center gap-1 py-2">
               <Image src={FbImg} alt="facbook-image"></Image>
               <Image src={AppleImg} alt="facbook-image"></Image>
               <Image src={GoogleImg} alt="facbook-image"></Image>
