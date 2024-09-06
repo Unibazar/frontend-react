@@ -14,27 +14,27 @@ export default function Plans({ pricingType }) {
             {pricingType === 'monthly' ? '$0' : '$0'}
             <span className="text-sm font-normal text-gray-400 pl-1">/month</span>
           </p>
-          <p className="text-normal text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <button type="button" className="bg-teal-600 w-full py-3 text-white rounded-xl text-center">
+          <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
+          <button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
             Sign Up for Free
           </button>
         </div>
         <div className="w-full px-6 py-4 items-start border-t-2 space-y-3">
           <div className="flex flex-row items-start gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4 mt-1"></Image>
-            <p className="text-normal text-gray-500">Link up to 2 e-commerce platforms</p>
+            <p className="text-base text-gray-500">Link up to 2 e-commerce platforms</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Manage up to 50 products</p>
+            <p className="text-base text-gray-500">Manage up to 50 products</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Basic dashboard access</p>
+            <p className="text-base text-gray-500">Basic dashboard access</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Basic customer support</p>
+            <p className="text-base text-gray-500">Basic customer support</p>
           </div>
         </div>
       </div>
@@ -47,27 +47,27 @@ export default function Plans({ pricingType }) {
             {pricingType === 'monthly' ? '$10' : '$7'}
             <span className="text-sm font-normal text-gray-400 pl-1">/month</span>
           </p>
-          <p className="text-normal text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <button type="button" className="bg-teal-600 w-full py-3 text-white rounded-xl text-center">
+          <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
+          <button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
             Upgrade to Pro
           </button>
         </div>
         <div className="w-full px-6 py-4 items-start border-t-2 space-y-3">
           <div className="flex flex-row items-start gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4 mt-1"></Image>
-            <p className="text-normal text-gray-500">Link up to 5 e-commerce platforms</p>
+            <p className="text-base text-gray-500">Link up to 5 e-commerce platforms</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Manage up to 500 products</p>
+            <p className="text-base text-gray-500">Manage up to 500 products</p>
           </div>
           <div className="flex flex-row items-start gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4 mt-1"></Image>
-            <p className="text-normal text-gray-500">Advanced dashboard access with real-time analytics</p>
+            <p className="text-base text-gray-500">Advanced dashboard access with real-time analytics</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Priority customer support</p>
+            <p className="text-base text-gray-500">Priority customer support</p>
           </div>
         </div>
       </div>
@@ -77,27 +77,27 @@ export default function Plans({ pricingType }) {
             <p className="w-fit py-1 px-3 text-sm font-semibold text-[#004440] justify-center flex bg-[#EFFCF6] rounded-3xl ">Enterprise</p>
           </div>
           <p className="text-2xl md:text-4xl font-semibold flex items-center gap-1">Custom Price</p>
-          <p className="text-normal text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <button type="button" className="bg-teal-600 w-full py-3 text-white rounded-xl text-center">
+          <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
+          <button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
             Sign Up for Free
           </button>
         </div>
         <div className="w-full px-6 py-4 items-start border-t-2 space-y-3">
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Unlimited platform integrations</p>
+            <p className="text-base text-gray-500">Unlimited platform integrations</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">Manage unlimited products</p>
+            <p className="text-base text-gray-500">Manage unlimited products</p>
           </div>
           <div className="flex flex-row items-start gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4 mt-1"></Image>
-            <p className="text-normal text-gray-500">Full dashboard access with advanced analytics</p>
+            <p className="text-base text-gray-500">Full dashboard access with advanced analytics</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <Image src={TickImg} alt="wait" className="w-4 h-4"></Image>
-            <p className="text-normal text-gray-500">24/7 premium support</p>
+            <p className="text-base text-gray-500">24/7 premium support</p>
           </div>
         </div>
       </div>
