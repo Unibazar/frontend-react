@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1508771400123-e194ad75c0e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2R1Y3RzfGVufDB8MHwwfHx8MA%3D%3D",
+      "rating": 4,
+      "reviews": 32,
+      "description": "A cozy spot near the bustling market and public transport.",
+      "price": "$250"
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://images.unsplash.com/photo-1626104853886-8f06aed1bec5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2R1Y3RzfGVufDB8MHwwfHx8MA%3D%3D",
+      "rating": 4,
+      "reviews": 58,
+      "description": "Stylish apartment with great city views, close to shops and restaurants.",
+      "price": "$380"
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://images.unsplash.com/photo-1551029313-1c711302ce7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHByb2R1Y3RzfGVufDB8MHwwfHx8MA%3D%3D",
+      "rating": 3,
+      "reviews": 20,
+      "description": "Quiet retreat with easy access to the main attractions and public transport.",
+      "price": "$220"
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://images.unsplash.com/photo-1627384113890-8f8893f2411a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHByb2R1Y3RzfGVufDB8MHwwfHx8MA%3D%3D",
+      "rating": 4,
+      "reviews": 45,
+      "description": "Modern design with luxurious amenities, near the beach and dining options.",
+      "price": "$350"
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://images.unsplash.com/photo-1631022965860-0b83659e26b8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAwfHxwcm9kdWN0c3xlbnwwfDB8MHx8fDA%3D",
+      "rating": 2,
+      "reviews": 36,
+      "description": "Charming place with easy access to local attractions and transportation.",
+      "price": "$290"
+    },
+    {
+      "id": 6,
+      "imageUrl": "https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTgwfHxwcm9kdWN0c3xlbnwwfDB8MHx8fDA%3D",
+      "rating": 4,
+      "reviews": 27,
+      "description": "Ideal for families, close to parks and cultural sites.",
+      "price": "$310"
+    },
+    {
+      "id": 7,
+      "imageUrl": "https://images.unsplash.com/photo-1638953173691-671b6c2692fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHByb2R1Y3RzfGVufDB8MXwwfHx8MA%3D%3D",
+      "rating": 4,
+      "reviews": 68,
+      "description": "Elegant space with top-notch facilities, centrally located.",
+      "price": "$400"
+    },
+    {
+      "id": 8,
+      "imageUrl": "https://images.unsplash.com/photo-1645961359148-ca3f853de345?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2R1Y3RzfGVufDB8MXwwfHx8MA%3D%3D",
+      "rating": 4,
+      "reviews": 31,
+      "description": "Comfortable and conveniently located, perfect for short stays.",
+      "price": "$270"
+    },
+    {
+      "id": 9,
+      "imageUrl": "https://images.unsplash.com/photo-1611308725032-74f0a551d018?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fHByb2R1Y3RzfGVufDB8MXwwfHx8MA%3D%3D",
+      "rating": 4,
+      "reviews": 22,
+      "description": "Great location with easy access to nightlife and public transport.",
+      "price": "$300"
+    },
+    {
+      "id": 10,
+      "imageUrl": "https://images.unsplash.com/photo-1611308725032-74f0a551d018?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fHByb2R1Y3RzfGVufDB8MXwwfHx8MA%3D%3D",
+      "rating": 1,
+      "reviews": 19,
+      "description": "Simple yet cozy place, close to major attractions and shopping areas.",
+      "price": "$230"
+    }
+  ]
+  
