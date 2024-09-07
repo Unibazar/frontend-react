@@ -1,3 +1,4 @@
+import ContactSupport from '../../components/Dashboard/DashboardPages/HelpAndSupportPages/ContactSupport'
 import Head from 'next/head'
 
 export default function helpandsupport() {
@@ -8,7 +9,7 @@ export default function helpandsupport() {
                 <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
             </Head>
             
-                <div>help&support</div>
+            <ContactSupport/>
         </>
     )
 }
