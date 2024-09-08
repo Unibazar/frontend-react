@@ -1,8 +1,6 @@
 import '@/styles/global.css';
 import PageLayout from './layout';
 import ReduxProvider from '@/redux/ReduxProvider';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import DashboardLayout from './dashboard/layout';
 
 export default function MyApp({ Component, pageProps, router }) {
@@ -42,7 +40,6 @@ export default function MyApp({ Component, pageProps, router }) {
           <Component {...pageProps} />
         </PageLayout>
       )}
-      <ToastContainer />
     </ReduxProvider>
   );
 }

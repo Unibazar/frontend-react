@@ -48,6 +48,9 @@ const Signup = () => {
     event.preventDefault();
   };
 
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
