@@ -27,7 +27,7 @@ const AccordionItem = ({ FAQ }) => {
       <div className="flex w-full justify-center gap-7 flex-wrap">
         <div className="left w-full md:flex-1 space-y-4">
           {LeftPart.map((item, index) => (
-            <Accordion className="shadow-none bg-[#FAF9F9] before:hidden" expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+            <Accordion key={index} className="shadow-none bg-[#FAF9F9] before:hidden" expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
               <AccordionSummary expandIcon={expanded === `panel${index}` ? <RemoveIcon /> : <AddIcon />}>
                 <Typography>{item.question}</Typography>
               </AccordionSummary>
@@ -39,7 +39,7 @@ const AccordionItem = ({ FAQ }) => {
         </div>
         <div className="right w-full md:flex-1 space-y-4">
           {RightPart.map((item, index) => (
-            <Accordion className="shadow-none bg-[#FAF9F9] before:hidden" expanded={expanded === `panel${index + midpoint}`} onChange={handleChange(`panel${index + midpoint}`)}>
+            <Accordion key={index} className="shadow-none bg-[#FAF9F9] before:hidden" expanded={expanded === `panel${index + midpoint}`} onChange={handleChange(`panel${index + midpoint}`)}>
               <AccordionSummary expandIcon={expanded === `panel${index + midpoint}` ? <RemoveIcon /> : <AddIcon />}>
                 <Typography>{item.question}</Typography>
               </AccordionSummary>
