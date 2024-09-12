@@ -52,9 +52,11 @@ const FAQ = () => {
   ];
 
   return (
-    <div className=" w-full  flex-col justify-center pb-10 ">
+    <div className=" w-full  flex-col justify-center px-10 ">
       <h2 className="w-full font-bold text-center  text-3xl py-10">Frequently Asked Questions</h2>
-      <AccordionItem faqData={FrequentlyAskedQuestion} indexA='0' indexB='6' indexC='6' indexD='11'/>
+      <div className='px-[5vw]'>
+        <AccordionItem FAQ={FrequentlyAskedQuestion}/>
+      </div>
     </div>
   );
 };

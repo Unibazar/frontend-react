@@ -52,6 +52,11 @@ body {
   }
 } */
 
+.MuiCollapse-root{
+  transition: all linear 300ms !important;
+}
+
+
 .section {
   padding: 0px 64px;
 }

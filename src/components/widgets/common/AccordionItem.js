@@ -1,77 +1,57 @@
 'use client';
 import React, { useState } from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
-const AccordionItem = ({faqData , indexA, indexB, indexC, indexD}) => {
-  const [expanded, setExpanded] = useState(null);
+const AccordionItem = ({ FAQ }) => {
+  const [expanded, setExpanded] = useState(false);
+  let midpoint = 0;
 
-
-  console.log(indexA , indexB, indexC, indexD);
-  const sliceA = faqData.slice(indexA, indexB);
-  const sliceB = faqData.slice(indexC, indexD);
-
-  if (!faqData || !Array.isArray(faqData)) {
-    return <div>No FAQ data available</div>;
-  }
-    
-  const handleToggle = (index) => {
-    setExpanded(expanded === index ? null : index);
+  const splitArrayInTwo = arr => {
+    midpoint = Math.ceil(arr.length / 2);
+    return [arr.slice(0, midpoint), arr.slice(midpoint)];
   };
+  const [LeftPart, RightPart] = splitArrayInTwo(FAQ);
 
+  const handleChange = panel => (event, isExpanded) => {
+    console.log(isExpanded);
+
+    setExpanded(isExpanded ? panel : false);
+  };
   return (
-    
-    <>   
-    
-      <div className='w-full  gap-4 flex md:flex-row flex-col md:justify-center '>
-        <div className='flex flex-col gap-4'>
-          {sliceA.map((item, index) => (
-              <div key={index} className='md:w-[510px] w-full bg-gray-100 rounded-lg cursor-pointer  p-3 ' 
-                onClick={() => handleToggle(index)}>
-                <div className='w-full flex justify-between'>
-                  <p className='text-lg  '>{item.question}</p>
-                  <p className={`text-lg items-center flex ${expanded === index ? 'rotate-180' : ''} transition duration-500 ease-in-out will-change`}>
-                    {expanded === index ? '-' : '+'}
-                  </p>
-                </div>
-                <div
-                  className={`${
-                    expanded === index ? 'max-h-screen' : 'max-h-0'
-                  } transition-all duration-300 ease-in-out overflow-hidden will-change`}
-                >
-                  <p className='w-full text-base text-gray-500 font-thin pt-1'>
-                    {item.answer}
-                  </p>
-                </div>
-              </div>
-            ))}
+    <>
+      <div className="flex w-full justify-center gap-7 flex-wrap">
+        <div className="left w-full md:flex-1 space-y-4">
+          {LeftPart.map((item, index) => (
+            <Accordion className="shadow-none bg-[#FAF9F9] before:hidden" expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+              <AccordionSummary expandIcon={expanded === `panel${index}` ? <RemoveIcon /> : <AddIcon />}>
+                <Typography>{item.question}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{item.answer}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
         </div>
-
-        <div className='flex flex-col gap-4'>
-          {sliceB.map((item, index) => (
-              <div key={index} className='md:w-[510px] w-full bg-gray-100 rounded-lg  cursor-pointer p-3 ' 
-                onClick={() => handleToggle(index + indexB)}>
-                <div className='w-full flex justify-between  '>
-                  <p className='text-lg  '>{item.question}</p>
-                  <p className={`text-lg   items-center flex  transition duration-500 ease-in-out ${
-                      expanded === index + indexB ? 'rotate-180' : ''}`}>
-                    {expanded === index + indexB ? '-' : '+'}
-                  </p>
-                </div>
-                <div
-                  className={`${
-                  expanded === index + indexB ? 'max-h-screen' : 'max-h-0'
-                  } transition-all duration-300 ease-in-out overflow-hidden`}
-                >
-                  <p className='w-full text-base text-gray-500 font-thin pt-1'>
-                    {item.answer}
-                  </p>
-                </div>
-              </div>
-            ))}
+        <div className="right w-full md:flex-1 space-y-4">
+          {RightPart.map((item, index) => (
+            <Accordion className="shadow-none bg-[#FAF9F9] before:hidden" expanded={expanded === `panel${index + midpoint}`} onChange={handleChange(`panel${index + midpoint}`)}>
+              <AccordionSummary expandIcon={expanded === `panel${index + midpoint}` ? <RemoveIcon /> : <AddIcon />}>
+                <Typography>{item.question}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{item.answer}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
         </div>
-          
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AccordionItem
+export default AccordionItem;
