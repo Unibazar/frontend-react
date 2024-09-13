@@ -1,6 +1,6 @@
 import Signup from '../components/Auth/Signup/Signup.js';
 import Head from 'next/head.js';
-export default function SignUp(){
+export default function Register(){
   return(
     <div>
        <Head>

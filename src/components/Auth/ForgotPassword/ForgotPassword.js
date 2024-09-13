@@ -12,6 +12,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { forgetPassword } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
 import { toast } from 'react-toastify';
+import IconButton from '@mui/material/IconButton';
+import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import EmailIcon from '@mui/icons-material/Email';
 
 function Popup({ onClose }) {
   const styles = {
@@ -102,7 +108,24 @@ function ForgotPassword() {
             your password
           </p>
           <form className="flex flex-col justify-center items-center gap-5">
-            <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={e => setEmail(e.target.value)} required />
+          <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+              <InputLabel htmlFor="outlined-adornment-email">Email *</InputLabel>
+              <OutlinedInput
+                error={error && error.message ? true : false}
+                id="standard-error-helper-text"
+                type="email"
+                onChange={e => setEmail(e.target.value)}
+                placeholder="jhon@gmail.com"
+                required
+                helperText={error && error.message ? 'incorrect email' : ''}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <EmailIcon />
+                  </InputAdornment>
+                }
+                label="email"
+              />
+            </FormControl>
 
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <button

@@ -19,9 +19,11 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
 
 const Signup = () => {
   const [data, setUser] = useState({
@@ -100,29 +102,65 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please fill the details and create account</p>
           <form className="flex flex-col justify-center items-center gap-3" onSubmit={handleSubmit}>
-            <div className="flex flex-col  gap-3">
-              <TextField type="text" id="outlined-uncontrolled" label="Name" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
-              <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
-              <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
-                <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  type={showPassword ? 'text' : 'password'}
-                  onChange={onchangeData}
-                  required
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password *"
-                />
-              </FormControl>
-            </div>
-
-            {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
+            <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+              <InputLabel htmlFor="outlined-adornment-name">Name *</InputLabel>
+              <OutlinedInput
+                id="standard"
+                type="text"
+                onChange={onchangeData}
+                placeholder="jhon steeves"
+                required
+                startAdornment={
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                }
+                label="name"
+              />
+            </FormControl>
+            <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+              <InputLabel htmlFor="outlined-adornment-email">Email *</InputLabel>
+              <OutlinedInput
+                error={error && error.message ? true : false}
+                id="standard-error-helper-text"
+                type="email"
+                onChange={onchangeData}
+                placeholder="jhon@gmail.com"
+                required
+                helperText={error && error.message ? 'incorrect email' : ''}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <EmailIcon />
+                  </InputAdornment>
+                }
+                label="email"
+              />
+            </FormControl>
+            <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+              <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+              <OutlinedInput
+                error={error && error.message ? true : false}
+                id="standard-error-helper-text"
+                type={showPassword ? 'text' : 'password'}
+                onChange={onchangeData}
+                placeholder="********"
+                required
+                helperText={error && error.message ? 'incorrect password' : ''}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <LockIcon />
+                  </InputAdornment>
+                }
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password *"
+              />
+            </FormControl>
             <p className="w-full text-normal text-gray-500 text-left p-1 pb-2">Password must be 8 character</p>
             <button
               type="submit"

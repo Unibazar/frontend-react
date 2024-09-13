@@ -14,7 +14,18 @@ import styles from './ResetPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { login, loadUser, resetPassword } from '@/redux/slice/userSlice'
 import Loader from '@/components/Loader/Loader'
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+
 const ResetPassword = ({ userToken }) => {
 
     const [newPassword, setNewPassword] = useState("");
@@ -74,14 +85,56 @@ const ResetPassword = ({ userToken }) => {
                     <h1 className="text-3xl font-bold text-center">Set Password</h1>
                     <p className='w-full text-normal text-gray-500 text-center py-3'>Please set the password that you will be remember!</p>
                     <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
-                        <input type="text" placeholder="newPassword" name='newPassword' className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl " onChange={(e) => setNewPassword(e.target.value)} />
-                        <div className='w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl'>
-                            <input type="password" placeholder="confirmPassword" name='confirmPassword' className="w-auto outline-0 border-0 bg-gray-100 " onChange={(e) => setConfirmPassword(e.target.value)} />
-                            <div className=' w-auto items-center'>
-                                <IoMdEyeOff style={{ 'color': 'gray' }} />
-                            </div>
-                        </div>
+                        <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                            <InputLabel htmlFor="outlined-adornment-password">newPassword *</InputLabel>
+                            <OutlinedInput
+                                error={error && error.message ? true : false}
+                                id="standard-error-helper-text"
+                                type={showPassword ? 'text' : 'password'}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                placeholder="newPassword"
+                                required
+                                helperText={error && error.message ? 'incorrect password' : ''}
+                                startAdornment={
+                                <InputAdornment position="start">
+                                    <LockIcon />
+                                </InputAdornment>
+                                }
+                                endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                                }
+                                label="newPassword *"
+                            />
+                        </FormControl>
+                        <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                        <InputLabel htmlFor="outlined-adornment-password">confirmPassword *</InputLabel>
+                        <OutlinedInput
+                            error={error && error.message ? true : false}
+                            id="standard-error-helper-text"
+                            type={showPassword ? 'text' : 'password'}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder="confirmPassword"
+                            required
+                            helperText={error && error.message ? 'incorrect password' : ''}
+                            startAdornment={
+                            <InputAdornment position="start">
+                                <LockIcon />
+                            </InputAdornment>
+                            }
+                            endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                                {showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                            }
+                            label="confirmPassword *"
+                        />
+                    </FormControl>
 
                         {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
                         <button type='submit' className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
