@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import OtpComponent from '../components/Auth/opt/OtpComponent';
+import OtpComponent from '../components/Auth/OtpSignup/Otp';
 
 const otp = () => {
   return (
@@ -9,7 +9,7 @@ const otp = () => {
         <title>Otp | Unibazar</title>
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
       </Head>
-      <OtpComponent/>
+      <OtpComponent />
     </div>
   );
 };
