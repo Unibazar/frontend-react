@@ -6,100 +6,133 @@ import { IoMdEyeOff, IoMdEye } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-
-import styles from './ResetPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, loadUser, resetPassword } from '@/redux/slice/userSlice';
+import { resetPassword, loadUser, clearUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
-import { toast } from 'react-toastify';
+import { Snackbar } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
+import { FormControl, OutlinedInput, InputLabel, IconButton, InputAdornment, TextField } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+
 const ResetPassword = ({ userToken }) => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('info');
 
-  const { user, isLoading, error } = useSelector(state => state.user);
-  const dispatch = useDispatch();
+    const { user, isLoading, error } = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const router = useRouter();
 
-  const router = useRouter();
-  const handleBackClick = () => {
-    router.back();
-  };
+    useEffect(() => {
+        if (localStorage.getItem('jwtToken')) {
+            dispatch(loadUser());
+        }
+    }, [dispatch]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
+    useEffect(() => {
+        if (user) {
+            router.replace('/dashboard');
+        }
+        if (error && error.message) {
+            setSnackbarMessage(error.message);
+            setSnackbarSeverity('error');
+            setSnackbarOpen(true);
+            dispatch(clearUser());
+        }
+    }, [user, error, router, dispatch]);
 
-    dispatch(resetPassword({ newPassword, confirmPassword, userToken }));
-  };
+    const handleSubmit = e => {
+        e.preventDefault();
+        dispatch(resetPassword({ newPassword, confirmPassword, userToken }));
+    };
 
-  useEffect(() => {
-    if (localStorage.getItem('jwtToken')) {
-      dispatch(loadUser());
-    }
-  }, [dispatch]);
+    const handleClickShowPassword = () => setShowPassword(prev => !prev);
 
-  useEffect(() => {
-    if (user) {
-      router.replace('/dashboard');
-    }
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
+    };
 
-    if (error && error.message) {
-      toast.error(error.message);
-    }
-  }, [user, error, router]);
-
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  return (
-    <>
-      {isLoading && <Loader />}
-      <div>
-        <div className="md:hidden pt-12 pl-10  w-full flex">
-          <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />
-        </div>
-        <div className={`${styles.logo} pt-12 pl-12`}>
-          <Link href="/">
-            <Image src={LogoImage} alt="Logo" className="w-36" />
-          </Link>
-        </div>
-      </div>
-      <div className="w-full flex md:flex-row flex-col justify-center justify-items-center items-start p-10">
-        <div className={`${styles.mainimg} w-full md:ml-20 md:mt-10 p-5 `}>
-          <Image src={SigninImg} alt="Signin_Image"></Image>
-        </div>
-        <div className=" md:mr-10 md:pr-28  w-full p-5">
-          <h1 className="text-3xl font-bold text-center">Set Password</h1>
-          <p className="w-full text-normal text-gray-500 text-center py-3">Please set the password that you will be remember!</p>
-          <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
-            <input
-              type="text"
-              placeholder="newPassword"
-              name="newPassword"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={e => setNewPassword(e.target.value)}
-            />
-            <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type={showPassword ? 'text' : 'password'} placeholder="confirmPassword" name="confirmPassword" className="w-auto outline-0 border-0 bg-gray-100 " onChange={e => setConfirmPassword(e.target.value)} />
-              <div className=" w-auto items-center" onClick={handleShowPassword}>
-                {showPassword ? <IoMdEye style={{ color: 'gray' }} /> : <IoMdEyeOff style={{ color: 'gray' }} />}
-              </div>
-            </div>
-
-            {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
-            <button
-              type="submit"
-              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
-            2 px-4 rounded-2xl py-3"
+    return (
+        <>
+            {isLoading && <Loader />}
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-              Change
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
-  );
+                <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </MuiAlert>
+            </Snackbar>
+            <div>
+                <div className='md:hidden pt-12 pl-10 w-full flex'>
+                    <IoChevronBackOutline
+                        className='bg-gray-50 rounded-full w-8 h-8 p-2'
+                        onClick={() => router.back()}
+                    />
+                </div>
+                <div className='pt-12 pl-12'>
+                    <Link href='/'>
+                        <Image src={LogoImage} alt="Logo" className='w-36' />
+                    </Link>
+                </div>
+            </div>
+            <div className="w-full flex md:flex-row flex-col justify-center items-start p-10">
+                <div className="w-full md:ml-20 md:mt-10 p-5">
+                    <Image src={SigninImg} alt="Signin_Image" />
+                </div>
+                <div className="md:mr-10 md:pr-28 w-full p-5">
+                    <h1 className="text-3xl font-bold text-center">Set Password</h1>
+                    <p className='w-full text-normal text-gray-500 text-center py-3'>
+                        Please set the password that you will remember!
+                    </p>
+                    <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
+                        <TextField
+                            type="password"
+                            id="new-password"
+                            label="New Password"
+                            variant="outlined"
+                            className="md:w-[500px] w-[380px] border bg-gray-100 rounded"
+                            onChange={e => setNewPassword(e.target.value)}
+                            required
+                        />
+                        <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                            <InputLabel htmlFor="confirm-password">Confirm Password *</InputLabel>
+                            <OutlinedInput
+                                id="confirm-password"
+                                type={showPassword ? 'text' : 'password'}
+                                onChange={e => setConfirmPassword(e.target.value)}
+                                required
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={e => e.preventDefault()}
+                                            edge="end"
+                                        >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                label="Confirm Password *"
+                            />
+                        </FormControl>
+                        <button
+                            type="submit"
+                            className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-2xl"
+                        >
+                            Change
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default ResetPassword;

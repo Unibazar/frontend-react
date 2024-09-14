@@ -5,15 +5,24 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import FbImg from '../../../assets/fb.png';
 import AppleImg from '../../../assets/apple.png';
 import GoogleImg from '../../../assets/google.png';
-import { IoMdEyeOff, IoMdEye } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
 import styles from './SignUp.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { register, loadUser } from '@/redux/slice/userSlice';
+
+import { register, loadUser, clearUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
-import { toast } from 'react-toastify';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,6 +32,25 @@ const Signup = () => {
     password: '',
   });
   const router = useRouter();
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -47,12 +75,17 @@ const Signup = () => {
 
   useEffect(() => {
     if (user && user.success) {
-      toast.success('Otp send successfully!');
+      setSnackbarMessage('Otp send successfully!');
+      setSnackbarSeverity('success');
+      setSnackbarOpen(true);
       router.replace('/otp');
     }
 
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
   }, [user, error, router]);
 
@@ -65,6 +98,11 @@ const Signup = () => {
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10  w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />
@@ -83,29 +121,26 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please fill the details and create account</p>
           <form className="flex flex-col justify-center items-center gap-3" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={onchangeData}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              name="email"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={onchangeData}
-              required
-            />
-            <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type={showPassword ? 'text' : 'password'} placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100  " onChange={e => setShowPassword(e.target.value)} required />
-              <div className=" w-auto items-center" onClick={handleShowPassword}>
-                {showPassword ? <IoMdEye style={{ color: 'gray' }} /> : <IoMdEyeOff style={{ color: 'gray' }} />}
-              </div>
+            <div className="flex flex-col  gap-3">
+              <TextField type="text" id="outlined-uncontrolled" label="Name" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
+              <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
+              <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? 'text' : 'password'}
+                  onChange={onchangeData}
+                  required
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password *"
+                />
+              </FormControl>
             </div>
 
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
@@ -113,7 +148,7 @@ const Signup = () => {
             <button
               type="submit"
               className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
-            2 px-4 rounded-2xl py-3"
+            2 px-4 rounded-xl py-3"
             >
               Sign Up
             </button>
@@ -125,7 +160,7 @@ const Signup = () => {
               <br />
               Or connect
             </p>
-            <div className="w-full flex md:flex-row items-center justify-center justify-items-center gap-1 py-3">
+            <div className="w-full flex md:flex-row items-center justify-center justify-items-center gap-1 py-2">
               <Image src={FbImg} alt="facbook-image"></Image>
               <Image src={AppleImg} alt="facbook-image"></Image>
               <Image src={GoogleImg} alt="facbook-image"></Image>
