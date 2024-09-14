@@ -27,6 +27,7 @@ import MuiAlert from '@mui/material/Alert';
 const Signin = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -37,7 +38,6 @@ const Signin = () => {
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
-  const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -68,7 +68,7 @@ const Signin = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {

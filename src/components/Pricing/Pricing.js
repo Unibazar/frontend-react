@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Pricing.module.css';
+import Link from 'next/link';
+
 const Pricing = () => {
   return (
     <>
@@ -11,7 +13,7 @@ const Pricing = () => {
         <div className={styles.pricingPart}>
           <div className={styles.temp}>
             <h1>FREE</h1>
-            <p className='text-xl font-bold'>$0</p>
+            <p className="text-xl font-bold">$0</p>
             <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- 3</b> <br />
@@ -23,14 +25,14 @@ const Pricing = () => {
               Customer Support Level  <b> basic</b> <br />
             </p>
             <div className={`${styles.btn} ${styles.navButtons} md:w-full md:h-full items-end flex justify-center`}>
-              <a href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
+              <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
                 Get started
-              </a>
+              </Link>
             </div>
           </div>
           <div className={styles.temp}>
             <h1>PRO</h1>
-            <p className='text-xl font-bold'>$10</p>
+            <p className="text-xl font-bold">$10</p>
             <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- 5</b> <br />
@@ -49,7 +51,7 @@ const Pricing = () => {
           </div>
           <div className={styles.temp}>
             <h1>ENTERPRISE</h1>
-            <p className='text-xl font-bold'>Custom Pricing</p>
+            <p className="text-xl font-bold">Custom Pricing</p>
             <div className={styles.seperator}></div>
             <p className={`${styles.verySmall} ${styles.small}`}>
               Number of Linked Platforms <b>- Unlimited</b>  <br />
@@ -60,9 +62,9 @@ const Pricing = () => {
               Customer Support Level <b>- Premium </b> <br />
             </p>
             <div className={`${styles.btn} ${styles.navButtons} md:w-full md:h-full items-end flex justify-center`}>
-              <a href="#" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
+              <Link href="/contact-us" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

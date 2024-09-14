@@ -3,15 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import LogoImage from '../../../public/unibazar-logo.png';
-import profileImg from '../../../public/profileImg.png';
 import Link from 'next/link';
-import styles from './AppNavBar.module.css';
 import { usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '@/redux/slice/userSlice';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+import styles from './AppNavBar.module.css';
+import profileImg from '../../../public/userImage.png'
 function AppNavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

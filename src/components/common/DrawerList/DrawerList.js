@@ -3,8 +3,13 @@ import Image from 'next/image';
 import Logo from "../../../../public/unibazar-logo.png"
 
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 export default function DrawerList({toggleDrawer , isActive}) {
+
+  const { user } = useSelector(state => state.user);
+
+
   return (
     <Box role="presentation" onClick={toggleDrawer(false)}>
        <div className="w-[250px] bg-white">
@@ -37,7 +42,7 @@ export default function DrawerList({toggleDrawer , isActive}) {
                 Contact Us
               </Link>
             </li>
-            <li>
+            {!user?.user && <><li>
               <Link href="/login" className={`${isActive('/login') ? ' text-teal-500' : 'text-gray-600'} text-gray-600 hover:text-teal-700`}>
                 Login
               </Link>
@@ -46,7 +51,7 @@ export default function DrawerList({toggleDrawer , isActive}) {
               <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800">
                 Register
               </Link>
-            </li>
+            </li></>}
           </ul>
         </div>
     </Box>

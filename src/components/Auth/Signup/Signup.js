@@ -25,6 +25,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [data, setUser] = useState({
     name: '',
     email: '',
@@ -36,7 +37,6 @@ const Signup = () => {
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
-  const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -71,7 +71,7 @@ const Signup = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user && user.success) {
@@ -87,10 +87,13 @@ const Signup = () => {
       setSnackbarOpen(true);
       dispatch(clearUser());
     }
-  }, [user, error]);
+  }, [user, error, router]);
 
   const handleBackClick = () => {
     router.back();
+  };
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
   return (
     <>
