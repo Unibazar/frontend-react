@@ -5,7 +5,7 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import FbImg from '../../../assets/fb.png';
 import AppleImg from '../../../assets/apple.png';
 import GoogleImg from '../../../assets/google.png';
-import { IoMdEyeOff } from 'react-icons/io';
+import { IoMdEyeOff, IoMdEye } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
@@ -16,6 +16,7 @@ import Loader from '@/components/Loader/Loader';
 import { toast } from 'react-toastify';
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [data, setUser] = useState({
     name: '',
     email: '',
@@ -42,7 +43,7 @@ const Signup = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user && user.success) {
@@ -53,10 +54,13 @@ const Signup = () => {
     if (error && error.message) {
       toast.error(error.message);
     }
-  }, [user, error]);
+  }, [user, error, router]);
 
   const handleBackClick = () => {
     router.back();
+  };
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
   return (
     <>
@@ -98,9 +102,9 @@ const Signup = () => {
               required
             />
             <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type="password" placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100 " onChange={onchangeData} required />
-              <div className=" w-auto items-center">
-                <IoMdEyeOff style={{ color: 'gray' }} />
+              <input type={showPassword ? 'text' : 'password'} placeholder="Password" name="password" className="w-auto outline-0 border-0 bg-gray-100  " onChange={e => setShowPassword(e.target.value)} required />
+              <div className=" w-auto items-center" onClick={handleShowPassword}>
+                {showPassword ? <IoMdEye style={{ color: 'gray' }} /> : <IoMdEyeOff style={{ color: 'gray' }} />}
               </div>
             </div>
 
