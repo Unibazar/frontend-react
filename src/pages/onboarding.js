@@ -4,7 +4,7 @@ import PersonalInformation from '@/components/Onboarding/Personal-information';
 import BusinessDetail from '@/components/Onboarding/Business-detail';
 import LinkAccount from '@/components/Onboarding/Link-account';
 import { useState } from 'react';
-const onboarding = () => {
+const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 4));
@@ -24,4 +24,4 @@ const onboarding = () => {
   );
 };
 
-export default onboarding;
+export default OnboardingPage;
