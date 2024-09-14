@@ -10,6 +10,7 @@ import { LuListTodo } from "react-icons/lu";
 import { useState } from "react";
 import TableLayout from "./ProductPage-Components/TableLayout";
 import tableData from "./DummyData/TableData"
+import CardLayout from "./ProductPage-Components/CardLayout";
 
 
 export default function ListProductPage() {
@@ -106,7 +107,7 @@ export default function ListProductPage() {
         </div>
 
 
-        <TableLayout tableData={tableData} />
+        {layoutDetail=="list"?<TableLayout tableData={tableData} />:<CardLayout/>}
       </div>:
       <div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
         <h1 className="capitalize">you have no products to show please add a product first</h1>
