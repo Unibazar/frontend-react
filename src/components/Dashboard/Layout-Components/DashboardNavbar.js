@@ -3,6 +3,7 @@ import { IoIosSearch } from 'react-icons/io';
 import { FaBell } from 'react-icons/fa';
 import { RiMenuFold3Line } from 'react-icons/ri';
 import Image from 'next/image';
+import logo from '../../../assets/profile-placeholder.jpg';
 export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
   return (
     <div className="flex items-center justify-between w-full p-4 sticky top-0 z-[99] bg-white">
@@ -18,7 +19,7 @@ export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
 
       <div className="right flex items-center gap-2 md:gap-4">
         <FaBell className="text-lg md:text-2xl shrink-0" />
-        <Image className="rounded-full w-8 md:w-12 h-8 md:h-12 object-cover" src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+        <Image className="rounded-full w-8 md:w-12 h-8 md:h-12 object-cover" src={logo} alt="" height={20} width={20} />
       </div>
     </div>
   );
