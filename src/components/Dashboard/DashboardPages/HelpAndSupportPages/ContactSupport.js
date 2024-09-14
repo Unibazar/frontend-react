@@ -11,17 +11,15 @@ import HelpAndSupportFAQ from './HelpAndSupport-Componets/HelpAndSupport-FAQ';
 
 export default function ContactSupport() {
   const [value, setValue] = useState('contactSupport');
-  
-  const handleChange = (e,newValue) => {
+
+  const handleChange = (e, newValue) => {
     setValue(newValue);
-    
-    
   };
-  
+
 
   return (
     <div className="h-full w-full  px-4 py-4 md:px-7 md:py-7">
-       
+
       <div className="title flex flex-wrap justify-between items-center">
         <h1 className="md:text-3xl text-lg font-semibold ">Help & Support - {value}</h1>
       </div>
@@ -35,17 +33,19 @@ export default function ContactSupport() {
             </TabList>
           </Box>
           <TabPanel value="contactSupport">
-            <UserForm/>
+            <UserForm />
           </TabPanel>
           <TabPanel value="liveChat">
-            <LiveChat/>
+            <LiveChat />
           </TabPanel>
           <TabPanel value="FAQ">
-            <HelpAndSupportFAQ/>
+            <HelpAndSupportFAQ />
           </TabPanel>
         </TabContext>
       </Box>
-      
+
+
+
     </div>
   );
 }
