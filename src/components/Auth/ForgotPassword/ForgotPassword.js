@@ -11,13 +11,8 @@ import styles from './ForgotPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgetPassword } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
-import { toast } from 'react-toastify';
-import IconButton from '@mui/material/IconButton';
-import FormControl from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import EmailIcon from '@mui/icons-material/Email';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 function Popup({ onClose }) {
   const styles = {
@@ -65,15 +60,27 @@ function ForgotPassword() {
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   useEffect(() => {
+
     if (user && user.success) {
       togglePopup();
     }
 
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
-  }, [user, error]);
+  }, [user, error])
 
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
@@ -87,6 +94,11 @@ function ForgotPassword() {
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10  w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />
@@ -108,25 +120,7 @@ function ForgotPassword() {
             your password
           </p>
           <form className="flex flex-col justify-center items-center gap-5">
-          <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
-              <InputLabel htmlFor="outlined-adornment-email">Email *</InputLabel>
-              <OutlinedInput
-                error={error && error.message ? true : false}
-                id="standard-error-helper-text"
-                type="email"
-                onChange={e => setEmail(e.target.value)}
-                placeholder="jhon@gmail.com"
-                required
-                helperText={error && error.message ? 'incorrect email' : ''}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <EmailIcon />
-                  </InputAdornment>
-                }
-                label="email"
-              />
-            </FormControl>
-
+            <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={e => setEmail(e.target.value)} required />
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <button
               type="button"
@@ -134,8 +128,7 @@ function ForgotPassword() {
                 e.preventDefault();
                 dispatch(forgetPassword(email));
               }}
-              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold px-4 rounded-xl py-3"
-            >
+              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold px-4 rounded-xl py-3" >
               Reset Password
             </button>
           </form>

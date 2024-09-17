@@ -5,33 +5,52 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import FbImg from '../../../assets/fb.png';
 import AppleImg from '../../../assets/apple.png';
 import GoogleImg from '../../../assets/google.png';
-import { IoMdEyeOff } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
 import styles from './SignUp.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { register, loadUser } from '@/redux/slice/userSlice';
+
+import { register, loadUser, clearUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
-import { toast } from 'react-toastify';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import EmailIcon from '@mui/icons-material/Email';
-import LockIcon from '@mui/icons-material/Lock';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [data, setUser] = useState({
     name: '',
     email: '',
     password: '',
   });
   const router = useRouter();
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -52,38 +71,38 @@ const Signup = () => {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user && user.success) {
-      toast.success('Otp send successfully!');
+      setSnackbarMessage('Otp send successfully!');
+      setSnackbarSeverity('success');
+      setSnackbarOpen(true);
       router.replace('/otp');
     }
 
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
-  }, [user, error]);
+  }, [user, error, router]);
 
   const handleBackClick = () => {
     router.back();
   };
-
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword(show => !show);
-
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
-
-  const handleMouseUpPassword = event => {
-    event.preventDefault();
-  };
-
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10  w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />
@@ -102,65 +121,29 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-center">Sign up</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3">Please fill the details and create account</p>
           <form className="flex flex-col justify-center items-center gap-3" onSubmit={handleSubmit}>
-            <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
-              <InputLabel htmlFor="outlined-adornment-name">Name *</InputLabel>
-              <OutlinedInput
-                id="standard"
-                type="text"
-                onChange={onchangeData}
-                placeholder="jhon steeves"
-                required
-                startAdornment={
-                  <InputAdornment position="start">
-                    <AccountCircle />
-                  </InputAdornment>
-                }
-                label="name"
-              />
-            </FormControl>
-            <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
-              <InputLabel htmlFor="outlined-adornment-email">Email *</InputLabel>
-              <OutlinedInput
-                error={error && error.message ? true : false}
-                id="standard-error-helper-text"
-                type="email"
-                onChange={onchangeData}
-                placeholder="jhon@gmail.com"
-                required
-                helperText={error && error.message ? 'incorrect email' : ''}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <EmailIcon />
-                  </InputAdornment>
-                }
-                label="email"
-              />
-            </FormControl>
-            <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
-              <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
-              <OutlinedInput
-                error={error && error.message ? true : false}
-                id="standard-error-helper-text"
-                type={showPassword ? 'text' : 'password'}
-                onChange={onchangeData}
-                placeholder="********"
-                required
-                helperText={error && error.message ? 'incorrect password' : ''}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <LockIcon />
-                  </InputAdornment>
-                }
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password *"
-              />
-            </FormControl>
+            <div className="flex flex-col  gap-3">
+              <TextField type="text" id="outlined-uncontrolled" label="Name" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
+              <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={onchangeData} required />
+              <FormControl variant="outlined" className="md:w-[500px] w-[380px] border bg-gray-100 rounded">
+                <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? 'text' : 'password'}
+                  onChange={onchangeData}
+                  required
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password *"
+                />
+              </FormControl>
+            </div>
+
+            {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <p className="w-full text-normal text-gray-500 text-left p-1 pb-2">Password must be 8 character</p>
             <button
               type="submit"

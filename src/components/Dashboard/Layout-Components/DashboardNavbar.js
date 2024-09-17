@@ -2,6 +2,7 @@ import { IoIosMenu } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { RiMenuFold3Line } from "react-icons/ri";
+import ProfileIcon from "../../common/ProfileIcon/ProfileIcon";
 
 export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
     return (
@@ -19,7 +20,7 @@ export default function DashboardNavbar({ setShowSidebar, showSidebar }) {
 
             <div className="right flex items-center gap-2 md:gap-4">
                 <FaBell className='text-lg md:text-2xl shrink-0' />
-                <img className='rounded-full w-8 md:w-12 h-8 md:h-12 object-cover' src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+                <ProfileIcon/>
             </div>
 
         </div>
