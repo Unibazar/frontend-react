@@ -80,7 +80,7 @@ const Signin = () => {
       setSnackbarOpen(true);
       dispatch(clearUser());
     }
-  }, [user, error, router]);
+  }, [user, error, router, dispatch]);
 
   const [showPassword, setShowPassword] = React.useState(false);
 
