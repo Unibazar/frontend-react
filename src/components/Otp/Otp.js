@@ -42,7 +42,7 @@ const Otp = () => {
     if (error && error.message) {
       toast.error(error.message);
     }
-  }, [user, error]);
+  }, [user, error ,router]);
 
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
@@ -103,7 +103,7 @@ const Otp = () => {
               ))}
             </div>
             <div className="max-w-[260px] mx-auto mt-4">
-              <button type="submit" className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-2xl py-3">
+              <button type="submit" className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold px-4 rounded-2xl py-3">
                 Verify
               </button>
             </div>

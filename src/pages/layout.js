@@ -22,7 +22,7 @@ export default function PageLayout({ children }) {
     if (localStorage.getItem('jwtToken')) {
       dispatch(loadUser());
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <div className={nunito.className}>
