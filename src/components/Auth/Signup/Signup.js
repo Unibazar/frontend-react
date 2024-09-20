@@ -87,7 +87,7 @@ const Signup = () => {
       setSnackbarOpen(true);
       dispatch(clearUser());
     }
-  }, [user, error, router]);
+  }, [user, error, router,dispatch]);
 
   const handleBackClick = () => {
     router.back();

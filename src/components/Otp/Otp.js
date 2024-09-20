@@ -42,7 +42,7 @@ const Otp = () => {
     if (error && error.message) {
       toast.error(error.message);
     }
-  }, [user, error]);
+  }, [user, error ,router]);
 
   const handleOtpChange = (e, index) => {
     const value = e.target.value;

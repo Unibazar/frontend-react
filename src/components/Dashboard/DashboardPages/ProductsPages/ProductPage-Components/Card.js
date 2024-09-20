@@ -1,5 +1,6 @@
 import React from 'react';
 import StarIcon from '@mui/icons-material/Star';
+import Image from 'next/image';
 
 export default function Card({ item }) {
   
@@ -7,7 +8,7 @@ export default function Card({ item }) {
     <div class="flex flex-col text-gray-700 bg-white overflow-hidden rounded-sm border-2 max-w-[270px]">
       {/* image part  */}
       <div class="text-white">
-        <img src={item.imageUrl} alt="card-image" className="w-full h-[200px] object-contain" />
+        <Image src={item.imageUrl} alt="card-image" className="w-full h-[200px] object-contain" width={40} height={40}/>
       </div>
 
       {/* description part  */}
