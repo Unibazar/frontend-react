@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import SigninImg from '../../../assets/signin-image.svg';
 import ForgotPassImg from '../../../assets/forgotPass.png';
@@ -6,10 +6,14 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-import TextField from '@mui/material/TextField';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import EmailIcon from '@mui/icons-material/Email';
 import styles from './ForgotPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { forgetPassword } from '@/redux/slice/userSlice';
+import { forgetPassword, clearUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -68,10 +72,17 @@ function ForgotPassword() {
     setSnackbarOpen(false);
   };
 
+  const togglePopup = useCallback(() => {
+    setIsPopupVisible(prevIsPopupVisible => !prevIsPopupVisible);
+  }, [setIsPopupVisible]);
+
   useEffect(() => {
+    const handleSuccess = () => {
+      togglePopup();
+    }
 
     if (user && user.success) {
-      togglePopup();
+      handleSuccess();
     }
 
     if (error && error.message) {
@@ -80,11 +91,7 @@ function ForgotPassword() {
       setSnackbarOpen(true);
       dispatch(clearUser());
     }
-  }, [user, error])
-
-  const togglePopup = () => {
-    setIsPopupVisible(!isPopupVisible);
-  };
+  }, [user, error, dispatch, togglePopup])
 
   const router = useRouter();
   const handleBackClick = () => {
@@ -110,17 +117,34 @@ function ForgotPassword() {
         </div>
       </div>
       <div className="w-full flex md:flex-row flex-col justify-center justify-items-center items-start p-10">
-        <div className={`${styles.mainimg} w-full md:ml-20 md:mt-10 p-5 `}>
+        <div className={`${styles.mainimg} w-full min-w-[400px] min-h-[400px] h-full justify-center flex md:mt-10 p-5 `}>
           <Image src={SigninImg} alt="Signin_Image" />
         </div>
-        <div className=" md:mr-10 md:pr-28 md:mt-20 justify-center justify-items-center items-center w-full p-5">
+        <div className=" flex flex-col justify-center min-w-[250px] w-full p-5">
           <h1 className="text-3xl font-bold text-center">Forgot password</h1>
           <p className="w-full text-normal text-gray-500 text-center py-3 pb-10">
             Enter your email account to reset <br />
             your password
           </p>
           <form className="flex flex-col justify-center items-center gap-5">
-            <TextField type="email" id="outlined-uncontrolled" label="Email" className="md:w-[500px] w-[380px] border bg-gray-100 rounded " onChange={e => setEmail(e.target.value)} required />
+            <FormControl variant="outlined" className="w-full min-w-[250px] border bg-gray-100 rounded">
+              <InputLabel htmlFor="outlined-adornment-email">Email *</InputLabel>
+              <OutlinedInput
+                error={error && error.message ? true : false}
+                id="standard-error-helper-text"
+                type="email"
+                onChange={e => setEmail(e.target.value)}
+                placeholder="jhon@gmail.com"
+                required
+                helperText={error && error.message ? 'incorrect email' : ''}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <EmailIcon />
+                  </InputAdornment>
+                }
+                label="email"
+              />
+            </FormControl>
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <button
               type="button"
@@ -128,7 +152,7 @@ function ForgotPassword() {
                 e.preventDefault();
                 dispatch(forgetPassword(email));
               }}
-              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold px-4 rounded-xl py-3" >
+              className="bg-teal-500 w-full min-w-[250px] hover:bg-teal-700 text-white font-bold px-4 rounded-xl py-3" >
               Reset Password
             </button>
           </form>
