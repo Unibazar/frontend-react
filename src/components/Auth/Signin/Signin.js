@@ -27,7 +27,6 @@ import MuiAlert from '@mui/material/Alert';
 const Signin = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -42,10 +41,6 @@ const Signin = () => {
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
   const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = event => {
     event.preventDefault();
   };
 
@@ -85,7 +80,14 @@ const Signin = () => {
       setSnackbarOpen(true);
       dispatch(clearUser());
     }
-  }, [user, error, router]);
+  }, [user, error, router, dispatch]);
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+
+  const handleMouseUpPassword = event => {
+    event.preventDefault();
+  };
 
   return (
     <>

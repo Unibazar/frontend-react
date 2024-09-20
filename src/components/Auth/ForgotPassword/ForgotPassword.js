@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import SigninImg from '../../../assets/signin-image.svg';
 import ForgotPassImg from '../../../assets/forgotPass.png';
@@ -54,6 +54,7 @@ function Popup({ onClose }) {
 }
 
 function ForgotPassword() {
+  
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [email, setEmail] = useState('');
 
@@ -80,11 +81,11 @@ function ForgotPassword() {
       setSnackbarOpen(true);
       dispatch(clearUser());
     }
-  }, [user, error])
+  }, [user, error , dispatch , togglePopup])
 
-  const togglePopup = () => {
-    setIsPopupVisible(!isPopupVisible);
-  };
+  const togglePopup = useCallback(() => {
+    setIsPopupVisible(prev => !prev);
+  }, []);
 
   const router = useRouter();
   const handleBackClick = () => {
