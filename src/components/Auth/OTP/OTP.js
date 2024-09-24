@@ -8,9 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './Otp.module.css';
 import { useRouter } from 'next/router';
 import { otpVerification } from '@/redux/slice/userSlice';
-import Loader from '../../../Loader/Loader';
 import { toast } from 'react-toastify';
-
+import Loader from '@/components/Loader/Loader';
 const Otp = () => {
   const [inputs, setinputs] = useState(new Array(4).fill(""));
   const [inputArr, setInputArr] = useState(inputs)
