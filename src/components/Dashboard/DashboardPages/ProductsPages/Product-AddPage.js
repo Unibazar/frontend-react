@@ -3,6 +3,7 @@
 import Loader from "@/components/Loader/Loader";
 import { addProduct } from "@/redux/slice/productSlice";
 import { Description } from "@mui/icons-material";
+import { TextField } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -17,7 +18,7 @@ export default function AddProductPage() {
     name: "",
     price: "",
     description: "",
-    dategory: "",
+    category: "",
     inventoryCount: ""
     // productPhoto1: {},
     // productPhoto2: {},
@@ -89,32 +90,27 @@ export default function AddProductPage() {
           {/* form for user to enter details about product */}
           <form className="w-full">
             <div className="flex gap-7 flex-wrap">
-              <div className="flex flex-col gap-4 flex-1 w-full">
+              <div className="flex flex-col gap-4 md:flex-1 w-full">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="productName">Name:</label>
-                  <input id="productName" type="text" placeholder="Add Product Name" name="name" value={ProductData.name} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg" />
+                  <TextField type="text" label="Name" variant="outlined" placeholder="Add Product Name" name="name" value={ProductData.name} onChange={(e) => handleChange(e)} className="text-sm md:text-lg p-2 rounded-lg" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="price">Price:</label>
-                  <input id="price" type="text" placeholder="Enter Price" name="price" value={ProductData.price} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg" />
+                  <TextField type="text" label="Price" variant="outlined" placeholder="Enter Price" name="price" value={ProductData.price} onChange={(e) => handleChange(e)} className="text-sm md:text-lg p-2 rounded-lg" />
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 flex-1 w-full">
-                <label htmlFor="description">Description:</label>
-                <textarea id="description" placeholder="Enter Product Description" name="description" value={ProductData.description} onChange={(e) => handleChange(e)} rows={6} className="border-2 text-sm md:text-lg p-2 rounded-lg"></textarea>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <TextField label="Description" multiline rows={6} placeholder="Enter Product Description" name="description" value={ProductData.description} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg"/>
               </div>
             </div>
 
             <div className="flex gap-7 mt-4 flex-wrap">
-              <div className="flex flex-col gap-2 flex-1 w-full">
-                <label htmlFor="category">Category:</label>
-                <textarea id="category" placeholder={"Write Feature in Each Line \n Feature 1 \n Feature 2 "} name="category" value={ProductData.category} onChange={(e) => handleChange(e)} rows={6} className="border-2 text-sm md:text-lg p-2 rounded-lg"></textarea>
-              </div>
-              <div className="flex flex-col gap-2 flex-1 w-full">
-                <label htmlFor="inventoryCount">Inventory Count:</label>
-                <textarea id="inventoryCount" placeholder="Enter No of Available Stocks" value={ProductData.inventoryCount} name="inventoryCount" onChange={(e) => handleChange(e)} rows={6} className="border-2 p-2 text-sm md:text-lg rounded-lg"></textarea>
-              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <TextField label="Category" multiline rows={6} placeholder={"Write Feature in Each Line \n Feature 1 \n Feature 2 "} name="category" value={ProductData.category} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg"/>
+                </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <TextField label="Inventory Count" multiline rows={6} placeholder="Enter No of Available Stocks" name="inventoryCount" value={ProductData.inventoryCount} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg"/> 
+                </div>
             </div>
 
             <div className="flex mt-4 gap-7 flex-wrap">
