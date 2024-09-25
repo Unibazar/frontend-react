@@ -5,12 +5,9 @@ const url = 'http://localhost:5000';
 
 export const addProduct = createAsyncThunk('product/add', async (productData, { rejectWithValue }) => {
     const token = localStorage.getItem('jwtToken');
-    console.log(productData);
     // const { name, price, description, inventoryCount, category } = productData;
     try {
-
         const response = await axios.post(`${url}/api/product/add`, productData, { headers: { token } });
-
         return response.data;
 
     } catch (error) {

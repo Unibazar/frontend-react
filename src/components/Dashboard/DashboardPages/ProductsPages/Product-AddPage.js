@@ -2,7 +2,6 @@
 
 import Loader from "@/components/Loader/Loader";
 import { addProduct } from "@/redux/slice/productSlice";
-import { Description } from "@mui/icons-material";
 import { TextField } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,18 +44,6 @@ export default function AddProductPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // console.log("ProductData before appending to FormData:", ProductData);
-
-    // const formData = new FormData();
-
-    // formData.append('name', ProductData.Name);
-    // formData.append('price', ProductData.Price);
-    // formData.append('description', ProductData.Description);
-    // formData.append('category', ProductData.Category);
-    // formData.append('inventoryCount', ProductData.InventoryCount);
-
-    // console.log(formData);
 
     dispatch(addProduct(ProductData));
 
