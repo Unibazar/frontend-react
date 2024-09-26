@@ -7,10 +7,11 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { FaListUl } from "react-icons/fa6";
 import { LuListTodo } from "react-icons/lu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TableLayout from "./ProductPage-Components/TableLayout";
-import tableData from "./DummyData/TableData"
 import CardLayout from "./ProductPage-Components/CardLayout";
+import { useDispatch, useSelector } from "react-redux";
+import { loadProduct } from "@/redux/slice/productSlice";
 
 
 export default function ListProductPage() {
@@ -24,6 +25,20 @@ export default function ListProductPage() {
   }
 
 
+  const dispatch = useDispatch();
+  const [ProductData, setProductData] = useState([]);
+  const { product, isLoading, error } = useSelector((state) => state.product);
+  
+  
+  useEffect(() => {
+    dispatch(loadProduct());
+  }, []);
+  
+  useEffect(() => {
+    setProductData(product?.product || []);
+    
+  }, [product])
+  
 
 
   return (
@@ -37,7 +52,7 @@ export default function ListProductPage() {
         </div>
       </div>
 
-      {tableData.length>0?<div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
+      {ProductData.length > 0 ? <div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
         {/* searchbar section */}
         <div className="header flex w-full justify-between flex-wrap gap-5 lg:gap-10">
           <div className="searhbox flex w-[70%] md:w-[40%] items-center gap-2 py-1 md:py-2 rounded-lg px-2 border-2">
@@ -107,11 +122,11 @@ export default function ListProductPage() {
         </div>
 
 
-        {layoutDetail=="list"?<TableLayout tableData={tableData} />:<CardLayout/>}
-      </div>:
-      <div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
-        <h1 className="capitalize">you have no products to show please add a product first</h1>
-      </div>
+        {layoutDetail == "list" ? <TableLayout tableData={ProductData} /> : <CardLayout data={ProductData} />}
+      </div> :
+        <div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
+          <h1 className="capitalize">you have no products to show please add a product first</h1>
+        </div>
       }
 
     </div>

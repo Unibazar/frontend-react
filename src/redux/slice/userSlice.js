@@ -1,7 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'https://backend-express-3fjm.onrender.com';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+const apiUrl = publicRuntimeConfig.API_BASE_URL;
+
+
+const url = apiUrl;
 
 export const register = createAsyncThunk('user/register', async (userData, { rejectWithValue }) => {
   try {
