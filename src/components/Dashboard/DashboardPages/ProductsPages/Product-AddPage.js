@@ -5,11 +5,16 @@ import { addProduct } from "@/redux/slice/productSlice";
 import { TextField } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 
 
 export default function AddProductPage() {
@@ -23,7 +28,18 @@ export default function AddProductPage() {
     // productPhoto2: {},
     // productPhoto3: {},
     // productPhoto4: {}
-  })
+  });
+  const [showTextFeildError, setShowTextFeildError] = useState(false)
+
+  const [snackbarState, setSnackbarState] = useState({
+    open: false,
+    message: '',
+    severity: 'success',
+  });
+
+  const handleSnackbarClose = () => {
+    setSnackbarState((prev) => ({ ...prev, open: false }));
+  };
   const productPhoto1 = useRef(null);
   const productPhoto2 = useRef(null);
   const productPhoto3 = useRef(null);
@@ -34,6 +50,7 @@ export default function AddProductPage() {
   const [ProductPhotoSrc4, setProductPhotoSrc4] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useRouter()
 
   const { product, isLoading, error } = useSelector((state) => state.product);
 
@@ -45,12 +62,29 @@ export default function AddProductPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addProduct(ProductData));
+    for (const key in ProductData) {
+      if (ProductData.hasOwnProperty(key)) {
+        if (ProductData[key] === "" || ProductData[key] === null || ProductData[key] === undefined) {
+          setSnackbarState(prev => ({ ...prev, open: true, message: "please fill all the feilds", severity: 'error' }));
+          setShowTextFeildError(true);
+          return;
+        }
+      }
+    }
 
+    dispatch(addProduct(ProductData)).then((data) => {
+      if (data.payload.success) {
+        navigate.push('products?q=list');
+      }
+      else {
+        setSnackbarState(prev => ({ ...prev, open: true, message: "unable to add product", severity: 'error' }));
+      }
+
+    });
   }
 
   useEffect(() => {
-    if (product && product.success) {
+    if (product && product?.success) {
       console.log(product);
     }
   }, [product])
@@ -60,9 +94,21 @@ export default function AddProductPage() {
     setProductData(prevState => ({ ...prevState, [name]: files[0] }))
   }
 
+
+
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar
+        open={snackbarState.open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarState.severity} sx={{ width: '100%' }}>
+          {snackbarState.message}
+        </MuiAlert>
+      </Snackbar>
       <div className='h-full w-full  px-4 py-4 md:px-7 md:py-7'>
         <div className='title flex flex-wrap justify-between items-center'>
           <h1 className='md:text-3xl text-lg font-semibold '>Products</h1>
@@ -79,25 +125,73 @@ export default function AddProductPage() {
             <div className="flex gap-7 flex-wrap">
               <div className="flex flex-col gap-4 md:flex-1 w-full">
                 <div className="flex flex-col gap-2">
-                  <TextField type="text" label="Name" variant="outlined" placeholder="Add Product Name" name="name" value={ProductData.name} onChange={(e) => handleChange(e)} className="text-sm md:text-lg p-2 rounded-lg" />
+                  <TextField
+                    error={showTextFeildError && ProductData.name === ""}
+                    helperText={showTextFeildError && ProductData.name === "" ? "Name is required." : ""}
+                    type="text"
+                    label="Name"
+                    variant="outlined"
+                    placeholder="Add Product Name"
+                    name="name"
+                    value={ProductData.name}
+                    onChange={(e) => handleChange(e)}
+                    className="text-sm md:text-lg p-2 rounded-lg" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <TextField type="text" label="Price" variant="outlined" placeholder="Enter Price" name="price" value={ProductData.price} onChange={(e) => handleChange(e)} className="text-sm md:text-lg p-2 rounded-lg" />
+                  <TextField 
+                  error={showTextFeildError && ProductData.price === ""}
+                  helperText={showTextFeildError && ProductData.price === "" ? "Price is required." : ""}
+                  type="number" 
+                  label="Price" 
+                  variant="outlined" 
+                  placeholder="Enter Price" 
+                  name="price" 
+                  value={ProductData.price} 
+                  onChange={(e) => handleChange(e)} 
+                  className="text-sm md:text-lg p-2 rounded-lg" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 md:flex-1 w-full">
-                <TextField label="Description" multiline rows={6} placeholder="Enter Product Description" name="description" value={ProductData.description} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg"/>
+                <TextField 
+                error={showTextFeildError && ProductData.description === ""}
+                helperText={showTextFeildError && ProductData.description === "" ? "Description is required." : ""}
+                label="Description" 
+                multiline rows={6} 
+                placeholder="Enter Product Description" 
+                name="description" 
+                value={ProductData.description} 
+                onChange={(e) => handleChange(e)} 
+                className="border-2 text-sm md:text-lg p-2 rounded-lg" />
               </div>
             </div>
 
             <div className="flex gap-7 mt-4 flex-wrap">
               <div className="flex flex-col gap-2 md:flex-1 w-full">
-                <TextField label="Category" multiline rows={6} placeholder={"Write Feature in Each Line \n Feature 1 \n Feature 2 "} name="category" value={ProductData.category} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg"/>
-                </div>
+                <TextField 
+                error={showTextFeildError && ProductData.category === ""}
+                helperText={showTextFeildError && ProductData.category === "" ? "Category is required." : ""}
+                label="Category" 
+                multiline rows={6} 
+                placeholder={"Write Feature in Each Line \n Feature 1 \n Feature 2 "} 
+                name="category" 
+                value={ProductData.category} 
+                onChange={(e) => handleChange(e)} 
+                className="border-2 text-sm md:text-lg p-2 rounded-lg" />
+              </div>
               <div className="flex flex-col gap-2 md:flex-1 w-full">
-                <TextField label="Inventory Count" multiline rows={6} placeholder="Enter No of Available Stocks" name="inventoryCount" value={ProductData.inventoryCount} onChange={(e) => handleChange(e)} className="border-2 text-sm md:text-lg p-2 rounded-lg"/> 
-                </div>
+                <TextField 
+                error={showTextFeildError && ProductData.inventoryCount === ""}
+                helperText={showTextFeildError && ProductData.inventoryCount === "" ? "Inventory Count is required." : ""}
+                type="number"
+                label="Inventory Count"
+                multiline rows={6} 
+                placeholder="Enter No of Available Stocks" 
+                name="inventoryCount" 
+                value={ProductData.inventoryCount} 
+                onChange={(e) => handleChange(e)} 
+                className="border-2 text-sm md:text-lg p-2 rounded-lg" />
+              </div>
             </div>
 
             <div className="flex mt-4 gap-7 flex-wrap">
