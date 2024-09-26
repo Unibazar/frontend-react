@@ -5,7 +5,7 @@ import LogoImage from '../../../assets/unibazar-home-images/unibazarlogo.png';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
-import styles from './Otp.module.css';
+import styles from './OTP.module.css';
 import { useRouter } from 'next/router';
 import { otpVerification } from '@/redux/slice/userSlice';
 import { toast } from 'react-toastify';
