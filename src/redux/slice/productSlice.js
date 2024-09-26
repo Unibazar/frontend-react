@@ -11,9 +11,20 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
         return response.data;
 
     } catch (error) {
-        return rejectWithValue(error.response?.data || 'product additin failed , pls try again !');
+        return rejectWithValue(error.response?.data || 'failed to add product , please try again !');
     }
 })
+
+export const loadProduct = createAsyncThunk('api/product', async (_, { rejectWithValue }) => {
+    const token = localStorage.getItem('jwtToken');
+
+    try {
+        const response = await axios.post(`${url}/api/product/`, {}, { headers: { token } });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
+    }
+});
 
 
 const productSlice = createSlice({
@@ -33,9 +44,23 @@ const productSlice = createSlice({
         }).addCase(addProduct.fulfilled, (state, action) => {
             state.isLoading = false;
             state.product = action.payload;
+            state.error = null;
         }).addCase(addProduct.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
+        })
+
+
+        .addCase(loadProduct.pending, state => {
+                state.isLoading = true;
+                state.error = null;
+        }).addCase(loadProduct.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.product = action.payload;
+                state.error = null;
+        }).addCase(loadProduct.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
         })
     }
 })
