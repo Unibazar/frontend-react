@@ -39,7 +39,7 @@ const legalInformation = () => {
           <p className='w-full font-bold text-xl flex flex-row gap-2 items-center'><FaArrowRightLong /> Terms of Service</p>
 
           <div className='w-full text-[14px] opacity-70 pt-2 pr-0 md:pr-32'>Our Terms of Service outline the rules and obligations you agree to when using Unibazar’s platform. These terms govern your relationship with Unibazar, including account creation, subscription plans, and limitations of liability.
-            For full details, please review our <Link href="/terms-and-conditions" className="text-teal-700 underline">Terms of Service</Link>
+            For full details, please review our <Link href="/term-and-conditions" className="text-teal-700 underline">Terms of Service</Link>
           </div>
         </div>
         <div className='w-full flex flex-col justify-start text-left outline outline-1 outline-gray-300 rounded-xl p-5'>
