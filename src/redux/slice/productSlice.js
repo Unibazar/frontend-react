@@ -20,11 +20,11 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
     }
 })
 
-export const loadProduct = createAsyncThunk('api/product', async (_, { rejectWithValue }) => {
+export const loadProduct = createAsyncThunk('api/product', async (page, { rejectWithValue }) => {
     const token = localStorage.getItem('jwtToken');
 
     try {
-        const response = await axios.post(`${url}/api/product/`, {}, { headers: { token } });
+        const response = await axios.post(`${url}/api/product?page=${page}`, {}, { headers: { token } });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
