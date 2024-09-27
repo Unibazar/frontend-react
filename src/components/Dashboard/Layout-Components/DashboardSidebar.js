@@ -62,8 +62,8 @@ export default function DashboardSidebar({setShowSidebar}) {
     ]
  
     return (
-        <div className='h-screen'>
-            <div className='logo px-5 py-5 flex justify-between items-center'>
+        <div className='h-screen relative'>
+            <div className='logo px-5 py-5 flex justify-between items-center sticky top-0 bg-white shadow-sm z-[98]'>
                 <Link href={"/"}><Image src={Logo} width={180} height={180} alt='unibazar Logo'/></Link>
                 <button className='block md:hidden text-2xl' onClick={()=>setShowSidebar(false)}><IoCloseOutline/></button>
             </div>
