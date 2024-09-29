@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Head from "next/head";
 
 const legalInformation = () => {
+  const docUpdatedDate = new Date("2024-09-27").toDateString();
+
   return (
     <div className="p-10">
       <Head>
@@ -16,13 +18,12 @@ const legalInformation = () => {
       <div className='w-full flex  flex-col justify-start items-center text-left'>
         <p className='w-full font-bold text-4xl uppercase'>legal and Information</p>
         <br />
-        <p className='w-full text-xl font-light'>{`Effective Date: [Insert Date]`}</p>
+        <p className='w-full text-xl font-light'>{`Effective Date: ${docUpdatedDate}`}</p>
       </div>
 
       <br />
       <br />
       <br />
-      {/* section1*/}
       <div className='w-full flex flex-col justify-center text-center items-center'>
         <p className='w-full font-bold text-2xl '>Legal Overview</p>
         <br />
@@ -32,7 +33,6 @@ const legalInformation = () => {
       <br />
       <br />
 
-      {/*section2*/}
 
       <div className='w-full flex flex-col justify-start text-left items-start gap-5'>
         <div className='w-full flex flex-col justify-start text-left outline outline-1 outline-gray-300 rounded-xl p-5'>
