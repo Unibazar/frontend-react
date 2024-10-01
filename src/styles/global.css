@@ -52,6 +52,12 @@ body {
   }
 } */
 
+.bg-custom-gradient {
+  background: linear-gradient(0deg, #08A9A0, #08A9A0), 
+              linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+
 .section {
   padding: 0px 64px;
 }
