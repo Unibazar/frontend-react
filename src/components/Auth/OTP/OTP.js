@@ -134,29 +134,26 @@ const Otp = () => {
 
 
   const handleResend = () => {
-    if (user && user._id) {
-      dispatch(resendOtp(user._id, true)) // Pass true as the second argument to indicate that it's a first-time user
-        .then(response => {
-          if (response.payload.success) {
-            const newOtp = Array(4).fill('');
-            setOtp(newOtp);
-          }
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    } else {
-      console.error('User ID is not available');
-    }
-    setTimeLeft(60);
-    setCanResend(false);
+    dispatch(resendOtp(user?.user.email))
+      .then(response => {
+        if (response.meta.requestStatus === 'fulfilled') {
+          setSnackbarMessage('OTP resent successfully! Please check your email.');
+          setSnackbarSeverity('success');
+          setSnackbarOpen(true);
+          setTimeLeft(60); // Reset the timer
+          setCanResend(false);
+        } else {
+          setSnackbarMessage('Failed to resend OTP. Please try again.');
+          setSnackbarSeverity('error');
+          setSnackbarOpen(true);
+        }
+      })
+      .catch(() => {
+        setSnackbarMessage('Failed to resend OTP. Please try again.');
+        setSnackbarSeverity('error');
+        setSnackbarOpen(true);
+      });
   };
-
-  useEffect(() => {
-    if (user && user._id) {
-      console.log('User is available:', user);
-    }
-  }, [user, dispatch]);
 
   return (
     <>

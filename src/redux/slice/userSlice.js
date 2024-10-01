@@ -33,13 +33,10 @@ export const otpVerification = createAsyncThunk('user/otp', async (otp, { reject
 });
 
 // resend otp
-export const resendOtp = createAsyncThunk('user/resendOtp', async (userId, isFirstTimeUser, { rejectWithValue }) => {
+export const resendOtp = createAsyncThunk('user/resendOtp', async (email, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem('jwtToken');
-    if (!isFirstTimeUser && !token) {
-      return rejectWithValue('pls login to access this field!');
-    }
-    const response = await axios.post(`${url}/api/user/${userId}/otp`);
+    const response = await axios.post(`${url}/api/user/resend-otp`, { email }, { headers: { token } });
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response?.data || 'Failed to resend OTP. Please try again.');
@@ -153,12 +150,12 @@ const userSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.error = null;
       })
       .addCase(loadUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = null;
       })
       .addCase(otpVerification.pending, state => {
         state.isLoading = true;
