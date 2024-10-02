@@ -4,7 +4,7 @@ import ReduxProvider from '@/redux/ReduxProvider';
 import DashboardLayout from './dashboard/layout';
 
 export default function MyApp({ Component, pageProps, router }) {
-  const noLayoutPages = ['/login', '/register', '/forgot-password', '/otp', '/404'];
+  const noLayoutPages = ['/login', '/register', '/forgot-password', '/otp', '/404', '/onboarding'];
   const isDynamicRoute = router.pathname.startsWith('/reset/') && router.pathname.endsWith('/password');
   const isNoLayoutPage = noLayoutPages.includes(router.pathname) || isDynamicRoute;
   const dashboardRoutes = ['/dashboard', '/dashboard/products', '/dashboard/orderlist', '/dashboard/analytics', '/dashboard/accountsettings', '/dashboard/helpandsupport'];
