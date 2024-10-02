@@ -1,5 +1,5 @@
 import { Nunito } from 'next/font/google';
-import '../../styles/global.css';
+import '@/styles/global.css';
 
 const nunito = Nunito({
   weight: '500',

@@ -15,7 +15,7 @@ const StepProgressBar = ({ currentStep, setCurrentStep }) => {
             <div key={index} className="flex items-center">
               <span
                 className={`font-medium transition-colors duration-300 max-lg:text-[12px] max-sm:text-[10px] 
-                ${isStepCompleted(index) ? 'text-teal-700' : isStepActive(index) ? 'text-teal-500' : 'text-[rgba(13,_33,_49,_1)]'}`}
+                  ${isStepCompleted(index) ? 'text-teal-700' : isStepActive(index) ? 'text-teal-500' : 'text-[rgba(13,_33,_49,_1)]'}`}
               >
                 {step}
               </span>
@@ -23,7 +23,9 @@ const StepProgressBar = ({ currentStep, setCurrentStep }) => {
               {index < steps.length - 1 && (
                 <div
                   className={`w-[60px] h-[2px] mx-2 transition-colors duration-300 
-                  ${isStepCompleted(index + 1) ? 'bg-teal-500' : 'bg-gray-300'}`}
+                  ${isStepCompleted(index + 1) ? 'bg-teal-500' : 'bg-gray-300'}
+                  ${isStepActive(index) ? 'bg-gradient-to-r from-teal-500 to-gray-300' : 'bg-gray-300'}
+                `}
                 ></div>
               )}
             </div>

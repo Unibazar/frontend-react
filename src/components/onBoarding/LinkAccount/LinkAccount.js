@@ -1,17 +1,20 @@
+import Image from "next/image";
+import MyntraLogo from '../../../assets/unibazar-home-images/myntra-logo.svg';
+import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 const LinkAccount = () => {
   return (
-    <div className="w-[600px] bg-gray-50 max-w-full max-md:mt-10 h-fit gap-0  flex flex-col items-center my-10 py-10 rounded-xl">
+    <div className="max-w-[600px] bg-gray-50 w-full max-md:mt-10 h-fit gap-0  flex flex-col items-center my-10 py-10 rounded-xl px-5">
       <h1 className="text-[30px] font-bold text-center">Link Account</h1>
       <p className="text-[16px] text-[#8692a6] leading-[34px] font-normal text-center">For the purpose of industry regulation, your details are required.</p>
-      <div className="w-full flex justify-center gap-2 mb-8">
+      <div className="w-full flex justify-center gap-2 mb-8 ">
         <div className="flex flex-col items-center w-[144px] h-[130px] py-3  bg-[rgba(255,_255,_255,_1)] rounded-xl">
-          <div className="w-[48px] h-[48px] rounded-full bg-[#f5f5f5]"></div>
+          <Image src={MyntraLogo} alt='Myntralogo' className="w-[48px] h-[48px] rounded-full " ></Image>
           <div className="h-6  mt-2">
             <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Myntra</span>
           </div>
         </div>
         <div className="flex flex-col items-center w-[144px] h-[130px] py-3  bg-[rgba(255,_255,_255,_1)] rounded-xl">
-          <div className="w-[48px] h-[48px] rounded-full bg-[#f5f5f5]"></div>
+          <Image src={MeeshoLogo} alt='Meeshologo' className="w-[48px] h-[48px] rounded-full " ></Image>
           <div className="h-6  mt-2">
             <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Meesso</span>
           </div>
@@ -25,7 +28,7 @@ const LinkAccount = () => {
           </div>
         </div>
       </div>
-      <button className="bg-teal-600 hover:bg-teal-800 max-sm:w-full px-24 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5">NEXT</button>
+      <button className="bg-teal-600 hover:bg-teal-800 w-full md:w-[440px] md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5">NEXT</button>
     </div>
   );
 };
