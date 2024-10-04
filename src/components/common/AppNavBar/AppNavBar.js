@@ -130,7 +130,7 @@ function AppNavBar() {
             </svg>
           </button>
         </div>}
-
+          
         {isOpen && (
           <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-md">
             <ul className="flex flex-col items-center space-y-4 p-4">
