@@ -8,6 +8,8 @@ const apiUrl = publicRuntimeConfig.API_BASE_URL;
 
 
 const url = apiUrl;
+
+
 export const addProduct = createAsyncThunk('product/add', async (productData, { rejectWithValue }) => {
     const token = localStorage.getItem('jwtToken');
     // const { name, price, description, inventoryCount, category } = productData;
@@ -56,17 +58,17 @@ const productSlice = createSlice({
         })
 
 
-            .addCase(loadProduct.pending, state => {
-                state.isLoading = true;
-                state.error = null;
-            }).addCase(loadProduct.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.product = action.payload;
-                state.error = null;
-            }).addCase(loadProduct.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload;
-            })
+        .addCase(loadProduct.pending, state => {
+            state.isLoading = true;
+            state.error = null;
+        }).addCase(loadProduct.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.product = action.payload;
+            state.error = null;
+        }).addCase(loadProduct.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        })
     }
 })
 
