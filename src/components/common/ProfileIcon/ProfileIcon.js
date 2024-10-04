@@ -22,8 +22,6 @@ export default function BasicMenu() {
   
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
-    toast.success('user logged out successfully!');
-
     dispatch(loadUser());
   };
 
