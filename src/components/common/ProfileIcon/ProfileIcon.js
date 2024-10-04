@@ -4,7 +4,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import userImage from "../../../../public/userImage.png"
 import Image from 'next/image';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { loadUser } from '@/redux/slice/userSlice'
 
@@ -22,8 +21,6 @@ export default function BasicMenu() {
   
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
-    toast.success('user logged out successfully!');
-
     dispatch(loadUser());
   };
 

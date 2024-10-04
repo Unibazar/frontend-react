@@ -33,13 +33,13 @@ export default function DashboardLayout({ children }) {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('jwtToken');
-  //   if (!token) {
-  //     router.push('/');
-  //   }
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+    if (!token) {
+      router.push('/');
+    }
     
-  // }, [user]);
+  }, [user]);
 
 
   return (

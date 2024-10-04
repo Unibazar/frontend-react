@@ -8,6 +8,8 @@ const apiUrl = publicRuntimeConfig.API_BASE_URL;
 
 
 const url = apiUrl;
+
+
 export const addProduct = createAsyncThunk('product/add', async (productData, { rejectWithValue }) => {
     const token = localStorage.getItem('jwtToken');
     // const { name, price, description, inventoryCount, category } = productData;
@@ -20,11 +22,11 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
     }
 })
 
-export const loadProduct = createAsyncThunk('api/product', async (_, { rejectWithValue }) => {
+export const loadProduct = createAsyncThunk('api/product', async (page, { rejectWithValue }) => {
     const token = localStorage.getItem('jwtToken');
 
     try {
-        const response = await axios.post(`${url}/api/product/`, {}, { headers: { token } });
+        const response = await axios.post(`${url}/api/product?page=${page}`, {}, { headers: { token } });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
@@ -56,17 +58,17 @@ const productSlice = createSlice({
         })
 
 
-            .addCase(loadProduct.pending, state => {
-                state.isLoading = true;
-                state.error = null;
-            }).addCase(loadProduct.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.product = action.payload;
-                state.error = null;
-            }).addCase(loadProduct.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload;
-            })
+        .addCase(loadProduct.pending, state => {
+            state.isLoading = true;
+            state.error = null;
+        }).addCase(loadProduct.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.product = action.payload;
+            state.error = null;
+        }).addCase(loadProduct.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        })
     }
 })
 

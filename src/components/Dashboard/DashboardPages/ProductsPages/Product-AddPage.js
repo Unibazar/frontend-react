@@ -85,7 +85,7 @@ export default function AddProductPage() {
 
   useEffect(() => {
     if (product && product?.success) {
-      console.log(product);
+      // console.log(product);
     }
   }, [product])
 
