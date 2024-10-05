@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
+
 import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
@@ -14,7 +16,7 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
     const token = localStorage.getItem('jwtToken');
     // const { name, price, description, inventoryCount, category } = productData;
     try {
-        const response = await axios.post(`${url}/api/product/add`, productData, { headers: { token } });
+        const response = await axios.post(`${url}/api/product/add`, productData, { headers: { token } , withCredentials:true });
         return response.data;
 
     } catch (error) {
@@ -26,7 +28,7 @@ export const loadProduct = createAsyncThunk('api/product', async (page, { reject
     const token = localStorage.getItem('jwtToken');
 
     try {
-        const response = await axios.post(`${url}/api/product?page=${page}`, {}, { headers: { token } });
+        const response = await axios.post(`${url}/api/product?page=${page}`, {}, { headers: { token } , withCredentials:true });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
