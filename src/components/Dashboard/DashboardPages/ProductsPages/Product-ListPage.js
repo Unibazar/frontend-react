@@ -25,9 +25,11 @@ export default function ListProductPage({ProductData , page , setPage , totalPro
   }
 
   const handleNextPage= () => {
-    if(page==ProductData.length){
+    if(page==Math.ceil(totalProducts / itemPerPage)){
       return;
     }
+    
+    
     setPage(page => page+1);
   }
 
@@ -102,7 +104,7 @@ export default function ListProductPage({ProductData , page , setPage , totalPro
               </div>
               <button className="right p-2 border-r-2 relative group disabled:text-zinc-300" disabled={page==Math.ceil(totalProducts / itemPerPage)} onClick={handleNextPage}>
                 <MdKeyboardArrowRight />
-                <span className="text-xs absolute -left-1/2 text-nowrap bg-zinc-300 p-1 rounded-md pointer-events-none hidden group-hover:inline">Next page</span>
+                <span className="text-xs absolute -left-1/2 text-nowrap bg-zinc-300 text-black p-1 rounded-md pointer-events-none hidden group-hover:inline">Next page</span>
               </button>
               <div className="right2 p-2 ">
                 <MdKeyboardDoubleArrowRight />

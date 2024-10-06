@@ -51,7 +51,7 @@ export default function TableLayout({ tableData }) {
                 </thead>
 
                 {tableData.length >0 ?<tbody className="rowsContainer">
-                    {[...tableData].reverse().map(item => (
+                    {tableData.map(item => (
                         <tr key={item._id} className="border-t-2 text-xs md:text-lg">
                             <td className="py-3 px-2 ">
                                 <div className="flex items-center col-span-3 gap-2">
