@@ -32,7 +32,7 @@ const StepProgressBar = ({ currentStep, setCurrentStep }) => {
           ))}
         </div>
 
-        <button onClick={() => setCurrentStep(prev => Math.min(prev + 1, steps.length))} className={`p-2  cursor-pointer`} disabled={currentStep === steps.length}>
+        <button className={`p-2  cursor-pointer`} disabled={currentStep === steps.length}>
           &gt;
         </button>
       </div>
