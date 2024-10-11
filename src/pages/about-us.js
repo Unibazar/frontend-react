@@ -8,6 +8,7 @@ import Story from '../components/about-us/Story/Story.js';
 import Head from 'next/head';
 import Hero from '../components/widgets/common/Hero.js';
 import HeroImage from '../assets/unibazar-aboutus-images/aboutus.svg';
+import FAQaboutUs from '../components/about-us/FAQaboutUs/FAQaboutUs.js';
 
 export default function AboutUs() {
   return (
@@ -33,6 +34,7 @@ export default function AboutUs() {
       <WhyUnibazar />
       <MeetFounder />
       <Joinus />
+      <FAQaboutUs />
       <AppContactUs />
       {/* <Footer /> */}
     </div>
