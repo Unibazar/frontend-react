@@ -57,16 +57,85 @@ const Signup = () => {
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
+  // password validation
+  const validatePassword = (password) => {
+    const errors = [];
+
+    if (password.length < 8) {
+      errors.push('Password must be at least 8 characters long');
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      errors.push('Password must contain at least one capital letter');
+    }
+
+    if (!/[^a-zA-Z0-9]/.test(password)) {
+      errors.push('Password must contain at least one special character');
+    }
+
+    if (!/[0-9]/.test(password)) {
+      errors.push('Password must contain at least one number');
+    }
+
+    return errors;
+  };
+
+
+
   const onchangeData = e => {
     const name = e.target.name;
     const value = e.target.value;
+
+    if (name === 'password') {
+      const passwordErrors = validatePassword(value);
+      if (passwordErrors.length > 0) {
+        setSnackbarMessage(passwordErrors.join(', '));
+        setSnackbarSeverity('error');
+        setSnackbarOpen(true);
+      }
+    }
+
     setUser({ ...data, [name]: value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    const passwordErrors = validatePassword(data.password);
+    if (passwordErrors.length > 0) {
+      setSnackbarMessage(passwordErrors.join(', '));
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+    } else {
+      dispatch(register(data));
+    }
+  };
 
-    dispatch(register(data));
+  // password strength
+  const passwordStrength = () => {
+    const password = data.password;
+    let strength = 0;
+
+    if (password.length >= 8) {
+      strength += 1;
+    }
+
+    if (/[A-Z]/.test(password)) {
+      strength += 1;
+    }
+
+    if (/[a-z]/.test(password)) {
+      strength += 1;
+    }
+
+    if (/[0-9]/.test(password)) {
+      strength += 1;
+    }
+
+    if (/[!@#$%^&*()_+=[\]{};':"\\|,.<>?]/.test(password)) {
+      strength += 1;
+    }
+
+    return strength;
   };
 
   useEffect(() => {
@@ -184,10 +253,13 @@ const Signup = () => {
                   label="Password *"
                 />
               </FormControl>
+
             </div>
 
+            {/*<p className="w-full min-w-[250px] text-normal text-gray-500 text-left ">Password strength: {passwordStrength()}/5</p>*/}
+
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
-            <p className="w-full min-w-[250px] text-normal text-gray-500 text-left p-1 pb-2">Password must be 8 character</p>
+            <p className="w-full min-w-[250px] text-normal text-gray-500 text-left p-1  pb-2">Password must be 8 character</p>
             <button
               type="submit"
               className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
