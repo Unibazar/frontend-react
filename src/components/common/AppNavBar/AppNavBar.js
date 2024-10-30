@@ -10,7 +10,8 @@ import { loadUser } from '@/redux/slice/userSlice';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import styles from './AppNavBar.module.css';
-import profileImg from '../../../../public/userImage.png'
+import ProfileIcon from "../ProfileIcon/ProfileIcon";
+
 function AppNavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -92,25 +93,7 @@ function AppNavBar() {
         </div>
         {
           user ? (
-            <div className={styles.profileContainer} onClick={toggleDropdown}>
-              <Image
-                className={styles.profileImg}
-                src={profileImg}
-                alt="Profile Image"
-                width={40}
-                height={40}
-              />
-              {isDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  <Link href="/account-management" className={styles.dropdownItem}>
-                    Account Management
-                  </Link>
-                  <button onClick={handleLogout} className={styles.dropdownItem}>
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
+            <ProfileIcon/>
           ) :
             <div className={styles.navButtons}>
               <Link href="/login" className={styles.loginButton}>
