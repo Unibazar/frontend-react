@@ -12,7 +12,7 @@ export default function CardLayout({data}) {
             </div>
             {data.length>0?<div className='cardContiner py-4 flex gap-4 flex-wrap px-2'>
                 {data.map(item => (
-                    <Card key={item.id} item={item} />
+                    <Card key={item._id} item={item} />
                 ))}
             </div>:<h1>No Products to show</h1>}
         </div>

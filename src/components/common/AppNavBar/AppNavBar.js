@@ -10,7 +10,8 @@ import { loadUser } from '@/redux/slice/userSlice';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import styles from './AppNavBar.module.css';
-import profileImg from '../../../../public/userImage.png'
+import ProfileIcon from "../ProfileIcon/ProfileIcon";
+
 function AppNavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -92,25 +93,7 @@ function AppNavBar() {
         </div>
         {
           user ? (
-            <div className={styles.profileContainer} onClick={toggleDropdown}>
-              <Image
-                className={styles.profileImg}
-                src={profileImg}
-                alt="Profile Image"
-                width={40}
-                height={40}
-              />
-              {isDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  <Link href="/account-management" className={styles.dropdownItem}>
-                    Account Management
-                  </Link>
-                  <button onClick={handleLogout} className={styles.dropdownItem}>
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
+            <ProfileIcon/>
           ) :
             <div className={styles.navButtons}>
               <Link href="/login" className={styles.loginButton}>
@@ -121,13 +104,16 @@ function AppNavBar() {
               </Link>
             </div>
         }
-        <div className="md:hidden flex items-center">
+
+
+        {!user && <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="text-gray-600 hover:text-teal-700 focus:outline-none">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}></path>
             </svg>
           </button>
-        </div>
+        </div>}
+          
         {isOpen && (
           <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-md">
             <ul className="flex flex-col items-center space-y-4 p-4">
