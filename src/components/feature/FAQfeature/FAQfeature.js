@@ -6,31 +6,26 @@ import FAQAccordion from '../../widgets/common/FAQAccordion';
 
 const FAQfeature = () => {
 
-
   const FrequentlyAskedQuestion = [
     {
-      question: 'What is the purpose of this website?',
-      answer: 'This website is designed to help users find and purchase land for sale.',
+      question: 'What e-commerce platforms does Unibazar support?',
+      answer: 'Unibazar currently supports Myntra, Meesho, and custom websites, with more platforms being added regularly.',
     },
     {
-      question: 'How can I search for available land?',
-      answer: 'You can use our search tool by entering the desired location, size, and price range to find available land listings.',
+      question: 'Can I manage my inventory across all platforms using Unibazar?',
+      answer: 'Yes, Unibazar allows you to sync and manage your inventory in real-time across all connected platforms.',
     },
     {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept various payment methods including credit cards, bank transfers, and digital wallets.',
+      question: 'How does Unibazar handle product listings?',
+      answer: 'You can list products across multiple platforms simultaneously from a single interface, saving time and effort.',
     },
     {
-      question: 'Is financing available for land purchases?',
-      answer: 'Yes, financing options are available. Please contact our support team for more details.',
+      question: 'What analytics features does Unibazar offer?',
+      answer: 'Unibazar provides real-time sales analytics, inventory tracking, and performance reports to help you make informed decisions.',
     },
     {
-      question: 'Can I visit the land before purchasing?',
-      answer: 'Absolutely! We encourage potential buyers to visit the land before making a purchase. Contact us to schedule a visit.',
-    },
-    {
-      question: 'How do I contact customer support?',
-      answer: 'You can reach our customer support team via email at support@example.com or by calling (123) 456-7890.',
+      question: 'How does Unibazar integrate with my existing systems?',
+      answer: 'Unibazar offers seamless integration with various e-commerce platforms and tools, ensuring smooth operations.',
     },
   ];
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import TickImg from '../../../assets/unibazar-pricing-images/tick.png';
+import Link from 'next/link';
 
 export default function Plans({ pricingType }) {
   return (
@@ -15,9 +16,9 @@ export default function Plans({ pricingType }) {
             <span className="text-sm font-normal text-gray-400 pl-1">/month</span>
           </p>
           <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
+          <Link href='/register'><button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
             Sign Up for Free
-          </button>
+          </button></Link>
         </div>
         <div className="w-full px-6 py-4 items-start border-t-2 space-y-3">
           <div className="flex flex-row items-start gap-2">
@@ -48,9 +49,9 @@ export default function Plans({ pricingType }) {
             <span className="text-sm font-normal text-gray-400 pl-1">/month</span>
           </p>
           <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
+          <Link href='/register'><button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
             Upgrade to Pro
-          </button>
+          </button></Link>
         </div>
         <div className="w-full px-6 py-4 items-start border-t-2 space-y-3">
           <div className="flex flex-row items-start gap-2">
@@ -78,9 +79,9 @@ export default function Plans({ pricingType }) {
           </div>
           <p className="text-2xl md:text-4xl font-semibold flex items-center gap-1">Custom Price</p>
           <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
-            Sign Up for Free
-          </button>
+          <Link href='/contact-us'><button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
+            Contact Us
+          </button></Link>
         </div>
         <div className="w-full px-6 py-4 items-start border-t-2 space-y-3">
           <div className="flex flex-row items-center gap-2">

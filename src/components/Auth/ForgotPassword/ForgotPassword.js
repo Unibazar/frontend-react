@@ -126,7 +126,11 @@ function ForgotPassword() {
             Enter your email account to reset <br />
             your password
           </p>
-          <form className="flex flex-col justify-center items-center gap-5">
+          <form onSubmit={e => {
+            e.preventDefault();
+            dispatch(forgetPassword(email));
+          }}
+            className="flex flex-col justify-center items-center gap-5">
             <FormControl variant="outlined" className="w-full min-w-[250px] border bg-gray-100 rounded">
               <InputLabel htmlFor="outlined-adornment-email">Email *</InputLabel>
               <OutlinedInput
@@ -147,11 +151,7 @@ function ForgotPassword() {
             </FormControl>
             {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <button
-              type="button"
-              onClick={e => {
-                e.preventDefault();
-                dispatch(forgetPassword(email));
-              }}
+              type="submit"
               className="bg-teal-500 w-full min-w-[250px] hover:bg-teal-700 text-white font-bold px-4 rounded-xl py-3" >
               Reset Password
             </button>
