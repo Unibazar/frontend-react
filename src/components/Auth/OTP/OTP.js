@@ -7,15 +7,21 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './OTP.module.css';
 import { useRouter } from 'next/router';
-import { otpVerification } from '@/redux/slice/userSlice';
+import { otpVerification, resendOtp, loadUser } from '@/redux/slice/userSlice';
 import { toast } from 'react-toastify';
 import Loader from '@/components/Loader/Loader';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Otp = () => {
   const [otp, setOtp] = useState(new Array(4).fill(""));
-  const { user, isLoading, error } = useSelector(state => state.user);
-  const [timeLeft, setTimeLeft] = useState(120);
+  const { isLoading, error } = useSelector(state => state.user);
+  const user = useSelector(state => state.user.user);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [canResend, setCanResend] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success')
   const router = useRouter();
   const dispatch = useDispatch();
   const refs = useRef([]);
@@ -25,14 +31,19 @@ const Otp = () => {
   };
 
   useEffect(() => {
-    if (user?.user.verified) {
+    dispatch(loadUser());
+  }, [dispatch]);
+
+
+  useEffect(() => {
+    if (user?.user.verified && otp.join('') !== '' && otp.join('').length === 4 && /^\d+$/.test(otp.join(''))) {
       toast.success('User registered successfully!');
       router.replace('/dashboard');
     }
     if (error?.message) {
       toast.error(error.message);
     }
-  }, [user, error, router]);
+  }, [user, otp, error, router]);
 
   const handleChange = (e, index) => {
     const value = e.target.value;
@@ -82,7 +93,33 @@ const Otp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(otpVerification(otp.join('')));
+
+    if (otp.join('') === '') {
+      setSnackbarMessage('Please enter the OTP');
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+    } else if (otp.join('').length !== 4 || !/^\d+$/.test(otp.join(''))) {
+      setSnackbarMessage('Invalid OTP. Please enter a 4-digit OTP');
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+    } else {
+      dispatch(otpVerification(otp.join('')))
+        .then(response => {
+          if (response.payload.success) {
+            dispatch(loadUser());
+            router.replace('/dashboard');
+          } else {
+            setSnackbarMessage('Incorrect OTP. Please try again.');
+            setSnackbarSeverity('error');
+            setSnackbarOpen(true);
+          }
+        })
+        .catch(error => {
+          setSnackbarMessage('An error occurred while verifying the OTP. Please try again.');
+          setSnackbarSeverity('error');
+          setSnackbarOpen(true);
+        });
+    }
   };
 
   useEffect(() => {
@@ -94,14 +131,38 @@ const Otp = () => {
     }
   }, [timeLeft]);
 
+
+
   const handleResend = () => {
-    setTimeLeft(120);
-    setCanResend(false);
+    dispatch(resendOtp(user?.user.email))
+      .then(response => {
+        if (response.meta.requestStatus === 'fulfilled') {
+          setSnackbarMessage('OTP resent successfully! Please check your email.');
+          setSnackbarSeverity('success');
+          setSnackbarOpen(true);
+          setTimeLeft(60); // Reset the timer
+          setCanResend(false);
+        } else {
+          setSnackbarMessage('Failed to resend OTP. Please try again.');
+          setSnackbarSeverity('error');
+          setSnackbarOpen(true);
+        }
+      })
+      .catch(() => {
+        setSnackbarMessage('Failed to resend OTP. Please try again.');
+        setSnackbarSeverity('error');
+        setSnackbarOpen(true);
+      });
   };
 
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} >
+        <MuiAlert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
         <div className="md:hidden pt-12 pl-10 w-full flex">
           <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2" onClick={handleBackClick} />
