@@ -1137,7 +1137,7 @@ export default function AddProductPage() {
                   <div className="submitBtn mt-4 flex justify-between items-center gap-5">
                     <button className="p-2 px-4 bg-[#535454] text-white rounded-lg flex gap-2 items-center">Cancel </button>
                     <div className="flex gap-5 items-center">
-                      <button className="p-2 px-4 bg-[#518f8c] text-white rounded-lg flex gap-2 items-center">Save as Draft </button>
+                      <button className="p-2 px-4 bg-[#518f8c] text-white rounded-lg flex gap-2 items-center text-sm md:text-normal">Save as Draft </button>
                       <button onClick={(e) => handleSubmit(e)} className="p-2 px-4 bg-[#08A9A0] text-white rounded-lg flex gap-2 items-center">Save <span className="text-2xl"><IoIosArrowRoundForward /></span> </button>
                     </div>
                   </div>
