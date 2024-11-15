@@ -44,7 +44,7 @@ export default function AddProductPage() {
     subjectCharacter: "",
     color: "",
     noOfPieces: "",
-    occassion: "",
+    occasion: "",
     partNumber: "",
     subBrand: "",
     manufacturerContactInfo: "",
@@ -338,7 +338,7 @@ export default function AddProductPage() {
                               label="Bullet Point"
                               multiline rows={6}
                               placeholder={"Enter Bullet Point For Your Product"}
-                              name="bulletpoint"
+                              name="bulletPoint"
                               value={ProductData.bulletPoint}
                               onChange={(e) => handleChange(e)}
                               className="border-2 text-sm md:text-lg p-2 rounded-lg" />
@@ -825,7 +825,7 @@ export default function AddProductPage() {
                             <Select
                               id="demo-simple-select"
                               label="unit"
-                              value="unit"
+                              value={ProductData.heightUnit}
                               name="heightUnit"
                               onChange={(e) => handleChange(e)}
                             >
@@ -853,7 +853,7 @@ export default function AddProductPage() {
                             <Select
                               id="demo-simple-select"
                               label="unit"
-                              value="unit"
+                              value={ProductData.lengthLongerHorizontalEdgeUnit}
                               name="lengthLongerHorizontalEdgeUnit"
                               onChange={(e) => handleChange(e)}
                             >
@@ -881,7 +881,7 @@ export default function AddProductPage() {
                             <Select
                               id="demo-simple-select"
                               label="unit"
-                              value="unit"
+                              value={ProductData.widthShorterHorizontalEdgeUnit}
                               name="widthShorterHorizontalEdgeUnit"
                               onChange={(e) => handleChange(e)}
                             >
@@ -1135,7 +1135,7 @@ export default function AddProductPage() {
 
 
                   <div className="submitBtn mt-4 flex justify-between items-center gap-5">
-                    <button className="p-2 px-4 bg-[#535454] text-white rounded-lg flex gap-2 items-center">Cancle </button>
+                    <button className="p-2 px-4 bg-[#535454] text-white rounded-lg flex gap-2 items-center">Cancel </button>
                     <div className="flex gap-5 items-center">
                       <button className="p-2 px-4 bg-[#518f8c] text-white rounded-lg flex gap-2 items-center">Save as Draft </button>
                       <button onClick={(e) => handleSubmit(e)} className="p-2 px-4 bg-[#08A9A0] text-white rounded-lg flex gap-2 items-center">Save <span className="text-2xl"><IoIosArrowRoundForward /></span> </button>
