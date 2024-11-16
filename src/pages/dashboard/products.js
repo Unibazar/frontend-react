@@ -6,6 +6,7 @@ import ProductHomePage from "../../components/Dashboard/DashboardPages/ProductsP
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadProduct } from "@/redux/slice/productSlice";
+import ProductForm from "@/components/Dashboard/DashboardPages/ProductsPages/AddProduct/AddProduct";
 
 
 function Products() {
@@ -50,7 +51,8 @@ function Products() {
       <div>
         {!query && <ProductHomePage/>}
         {query == "list" && <ListProductPage ProductData={ProductData} page={page} setPage={setPage} totalProducts={totalProducts}/> }
-        {query =="add-product" &&  <AddProductPage />}
+        {/* {query =="add-product" &&  <AddProductPage />} */}
+        {query =="add-product" &&  <ProductForm />}
       </div>
     </>
   )

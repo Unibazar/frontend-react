@@ -1,0 +1,99 @@
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .select-error {
+    border: 1px solid #d32f2f !important;
+    color: #d32f2f !important;
+  }
+  
+  .select-error:active {
+    border: 1px solid #d32f2f !important;
+    color: #d32f2f !important;
+  }
+  
+  .label-error {
+    color: #d32f2f !important;
+  }
+  
+  .location-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 15%;
+  }
+  
+  .select-label {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    width: fit-content;
+    /* height: 100%; */
+    padding: 0.5rem 0.2rem;
+    font-size: 1rem;
+    line-height: 0rem;
+    color: rgb(102, 101, 101);
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--body);
+    font-size: 0.8em;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.00938em;
+  }
+  
+  .select-label-disabled {
+    color: rgba(0, 0, 0, 0.38);
+  }
+  
+  .select-box {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgb(56, 56, 56);
+    background-color: #fff;
+    border: 1px solid rgb(196 196 196);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .select-box:hover {
+    border-color: rgb(56, 56, 56);
+  }
+  
+  .select-box:focus {
+    border: 2px solid #1b237e;
+    border-color: #2e4cbc;
+    /* border-color: lime; */
+  }
+  
+  .select-box:focus + .select-label {
+    color: #2e4cbc;
+  }
+  
+  .select-box[data-chosen] .select-label {
+    color: lime;
+  }
+  
+  .select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgb(26, 26, 26);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
+  }
+  
