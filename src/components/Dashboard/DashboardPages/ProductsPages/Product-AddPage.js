@@ -30,6 +30,7 @@ const validationSchema = yup.object().shape({
   productID: yup.string().required("Product ID is required."),
   description: yup.string().required("Description is required."),
   bulletPoint: yup.string().required("Bullet Point is required."),
+  targetAudienceKeyword: yup.string().required("target Audience Keyword is required.")
   // Add other fields and their validation rules here
 });
 
@@ -41,8 +42,14 @@ export default function AddProductPage() {
     severity: 'success',
   });
 
-  const [ProductPhotoSrc1, setProductPhotoSrc1] = useState(""); // Initialize product photo state
+  const [ProductPhotoSrc1, setProductPhotoSrc1] = useState("");
+  const [ProductPhotoSrc2, setProductPhotoSrc2] = useState("");
+  const [ProductPhotoSrc3, setProductPhotoSrc3] = useState("");
+  const [ProductPhotoSrc4, setProductPhotoSrc4] = useState("");  // Initialize product photo state
   const productPhoto1 = useRef(null);
+  const productPhoto2 = useRef(null);
+  const productPhoto3 = useRef(null);
+  const productPhoto4 = useRef(null);
 
   const handleSnackbarClose = () => {
     setSnackbarState((prev) => ({ ...prev, open: false }));
@@ -294,6 +301,24 @@ export default function AddProductPage() {
                                 {ProductPhotoSrc1 && <IoIosCloseCircle className="text-xl absolute -top-2 -right-2 text-red-500" onClick={() => { setProductPhotoSrc1(''); setProductData({ ...ProductData, productPhoto1: null }) }} />}
                                 {!ProductPhotoSrc1 && <FiPlusCircle className="text-2xl opacity-70" onClick={() => productPhoto1.current.click()} />}
                                 <input type="file" className="hidden" name="productPhoto1" ref={productPhoto1} onChange={(e) => { handleFileChange(e); setProductPhotoSrc1(URL.createObjectURL(e.target.files[0])) }} />
+                              </div>
+                              <div className="relative w-[7rem] h-[7rem] border-2 rounded-lg bg-[#F5F7FA] flex items-center justify-center">
+                                {ProductPhotoSrc2 && <Image src={ProductPhotoSrc2} height={50} width={50} alt="p1" className="w-full h-full object-contain" />}
+                                {ProductPhotoSrc2 && <IoIosCloseCircle className="text-xl absolute -top-2 -right-2 text-red-500" onClick={() => { setProductPhotoSrc2(''); setProductData({ ...ProductData, productPhoto2: null }) }} />}
+                                {!ProductPhotoSrc2 && <FiPlusCircle className="text-2xl opacity-70" onClick={() => productPhoto2.current.click()} />}
+                                <input type="file" className="hidden" name="productPhoto1" ref={productPhoto2} onChange={(e) => { handleFileChange(e); setProductPhotoSrc1(URL.createObjectURL(e.target.files[0])) }} />
+                              </div>
+                              <div className="relative w-[7rem] h-[7rem] border-2 rounded-lg bg-[#F5F7FA] flex items-center justify-center">
+                                {ProductPhotoSrc3 && <Image src={ProductPhotoSrc3} height={50} width={50} alt="p1" className="w-full h-full object-contain" />}
+                                {ProductPhotoSrc3 && <IoIosCloseCircle className="text-xl absolute -top-2 -right-2 text-red-500" onClick={() => { setProductPhotoSrc3(''); setProductData({ ...ProductData, productPhoto3: null }) }} />}
+                                {!ProductPhotoSrc3 && <FiPlusCircle className="text-2xl opacity-70" onClick={() => productPhoto3.current.click()} />}
+                                <input type="file" className="hidden" name="productPhoto1" ref={productPhoto3} onChange={(e) => { handleFileChange(e); setProductPhotoSrc3(URL.createObjectURL(e.target.files[0])) }} />
+                              </div>
+                              <div className="relative w-[7rem] h-[7rem] border-2 rounded-lg bg-[#F5F7FA] flex items-center justify-center">
+                                {ProductPhotoSrc4 && <Image src={ProductPhotoSrc4} height={50} width={50} alt="p1" className="w-full h-full object-contain" />}
+                                {ProductPhotoSrc4 && <IoIosCloseCircle className="text-xl absolute -top-2 -right-2 text-red-500" onClick={() => { setProductPhotoSrc4(''); setProductData({ ...ProductData, productPhoto4: null }) }} />}
+                                {!ProductPhotoSrc4 && <FiPlusCircle className="text-2xl opacity-70" onClick={() => productPhoto4.current.click()} />}
+                                <input type="file" className="hidden" name="productPhoto1" ref={productPhoto4} onChange={(e) => { handleFileChange(e); setProductPhotoSrc4(URL.createObjectURL(e.target.files[0])) }} />
                               </div>
                               {/* Repeat for other product photos */}
                             </div>
