@@ -23,6 +23,7 @@ const countries = getCountryList().getData();
 
 const CredentialDailog = ({ isOpen, onClose, onSave, title, content }) => {
   if (!isOpen) return null;
+  const dispatch = useDispatch();
 
   // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
