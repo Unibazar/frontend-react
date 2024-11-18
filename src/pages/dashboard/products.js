@@ -52,7 +52,7 @@ function Products() {
         {!query && <ProductHomePage/>}
         {query == "list" && <ListProductPage ProductData={ProductData} page={page} setPage={setPage} totalProducts={totalProducts}/> }
         {/* {query =="add-product" &&  <AddProductPage />} */}
-        {query =="add-product" &&  <ProductForm />}
+        {query =="add-product" &&  <AddProductPage />}
       </div>
     </>
   )
