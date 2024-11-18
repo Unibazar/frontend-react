@@ -15,44 +15,44 @@ function Products() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q');
   const [page, setPage] = useState(1);
-  
-  
+
+
   const dispatch = useDispatch();
   const router = useRouter();
   const { product } = useSelector((state) => state.product);
-  
-  
+
+
   useEffect(() => {
-    dispatch(loadProduct(page)); 
-  }, [page]);
-  
+    dispatch(loadProduct(page));
+  }, [page, dispatch]);
+
   useEffect(() => {
     setProductData(product?.product || []);
     setTotalProducts(product?.totalProducts);
-    
+
   }, [product])
 
   useEffect(() => {
-    if(product && !query){
+    if (product && !query) {
       router.push("products?q=list");
     }
-  }, [product , query])
-  
+  }, [product, query, router])
 
-  
-  
-  
+
+
+
+
   return (
     <>
-    <Head>
+      <Head>
         <title>Dashboard-Products | Unibazar</title>
         <meta name="description" content="Unibazar is online platform which is used to sell your products from various E-commerce platforms." key="desc" />
-    </Head>
+      </Head>
       <div>
-        {!query && <ProductHomePage/>}
-        {query == "list" && <ListProductPage ProductData={ProductData} page={page} setPage={setPage} totalProducts={totalProducts}/> }
+        {!query && <ProductHomePage />}
+        {query == "list" && <ListProductPage ProductData={ProductData} page={page} setPage={setPage} totalProducts={totalProducts} />}
         {/* {query =="add-product" &&  <AddProductPage />} */}
-        {query =="add-product" &&  <AddProductPage />}
+        {query == "add-product" && <AddProductPage />}
       </div>
     </>
   )
