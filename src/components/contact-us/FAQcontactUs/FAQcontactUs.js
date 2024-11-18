@@ -9,7 +9,7 @@ const FAQcontactUs = () => {
   const FrequentlyAskedQuestion = [
     {
       question: 'How can I contact Unibazar for support?',
-      answer: 'You can reach us vie email at support@unibazar.com or call us at +91-123-456-7890.',
+      answer: 'You can reach us vie email at support@unibazar.com or call us at +91-747-723-7960.',
     },
     {
       question: 'What is the best way to get in touch with Unibazar?',
