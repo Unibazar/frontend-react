@@ -22,6 +22,8 @@ const PhotoUpload = React.forwardRef(({ src, setSrc, handleFileChange }, ref) =>
   </div>
 ));
 
+PhotoUpload.displayName = 'PhotoUpload';
+
 const ProductDescription = ({ control, errors }) => {
   const [ProductPhotoSrc1, setProductPhotoSrc1] = useState("");
   const [ProductPhotoSrc2, setProductPhotoSrc2] = useState("");
