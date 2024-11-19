@@ -501,13 +501,20 @@ const payload={
     // Dispatch the action to add the product
     dispatch(addProduct(payload)).then((result) => {
       console.log(result,"result")
-      if (result.message==="Product created/updated successfully") {
+      if (result?.payload?.message==="Product created/updated successfully") {
         setSnackbarState(prev => ({ ...prev, open: true, message: "Product Added Successfully",}));
 
         navigate.push('products?q=list');
-      } else {
-        setSnackbarState(prev => ({ ...prev, open: true, message: "Unable to add product", severity: 'error' }));
+      } else  {
+        const errorMessages = result?.payload?.details?.errors?.map(error => error.message).join(", ");
+        setSnackbarState(prev => ({
+          ...prev,
+          open: true,
+          message: errorMessages || "Unable to add product",
+          severity: 'error'
+        }));
       }
+    
     });
   };
 
