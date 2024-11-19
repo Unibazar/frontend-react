@@ -38,7 +38,7 @@ const LinkAccount = () => {
           </div>
         </div>
       </div>
-      <button className="bg-teal-600 hover:bg-teal-800 w-full md:w-[440px] md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5" >NEXT</button>
+      <button href='/dashboard' className="bg-teal-600 hover:bg-teal-800 w-full md:w-[440px] md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5" >NEXT</button>
       <CredentialDailog
         isOpen={isCredentialDailogOpen}
         onClose={() => setIsCredentialDailogOpen(false)}

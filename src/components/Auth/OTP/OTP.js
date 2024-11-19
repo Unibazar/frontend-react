@@ -38,7 +38,7 @@ const Otp = () => {
   useEffect(() => {
     if (user?.user.verified && otp.join('') !== '' && otp.join('').length === 4 && /^\d+$/.test(otp.join(''))) {
       toast.success('User registered successfully!');
-      router.replace('/dashboard');
+      router.replace('/onboarding');
     }
     if (error?.message) {
       toast.error(error.message);
@@ -107,7 +107,7 @@ const Otp = () => {
         .then(response => {
           if (response.payload.success) {
             dispatch(loadUser());
-            router.replace('/dashboard');
+            router.replace('/onboarding');
           } else {
             setSnackbarMessage('Incorrect OTP. Please try again.');
             setSnackbarSeverity('error');
