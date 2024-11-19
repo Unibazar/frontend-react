@@ -22,17 +22,17 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-const validationSchema = yup.object().shape({
-  itemName: yup.string().required("Item Name is required."),
-  productType: yup.string().required("Product Type is required."),
-  browserNodes: yup.string().required("Browser Nodes are required."),
-  brandName: yup.string().required("Brand Name is required."),
-  productID: yup.string().required("Product ID is required."),
-  description: yup.string().required("Description is required."),
-  bulletPoint: yup.string().required("Bullet Point is required."),
-  targetAudienceKeyword: yup.string().required("target Audience Keyword is required.")
-  // Add other fields and their validation rules here
-});
+// const validationSchema = yup.object().shape({
+//   itemName: yup.string().required("Item Name is required."),
+//   productType: yup.string().required("Product Type is required."),
+//   browserNodes: yup.string().required("Browser Nodes are required."),
+//   brandName: yup.string().required("Brand Name is required."),
+//   productID: yup.string().required("Product ID is required."),
+//   description: yup.string().required("Description is required."),
+//   bulletPoint: yup.string().required("Bullet Point is required."),
+//   targetAudienceKeyword: yup.string().required("target Audience Keyword is required.")
+//   // Add other fields and their validation rules here
+// });
 
 export default function AddProductPage() {
   const [platform, setPlatform] = useState('amazon');
@@ -58,17 +58,452 @@ export default function AddProductPage() {
   const dispatch = useDispatch();
   const navigate = useRouter();
 
-  const { product, isLoading } = useSelector((state) => state.product);
 
+/* schema for product listing
+
+{
+  "productType": "SPORTING_GOODS",
+  "sku":"SPT-001-001",
+  "requirements": "LISTING",
+
+  "conditionType": "new_new",
+  "itemName": "Unibazar sports for boy",
+  "mainImage": {
+    "link": "https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp",
+    "height": 248,
+    "width": 300
+  },
+  
+  "attributes": {
+    "color": [
+      {
+        "language_tag": "en_IN",
+        "value": "black brown",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "item_type_name": [
+      {
+        "language_tag": "en_IN",
+        "value": "sports",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "included_components": [
+      {
+        "language_tag": "en_IN",
+        "value": "none",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "fulfillment_availability": [
+      {
+        "fulfillment_channel_code": "DEFAULT",
+        "quantity": 10,
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "manufacturer": [
+      {
+        "language_tag": "en_IN",
+        "value": "Toy store",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "item_weight": [
+      {
+        "unit": "grams",
+        "value": 1080.0,
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "recommended_browse_nodes": [
+      {
+        "value": "1378446031",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "bullet_point": [
+      {
+        "language_tag": "en_IN",
+        "value": "Soft toy, dog figure",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "product_description": [
+      {
+        "language_tag": "en_IN",
+        "value": "A cute dog figuer that children can play with",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "brand": [
+      {
+        "language_tag": "en_IN",
+        "value": "Generic",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "supplier_declared_has_product_identifier_exemption": [
+      {
+        "value": "True",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "country_of_origin": [
+      {
+        "value": "IN",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "rtip_manufacturer_contact_information": [
+      {
+        "value": "local store",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "merchant_shipping_group": [
+      {
+        "value": "legacy-template-id",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "item_name": [
+      {
+        "language_tag": "en_IN",
+        "value": "Unibazar sports ",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "condition_type": [
+      {
+        "value": "new_new",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "material": [
+      {
+        "language_tag": "en_IN",
+        "value": "Thermoplastic Rubber",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "department": [
+      {
+        "value": "Baby-Boys"
+      }
+    ],
+    "model_name": [
+      {
+        "value": "Alkaman new"
+      }
+    ],
+    "warranty_description": [
+      {
+        "value": "Alkaman new"
+      }
+    ],
+    "item_dimensions": [
+      {
+        "height": {
+          "unit": "centimeters",
+          "value": "2"
+        },
+        "length": {
+          "unit": "centimeters",
+          "value": "2"
+        },
+        "width": {
+          "unit": "centimeters",
+          "value": "2"
+        }
+      }
+    ],
+    "supplier_declared_dg_hz_regulation": [
+      {
+        "value": "waste"
+      }
+    ],
+    "part_number": [
+      {
+        "value": "none",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "external_product_information": [
+      {
+        "entity": "HSN Code",
+        "value": "610547",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "unit_count": [
+      {
+        "value": 18.0,
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "packer_contact_information": [
+      {
+        "language_tag": "en_IN",
+        "value": "toy store, roorkee",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "other_product_image_locator_1": [
+      {
+        "media_location": "https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "main_product_image_locator": [
+      {
+        "media_location": "https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ]
+   
+  },
+ 
+  "fulfillmentAvailability": [
+    {
+      "fulfillmentChannelCode": "DEFAULT",
+      "quantity": 10
+    }
+  ]
+}
+
+*/
+
+  const { product, isLoading } = useSelector((state) => state.product);
+  const  userData  = useSelector((state) => state?.user?.user?.user?.businessInformation);
+console.log(userData,"user")
   const { control, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(validationSchema),
+    // resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = (data) => {
     console.log(data);
+
+
+const payload={
+  "productType":data?.productType?? "SPORTING_GOODS",
+  "sku":"SPT-001-001",
+  "requirements": "LISTING",
+
+  "conditionType": "new_new",
+  "itemName": data?.itemName??"Unibazar sports for boy",
+  "mainImage": {
+    "link":data?.productPhoto1?? "https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp",
+    "height": 248,
+    "width": 300
+  },
+  
+  "attributes": {
+    "color": [
+      {
+        "language_tag": "en_IN",
+        "value":data?.color?? "black brown",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "item_type_name": [
+      {
+        "language_tag": "en_IN",
+        "value": data?.itemTypeName??"sports",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "included_components": [
+      {
+        "language_tag": "en_IN",
+        "value": "none",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "fulfillment_availability": [
+      {
+        "fulfillment_channel_code": "DEFAULT",
+        "quantity": 10,
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "manufacturer": [
+      {
+        "language_tag": "en_IN",
+        "value": "Toy store",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "item_weight": [
+      {
+        "unit": "grams",
+        "value": 1080.0,
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "recommended_browse_nodes": [
+      {
+        "value":data?.browserNodes?? "1378446031",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "bullet_point": [
+      {
+        "language_tag": "en_IN",
+        "value":data?.bulletPoint?? "Soft toy, dog figure",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "product_description": [
+      {
+        "language_tag": "en_IN",
+        "value":data?.description?? "A cute dog figuer that children can play with",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "brand": [
+      {
+        "language_tag": "en_IN",
+        "value":data?.brandName?? "Generic",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "supplier_declared_has_product_identifier_exemption": [
+      {
+        "value": "True",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "country_of_origin": [
+      {
+        "value": "IN",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "rtip_manufacturer_contact_information": [
+      {
+        "value":data?.manufacturerContactInfo?? "local store",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "merchant_shipping_group": [
+      {
+        "value": "legacy-template-id",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "item_name": [
+      {
+        "language_tag": "en_IN",
+        "value":data?.itemName?? "Unibazar sports ",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "condition_type": [
+      {
+        "value": "new_new",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "material": [
+      {
+        "language_tag": "en_IN",
+        "value":data?.material?? "Thermoplastic Rubber",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "department": [
+      {
+        "value": "Baby-Boys"
+      }
+    ],
+    "model_name": [
+      {
+        "value":data?.modelName?? "Alkaman new"
+      }
+    ],
+    "warranty_description": [
+      {
+        "value": "Alkaman new"
+      }
+    ],
+    "item_dimensions": [
+      {
+        "height": {
+          "unit": "centimeters",
+          "value": "2"
+        },
+        "length": {
+          "unit": "centimeters",
+          "value": "2"
+        },
+        "width": {
+          "unit": "centimeters",
+          "value": "2"
+        }
+      }
+    ],
+    "supplier_declared_dg_hz_regulation": [
+      {
+        "value": "waste"
+      }
+    ],
+    "part_number": [
+      {
+        "value":data?.partNumber?? "none",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "external_product_information": [
+      {
+        "entity": "HSN Code",
+        "value": "610547",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "unit_count": [
+      {
+        "value":data?.noOfPieces?? 18.0,
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "packer_contact_information": [
+      {
+        "language_tag": "en_IN",
+        "value": "toy store, roorkee",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "other_product_image_locator_1": [
+      {
+        "media_location": "https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ],
+    "main_product_image_locator": [
+      {
+        "media_location": "https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp",
+        "marketplace_id": "A21TJRUUN4KGV"
+      }
+    ]
+   
+  },
+ 
+  "fulfillmentAvailability": [
+    {
+      "fulfillmentChannelCode": "DEFAULT",
+      "quantity": 10
+    }
+  ]
+}
+
     // Dispatch the action to add the product
-    dispatch(addProduct(data)).then((result) => {
+    dispatch(addProduct(payload)).then((result) => {
       if (result.payload.success) {
+        console.log(result,"result")
+        setSnackbarState(prev => ({ ...prev, open: true, message: "Product Added Successfully",}));
+
         navigate.push('products?q=list');
       } else {
         setSnackbarState(prev => ({ ...prev, open: true, message: "Unable to add product", severity: 'error' }));
