@@ -7,23 +7,11 @@ import getCountryList from 'react-select-country-list';
 import { useDispatch } from 'react-redux';
 import { saveCredentials } from '../../../redux/slice/credentialSlice';
 
-
-{/*const countries = [
-  { code: 'US', name: 'United States' },
-  { code: 'CA', name: 'Canada' },
-  { code: 'GB', name: 'United Kingdom' },
-  { code: 'AU', name: 'Australia' },
-  { code: 'IN', name: 'India' },
-  // Add more countries as needed
-];*/}
-
 // Get the list of countries
 const countries = getCountryList().getData();
 
-
-const CredentialDailog = ({ isOpen, onClose, onSave, title, content }) => {
+const CredentialDailog = ({ isOpen, onClose, title, content }) => {
   const dispatch = useDispatch();
-  if (!isOpen) return null;
 
   // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
@@ -54,9 +42,12 @@ const CredentialDailog = ({ isOpen, onClose, onSave, title, content }) => {
     }
   };
 
+  // Return null if the dialog is not open
+  if (!isOpen) return null;
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-5 w-1/3 gap-2  flex flex-col ">
+      <div className="bg-white rounded-lg p-5 w-1/3 gap-2 flex flex-col">
         <div className="w-full flex flex-col justify-center items-center">
           <h2 className="text-xl font-bold">{title}</h2>
           <p className="mt-2">{content}</p>
