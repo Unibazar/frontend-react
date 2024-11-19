@@ -500,8 +500,8 @@ const payload={
 
     // Dispatch the action to add the product
     dispatch(addProduct(payload)).then((result) => {
-      if (result.payload.success) {
-        console.log(result,"result")
+      console.log(result,"result")
+      if (result.message==="Product created/updated successfully") {
         setSnackbarState(prev => ({ ...prev, open: true, message: "Product Added Successfully",}));
 
         navigate.push('products?q=list');
