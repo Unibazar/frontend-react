@@ -21,7 +21,7 @@ const Contactinfo = () => {
         <div className='p-5'>
           <div className='flex md:flex-row'>
             <PhoneInTalkIcon className='filled'></PhoneInTalkIcon>
-            <p className='text-normal pl-2'>+91-123-456-7890</p>
+            <p className='text-normal pl-2'>+91-747-723-7960</p>
           </div>
           <div className='flex md:flex-row '>
             <EmailIcon className='filled'></EmailIcon>
