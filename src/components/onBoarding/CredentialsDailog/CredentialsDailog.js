@@ -7,11 +7,17 @@ import getCountryList from 'react-select-country-list';
 import { useDispatch } from 'react-redux';
 import { saveCredentials } from '../../../redux/slice/credentialSlice';
 
+import { useRouter } from 'next/router';
+
+
 // Get the list of countries
 const countries = getCountryList().getData();
 
 const CredentialDailog = ({ isOpen, onClose, title, content }) => {
   const dispatch = useDispatch();
+
+  const router = useRouter();
+
 
   // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
@@ -37,6 +43,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content }) => {
       await dispatch(saveCredentials(data)).unwrap(); // Dispatch the action and wait for it to resolve
       console.log('Credentials saved:', data);
       onClose(); // Close the dialog after saving
+      router.push('/dashboard');
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
