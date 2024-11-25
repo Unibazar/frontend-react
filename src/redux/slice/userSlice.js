@@ -1,7 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'https://backend-express-3fjm.onrender.com';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+const apiUrl = publicRuntimeConfig.API_BASE_URL;
+
+
+const url = apiUrl;
 
 export const register = createAsyncThunk('user/register', async (userData, { rejectWithValue }) => {
   try {
@@ -23,6 +29,17 @@ export const otpVerification = createAsyncThunk('user/otp', async (otp, { reject
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response?.data || 'Registration failed. Please try again.');
+  }
+});
+
+// resend otp
+export const resendOtp = createAsyncThunk('user/resendOtp', async (email, { rejectWithValue }) => {
+  try {
+    const token = localStorage.getItem('jwtToken');
+    const response = await axios.post(`${url}/api/user/resend-otp`, { email }, { headers: { token } });
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.response?.data || 'Failed to resend OTP. Please try again.');
   }
 });
 
@@ -151,6 +168,19 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(otpVerification.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(resendOtp.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(resendOtp.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(resendOtp.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

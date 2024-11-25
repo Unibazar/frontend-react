@@ -1,5 +1,4 @@
 'use client'
-import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Personalinformation from "./AccountSetting-Components/Personalinformation";
 import BusinessInformation from "./AccountSetting-Components/BusinessInformation";
@@ -9,6 +8,8 @@ import Accordion from '@mui/material/Accordion';
 import { styled } from '@mui/material/styles';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 const CustomAccordion = styled(Accordion)(() => {
@@ -25,7 +26,23 @@ const CustomAccordion = styled(Accordion)(() => {
 
 
 export default function AccountSettings() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q');
 
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    if (query=== 'profileManage') {
+      setExpanded(true);
+    } else {
+      setExpanded(false);
+    }
+  }, [query]);
+
+
+  const handleAccordionChange = (event, isExpanded) => {
+    setExpanded(isExpanded); 
+  };
 
   return (
     <div className="h-full w-full  px-4 py-4 md:px-7 md:py-7">
@@ -35,7 +52,7 @@ export default function AccountSettings() {
 
 
       {/* personal information  */}
-      <CustomAccordion className="w-full flex-col text-sm md:text-2xl">
+      <CustomAccordion className="w-full flex-col text-sm md:text-2xl" expanded={expanded} onChange={handleAccordionChange}>
         <AccordionSummary expandIcon={<IoIosArrowDown />} >
           <p className="w-full font-semibold text-left capitalize">personal inforamtion</p>
         </AccordionSummary>

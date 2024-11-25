@@ -6,30 +6,27 @@ import { IoMdEyeOff, IoMdEye } from 'react-icons/io';
 import Link from 'next/link';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/router';
-
-import styles from './ResetPassword.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, loadUser, resetPassword } from '@/redux/slice/userSlice';
+import { resetPassword, loadUser, clearUser } from '@/redux/slice/userSlice';
 import Loader from '@/components/Loader/Loader';
-import { toast } from 'react-toastify';
+import { Snackbar } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
+import { FormControl, OutlinedInput, InputLabel, IconButton, InputAdornment, TextField } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import LockIcon from '@mui/icons-material/Lock';
+
 const ResetPassword = ({ userToken }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('info');
 
   const { user, isLoading, error } = useSelector(state => state.user);
   const dispatch = useDispatch();
-
   const router = useRouter();
-  const handleBackClick = () => {
-    router.back();
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    dispatch(resetPassword({ newPassword, confirmPassword, userToken }));
-  };
 
   useEffect(() => {
     if (localStorage.getItem('jwtToken')) {
@@ -41,59 +38,133 @@ const ResetPassword = ({ userToken }) => {
     if (user) {
       router.replace('/dashboard');
     }
-
     if (error && error.message) {
-      toast.error(error.message);
+      setSnackbarMessage(error.message);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      dispatch(clearUser());
     }
-  }, [user, error, router]);
+  }, [user, error, router, dispatch]);
 
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(resetPassword({ newPassword, confirmPassword, userToken }));
+  };
+
+  const handleClickShowPassword = () => setShowPassword(prev => !prev);
+  const handleClickShowConfirmPassword = () => setShowConfirmPassword(prev => !prev);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = event => {
+    event.preventDefault();
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   return (
     <>
       {isLoading && <Loader />}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <MuiAlert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
       <div>
-        <div className="md:hidden pt-12 pl-10  w-full flex">
-          <IoChevronBackOutline className="bg-gray-50 rounded-full w-8 h-8 p-2 justify-center justify-items-center items-center" onClick={handleBackClick} />
+        <div className='md:hidden pt-12 pl-10 w-full flex'>
+          <IoChevronBackOutline
+            className='bg-gray-50 rounded-full w-8 h-8 p-2'
+            onClick={() => router.back()}
+          />
         </div>
-        <div className={`${styles.logo} pt-12 pl-12`}>
-          <Link href="/">
-            <Image src={LogoImage} alt="Logo" className="w-36" />
+        <div className='pt-12 pl-12'>
+          <Link href='/'>
+            <Image src={LogoImage} alt="Logo" className='w-36' />
           </Link>
         </div>
       </div>
-      <div className="w-full flex md:flex-row flex-col justify-center justify-items-center items-start p-10">
-        <div className={`${styles.mainimg} w-full md:ml-20 md:mt-10 p-5 `}>
-          <Image src={SigninImg} alt="Signin_Image"></Image>
+      <div className="w-full flex md:flex-row flex-col justify-center items-start p-10">
+        <div className="w-full min-w-[400px] min-h-[400px] h-full justify-center flex md:mt-10 p-5 ">
+          <Image src={SigninImg} alt="Signin_Image" />
         </div>
-        <div className=" md:mr-10 md:pr-28  w-full p-5">
+        <div className="flex flex-col justify-center min-w-[250px] w-full p-5">
           <h1 className="text-3xl font-bold text-center">Set Password</h1>
-          <p className="w-full text-normal text-gray-500 text-center py-3">Please set the password that you will be remember!</p>
-          <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-3">
-            <input
-              type="text"
-              placeholder="newPassword"
-              name="newPassword"
-              className="w-full p-2 mb-
-            5 border bg-gray-100 rounded-2xl "
-              onChange={e => setNewPassword(e.target.value)}
-            />
-            <div className="w-full flex flex-row justify-between p-2  border bg-gray-100 rounded-2xl">
-              <input type={showPassword ? 'text' : 'password'} placeholder="confirmPassword" name="confirmPassword" className="w-auto outline-0 border-0 bg-gray-100 " onChange={e => setConfirmPassword(e.target.value)} />
-              <div className=" w-auto items-center" onClick={handleShowPassword}>
-                {showPassword ? <IoMdEye style={{ color: 'gray' }} /> : <IoMdEyeOff style={{ color: 'gray' }} />}
-              </div>
+          <p className='w-full text-normal text-gray-500 text-center py-3'>
+            Please set the password that you will remember!
+          </p>
+          <form onSubmit={handleSubmit} className="w-full flex flex-col justify-center items-center gap-3 ">
+            <div className="flex flex-col w-full gap-3">
+              <FormControl variant="outlined" className="w-full min-w-[250px] border bg-gray-100 rounded">
+                <InputLabel htmlFor="outlined-adornment-password">New Password *</InputLabel>
+                <OutlinedInput
+                  error={error && error.message ? true : false}
+                  id="standard-error-helper-text"
+                  type={showPassword ? 'text' : 'password'}
+                  onChange={e => setNewPassword(e.target.value)}
+                  placeholder="********"
+                  required
+                  helperText={error && error.message ? 'Please write new password' : ''}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <LockIcon />
+                    </InputAdornment>
+                  }
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="New Password *"
+                />
+              </FormControl>
+              <FormControl variant="outlined" className="w-full min-w-[250px] border bg-gray-100 rounded">
+                <InputLabel htmlFor="outlined-adornment-password">Confirm Password *</InputLabel>
+                <OutlinedInput
+                  error={error && error.message ? true : false}
+                  id="standard-error-helper-text"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  placeholder="********"
+                  required
+                  helperText={error && error.message ? 'Please write new password' : ''}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <LockIcon />
+                    </InputAdornment>
+                  }
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="toggle password visibility"
+                        onClick={handleClickShowConfirmPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        onMouseUp={handleMouseUpPassword}
+                        edge="end">
+                        {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Confirm Password *"
+                />
+              </FormControl>
             </div>
-
-            {/* <VisibilityOffIcon className='absolute z-20'></VisibilityOffIcon>*/}
             <button
               type="submit"
-              className="bg-teal-500 w-full hover:bg-teal-700 text-white font-bold py-
-            2 px-4 rounded-2xl py-3"
+              className="bg-teal-500 w-full min-w-[250px] hover:bg-teal-700 text-white font-bold py-
+            2 px-4 rounded py-3"
             >
-              Change
+              Change Password
             </button>
           </form>
         </div>

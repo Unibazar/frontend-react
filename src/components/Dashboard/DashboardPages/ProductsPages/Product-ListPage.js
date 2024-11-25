@@ -9,21 +9,38 @@ import { FaListUl } from "react-icons/fa6";
 import { LuListTodo } from "react-icons/lu";
 import { useState } from "react";
 import TableLayout from "./ProductPage-Components/TableLayout";
-import tableData from "./DummyData/TableData"
 import CardLayout from "./ProductPage-Components/CardLayout";
 
 
-export default function ListProductPage() {
+
+export default function ListProductPage({ProductData , page , setPage , totalProducts}) {
   const [searchBoxText, setSearchBoxText] = useState("");
   const [lastDateModified, setLastDateModified] = useState("all-time");
   const [status, setStatus] = useState("all");
   const [layoutDetail, setLayoutDetail] = useState("list");
+  const itemPerPage = 10;
 
   const toggleLayoutDetail = () => {
     setLayoutDetail(prev => prev == "list" ? "cards" : "list");
   }
 
+  const handleNextPage= () => {
+    if(page==Math.ceil(totalProducts / itemPerPage)){
+      return;
+    }
+    
+    
+    setPage(page => page+1);
+  }
 
+  const handlePreviousPage= () => {
+    if(page==1){
+      return;
+    }
+    setPage(page => page-1);
+  }
+
+  
 
 
   return (
@@ -37,7 +54,7 @@ export default function ListProductPage() {
         </div>
       </div>
 
-      {tableData.length>0?<div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
+       <div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
         {/* searchbar section */}
         <div className="header flex w-full justify-between flex-wrap gap-5 lg:gap-10">
           <div className="searhbox flex w-[70%] md:w-[40%] items-center gap-2 py-1 md:py-2 rounded-lg px-2 border-2">
@@ -75,18 +92,20 @@ export default function ListProductPage() {
         <div className="pageChanger flex justify-between items-center w-full flex-wrap mt-5 md:mt-0">
           <div className="pageChangeButton flex items-center md:gap-2 flex-wrap gap-5">
             <div className="textContainer">
-              <h1 className="text-zinc-400">Showing 1 - 20 of 161</h1>
+              <h1 className="text-zinc-400">Showing Page {page} of {totalProducts}</h1>
             </div>
-            <div className="pageChangeBtns flex border-2 rounded-lg">
-              <div className="left p-2 border-r-2">
+            <div className="pageChangeBtns flex border-2 rounded-lg ">
+              <button className="left p-2 border-r-2 relative group disabled:text-zinc-300" disabled={page==1} onClick={handlePreviousPage}>
                 <MdKeyboardArrowLeft />
-              </div>
+                <span className="text-xs absolute -left-1/2 text-nowrap bg-zinc-300 text-black p-1 rounded-md pointer-events-none hidden group-hover:inline">Previous page</span>
+              </button>
               <div className="left2 p-2 border-r-2">
                 <MdKeyboardDoubleArrowLeft />
               </div>
-              <div className="right p-2 border-r-2">
+              <button className="right p-2 border-r-2 relative group disabled:text-zinc-300" disabled={page==Math.ceil(totalProducts / itemPerPage)} onClick={handleNextPage}>
                 <MdKeyboardArrowRight />
-              </div>
+                <span className="text-xs absolute -left-1/2 text-nowrap bg-zinc-300 text-black p-1 rounded-md pointer-events-none hidden group-hover:inline">Next page</span>
+              </button>
               <div className="right2 p-2 ">
                 <MdKeyboardDoubleArrowRight />
               </div>
@@ -106,13 +125,11 @@ export default function ListProductPage() {
           </div>
         </div>
 
-
-        {layoutDetail=="list"?<TableLayout tableData={tableData} />:<CardLayout/>}
-      </div>:
-      <div className="boxs flex mt-7 gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
-        <h1 className="capitalize">you have no products to show please add a product first</h1>
-      </div>
-      }
+        
+        {layoutDetail == "list" ? <TableLayout tableData={ProductData} /> : <CardLayout data={ProductData} />}
+        
+      </div> 
+      
 
     </div>
   )

@@ -7,7 +7,7 @@ import { CgSortAz } from "react-icons/cg";
 export default function TableLayout({ tableData }) {
     return (
         <>
-        {tableData.length > 0 && <div className="overflow-x-auto w-full shadow-md  rounded-md">
+        <div className="overflow-x-auto w-full shadow-md  rounded-md">
             <table className="mainContainer rounded-md w-full">
                 <thead className="MainHeader bg-zinc-100 text-zinc-500 ">
                     <tr className="text-xs md:text-lg">
@@ -50,34 +50,34 @@ export default function TableLayout({ tableData }) {
                     </tr>
                 </thead>
 
-                <tbody className="rowsContainer">
+                {tableData.length >0 ?<tbody className="rowsContainer">
                     {tableData.map(item => (
-                        <tr key={item.id} className="border-t-2 text-xs md:text-lg">
+                        <tr key={item._id} className="border-t-2 text-xs md:text-lg">
                             <td className="py-3 px-2 ">
                                 <div className="flex items-center col-span-3 gap-2">
                                     <MdKeyboardArrowRight className="text-black" />
                                     <div className="flex flex-col items-center">
-                                        <p className="uppercase border-2 rounded-full px-2 text-xs md:text-sm text-[#CC6D02] border-[#FFE7CC]">{item.product.type}</p>
-                                        <h1>{item.product.brand}</h1>
-                                        <p className="text-[#207A7A]">{item.product.details}</p>
+                                        <p className="uppercase border-2 rounded-full px-2 text-xs md:text-sm text-[#CC6D02] border-[#FFE7CC]">{item.product?.type}</p>
+                                        <h1>{item?.name}</h1>
+                                        <p className="text-[#207A7A]">{item.product?.details}</p>
                                     </div>
                                 </div>
                             </td>
 
                             <td className="py-3 px-2">
-                                <p>{item.startDate}</p>
+                                <p>{new Date(item?.createdAt).toLocaleDateString('en-GB')}</p>
                             </td>
 
                             <td className="py-3 px-2">
-                                <p>{item.lastModified}</p>
+                                <p>{new Date(item?.updatedAt).toLocaleDateString('en-GB')}</p>
                             </td>
 
                             <td className="py-3 px-2">
-                                <p>{item.status}</p>
+                                <p>{item?.status}</p>
                             </td>
 
                             <td className="py-3 px-2 text-center">
-                                <p>{item.quantity}</p>
+                                <p>{item?.inventoryCount}</p>
                             </td>
 
                             <td className="py-3 px-2">
@@ -90,8 +90,13 @@ export default function TableLayout({ tableData }) {
                         </tr>
                     ))}
                 </tbody>
+                    :
+                    <div className="boxs flex gap-4 flex-wrap bg-white rounded-xl p-4 md:p-7">
+                      <h1 className="capitalize">no more products to show !</h1>
+                    </div>
+                }
             </table>
-        </div>}
+        </div>
         </>
     )
 }

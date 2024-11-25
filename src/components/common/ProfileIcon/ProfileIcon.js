@@ -4,14 +4,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import userImage from "../../../../public/userImage.png"
 import Image from 'next/image';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { loadUser } from '@/redux/slice/userSlice'
+import { useRouter } from 'next/router';
 
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const router = useRouter();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -22,9 +23,15 @@ export default function BasicMenu() {
   
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
-    toast.success('user logged out successfully!');
-
+    router.push('/');
     dispatch(loadUser());
+  };
+
+  const handleManageAccount= ()=>{
+    if(router.pathname.startsWith('/dashboard')){
+      router.push('/dashboard/accountsettings?q=profileManage');
+    }
+    
   };
 
   return (
@@ -33,7 +40,7 @@ export default function BasicMenu() {
           <Image height={40} width={40} className='rounded-full w-full h-full object-cover' src={userImage} alt="user Image" />
         </div>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose} >
-        <MenuItem onClick={handleClose}>Manage account</MenuItem>
+        <MenuItem onClick={()=>{handleClose(); handleManageAccount();}}>Manage account</MenuItem>
         <MenuItem onClick={()=>{handleClose(); handleLogout();}}>Logout</MenuItem>
       </Menu>
     </div>
