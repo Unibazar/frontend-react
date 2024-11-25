@@ -8,7 +8,7 @@ import Working from '../components/home/Working/Working.js';
 import Pricing from '../components/home/Pricing/Pricing.js';
 import FAQ from '../components/common/FAQ/FAQ.js';
 import Signup from '../components/home/Signup/Signup.js';
-import HeroImage from '../assets/unibazar-home-images/hero-img.svg';
+import HeroImage from '../assets/unibazar-home-images/heroImage.svg';
 import Head from 'next/head';
 import Hero from '../components/widgets/common/Hero.js';
 

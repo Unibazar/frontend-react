@@ -28,7 +28,7 @@ export default function BasicMenu() {
   };
 
   const handleManageAccount= ()=>{
-    if(router.pathname == "/dashboard"){
+    if(router.pathname.startsWith('/dashboard')){
       router.push('/dashboard/accountsettings?q=profileManage');
     }
     

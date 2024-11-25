@@ -16,7 +16,7 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
     const token = localStorage.getItem('jwtToken');
     // const { name, price, description, inventoryCount, category } = productData;
     try {
-        const response = await axios.post(`${url}/api/product/add`, productData, { headers: { token } , withCredentials:true });
+        const response = await axios.post(`${url}/api/productList/add`, productData, { headers: { token } , withCredentials:true });
         return response.data;
 
     } catch (error) {
