@@ -27,8 +27,8 @@ console.log(product,"product")
   }, [page, dispatch]);
 
   useEffect(() => {
-    setProductData(product?.product || []);
-    setTotalProducts(product?.totalProducts);
+    setProductData(product || []);
+    setTotalProducts(product?.numberOfResults);
 
   }, [product])
 
