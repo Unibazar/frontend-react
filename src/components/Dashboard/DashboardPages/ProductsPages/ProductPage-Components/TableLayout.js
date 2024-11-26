@@ -58,7 +58,7 @@ export default function TableLayout({ tableData }) {
                                     <MdKeyboardArrowRight className="text-black" />
                                     <div className="flex flex-col items-center">
                                         <p className="uppercase border-2 rounded-full px-2 text-xs md:text-sm text-[#CC6D02] border-[#FFE7CC]">{item.product?.type}</p>
-                                        <h1>{item?.name}</h1>
+                                        <h1>{item?.itemName}</h1>
                                         <p className="text-[#207A7A]">{item.product?.details}</p>
                                     </div>
                                 </div>

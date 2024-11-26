@@ -20,7 +20,7 @@ function Products() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { product } = useSelector((state) => state.product);
-
+console.log(product,"product")
 
   useEffect(() => {
     dispatch(loadProduct(page));
