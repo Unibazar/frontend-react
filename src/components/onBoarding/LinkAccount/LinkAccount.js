@@ -3,13 +3,19 @@ import Image from "next/image";
 import AmazonLogo from '../../../assets/unibazar-home-images/amazon-logo.svg';
 import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
+import { useRouter } from 'next/router';
 const LinkAccount = () => {
   const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
   const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });
+  const router = useRouter();
 
   const handleImageClick = (title, content) => {
     setCredentialDailogContent({ title, content });
     setIsCredentialDailogOpen(true);
+  };
+
+  const handleNextClick = () => {
+    router.push('/dashboard'); // Redirect to the dashboard
   };
 
   return (
@@ -38,7 +44,7 @@ const LinkAccount = () => {
           </div>
         </div>
       </div>
-      <button className="bg-teal-600 hover:bg-teal-800 w-full md:w-[440px] md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5" >NEXT</button>
+      <button onClick={handleNextClick} className="bg-teal-600 hover:bg-teal-800 w-full md:w-[440px] md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5" >NEXT</button>
       <CredentialDailog
         isOpen={isCredentialDailogOpen}
         onClose={() => setIsCredentialDailogOpen(false)}

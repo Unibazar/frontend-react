@@ -14,7 +14,7 @@ const FAQaboutUs = () => {
     },
     {
       question: 'Who are the key people behind Unibazar?',
-      answer: 'Unibazar was co-founded by Amritesh, Rahul, Ekta and Parul who lead the company with a focus on innovation and growth.',
+      answer: 'Unibazar was co-founded by Amritesh, Rahul, Aman, Parul, Utkarsh and Dilip who lead the company with a focus on innovation and growth.',
     },
     {
       question: 'What industries does Unibazar serve?',
