@@ -1,8 +1,8 @@
 'use client';
 
-import Loader from '@/components/Loader/Loader';
-import { addProduct } from '@/redux/slice/productSlice';
-import { Box, TextField, Tab, Accordion, AccordionSummary, AccordionDetails, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, FormLabel, RadioGroup, Radio } from '@mui/material';
+import Loader from "@/components/Loader/Loader";
+import { addProduct } from "@/redux/slice/productSlice";
+import { Box, TextField, Tab, Accordion, AccordionSummary, AccordionDetails, FormControlLabel, Checkbox, InputLabel, Select, MenuItem, FormLabel, RadioGroup, Radio } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -18,21 +18,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-// const validationSchema = yup.object().shape({
-//   itemName: yup.string().required("Item Name is required."),
-//   productType: yup.string().required("Product Type is required."),
-//   browserNodes: yup.string().required("Browser Nodes are required."),
-//   brandName: yup.string().required("Brand Name is required."),
-//   productID: yup.string().required("Product ID is required."),
-//   description: yup.string().required("Description is required."),
-//   bulletPoint: yup.string().required("Bullet Point is required."),
-//   targetAudienceKeyword: yup.string().required("target Audience Keyword is required.")
-//   // Add other fields and their validation rules here
-// });
+const validationSchema = yup.object().shape({
+  itemName: yup.string().required("Item Name is required."),
+  productType: yup.string().required("Product Type is required."),
+  browserNodes: yup.string().required("Browser Nodes are required."),
+  brandName: yup.string().required("Brand Name is required."),
+  productID: yup.string().required("Product ID is required."),
+  description: yup.string().required("Description is required."),
+  bulletPoint: yup.string().required("Bullet Point is required."),
+  targetAudienceKeyword: yup.string().required("target Audience Keyword is required.")
+  // Add other fields and their validation rules here
+});
 
 export default function AddProductPage() {
   const [platform, setPlatform] = useState('amazon');
@@ -42,17 +42,17 @@ export default function AddProductPage() {
     severity: 'success',
   });
 
-  const [ProductPhotoSrc1, setProductPhotoSrc1] = useState('');
-  const [ProductPhotoSrc2, setProductPhotoSrc2] = useState('');
-  const [ProductPhotoSrc3, setProductPhotoSrc3] = useState('');
-  const [ProductPhotoSrc4, setProductPhotoSrc4] = useState(''); // Initialize product photo state
+  const [ProductPhotoSrc1, setProductPhotoSrc1] = useState("");
+  const [ProductPhotoSrc2, setProductPhotoSrc2] = useState("");
+  const [ProductPhotoSrc3, setProductPhotoSrc3] = useState("");
+  const [ProductPhotoSrc4, setProductPhotoSrc4] = useState("");  // Initialize product photo state
   const productPhoto1 = useRef(null);
   const productPhoto2 = useRef(null);
   const productPhoto3 = useRef(null);
   const productPhoto4 = useRef(null);
 
   const handleSnackbarClose = () => {
-    setSnackbarState(prev => ({ ...prev, open: false }));
+    setSnackbarState((prev) => ({ ...prev, open: false }));
   };
 
   const dispatch = useDispatch();
@@ -536,17 +536,17 @@ export default function AddProductPage() {
           {snackbarState.message}
         </MuiAlert>
       </Snackbar>
-      <div className="h-full w-full px-4 py-4 md:px-7 md:py-7">
-        <div className="title flex flex-wrap justify-between items-center">
-          <h1 className="md:text-3xl text-lg font-semibold ">Products</h1>
-          <div className="">
+      <div className='h-full w-full px-4 py-4 md:px-7 md:py-7'>
+        <div className='title flex flex-wrap justify-between items-center'>
+          <h1 className='md:text-3xl text-lg font-semibold '>Products</h1>
+          <div className=''>
             <Link href="/dashboard/products?q=list" className="box p-3 bg-[#08A9A0] text-white rounded-l-md text-sm">
               Show All Products
             </Link>
           </div>
         </div>
 
-        <div className="box s flex mt-4 gap-4 flex-wrap bg-white rounded-xl">
+        <div className='box s flex mt-4 gap-4 flex-wrap bg-white rounded-xl'>
           <Box className="w-full">
             <TabContext value={platform}>
               <Box>
@@ -566,7 +566,20 @@ export default function AddProductPage() {
                       <AccordionDetails className="flex flex-col gap-4">
                         <div className="flex gap-7 flex-wrap">
                           <div className="flex flex-col gap-2 md:flex-1 w-full">
-                            <Controller name="itemName" control={control} render={({ field }) => <TextField {...field} error={!!errors.itemName} helperText={errors.itemName ? errors.itemName.message : ''} label="Item Name" placeholder="Enter Item Name" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+                            <Controller
+                              name="itemName"
+                              control={control}
+                              render={({ field }) => (
+                                <TextField
+                                  {...field}
+                                  error={!!errors.itemName}
+                                  helperText={errors.itemName ? errors.itemName.message : ""}
+                                  label="Item Name"
+                                  placeholder="Enter Item Name"
+                                  className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                                />
+                              )}
+                            />
                           </div>
                           <div className="flex flex-col gap-2 md:flex-1 w-full">
                             <Controller
@@ -976,10 +989,36 @@ export default function AddProductPage() {
                         </div>
                         <div className="flex gap-7 flex-wrap">
                           <div className="flex flex-col gap-2 md:flex-1 w-full">
-                            <Controller name="offeringConditionType" control={control} render={({ field }) => <TextField {...field} error={!!errors.offeringConditionType} helperText={errors.offeringConditionType ? errors.offeringConditionType.message : ''} label="Offering Condition Type" placeholder="Enter Offering Condition Type" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+                            <Controller
+                              name="offeringConditionType"
+                              control={control}
+                              render={({ field }) => (
+                                <TextField
+                                  {...field}
+                                  error={!!errors.offeringConditionType}
+                                  helperText={errors.offeringConditionType ? errors.offeringConditionType.message : ""}
+                                  label="Offering Condition Type"
+                                  placeholder="Enter Offering Condition Type"
+                                  className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                                />
+                              )}
+                            />
                           </div>
                           <div className="flex flex-col gap-2 md:flex-1 w-full">
-                            <Controller name="merchantShippingGroup" control={control} render={({ field }) => <TextField {...field} error={!!errors.merchantShippingGroup} helperText={errors.merchantShippingGroup ? errors.merchantShippingGroup.message : ''} label="Merchant Shipping Group" placeholder="Enter Merchant Shipping Group" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+                            <Controller
+                              name="merchantShippingGroup"
+                              control={control}
+                              render={({ field }) => (
+                                <TextField
+                                  {...field}
+                                  error={!!errors.merchantShippingGroup}
+                                  helperText={errors.merchantShippingGroup ? errors.merchantShippingGroup.message : ""}
+                                  label="Merchant Shipping Group"
+                                  placeholder="Enter Merchant Shipping Group"
+                                  className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                                />
+                              )}
+                            />
                           </div>
                         </div>
                         <div className="flex gap-7 flex-wrap">
@@ -989,7 +1028,11 @@ export default function AddProductPage() {
                               name="fullfillmentChannel"
                               control={control}
                               render={({ field }) => (
-                                <RadioGroup {...field} aria-labelledby="fullfillmentChannel" defaultValue="1">
+                                <RadioGroup
+                                  {...field}
+                                  aria-labelledby="fullfillmentChannel"
+                                  defaultValue="1"
+                                >
                                   <FormControlLabel value="1" control={<Radio />} label="I will ship this item myself (Self Ship) or I will pack this item and Amazon will pick up & ship (Easy Ship) (Merchant Fulfilled)" />
                                   <FormControlLabel value="2" control={<Radio />} label="Amazon will ship and provide customer service (Fulfilled by Amazon)" />
                                 </RadioGroup>
