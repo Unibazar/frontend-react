@@ -282,10 +282,13 @@ export default function AddProductPage() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    watch,
+    setValue,
+    formState: { errors }
   } = useForm({
     // resolver: yupResolver(validationSchema),
   });
+
 
   const onSubmit = data => {
     console.log(data);
@@ -530,6 +533,7 @@ export default function AddProductPage() {
     }
   }, [product]);
 
+
   return (
     <>
       {isLoading && <Loader />}
@@ -559,7 +563,7 @@ export default function AddProductPage() {
                 </TabList>
               </Box>
               <TabPanel value="amazon">
-                <AmazonForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors}/>
+                <AmazonForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors} watch={watch} setValue={setValue}/>
               </TabPanel>
               <TabPanel value="flipkart">
                 <FlipkartForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors}/>
