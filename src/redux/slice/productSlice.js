@@ -24,11 +24,21 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
     }
 })
 
+// export const loadProduct = createAsyncThunk('api/product', async (page, { rejectWithValue }) => {
+//     const token = localStorage.getItem('jwtToken');
+
+//     try {
+//         const response = await axios.post(`${url}/api/product?page=${page}`, {}, { headers: { token } , withCredentials:true });
+//         return response.data;
+//     } catch (error) {
+//         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
+//     }
+// });
 export const loadProduct = createAsyncThunk('api/product', async (page, { rejectWithValue }) => {
     const token = localStorage.getItem('jwtToken');
 
     try {
-        const response = await axios.post(`${url}/api/product?page=${page}`, {}, { headers: { token } , withCredentials:true });
+        const response = await axios.get(`${url}/api/productList/getListing`, {}, { headers: { token } , withCredentials:true });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');

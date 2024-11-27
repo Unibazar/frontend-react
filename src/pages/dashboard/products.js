@@ -20,15 +20,15 @@ function Products() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { product } = useSelector((state) => state.product);
-
+console.log(product,"product")
 
   useEffect(() => {
     dispatch(loadProduct(page));
   }, [page, dispatch]);
 
   useEffect(() => {
-    setProductData(product?.product || []);
-    setTotalProducts(product?.totalProducts);
+    setProductData(product || []);
+    setTotalProducts(product?.numberOfResults);
 
   }, [product])
 
