@@ -93,7 +93,7 @@ function AppNavBar() {
         </div>
         {
           user ? (
-            <div className='flex flex-row gap-2'>
+            <div className='flex flex-row gap-2 justify-center items-center'>
               <Link href='/dashboard' >Dashboard</Link>
               <ProfileIcon />
             </div>

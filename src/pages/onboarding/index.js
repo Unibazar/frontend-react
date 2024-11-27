@@ -1,4 +1,4 @@
-import Onboarding from '../../components/onBoarding/OnBoarding/OnBoarding';
+import Onboarding from '../../components/onBoarding';
 import StepProgressBar from '../../components/onBoarding/StepProgressBar/StepProgressBar';
 import PersonalInformation from '../../components/onBoarding/PersonalInformation/PersonalInformation';
 import BusinessDetail from '../../components/onBoarding/BusinessDetail/BusinessDetail';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
-  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 4));
+  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
   const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
 
   return (
@@ -29,7 +29,7 @@ const OnboardingPage = () => {
         {currentStep === 0 && <Onboarding nxt={nextStep} />}
         {currentStep === 1 && <PersonalInformation onNext={nextStep} nxt={nextStep} />}
         {currentStep === 2 && <BusinessDetail onNext={nextStep} onPrev={prevStep} nxt={nextStep} />}
-        {currentStep === 3 && <LinkAccount onNext={nextStep} onPrev={prevStep} nxt={nextStep} />}
+        {currentStep === 3 && <LinkAccount onNext={nextStep} onPrev={prevStep} />}
       </div>
     </div>
 

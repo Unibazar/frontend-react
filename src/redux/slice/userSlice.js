@@ -83,6 +83,16 @@ export const resetPassword = createAsyncThunk('user/reset/:userToken', async ({ 
   }
 });
 
+export const updateUser = createAsyncThunk('user/updateProfile', async (userData, { rejectWithValue }) => {
+  const token = localStorage.getItem('jwtToken');
+  try {
+    const response = await axios.put(`${url}/api/user/profile`, userData, { headers: { token } });
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.response?.data || 'Failed to update profile. Please try again.');
+  }
+});
+
 export const loadUser = createAsyncThunk('user/load', async (_, { rejectWithValue }) => {
   const token = localStorage.getItem('jwtToken');
   try {
