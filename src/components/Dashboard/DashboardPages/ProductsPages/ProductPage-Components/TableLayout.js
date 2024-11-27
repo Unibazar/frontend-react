@@ -106,8 +106,26 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { TiStar } from 'react-icons/ti';
 import { CgSortAz } from 'react-icons/cg';
+import { Dialog, DialogTitle } from '@mui/material';
+import { useState } from 'react';
 
 export default function TableLayout({ tableData }) {
+
+  const [showProductDetail, setShowProductDetail] = useState(false);
+  const [productDetails, setProductDetails] = useState("");
+
+
+  const handleClickOpen = (item) => {
+    setShowProductDetail(true);
+    console.log(item);
+
+    setProductDetails(item);
+  };
+
+  const handleClose = () => {
+    setShowProductDetail(false);
+  };
+
   return (
     <>
       <div className="overflow-x-auto w-full shadow-md rounded-md">
@@ -130,14 +148,14 @@ export default function TableLayout({ tableData }) {
           {tableData?.items?.length > 0 ? (
             <tbody className="rowsContainer">
               {tableData?.items?.map((item, index) => (
-                <tr key={index} className="border-t-2 text-xs md:text-lg cursor-pointer hover:bg-zinc-100">
-                  <td className="py-3 px-2 text-center">{item.summaries?.[0]?.mainImage?.link ? <div className="w-16 h-16 rounded-xl overflow-hidden"> <img src={item.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full"/> </div> : 'N/A'}</td>
+                <tr key={index} className="border-t-2 text-xs md:text-lg cursor-pointer hover:bg-zinc-100" onClick={() => handleClickOpen(item)}>
+                  <td className="py-3 px-2 text-center">{item.summaries?.[0]?.mainImage?.link ? <div className="w-16 h-16 rounded-xl overflow-hidden"> <img src={item.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full" /> </div> : 'N/A'}</td>
                   {/* <td className="py-3 px-2">{item.sku}</td> */}
                   <td className="py-3 px-2">
                     <div className="flex items-center justify-center col-span-3 gap-2 text-center">
                       <div className="flex flex-col items-center">
                         <p className="uppercase border-2 rounded-full px-2 text-xs md:text-sm text-[#CC6D02] border-[#FFE7CC]">{item.sku}</p>
-                        <h1>{item.summaries?.[0]?.itemName.slice(0,28) || 'N/A'}</h1>
+                        <h1>{item.summaries?.[0]?.itemName.slice(0, 28) || 'N/A'}</h1>
                         <p className="text-[#207A7A]">{item.summaries?.[0]?.conditionType || 'N/A'}</p>
                       </div>
                     </div>
@@ -149,7 +167,6 @@ export default function TableLayout({ tableData }) {
 
                   <td className="py-3 px-2">{new Date(item.summaries?.[0]?.createdDate).toLocaleDateString('en-GB') || 'N/A'}</td>
                   <td className="py-3 px-2 text-center">{new Date(item.summaries?.[0]?.lastUpdatedDate).toLocaleDateString('en-GB') || 'N/A'}</td>
-
                 </tr>
               ))}
             </tbody>
@@ -160,6 +177,26 @@ export default function TableLayout({ tableData }) {
           )}
         </table>
       </div>
+
+      <Dialog onClose={handleClose} open={showProductDetail}>
+        <DialogTitle>Product Detail</DialogTitle>
+        <div className='flex p-5 gap-4 '>
+          <div>
+            {productDetails.summaries?.[0]?.mainImage?.link ? <div className="w-56 h-56 rounded-xl overflow-hidden"> <img src={productDetails.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full" /> </div> : 'N/A'}
+          </div>
+          <div className='details'>
+            <h1>Product Name: {productDetails.summaries?.[0]?.itemName || 'N/A'}</h1>
+            <h1>Product SKU: {productDetails.sku || 'N/A'}</h1>
+            <h1>Product Condition:{productDetails.summaries?.[0]?.conditionType || 'N/A'}</h1>
+            <h1>Product Type:{productDetails.summaries?.[0]?.productType || 'N/A'}</h1>
+            <h1>Market Place ID:{productDetails.summaries?.[0]?.marketplaceId || 'N/A'}</h1>
+            <h1>ASIN:{productDetails.summaries?.[0]?.asin || 'N/A'}</h1>
+            <h1>Status:{productDetails.summaries?.[0]?.status?.join(', ') || 'N/A'}</h1>
+            <h1>Created At:{new Date(productDetails.summaries?.[0]?.createdDate).toLocaleDateString('en-GB') || 'N/A'}</h1>
+            <h1>Updated At:{new Date(productDetails.summaries?.[0]?.lastUpdatedDate).toLocaleDateString('en-GB') || 'N/A'}</h1>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 }
