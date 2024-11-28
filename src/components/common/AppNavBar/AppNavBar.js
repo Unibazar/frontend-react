@@ -93,7 +93,11 @@ function AppNavBar() {
         </div>
         {
           user ? (
-            <ProfileIcon/>
+            <div className='flex flex-row gap-2 justify-center items-center'>
+              <Link href='/dashboard' >Dashboard</Link>
+              <ProfileIcon />
+            </div>
+
           ) :
             <div className={styles.navButtons}>
               <Link href="/login" className={styles.loginButton}>
@@ -113,7 +117,7 @@ function AppNavBar() {
             </svg>
           </button>
         </div>}
-          
+
         {isOpen && (
           <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-md">
             <ul className="flex flex-col items-center space-y-4 p-4">

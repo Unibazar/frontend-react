@@ -1,21 +1,19 @@
-
 import { TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import getCountryList from 'react-select-country-list';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveCredentials } from '@/redux/slice/credentialSlice';
 
-// Get the list of countries
 const countries = getCountryList().getData();
 
 export default function BusinessInformation() {
-
   const dispatch = useDispatch();
+  const { credentials = {}, isLoading = false, error = null } = useSelector((state) => state.credentials || {});
 
-  // Define validation schema with Yup
+  // Validation schema
   const validationSchema = Yup.object().shape({
     sellerId: Yup.string().required('Seller ID is required'),
     clientId: Yup.string().required('Client ID is required'),
@@ -26,42 +24,62 @@ export default function BusinessInformation() {
   });
 
   // Set up the form using react-hook-form
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      region: 'IN' // Set default region to India
-    }
+      sellerId: '',
+      clientId: '',
+      clientSecret: '',
+      marketplace: '',
+      refreshToken: '',
+      region: 'IN',
+    },
   });
 
-  // Function to handle form submission
+  // Populate form fields with saved credentials
+  useEffect(() => {
+    if (credentials) {
+      Object.keys(credentials).forEach((key) => {
+        setValue(key, credentials[key]);
+      });
+    }
+  }, [credentials, setValue]);
+
+  // Handle form submission
   const onSubmit = async (data) => {
     try {
-      await dispatch(saveCredentials(data)).unwrap(); // Dispatch the action and wait for it to resolve
+      await dispatch(saveCredentials(data)).unwrap();
       console.log('Credentials saved:', data);
-      onClose(); // Close the dialog after saving
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
   };
 
+  if (isLoading) {
+    return <p>Loading credentials...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-500">Error: {error}</p>;
+  }
 
   return (
     <div className="w-full">
       <div className="bg-white rounded-lg p-5 w-full gap-2 flex flex-col">
-        {/*<div className="w-full flex flex-col justify-center items-center">
-          <h2 className="text-xl font-bold">title</h2>
-          <p className="mt-2">content</p>
-        </div>*/}
-
-        <form className='w-full flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="sellerId"
             control={control}
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Seller Id'
-                variant='outlined'
+                label="Seller Id"
+                variant="outlined"
                 error={!!errors.sellerId}
                 helperText={errors.sellerId ? errors.sellerId.message : ''}
               />
@@ -73,8 +91,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Client Id'
-                variant='outlined'
+                label="Client Id"
+                variant="outlined"
                 error={!!errors.clientId}
                 helperText={errors.clientId ? errors.clientId.message : ''}
               />
@@ -86,8 +104,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Client Secret'
-                variant='outlined'
+                label="Client Secret"
+                variant="outlined"
                 error={!!errors.clientSecret}
                 helperText={errors.clientSecret ? errors.clientSecret.message : ''}
               />
@@ -99,8 +117,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Marketplace'
-                variant='outlined'
+                label="Marketplace"
+                variant="outlined"
                 error={!!errors.marketplace}
                 helperText={errors.marketplace ? errors.marketplace.message : ''}
               />
@@ -112,8 +130,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Refresh Token'
-                variant='outlined'
+                label="Refresh Token"
+                variant="outlined"
                 error={!!errors.refreshToken}
                 helperText={errors.refreshToken ? errors.refreshToken.message : ''}
               />
@@ -140,23 +158,16 @@ export default function BusinessInformation() {
               </FormControl>
             )}
           />
-          <div className='flex justify-between w-full'>
-            <button
-              type="button"
-              className="mt-4 py-2 px-4 rounded"
-
-            >
+          <div className="flex justify-between w-full">
+            <button type="button" className="mt-4 py-2 px-4 rounded">
               Close
             </button>
-            <button
-              type="submit"
-              className="mt-4 bg-teal-600 text-white py-2 px-4 rounded"
-            >
+            <button type="submit" className="mt-4 bg-teal-600 text-white py-2 px-4 rounded">
               Save
             </button>
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }

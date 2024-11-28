@@ -9,7 +9,7 @@ const apiUrl = publicRuntimeConfig.API_BASE_URL;
 export const saveCredentials = createAsyncThunk('credentials/save', async (credentialData, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const response = await axios.post(`${apiUrl}/api/user/onboarding`, credentialData , { headers: { token } });
+    const response = await axios.post(`${apiUrl}/api/user/onboarding`, credentialData, { headers: { token } });
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response?.data || 'Failed to save credentials. Please try again.');
@@ -19,7 +19,7 @@ export const saveCredentials = createAsyncThunk('credentials/save', async (crede
 const credentialSlice = createSlice({
   name: 'credentials',
   initialState: {
-    credentials: null,
+    credentials: {},
     isLoading: false,
     error: null,
   },
