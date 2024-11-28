@@ -117,8 +117,6 @@ export default function TableLayout({ tableData }) {
 
   const handleClickOpen = (item) => {
     setShowProductDetail(true);
-    console.log(item);
-
     setProductDetails(item);
   };
 
@@ -133,10 +131,8 @@ export default function TableLayout({ tableData }) {
           <thead className="MainHeader bg-zinc-100 text-zinc-500">
             <tr className="text-xs md:text-lg">
               <th className="p-2">Image</th>
-              {/* <th className="p-2">SKU</th> */}
               <th className="p-2">Product Name</th>
               <th className="p-2">Product Type</th>
-              {/* <th className="p-2">Condition</th> */}
               <th className="p-2">Marketplace ID</th>
               <th className="p-2">Status</th>
               <th className="p-2">Created Date</th>
@@ -155,7 +151,7 @@ export default function TableLayout({ tableData }) {
                     <div className="flex items-center justify-center col-span-3 gap-2 text-center">
                       <div className="flex flex-col items-center">
                         <p className="uppercase border-2 rounded-full px-2 text-xs md:text-sm text-[#CC6D02] border-[#FFE7CC]">{item.sku}</p>
-                        <h1>{item.summaries?.[0]?.itemName.slice(0, 28) || 'N/A'}</h1>
+                        <h1 className='whitespace-nowrap'>{item.summaries?.[0]?.itemName.slice(0, 28) || 'N/A'}</h1>
                         <p className="text-[#207A7A]">{item.summaries?.[0]?.conditionType || 'N/A'}</p>
                       </div>
                     </div>
@@ -180,21 +176,24 @@ export default function TableLayout({ tableData }) {
 
       <Dialog onClose={handleClose} open={showProductDetail}>
         <DialogTitle>Product Detail</DialogTitle>
-        <div className='flex p-5 gap-4 '>
+        <div className='p-1 w-full flex flex-col '>
+        <div className='flex p-5 gap-4 flex-col md:flex-row'>
           <div>
-            {productDetails.summaries?.[0]?.mainImage?.link ? <div className="w-56 h-56 rounded-xl overflow-hidden"> <img src={productDetails.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full" /> </div> : 'N/A'}
+            {productDetails.summaries?.[0]?.mainImage?.link ? <div className="w-56 h-56 rounded-xl overflow-hidden"> <img src={productDetails.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full object-contain" /> </div> : 'N/A'}
           </div>
           <div className='details'>
-            <h1>Product Name: {productDetails.summaries?.[0]?.itemName || 'N/A'}</h1>
-            <h1>Product SKU: {productDetails.sku || 'N/A'}</h1>
-            <h1>Product Condition:{productDetails.summaries?.[0]?.conditionType || 'N/A'}</h1>
-            <h1>Product Type:{productDetails.summaries?.[0]?.productType || 'N/A'}</h1>
-            <h1>Market Place ID:{productDetails.summaries?.[0]?.marketplaceId || 'N/A'}</h1>
-            <h1>ASIN:{productDetails.summaries?.[0]?.asin || 'N/A'}</h1>
-            <h1>Status:{productDetails.summaries?.[0]?.status?.join(', ') || 'N/A'}</h1>
-            <h1>Created At:{new Date(productDetails.summaries?.[0]?.createdDate).toLocaleDateString('en-GB') || 'N/A'}</h1>
-            <h1>Updated At:{new Date(productDetails.summaries?.[0]?.lastUpdatedDate).toLocaleDateString('en-GB') || 'N/A'}</h1>
+            <h1> <span className="font-bold">Product Name:</span> {productDetails.summaries?.[0]?.itemName || 'N/A'}</h1>
+            <h1><span className="font-bold">Product SKU:</span> {productDetails.sku || 'N/A'}</h1>
+            <h1><span className="font-bold">Product Condition:</span> {productDetails.summaries?.[0]?.conditionType || 'N/A'}</h1>
+            <h1><span className="font-bold">Product Type:</span> {productDetails.summaries?.[0]?.productType || 'N/A'}</h1>
+            <h1><span className="font-bold">Market Place ID:</span> {productDetails.summaries?.[0]?.marketplaceId || 'N/A'}</h1>
+            <h1><span className="font-bold">ASIN:</span> {productDetails.summaries?.[0]?.asin || 'N/A'}</h1>
+            <h1><span className="font-bold">Status:</span> {productDetails.summaries?.[0]?.status?.join(', ') || 'N/A'}</h1>
+            <h1><span className="font-bold">Created At:</span> {new Date(productDetails.summaries?.[0]?.createdDate).toLocaleDateString('en-GB') || 'N/A'}</h1>
+            <h1><span className="font-bold">Updated At:</span> {new Date(productDetails.summaries?.[0]?.lastUpdatedDate).toLocaleDateString('en-GB') || 'N/A'}</h1>
           </div>
+        </div>
+        <button type="button" onClick={handleClose} class="w-fit mx-auto focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Close</button>
         </div>
       </Dialog>
     </>
