@@ -1,10 +1,11 @@
-import Onboarding from '../../components/onBoarding';
+// import Onboarding from '../../components/onBoarding';
 import StepProgressBar from '../../components/onBoarding/StepProgressBar/StepProgressBar';
 import PersonalInformation from '../../components/onBoarding/PersonalInformation/PersonalInformation';
 import BusinessDetail from '../../components/onBoarding/BusinessDetail/BusinessDetail';
 import LinkAccount from '../../components/onBoarding/LinkAccount/LinkAccount';
 import Head from 'next/head';
 import { useState } from 'react';
+import Onboarding from '@/components/onBoarding';
 const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
