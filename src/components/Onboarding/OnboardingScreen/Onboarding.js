@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import logoImage from '../../../public/unibazar-logo.svg';
-import vectorImage5 from '../../../public/vector5.png';
+// import logoImage from '../../../public/unibazar-logo.svg';
+import logoImage from '../../../../public/unibazar-logo.svg';
+import vectorImage5 from '../../../../public/vector5.png';
 
  const OnboardingScreen = ({ nxt }) => {
   return (
