@@ -48,7 +48,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content }) => {
       console.error('Error saving credentials:', error);
     }
   };
-
+//credential
   // Return null if the dialog is not open
   if (!isOpen) return null;
 
