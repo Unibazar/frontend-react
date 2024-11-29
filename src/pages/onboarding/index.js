@@ -8,11 +8,11 @@
 import Head from 'next/head';
 import { useState } from 'react';
 // import OnboardingScreen from '../../components/onBoarding/OnboardingScreen/OnboardingScreen'
-import StepProgressBar from '@/components/Onboarding/StepProgressBar/StepProgressBar';
-import OnboardingScreen from '@/components/Onboarding/OnboardingScreen/OnboardingScreen';
-import PersonalInformation from '@/components/Onboarding/PersonalInformation/PersonalInformation';
-import BusinessDetail from '@/components/Onboarding/BusinessDetail/BusinessDetail';
-import LinkAccount from '@/components/onBoarding/LinkAccount/LinkAccount';
+import StepProgressBar from '../../components/Onboarding/StepProgressBar/StepProgressBar';
+import OnboardingScreen from '../../components/Onboarding/OnboardingScreen/OnboardingScreen';
+import PersonalInformation from '../../components/Onboarding/PersonalInformation/PersonalInformation';
+import BusinessDetail from '../../components/Onboarding/BusinessDetail/BusinessDetail';
+import LinkAccount from '../../components/onBoarding/LinkAccount/LinkAccount';
 // import Onboarding from '@/components/onBoarding';
 const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
