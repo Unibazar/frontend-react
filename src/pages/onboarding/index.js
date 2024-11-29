@@ -7,6 +7,7 @@ import BusinessDetail from '../../components/onBoarding/BusinessDetail/BusinessD
 import LinkAccount from '../../components/onBoarding/LinkAccount/LinkAccount';
 import Head from 'next/head';
 import { useState } from 'react';
+import OnboardingScreen from '../../components/onBoarding/OnboardingScreen/Onboarding'
 // import Onboarding from '@/components/onBoarding';
 const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -29,7 +30,7 @@ const OnboardingPage = () => {
 
         {/* Conditionally Render the Onboarding Steps */}
 
-        {currentStep === 0 && <Onboarding nxt={nextStep} />}
+        {currentStep === 0 && <OnboardingScreen nxt={nextStep} />}
         {currentStep === 1 && <PersonalInformation onNext={nextStep} nxt={nextStep} />}
         {currentStep === 2 && <BusinessDetail onNext={nextStep} onPrev={prevStep} nxt={nextStep} />}
         {currentStep === 3 && <LinkAccount onNext={nextStep} onPrev={prevStep} />}
