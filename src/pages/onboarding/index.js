@@ -1,4 +1,4 @@
-import Onboarding from '../../src/components/onBoarding';
+import Onboarding from '../../../src/components/onBoarding';
 import StepProgressBar from '../../components/onBoarding/StepProgressBar/StepProgressBar';
 import PersonalInformation from '../../components/onBoarding/PersonalInformation/PersonalInformation';
 import BusinessDetail from '../../components/onBoarding/BusinessDetail/BusinessDetail';
