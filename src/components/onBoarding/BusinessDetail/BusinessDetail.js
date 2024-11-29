@@ -3,12 +3,51 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { saveBusinessDetails } from '../../../redux/slice/businessSlice'
+import { fetchBusinessDetails, saveBusinessDetails } from '../../../redux/slice/businessSlice'
 
 const BusinessDetail = ({ nxt }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  // Define validation schema with Yup
+  // // Define validation schema with Yup
+  // const validationSchema = Yup.object().shape({
+  //   name: Yup.string().required('Business name is required'),
+  //   type: Yup.string().required('Business type is required'),
+  //   number: Yup.string()
+  //     .required('Contact number is required')
+  //     .matches(/^[0-9]+$/, 'Contact number must be numeric')
+  //     .min(10, 'Contact number must be at least 10 digits')
+  //     .max(10, 'Contact number must be at most 10 digits'),
+  //   address: Yup.string().required('Address is required'),
+  // });
+
+  // // Set up the form using react-hook-form
+  // const { control, handleSubmit, formState: { errors } } = useForm({
+  //   resolver: yupResolver(validationSchema),
+  // });
+
+  // // Function to handle form submission
+  // const onSubmit = (data) => {
+  //   dispatch(saveBusinessDetails(data)); // Dispatch the action to save business details
+  //   nxt(); // Call the next function or perform any action after form submission
+  // };
+
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Fetch and pre-fill business data when the component loads
+  useEffect(() => {
+    dispatch(fetchBusinessDetails()).then((action) => {
+      if (action.payload?.businessInformation) {
+        const { name, type, number, address } = action.payload.businessInformation;
+        setValue('name', name || '');
+        setValue('type', type || '');
+        setValue('number', number || '');
+        setValue('address', address || '');
+      }
+    });
+  }, [dispatch, setValue]);
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Business name is required'),
     type: Yup.string().required('Business type is required'),
@@ -20,17 +59,17 @@ const BusinessDetail = ({ nxt }) => {
     address: Yup.string().required('Address is required'),
   });
 
-  // Set up the form using react-hook-form
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
-  // Function to handle form submission
   const onSubmit = (data) => {
-    dispatch(saveBusinessDetails(data)); // Dispatch the action to save business details
-    nxt(); // Call the next function or perform any action after form submission
+    dispatch(saveBusinessDetails(data)).then((action) => {
+      if (action.meta.requestStatus === 'fulfilled') {
+        navigate('/dashboard'); // Redirect on success
+      }
+    });
   };
-
   return (
     <div className="max-w-[600px] bg-gray-50 w-full max-md:mt-10 h-fit gap-0 flex flex-col items-center my-10 py-10 rounded-xl">
       <h1 className="text-[30px] font-bold text-center">Business Details</h1>
