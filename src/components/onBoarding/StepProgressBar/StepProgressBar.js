@@ -1,4 +1,3 @@
-//step progress bar
 const StepProgressBar = ({ currentStep, setCurrentStep }) => {
   const steps = ['Basic Details', 'Business Details', 'Link Your E-commerce Platforms', 'Complete'];
 
