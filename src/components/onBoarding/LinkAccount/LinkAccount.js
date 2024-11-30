@@ -4,7 +4,6 @@ import AmazonLogo from '../../../assets/unibazar-home-images/amazon-logo.svg';
 import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
 import { useRouter } from 'next/router';
-
 const LinkAccount = ({ isOpen, onClose }) => {
   const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
   const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });

@@ -14,6 +14,7 @@ import PersonalInformation from '../../components/Onboarding/PersonalInformation
 import BusinessDetail from '../../components/Onboarding/BusinessDetail/BusinessDetail';
 import LinkAccount from '../../components/onBoarding/LinkAccount/LinkAccount';
 // import Onboarding from '@/components/onBoarding';
+//onboarding screen
 const OnboardingPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
