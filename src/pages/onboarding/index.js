@@ -8,11 +8,11 @@
 import Head from 'next/head';
 import { useState } from 'react';
 // import OnboardingScreen from '../../components/onBoarding/OnboardingScreen/OnboardingScreen'
-import StepProgressBar from '../../components/Onboarding/StepProgressBar/StepProgressBar';
-import OnboardingScreen from '../../components/Onboarding/OnboardingScreen/OnboardingScreen';
-import PersonalInformation from '../../components/Onboarding/PersonalInformation/PersonalInformation';
-import BusinessDetail from '../../components/Onboarding/BusinessDetail/BusinessDetail';
-import LinkAccount from '../../components/onBoarding/LinkAccount/LinkAccount';
+import StepProgressBar from '../../components/OnBoardScreen/StepProgressBar/StepProgressBar';
+import OnboardingScreen from '../../components/OnBoardScreen/OnboardingScreen/OnboardingScreen';
+import PersonalInformation from '../../components/OnBoardScreen/PersonalInformation/PersonalInformation';
+import BusinessDetail from '../../components/OnBoardScreen/BusinessDetail/BusinessDetail';
+import LinkAccount from '../../components/OnBoardScreen/LinkAccount/LinkAccount';
 // import Onboarding from '@/components/onBoarding';
 //onboarding screen
 const OnboardingPage = () => {
@@ -29,10 +29,7 @@ const OnboardingPage = () => {
       </Head>
 
       <div className="container mx-auto p-4 flex flex-col items-center overflow-x-hidden">
-        {currentStep >= 1 && (
-          <StepProgressBar currentStep={currentStep} setCurrentStep={setCurrentStep} nxt={nextStep} />
-        )}
-
+        {currentStep >= 1 && <StepProgressBar currentStep={currentStep} setCurrentStep={setCurrentStep} nxt={nextStep} />}
 
         {/* Conditionally Render the Onboarding Steps */}
 
@@ -42,7 +39,6 @@ const OnboardingPage = () => {
         {currentStep === 3 && <LinkAccount onNext={nextStep} onPrev={prevStep} />}
       </div>
     </div>
-
   );
 };
 
