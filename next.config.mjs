@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com' , "m.media-amazon.com"], // Replace with your actual domains
+    domains: ['images.unsplash.com'], // Replace with your actual domains
   },
   // https://unibazar-4u6g14qyvw.dcdeploy.cloud
   publicRuntimeConfig: {
