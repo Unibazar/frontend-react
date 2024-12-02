@@ -3,7 +3,7 @@ const StepProgressBar = ({ currentStep, setCurrentStep }) => {
 
   const isStepCompleted = stepIndex => stepIndex < currentStep;
   const isStepActive = stepIndex => stepIndex === currentStep - 1;
-
+//step
   return (
     <div className="max-w-full w-[1000px] mt-7 max-[499px]:hidden">
       <div className="flex items-center justify-center w-full">

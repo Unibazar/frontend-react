@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { savePersonalInformation } from '../../../redux/slice/personalInfoSlice'
-
+//personal info
 const PersonalInformation = ({ nxt }) => {
   const dispatch = useDispatch();
 

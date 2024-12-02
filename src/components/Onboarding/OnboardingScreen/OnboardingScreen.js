@@ -2,7 +2,7 @@ import Image from 'next/image';
 // import logoImage from '../../../public/unibazar-logo.svg';
 import logoImage from '../../../../public/unibazar-logo.svg';
 import vectorImage5 from '../../../../public/vector5.png';
-//onboarding screen
+//onboarding 
  const OnboardingScreen = ({ nxt }) => {
   return (
     <div className="w-[600px] bg-gray-50 max-w-full max-md:mt-10 h-fit gap-0  flex flex-col items-center my-10 py-10 rounded-xl px-5">

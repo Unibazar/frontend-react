@@ -51,6 +51,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content }) => {
   // Return null if the dialog is not open
   if (!isOpen) return null;
 
+  //credentials
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg p-5 w-1/3 gap-2 flex flex-col">
