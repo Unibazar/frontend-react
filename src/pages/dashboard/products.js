@@ -6,6 +6,7 @@ import ProductHomePage from "../../components/Dashboard/DashboardPages/ProductsP
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadProduct } from "@/redux/slice/productSlice";
+import ProductForm from "@/components/Dashboard/DashboardPages/ProductsPages/AddProduct/AddProduct";
 
 
 function Products() {
@@ -19,7 +20,7 @@ function Products() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { product } = useSelector((state) => state.product);
-  console.log(product)
+console.log(product,"product")
 
   useEffect(() => {
     dispatch(loadProduct(page));
@@ -50,6 +51,7 @@ function Products() {
       <div>
         {!query && <ProductHomePage />}
         {query == "list" && <ListProductPage ProductData={ProductData} page={page} setPage={setPage} totalProducts={totalProducts} />}
+        {/* {query =="add-product" &&  <AddProductPage />} */}
         {query == "add-product" && <AddProductPage />}
       </div>
     </>
