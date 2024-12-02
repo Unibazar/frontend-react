@@ -6,6 +6,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { savePersonalInformation } from '../../../../../redux/slice/personalInfoSlice';
 import { IoIosCloseCircle } from "react-icons/io";
+import { loadUser } from "@/redux/slice/userSlice";
 
 export default function PersonalInformation() {
   const dispatch = useDispatch();
@@ -15,12 +16,28 @@ export default function PersonalInformation() {
   const [userPhoto, setUserPhoto] = useState();
   const userPhotoRef = useRef();
 
+  
+
   const [personalData, setPersonalData] = useState({
     name: "",
     email: "",
+    phoneNumber: "",
     logo: null,
-    description: "",
+    description: ""
   });
+
+  useEffect(() => {
+    dispatch(loadUser()).then(data => {
+      setPersonalData({
+        name: data?.payload?.user?.businessInformation?.name,
+        email: data?.payload?.user?.businessInformation?.email,
+        phoneNumber: data?.payload?.user?.businessInformation?.number,
+        location:data?.payload?.user?.businessInformation?.address,
+        logo: null,
+        description: ""
+      })
+    });
+  }, [])
 
   // Set initial personal data from Redux store
   useEffect(() => {

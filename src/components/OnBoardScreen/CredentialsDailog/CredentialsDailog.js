@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 // Get the list of countries
 const countries = getCountryList().getData();
 
-const CredentialDailog = ({ isOpen, onClose, title, content }) => {
+const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) => {
   const dispatch = useDispatch();
 
 
@@ -40,9 +40,10 @@ const CredentialDailog = ({ isOpen, onClose, title, content }) => {
   // Function to handle form submission
   const onSubmit = async (data) => {
     try {
-      await dispatch(saveCredentials(data)).unwrap(); // Dispatch the action and wait for it to resolve
+      const FullBusinessInfo = {...businessInfo , ...data};
+      await dispatch(saveCredentials(FullBusinessInfo)).unwrap(); 
       console.log('Credentials saved:', data);
-      onClose(); // Close the dialog after saving
+      onClose(); 
 
     } catch (error) {
       console.error('Error saving credentials:', error);
