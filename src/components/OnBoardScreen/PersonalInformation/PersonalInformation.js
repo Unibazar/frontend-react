@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { savePersonalInformation } from '../../../redux/slice/personalInfoSlice'
 //personal info
-const PersonalInformation = ({ nxt }) => {
+const PersonalInformation = ({ nxt , setBusinessInfo }) => {
   const dispatch = useDispatch();
 
   // Define validation schema with Yup
@@ -23,7 +23,7 @@ const PersonalInformation = ({ nxt }) => {
 
   // Function to handle form submission
   const onSubmit = (data) => {
-    dispatch(savePersonalInformation(data)); // Dispatch the action to save personal information
+    setBusinessInfo(prev => ({...prev , ...data}));  // Dispatch the action to save personal information
     nxt(); // Call the next function or perform any action after form submission
   };
 

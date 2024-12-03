@@ -5,7 +5,7 @@ import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
 import { useRouter } from 'next/router';
 //link
-const LinkAccount = ({ isOpen, onClose }) => {
+const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
   const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });
   const router = useRouter();
@@ -90,6 +90,7 @@ const LinkAccount = ({ isOpen, onClose }) => {
         onClose={() => setIsCredentialDailogOpen(false)}
         title={CredentialDailogContent.title}
         content={CredentialDailogContent.content}
+        businessInfo={businessInfo}
       />
     </div>
   );

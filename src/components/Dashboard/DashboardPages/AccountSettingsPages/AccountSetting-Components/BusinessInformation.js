@@ -6,12 +6,13 @@ import * as Yup from 'yup';
 import getCountryList from 'react-select-country-list';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveCredentials } from '@/redux/slice/credentialSlice';
+import { loadUser } from '@/redux/slice/userSlice';
 
 const countries = getCountryList().getData();
 
 export default function BusinessInformation() {
   const dispatch = useDispatch();
-  const { credentials = {}, isLoading = false, error = null } = useSelector((state) => state.credentials || {});
+  // const { credentials = {}, isLoading = false, error = null } = useSelector((state) => state.credentials || {});
 
   // Validation schema
   const validationSchema = Yup.object().shape({
@@ -41,32 +42,47 @@ export default function BusinessInformation() {
     },
   });
 
-  // Populate form fields with saved credentials
   useEffect(() => {
-    if (credentials) {
-      Object.keys(credentials).forEach((key) => {
-        setValue(key, credentials[key]);
-      });
-    }
-  }, [credentials, setValue]);
+    // Assuming `dispatch(loadUser())` is used to fetch user data
+    dispatch(loadUser()).then((data) => {
+      const businessInformation = data?.payload?.user?.businessInformation;
+      
+      // Set values into the form fields after fetching the data
+      setValue('sellerId', businessInformation?.sellerId || ''); // Set name field
+      setValue('clientId', businessInformation?.clientId || ''); // Set email field
+      setValue('clientSecret', businessInformation?.clientSecret || ''); // Set phoneNumber field
+      setValue('marketplace', businessInformation?.marketplace || ''); // Set location field
+      setValue('refreshToken', businessInformation?.refreshToken || ''); // Set logo field (If it's null or needs updating)
+      setValue('region',businessInformation?.region || ''); // Set description field (default or fetched value)
+    });
+  }, [dispatch, setValue]);
+
+  // Populate form fields with saved credentials
+  // useEffect(() => {
+  //   if (credentials) {
+  //     Object.keys(credentials).forEach((key) => {
+  //       setValue(key, credentials[key]);
+  //     });
+  //   }
+  // }, [credentials, setValue]);
 
   // Handle form submission
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     try {
-      await dispatch(saveCredentials(data)).unwrap();
-      console.log('Credentials saved:', data);
+      dispatch(saveCredentials(data));
+      console.log('Credentials saved:' , data);
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
   };
 
-  if (isLoading) {
-    return <p>Loading credentials...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading credentials...</p>;
+  // }
 
-  if (error) {
-    return <p className="text-red-500">Error: {error}</p>;
-  }
+  // if (error) {
+  //   return <p className="text-red-500">Error: {error}</p>;
+  // }
 
   return (
     <div className="w-full">

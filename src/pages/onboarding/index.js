@@ -21,6 +21,8 @@ const OnboardingPage = () => {
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
   const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
 
+  const [businessInfo, setBusinessInfo] = useState({});
+
   return (
     <div>
       <Head>
@@ -34,9 +36,9 @@ const OnboardingPage = () => {
         {/* Conditionally Render the Onboarding Steps */}
 
         {currentStep === 0 && <OnboardingScreen nxt={nextStep} />}
-        {currentStep === 1 && <PersonalInformation onNext={nextStep} nxt={nextStep} />}
-        {currentStep === 2 && <BusinessDetail onNext={nextStep} onPrev={prevStep} nxt={nextStep} />}
-        {currentStep === 3 && <LinkAccount onNext={nextStep} onPrev={prevStep} />}
+        {currentStep === 1 && <PersonalInformation onNext={nextStep} nxt={nextStep} businessInfo={businessInfo} setBusinessInfo={setBusinessInfo}/>}
+        {currentStep === 2 && <BusinessDetail onNext={nextStep} onPrev={prevStep} nxt={nextStep} businessInfo={businessInfo} setBusinessInfo={setBusinessInfo}/>}
+        {currentStep === 3 && <LinkAccount onNext={nextStep} onPrev={prevStep} businessInfo={businessInfo} setBusinessInfo={setBusinessInfo}/>}
       </div>
     </div>
   );
