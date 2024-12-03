@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { fetchBusinessDetails, saveBusinessDetails } from '../../../redux/slice/businessSlice'
 //buss
-const BusinessDetail = ({ nxt }) => {
+const BusinessDetail = ({ nxt , setBusinessInfo }) => {
   // const dispatch = useDispatch();
 
   // // Define validation schema with Yup
@@ -33,23 +33,23 @@ const BusinessDetail = ({ nxt }) => {
 
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Fetch and pre-fill business data when the component loads
-  useEffect(() => {
-    dispatch(fetchBusinessDetails()).then((action) => {
-      if (action.payload?.businessInformation) {
-        const { name, type, number, address } = action.payload.businessInformation;
-        setValue('name', name || '');
-        setValue('type', type || '');
-        setValue('number', number || '');
-        setValue('address', address || '');
-      }
-    });
-  }, [dispatch, setValue]);
+  // useEffect(() => {
+  //   dispatch(fetchBusinessDetails()).then((action) => {
+  //     if (action.payload?.businessInformation) {
+  //       const { name, type, number, address } = action.payload.businessInformation;
+  //       setValue('name', name || '');
+  //       setValue('type', type || '');
+  //       setValue('number', number || '');
+  //       setValue('address', address || '');
+  //     }
+  //   });
+  // }, [dispatch, setValue]);
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Business name is required'),
+    businessName: Yup.string().required('Business name is required'),
     type: Yup.string().required('Business type is required'),
     number: Yup.string()
       .required('Contact number is required')
@@ -64,11 +64,13 @@ const BusinessDetail = ({ nxt }) => {
   });
 
   const onSubmit = (data) => {
-    dispatch(saveBusinessDetails(data)).then((action) => {
-      if (action.meta.requestStatus === 'fulfilled') {
-        navigate('/dashboard'); // Redirect on success
-      }
-    });
+    // dispatch(saveBusinessDetails(data)).then((action) => {
+    //   if (action.meta.requestStatus === 'fulfilled') {
+    //     navigate('/dashboard'); // Redirect on success
+    //   }
+
+    setBusinessInfo(prev => ({...prev , ...data})); // Dispatch the action to save business details
+    nxt(); // Call the next function or perform any action after form submission
   };
   return (
     <div className="max-w-[600px] bg-gray-50 w-full max-md:mt-10 h-fit gap-0 flex flex-col items-center my-10 py-10 rounded-xl">
@@ -79,13 +81,13 @@ const BusinessDetail = ({ nxt }) => {
           Business name:
         </label>
         <Controller
-          name="name"
+          name="businessName"
           control={control}
           render={({ field }) => (
             <input
               {...field}
               type="text"
-              id="name"
+              id="businessName"
               placeholder="Enter Business Name"
               className={`mb-4 outline-none border-[1px] border-solid border-[#e0e0e038] px-[10px] py-3 placeholder:text-[16px] bg-[#f5f5f5] ${errors.name ? 'border-red-500' : ''}`}
             />

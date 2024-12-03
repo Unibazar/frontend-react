@@ -21,6 +21,7 @@ import MuiAlert from '@mui/material/Alert';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { DataArray } from '@mui/icons-material';
 
 // const validationSchema = yup.object().shape({
 //   itemName: yup.string().required("Item Name is required."),
@@ -54,6 +55,12 @@ export default function AddProductPage() {
   const handleSnackbarClose = () => {
     setSnackbarState(prev => ({ ...prev, open: false }));
   };
+
+  const handleChange = (event) => {
+    
+    console.log(event.target.name, event.target.checked);
+    
+};
 
   const dispatch = useDispatch();
   const navigate = useRouter();
@@ -289,14 +296,14 @@ export default function AddProductPage() {
     console.log(data);
 
     const payload = {
-      productType: data?.productType ?? 'SPORTING_GOODS',
-      sku: 'SPT-001-001',
-      requirements: 'LISTING',
+      productType: data.productType,
+      sku: data.sku,
+      requirements:data.requirements,
 
-      conditionType: 'new_new',
-      itemName: data?.itemName ?? 'Unibazar sports for boy',
+      conditionType:data.conditionType,
+      itemName: data.itemName,
       mainImage: {
-        link: data?.productPhoto1 ?? 'https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp',
+        link: data.productPhoto1 ,
         height: 248,
         width: 300,
       },
@@ -304,197 +311,197 @@ export default function AddProductPage() {
       attributes: {
         color: [
           {
-            language_tag: 'en_IN',
-            value: data?.color ?? 'black brown',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.color ,
+            marketplace_id:data.marketplace_id,
           },
         ],
         item_type_name: [
           {
-            language_tag: 'en_IN',
-            value: data?.itemTypeName ?? 'sports',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.itemTypeName,
+            marketplace_id: data.marketplace_id,
           },
         ],
         included_components: [
           {
-            language_tag: 'en_IN',
-            value: 'none',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value:data.value,
+            marketplace_id: data.marketplace_id,
           },
         ],
         fulfillment_availability: [
           {
-            fulfillment_channel_code: 'DEFAULT',
-            quantity: 10,
-            marketplace_id: 'A21TJRUUN4KGV',
+            fulfillment_channel_code: data.fulfillment_channel_code,
+            quantity: data.quantity,
+            marketplace_id:data.marketplace_id,
           },
         ],
         manufacturer: [
           {
-            language_tag: 'en_IN',
-            value: 'Toy store',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.manufacturer,
+            marketplace_id: data.marketplace_id,
           },
         ],
         item_weight: [
           {
-            unit: 'grams',
-            value: 1080.0,
-            marketplace_id: 'A21TJRUUN4KGV',
+            unit:data.unit,
+            value: data.item_weight,
+            marketplace_id: data.marketplace_id,
           },
         ],
         recommended_browse_nodes: [
           {
-            value: data?.browserNodes ?? '1378446031',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.browserNodes ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         bullet_point: [
           {
-            language_tag: 'en_IN',
-            value: data?.bulletPoint ?? 'Soft toy, dog figure',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.bulletPoint ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         product_description: [
           {
-            language_tag: 'en_IN',
-            value: data?.description ?? 'A cute dog figuer that children can play with',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.description ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         brand: [
           {
-            language_tag: 'en_IN',
-            value: data?.brandName ?? 'Generic',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.brandName,
+            marketplace_id: data.marketplace_id,
           },
         ],
         supplier_declared_has_product_identifier_exemption: [
           {
-            value: 'True',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value:data.value,
+            marketplace_id: data.marketplace_id,
           },
         ],
         country_of_origin: [
           {
-            value: 'IN',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.value,
+            marketplace_id: data.marketplace_id,
           },
         ],
         rtip_manufacturer_contact_information: [
           {
-            value: data?.manufacturerContactInfo ?? 'local store',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.manufacturerContactInfo ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         merchant_shipping_group: [
           {
-            value: 'legacy-template-id',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.value,
+            marketplace_id: data.marketplace_id,
           },
         ],
         item_name: [
           {
-            language_tag: 'en_IN',
-            value: data?.itemName ?? 'Unibazar sports ',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.itemName ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         condition_type: [
           {
-            value: 'new_new',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.condition_type,
+            marketplace_id: data.marketplace_id,
           },
         ],
         material: [
           {
-            language_tag: 'en_IN',
-            value: data?.material ?? 'Thermoplastic Rubber',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag: data.language_tag,
+            value: data.material ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         department: [
           {
-            value: 'Baby-Boys',
+            value: data.department,
           },
         ],
         model_name: [
           {
-            value: data?.modelName ?? 'Alkaman new',
+            value: data.modelName ,
           },
         ],
         warranty_description: [
           {
-            value: 'Alkaman new',
+            value: data.warranty_description,
           },
         ],
         item_dimensions: [
           {
             height: {
-              unit: 'centimeters',
-              value: '2',
+              unit: data.unit,
+              value: data.item_dimensions,
             },
             length: {
-              unit: 'centimeters',
-              value: '2',
+              unit: data.unit,
+              value: data.item_dimensions,
             },
             width: {
-              unit: 'centimeters',
-              value: '2',
+              unit: data.unit,
+              value: data.item_dimensions,
             },
           },
         ],
         supplier_declared_dg_hz_regulation: [
           {
-            value: 'waste',
+            value: data.value,
           },
         ],
         part_number: [
           {
-            value: data?.partNumber ?? 'none',
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.partNumber ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         external_product_information: [
           {
-            entity: 'HSN Code',
-            value: '610547',
-            marketplace_id: 'A21TJRUUN4KGV',
+            entity: data.entity,
+            value: data.external_product_information,
+            marketplace_id: data.marketplace_id,
           },
         ],
         unit_count: [
           {
-            value: data?.noOfPieces ?? 18.0,
-            marketplace_id: 'A21TJRUUN4KGV',
+            value: data.noOfPieces ,
+            marketplace_id: data.marketplace_id,
           },
         ],
         packer_contact_information: [
           {
-            language_tag: 'en_IN',
-            value: 'toy store, roorkee',
-            marketplace_id: 'A21TJRUUN4KGV',
+            language_tag:data.language_tag,
+            value:data.packer_contact_information,
+            marketplace_id: data.marketplace_id,
           },
         ],
         other_product_image_locator_1: [
           {
-            media_location: 'https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp',
-            marketplace_id: 'A21TJRUUN4KGV',
+            media_location: data.other_product_image_locator_1,
+            marketplace_id: data.marketplace_id,
           },
         ],
         main_product_image_locator: [
           {
-            media_location: 'https://filesblog.bizvibe.com/wp-content/webp-express/webp-images/uploads/2022/09/largest-sports-equipment-companies.jpg.webp',
-            marketplace_id: 'A21TJRUUN4KGV',
+            media_location: data.main_product_image_locator,
+            marketplace_id: data.marketplace_id,
           },
         ],
       },
 
       fulfillmentAvailability: [
         {
-          fulfillmentChannelCode: 'DEFAULT',
-          quantity: 10,
+          fulfillmentChannelCode: data.fulfillmentChannelCode,
+          quantity: data.quantity,
         },
       ],
     };

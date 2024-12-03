@@ -1,20 +1,25 @@
 import { TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import getCountryList from 'react-select-country-list';
-import { useDispatch, useSelector } from 'react-redux';
-import { saveCredentials } from '@/redux/slice/credentialSlice';
-import { loadUser } from '@/redux/slice/userSlice';
+import { useDispatch } from 'react-redux';
+import { saveCredentials } from '../../../redux/slice/credentialSlice';
 
+import { useRouter } from 'next/router';
+
+
+// Get the list of countries
 const countries = getCountryList().getData();
 
-export default function BusinessInformation() {
+const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) => {
   const dispatch = useDispatch();
-  // const { credentials = {}, isLoading = false, error = null } = useSelector((state) => state.credentials || {});
 
-  // Validation schema
+
+
+
+  // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
     sellerId: Yup.string().required('Seller ID is required'),
     clientId: Yup.string().required('Client ID is required'),
@@ -25,77 +30,45 @@ export default function BusinessInformation() {
   });
 
   // Set up the form using react-hook-form
-  const {
-    control,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      sellerId: '',
-      clientId: '',
-      clientSecret: '',
-      marketplace: '',
-      refreshToken: '',
-      region: 'IN',
-    },
+      region: 'IN' // Set default region to India
+    }
   });
 
-  useEffect(() => {
-    // Assuming `dispatch(loadUser())` is used to fetch user data
-    dispatch(loadUser()).then((data) => {
-      const businessInformation = data?.payload?.user?.businessInformation;
-      
-      // Set values into the form fields after fetching the data
-      setValue('sellerId', businessInformation?.sellerId || ''); // Set name field
-      setValue('clientId', businessInformation?.clientId || ''); // Set email field
-      setValue('clientSecret', businessInformation?.clientSecret || ''); // Set phoneNumber field
-      setValue('marketplace', businessInformation?.marketplace || ''); // Set location field
-      setValue('refreshToken', businessInformation?.refreshToken || ''); // Set logo field (If it's null or needs updating)
-      setValue('region',businessInformation?.region || ''); // Set description field (default or fetched value)
-    });
-  }, [dispatch, setValue]);
-
-  // Populate form fields with saved credentials
-  // useEffect(() => {
-  //   if (credentials) {
-  //     Object.keys(credentials).forEach((key) => {
-  //       setValue(key, credentials[key]);
-  //     });
-  //   }
-  // }, [credentials, setValue]);
-
-  // Handle form submission
-  const onSubmit = (data) => {
+  // Function to handle form submission
+  const onSubmit = async (data) => {
     try {
-      dispatch(saveCredentials(data));
-      console.log('Credentials saved:' , data);
+      const FullBusinessInfo = {...businessInfo , ...data};
+      dispatch(saveCredentials(FullBusinessInfo));
+      onClose(); 
+
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
   };
+  // Return null if the dialog is not open
+  if (!isOpen) return null;
 
-  // if (isLoading) {
-  //   return <p>Loading credentials...</p>;
-  // }
-
-  // if (error) {
-  //   return <p className="text-red-500">Error: {error}</p>;
-  // }
-
+  //credentials
   return (
-    <div className="w-full">
-      <div className="bg-white rounded-lg p-5 w-full gap-2 flex flex-col">
-        <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-lg p-5 w-1/3 gap-2 flex flex-col">
+        <div className="w-full flex flex-col justify-center items-center">
+          <h2 className="text-xl font-bold">{title}</h2>
+          <p className="mt-2">{content}</p>
+        </div>
+
+        <form className='w-full flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="sellerId"
             control={control}
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Seller Id"
-                variant="outlined"
+                label='Seller Id'
+                variant='outlined'
                 error={!!errors.sellerId}
                 helperText={errors.sellerId ? errors.sellerId.message : ''}
               />
@@ -107,8 +80,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Client Id"
-                variant="outlined"
+                label='Client Id'
+                variant='outlined'
                 error={!!errors.clientId}
                 helperText={errors.clientId ? errors.clientId.message : ''}
               />
@@ -120,8 +93,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Client Secret"
-                variant="outlined"
+                label='Client Secret'
+                variant='outlined'
                 error={!!errors.clientSecret}
                 helperText={errors.clientSecret ? errors.clientSecret.message : ''}
               />
@@ -133,8 +106,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Marketplace"
-                variant="outlined"
+                label='Marketplace'
+                variant='outlined'
                 error={!!errors.marketplace}
                 helperText={errors.marketplace ? errors.marketplace.message : ''}
               />
@@ -146,8 +119,8 @@ export default function BusinessInformation() {
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Refresh Token"
-                variant="outlined"
+                label='Refresh Token'
+                variant='outlined'
                 error={!!errors.refreshToken}
                 helperText={errors.refreshToken ? errors.refreshToken.message : ''}
               />
@@ -174,11 +147,18 @@ export default function BusinessInformation() {
               </FormControl>
             )}
           />
-          <div className="flex justify-between w-full">
-            <button type="button" className="mt-4 py-2 px-4 rounded">
+          <div className='flex justify-between w-full'>
+            <button
+              type="button"
+              className="mt-4 py-2 px-4 rounded"
+              onClick={onClose}
+            >
               Close
             </button>
-            <button type="submit" className="mt-4 bg-teal-600 text-white py-2 px-4 rounded">
+            <button
+              type="submit"
+              className="mt-4 bg-teal-600 text-white py-2 px-4 rounded"
+            >
               Save
             </button>
           </div>
@@ -186,4 +166,6 @@ export default function BusinessInformation() {
       </div>
     </div>
   );
-}
+};
+
+export default CredentialDailog;

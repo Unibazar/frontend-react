@@ -2,8 +2,11 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { savePersonalInformation } from '../../../redux/slice/personalInfoSlice'
 //personal info
 const PersonalInformation = ({ nxt , setBusinessInfo }) => {
+  const dispatch = useDispatch();
 
   // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
@@ -20,7 +23,7 @@ const PersonalInformation = ({ nxt , setBusinessInfo }) => {
 
   // Function to handle form submission
   const onSubmit = (data) => {
-    setBusinessInfo(prev => ({...prev , ...data})); // Dispatch the action to save personal information
+    setBusinessInfo(prev => ({...prev , ...data}));  // Dispatch the action to save personal information
     nxt(); // Call the next function or perform any action after form submission
   };
 
