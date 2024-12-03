@@ -12,7 +12,7 @@ const countries = getCountryList().getData();
 
 export default function BusinessInformation() {
   const dispatch = useDispatch();
-  const { credentials = {}, isLoading = false, error = null } = useSelector((state) => state.credentials || {});
+  // const { credentials = {}, isLoading = false, error = null } = useSelector((state) => state.credentials || {});
 
   // Validation schema
   const validationSchema = Yup.object().shape({
@@ -58,31 +58,31 @@ export default function BusinessInformation() {
   }, [dispatch, setValue]);
 
   // Populate form fields with saved credentials
-  useEffect(() => {
-    if (credentials) {
-      Object.keys(credentials).forEach((key) => {
-        setValue(key, credentials[key]);
-      });
-    }
-  }, [credentials, setValue]);
+  // useEffect(() => {
+  //   if (credentials) {
+  //     Object.keys(credentials).forEach((key) => {
+  //       setValue(key, credentials[key]);
+  //     });
+  //   }
+  // }, [credentials, setValue]);
 
   // Handle form submission
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     try {
-      await dispatch(saveCredentials(data)).unwrap();
-      console.log('Credentials saved:', data);
+      dispatch(saveCredentials(data));
+      console.log('Credentials saved:' , data);
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
   };
 
-  if (isLoading) {
-    return <p>Loading credentials...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading credentials...</p>;
+  // }
 
-  if (error) {
-    return <p className="text-red-500">Error: {error}</p>;
-  }
+  // if (error) {
+  //   return <p className="text-red-500">Error: {error}</p>;
+  // }
 
   return (
     <div className="w-full">

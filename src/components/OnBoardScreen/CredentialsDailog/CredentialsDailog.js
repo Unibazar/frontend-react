@@ -41,8 +41,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
   const onSubmit = async (data) => {
     try {
       const FullBusinessInfo = {...businessInfo , ...data};
-      await dispatch(saveCredentials(FullBusinessInfo)).unwrap(); 
-      console.log('Credentials saved:', data);
+      dispatch(saveCredentials(FullBusinessInfo));
       onClose(); 
 
     } catch (error) {
