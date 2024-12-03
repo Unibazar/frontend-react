@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import getCountryList from 'react-select-country-list';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveCredentials } from '@/redux/slice/credentialSlice';
+import { loadUser } from '@/redux/slice/userSlice';
 
 const countries = getCountryList().getData();
 
@@ -40,6 +41,21 @@ export default function BusinessInformation() {
       region: 'IN',
     },
   });
+
+  useEffect(() => {
+    // Assuming `dispatch(loadUser())` is used to fetch user data
+    dispatch(loadUser()).then((data) => {
+      const businessInformation = data?.payload?.user?.businessInformation;
+      
+      // Set values into the form fields after fetching the data
+      setValue('sellerId', businessInformation?.sellerId || ''); // Set name field
+      setValue('clientId', businessInformation?.clientId || ''); // Set email field
+      setValue('clientSecret', businessInformation?.clientSecret || ''); // Set phoneNumber field
+      setValue('marketplace', businessInformation?.marketplace || ''); // Set location field
+      setValue('refreshToken', businessInformation?.refreshToken || ''); // Set logo field (If it's null or needs updating)
+      setValue('region',businessInformation?.region || ''); // Set description field (default or fetched value)
+    });
+  }, [dispatch, setValue]);
 
   // Populate form fields with saved credentials
   useEffect(() => {
