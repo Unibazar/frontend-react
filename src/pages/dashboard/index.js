@@ -2,7 +2,7 @@ import Image from "next/image";
 import dashboardImage from "../../../public/dashboard-image1.png";
 import Head from "next/head";
 import { useState } from "react";
-import LinkAccount from "@/components/onBoarding/LinkAccount/LinkAccount";
+import LinkAccount from "../../components/Onboarding/LinkAccount/LinkAccount"
 
 
 
