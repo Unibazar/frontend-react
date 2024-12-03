@@ -6,6 +6,8 @@ import { FiPlusCircle } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { savePersonalInformation } from '../../../../../redux/slice/personalInfoSlice';
 import { IoIosCloseCircle } from "react-icons/io";
+import { loadUser } from "@/redux/slice/userSlice";
+import { saveCredentials } from "@/redux/slice/credentialSlice";
 
 export default function PersonalInformation() {
   const dispatch = useDispatch();
@@ -15,12 +17,28 @@ export default function PersonalInformation() {
   const [userPhoto, setUserPhoto] = useState();
   const userPhotoRef = useRef();
 
+  
+
   const [personalData, setPersonalData] = useState({
     name: "",
     email: "",
+    number: "",
     logo: null,
-    description: "",
+    description: ""
   });
+
+  useEffect(() => {
+    dispatch(loadUser()).then(data => {
+      setPersonalData({
+        name: data?.payload?.user?.businessInformation?.name,
+        email: data?.payload?.user?.businessInformation?.email,
+        number: data?.payload?.user?.businessInformation?.number,
+        address:data?.payload?.user?.businessInformation?.address,
+        logo: null,
+        description: data?.payload?.user?.businessInformation?.description
+      })
+    });
+  }, [dispatch])
 
   // Set initial personal data from Redux store
   useEffect(() => {
@@ -43,7 +61,7 @@ export default function PersonalInformation() {
     };
 
     // Dispatch the personal information to the Redux store
-    dispatch(savePersonalInformation(dataToSubmit));
+    dispatch(saveCredentials(dataToSubmit));
   };
 
   return (
@@ -81,13 +99,13 @@ export default function PersonalInformation() {
             />
           </div>
           <div className="flex flex-1 flex-col gap-2">
-            <label htmlFor="phoneNumber">Phone Number:</label>
+            <label htmlFor="number">Phone Number:</label>
             <input
-              id="phoneNumber"
+              id="number"
               type="tel"
               placeholder="Phone"
-              name="phoneNumber" // This should be updated to match the slice if necessary
-              value={personalData.phoneNumber} // This should be updated to match the slice if necessary
+              name="number" // This should be updated to match the slice if necessary
+              value={personalData.number} // This should be updated to match the slice if necessary
               onChange={handleChange}
               className="border-2 text-sm md:text-lg p-2 rounded-lg"
             />
@@ -96,13 +114,13 @@ export default function PersonalInformation() {
 
         <div className="flex gap-7 flex-wrap mt-5">
           <div className="flex flex-1 flex-col gap-2">
-            <label htmlFor="location">Location:</label>
+            <label htmlFor="address">Location:</label>
             <input
-              id="location"
+              id="address"
               type="text"
               placeholder="Enter Address"
-              name="location" // This should be updated to match the slice if necessary
-              value={personalData.location} // This should be updated to match the slice if necessary
+              name="address" // This should be updated to match the slice if necessary
+              value={personalData.address} // This should be updated to match the slice if necessary
               onChange={handleChange}
               className="border-2 text-sm md:text-lg p-2 rounded-lg"
             />
