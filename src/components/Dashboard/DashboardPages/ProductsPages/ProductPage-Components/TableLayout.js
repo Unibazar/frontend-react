@@ -108,6 +108,7 @@ import { TiStar } from 'react-icons/ti';
 import { CgSortAz } from 'react-icons/cg';
 import { useState } from 'react';
 import { Dialog, DialogTitle } from '@mui/material';
+import Image from 'next/image';
 
 export default function TableLayout({ tableData }) {
 
@@ -144,7 +145,7 @@ export default function TableLayout({ tableData }) {
             <tbody className="rowsContainer">
               {tableData?.items?.map((item, index) => (
                 <tr key={index} className="border-t-2 text-xs md:text-lg cursor-pointer hover:bg-zinc-100" onClick={() => handleClickOpen(item)}>
-                  <td className="py-3 px-2 text-center">{item.summaries?.[0]?.mainImage?.link ? <div className="w-16 h-16 rounded-xl overflow-hidden"> <img src={item.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full" /> </div> : 'N/A'}</td>
+                  <td className="py-3 px-2 text-center">{item.summaries?.[0]?.mainImage?.link ? <div className="w-16 h-16 rounded-xl overflow-hidden"> <Image src={item.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full" height={180} width={180} /> </div> : 'N/A'}</td>
                   <td className="py-3 px-2">
                     <div className="flex items-center justify-center col-span-3 gap-2 text-center">
                       <div className="flex flex-col items-center">
@@ -176,7 +177,7 @@ export default function TableLayout({ tableData }) {
         <div className='p-1 w-full flex flex-col '>
         <div className='flex p-5 gap-4 flex-col md:flex-row'>
           <div>
-            {productDetails.summaries?.[0]?.mainImage?.link ? <div className="w-56 h-56 rounded-xl overflow-hidden"> <img src={productDetails.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full object-contain" /> </div> : 'N/A'}
+            {productDetails.summaries?.[0]?.mainImage?.link ? <div className="w-56 h-56 rounded-xl overflow-hidden"> <Image src={productDetails.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full object-contain" height={180} width={180}/> </div> : 'N/A'}
           </div>
           <div className='details'>
             <h1> <span className="font-bold">Product Name:</span> {productDetails.summaries?.[0]?.itemName || 'N/A'}</h1>

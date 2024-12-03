@@ -38,7 +38,7 @@ export default function PersonalInformation() {
         description: data?.payload?.user?.businessInformation?.description
       })
     });
-  }, [])
+  }, [dispatch])
 
   // Set initial personal data from Redux store
   useEffect(() => {
