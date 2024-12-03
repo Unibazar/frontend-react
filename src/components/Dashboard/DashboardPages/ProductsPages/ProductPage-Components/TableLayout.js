@@ -145,7 +145,6 @@ export default function TableLayout({ tableData }) {
               {tableData?.items?.map((item, index) => (
                 <tr key={index} className="border-t-2 text-xs md:text-lg cursor-pointer hover:bg-zinc-100" onClick={() => handleClickOpen(item)}>
                   <td className="py-3 px-2 text-center">{item.summaries?.[0]?.mainImage?.link ? <div className="w-16 h-16 rounded-xl overflow-hidden"> <img src={item.summaries?.[0]?.mainImage?.link} alt="Product" className="w-full h-full" /> </div> : 'N/A'}</td>
-                  {/* <td className="py-3 px-2">{item.sku}</td> */}
                   <td className="py-3 px-2">
                     <div className="flex items-center justify-center col-span-3 gap-2 text-center">
                       <div className="flex flex-col items-center">
@@ -156,7 +155,6 @@ export default function TableLayout({ tableData }) {
                     </div>
                   </td>
                   <td className="py-3 px-2">{item.summaries?.[0]?.productType || 'N/A'}</td>
-                  {/* <td className="py-3 px-2">{item.summaries?.[0]?.conditionType || 'N/A'}</td> */}
                   <td className="py-3 px-2">{item.summaries?.[0]?.marketplaceId || 'N/A'}</td>
                   <td className="py-3 px-2">{item.summaries?.[0]?.status?.join(', ') || 'N/A'}</td>
 
