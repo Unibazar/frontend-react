@@ -1,5 +1,5 @@
-import { TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import React from 'react';
+import { TextField, Select, MenuItem, FormControl, InputLabel, Input } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -13,11 +13,10 @@ import { useRouter } from 'next/router';
 // Get the list of countries
 const countries = getCountryList().getData();
 
-const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) => {
+const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, accountKey, setFilledAccounts }) => {
+ 
   const dispatch = useDispatch();
-
-
-
+ 
 
   // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
@@ -30,7 +29,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
   });
 
   // Set up the form using react-hook-form
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control,reset, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
       region: 'IN' // Set default region to India
@@ -40,9 +39,16 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
   // Function to handle form submission
   const onSubmit = async (data) => {
     try {
-      const {platform , ...rest } = data;
-      const FullBusinessInfo = {...businessInfo , [platform]: rest};
-      dispatch(saveCredentials(FullBusinessInfo));
+     
+      const FullBusinessInfo = {...businessInfo , [title]: {...data}};
+      dispatch(saveCredentials(FullBusinessInfo)).then(res=>{
+        console.log('res:', res)
+        if(res.payload.success){
+          setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
+        }
+      });
+
+      reset()
       onClose(); 
 
     } catch (error) {
@@ -151,20 +157,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
 
 
           {/* hidden - input  */}
-          <Controller
-            name="platform"
-            control={control}
-            defaultValue={title}
-            render={({ field }) => (
-              <TextField
-                hidden
-                label='platform'
-                variant='outlined'
-                error={!!errors.platform}
-                helperText={errors.platform ? errors.platform.message : ''}
-              />
-            )}
-          />
+          
+           
           
           <div className='flex justify-between w-full'>
             <button

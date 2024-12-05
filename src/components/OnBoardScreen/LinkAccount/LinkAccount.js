@@ -27,11 +27,8 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   });
 
   const handleImageClick = (title, content, accountKey) => {
-    setCredentialDailogContent({ title, content });
+    setCredentialDailogContent({ title, content, accountKey });
     setIsCredentialDailogOpen(true);
-
-    // Save the account key to track which account is being filled
-    // setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
   };
 
   const handleNextClick = () => {
@@ -99,6 +96,8 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
         isOpen={isCredentialDailogOpen}
         onClose={() => setIsCredentialDailogOpen(false)}
         title={CredentialDailogContent.title}
+        setFilledAccounts={setFilledAccounts}
+        accountKey={CredentialDailogContent.accountKey}
         content={CredentialDailogContent.content}
         businessInfo={businessInfo}
       />
