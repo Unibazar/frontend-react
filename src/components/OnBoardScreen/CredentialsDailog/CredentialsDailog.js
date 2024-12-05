@@ -40,7 +40,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
   // Function to handle form submission
   const onSubmit = async (data) => {
     try {
-      const FullBusinessInfo = {...businessInfo , ...data};
+      const {platform , ...rest } = data;
+      const FullBusinessInfo = {...businessInfo , [platform]: rest};
       dispatch(saveCredentials(FullBusinessInfo));
       onClose(); 
 
@@ -156,7 +157,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
             defaultValue={title}
             render={({ field }) => (
               <TextField
-                
+                hidden
                 label='platform'
                 variant='outlined'
                 error={!!errors.platform}

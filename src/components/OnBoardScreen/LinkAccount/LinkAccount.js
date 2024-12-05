@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AmazonLogo from '../../../assets/unibazar-home-images/amazon-logo.svg';
 import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser } from "@/redux/slice/userSlice";
 //link
 const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
   const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch])
+  
+  const {user} = useSelector(state=>state.user)
+
 
   // State to track filled accounts
   const [filledAccounts, setFilledAccounts] = useState({
@@ -21,7 +31,7 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
     setIsCredentialDailogOpen(true);
 
     // Save the account key to track which account is being filled
-    setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
+    // setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
   };
 
   const handleNextClick = () => {
