@@ -147,6 +147,24 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo }) =>
               </FormControl>
             )}
           />
+
+
+          {/* hidden - input  */}
+          <Controller
+            name="platform"
+            control={control}
+            defaultValue={title}
+            render={({ field }) => (
+              <TextField
+                
+                label='platform'
+                variant='outlined'
+                error={!!errors.platform}
+                helperText={errors.platform ? errors.platform.message : ''}
+              />
+            )}
+          />
+          
           <div className='flex justify-between w-full'>
             <button
               type="button"
