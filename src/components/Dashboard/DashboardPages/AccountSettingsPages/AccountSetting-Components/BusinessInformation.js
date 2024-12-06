@@ -2,15 +2,13 @@ import { Box, Tab } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import React from 'react';
+import React, { useState } from 'react';
 import BusinessInfomationForm from './BusinessInfomationForm';
 
 
 
 export default function BusinessInformation() {
-  
-
-  const [platform, setPlatform] = React.useState('amazon');
+  const [platform, setPlatform] = useState('amazon');
 
   const handleChangePlatform = (event, newValue) => {
     setPlatform(newValue);
