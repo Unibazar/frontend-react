@@ -16,7 +16,7 @@ export default function BusinessInformation() {
 
   return (
     <div className="w-full">
-      <div className="bg-white rounded-lg p-5 w-full gap-2 flex flex-col">
+      <div className="bg-white rounded-lg w-full gap-2 flex flex-col">
         <Box sx={{ width: '100%', typography: 'body1' }}>
           <TabContext value={platform}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
