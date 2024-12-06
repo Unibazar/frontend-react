@@ -19,12 +19,22 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   
   const {user} = useSelector(state=>state.user)
 
-
+  
+  
   // State to track filled accounts
   const [filledAccounts, setFilledAccounts] = useState({
     amazon: false,
     meesho: false,
   });
+
+  useEffect(() => {
+    if(user?.user?.businessInformation?.hasOwnProperty('amazon')){
+      setFilledAccounts(prev=>({...prev , amazon:true}));
+    }
+    else if(user?.businessInformation?.hasOwnProperty('meesho')){
+      setFilledAccounts(prev=>({...prev , meesho:true}));
+    }
+  }, [user])
 
   const handleImageClick = (title, content, accountKey) => {
     setCredentialDailogContent({ title, content, accountKey });

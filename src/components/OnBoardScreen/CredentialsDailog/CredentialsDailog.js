@@ -42,7 +42,6 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
      
       const FullBusinessInfo = {...businessInfo , [accountKey]: {...data}};
       dispatch(saveCredentials(FullBusinessInfo)).then(res=>{
-        console.log('res:', res)
         if(res.payload.success){
           setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
         }
