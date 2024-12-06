@@ -40,7 +40,7 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
   const onSubmit = async (data) => {
     try {
      
-      const FullBusinessInfo = {...businessInfo , [title]: {...data}};
+      const FullBusinessInfo = {...businessInfo , [accountKey]: {...data}};
       dispatch(saveCredentials(FullBusinessInfo)).then(res=>{
         console.log('res:', res)
         if(res.payload.success){
