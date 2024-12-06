@@ -31,7 +31,7 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
     if(user?.user?.businessInformation?.hasOwnProperty('amazon')){
       setFilledAccounts(prev=>({...prev , amazon:true}));
     }
-    else if(user?.businessInformation?.hasOwnProperty('meesho')){
+    else if(user?.user?.businessInformation?.hasOwnProperty('meesho')){
       setFilledAccounts(prev=>({...prev , meesho:true}));
     }
   }, [user])
