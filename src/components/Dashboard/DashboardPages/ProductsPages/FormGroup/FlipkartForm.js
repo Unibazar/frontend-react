@@ -8,7 +8,7 @@ import { IoIosCloseCircle } from 'react-icons/io';
 import { Controller } from "react-hook-form";
 
 
-function AmazonForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, productPhoto1, ProductPhotoSrc2, productPhoto2, ProductPhotoSrc3, productPhoto3, ProductPhotoSrc4, productPhoto4, errors, watch, setValue }) {
+function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, productPhoto1, ProductPhotoSrc2, productPhoto2, ProductPhotoSrc3, productPhoto3, ProductPhotoSrc4, productPhoto4, errors, watch, setValue }) {
 
   const hasBrandName = watch("hasBrandName", false);
   const hasProductID = watch("hasProductID", false);
@@ -614,4 +614,4 @@ function AmazonForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, product
   )
 }
 
-export default AmazonForm
+export default FlipkartForm
