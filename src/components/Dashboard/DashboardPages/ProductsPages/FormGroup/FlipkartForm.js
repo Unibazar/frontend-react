@@ -107,7 +107,7 @@ function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, produ
             </div>
             <div className="flex gap-7 flex-wrap">
               <div className="flex flex-col gap-2 md:flex-1 w-full">
-                <Controller name="productID" control={control} render={({ field }) => <TextField {...field} error={!!errors.productID} helperText={errors.productID ? errors.productID.message : ''} label="Product ID" placeholder="Enter Product ID" className={`border-2 text-sm md:text-lg p-2 rounded-lg ${hasProductID && 'bg-zinc-100'}`} disabled={hasProductID}/>} />
+                <Controller name="productID" control={control} render={({ field }) => <TextField {...field} error={!!errors.productID} helperText={errors.productID ? errors.productID.message : ''} label="Product ID" placeholder="Enter Product ID" className={`border-2 text-sm md:text-lg p-2 rounded-lg ${hasProductID && 'bg-zinc-100'}`} disabled={hasProductID} />} />
               </div>
               <div className="flex flex-col gap-2 md:flex-1 w-full">
                 <Controller
@@ -132,10 +132,156 @@ function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, produ
               control={control}
               render={({ field }) => (
                 <FormControlLabel
-                  control={<Checkbox name="hasProductID" {...field}/>}
+                  control={<Checkbox name="hasProductID" {...field} />}
                   label="This Product Does Not Have Product ID" className="w-fit" />
               )}
             />
+
+<h1>Tax Details</h1>
+
+            <div className="flex gap-7 flex-wrap">
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller
+                  name="HSN"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={!!errors.HSN}
+                      helperText={errors.HSN ? errors.HSN.message : ""}
+                      label="HSN"
+                      placeholder="Enter HSN Code"
+                      className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                    />
+                  )}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller
+                  name="luxuryCess"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={!!errors.luxuryCess}
+                      helperText={errors.luxuryCess ? errors.luxuryCess.message : ""}
+                      label="Luxury Cess"
+                      placeholder="Enter Luxury Cess In Percentage(%)"
+                      className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                    />
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="texCode"
+                control={control}
+                render={({ field }) => (
+                  <FormControl fullWidth>
+                    <InputLabel id="texCode">Tex Code</InputLabel>
+                    <Select
+                      {...field}
+                      labelId="texCode"
+                      id="texCode"
+                      label="Tex Code"
+                      placeholder="Select Tex Code"
+                    >
+                      <MenuItem value={'gst_0'}>GST_0</MenuItem>
+                      <MenuItem value={'gst_12'}>GST_12</MenuItem>
+                      <MenuItem value={'gst_18'}>GST_18</MenuItem>
+                      <MenuItem value={'gst_28'}>GST_28</MenuItem>
+                      <MenuItem value={'gst_3'}>GST_3</MenuItem>
+                      <MenuItem value={'gst_5'}>GST_5</MenuItem>
+                      <MenuItem value={'gst_apparel'}>GST_APPAREL</MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
+              />
+            </div>
+
+            
+
+
+            <h1>Manufacturing Details</h1>
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="region"
+                control={control}
+                render={({ field }) => (
+                  <FormControl fullWidth>
+                    <InputLabel id="region">Region</InputLabel>
+                    <Select
+                      {...field}
+                      labelId="region"
+                      id="region"
+                      label="region"
+                      placeholder="Select Region"
+                    >
+                      <MenuItem value={'IN'}>Indian</MenuItem>
+                      <MenuItem value={'UK'}>United Kingdom</MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
+              />
+            </div>
+
+            <div className="flex gap-7 flex-wrap">
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller
+                  name="manufacturerDetails"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={!!errors.manufacturerDetails}
+                      helperText={errors.manufacturerDetails ? errors.manufacturerDetails.message : ""}
+                      label="Manufacturer Details"
+                      placeholder="Enter Manufacturer Details"
+                      className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                    />
+                  )}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller
+                  name="packerDetails"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={!!errors.packerDetails}
+                      helperText={errors.packerDetails ? errors.packerDetails.message : ""}
+                      label="Packer Details"
+                      placeholder="Enter Packer Details"
+                      className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                    />
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="importerDetails"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    error={!!errors.importerDetails}
+                    helperText={errors.importerDetails ? errors.importerDetails.message : ""}
+                    label="Importer Details"
+                    placeholder="Enter Importer Details"
+                    className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                  />
+                )}
+              />
+            </div>
+
+
           </AccordionDetails>
         </Accordion>
 
@@ -144,14 +290,93 @@ function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, produ
           <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel-description" id="panel-description">
             Description
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="ISBN13"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    error={!!errors.ISBN13}
+                    helperText={errors.ISBN13 ? errors.ISBN13.message : ""}
+                    label="ISBN13"
+                    placeholder="Enter ISBN13"
+                    className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                  />
+                )}
+              />
+            </div>
+
+
             <div className="flex gap-7 flex-wrap">
               <div className="flex flex-col gap-2 md:flex-1 w-full">
-                <Controller name="description" control={control} render={({ field }) => <TextField {...field} error={!!errors.description} helperText={errors.description ? errors.description.message : ''} label="Description" multiline rows={6} placeholder="Enter Product Description" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+                <Controller name="title" control={control} render={({ field }) => <TextField {...field} error={!!errors.title} helperText={errors.title ? errors.title.message : ''} label="Title" placeholder="Enter Title" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
               </div>
-              <div className="flex flex-col gap-4 md:flex-1 w-full">
-                <Controller name="bulletPoint" control={control} render={({ field }) => <TextField {...field} error={!!errors.bulletPoint} helperText={errors.bulletPoint ? errors.bulletPoint.message : ''} label="Bullet Point" multiline rows={6} placeholder="Enter Bullet Point For Your Product" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="author" control={control} render={({ field }) => <TextField {...field} error={!!errors.author} helperText={errors.author ? errors.author.message : ''} label="Author" placeholder="Enter Author Name" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
               </div>
+            </div>
+
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="productForm"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    error={!!errors.productForm}
+                    helperText={errors.productForm ? errors.productForm.message : ""}
+                    label="Product Form"
+                    placeholder="Enter Product Form"
+                    className="border-2 text-sm md:text-lg p-2 rounded-lg"
+                  />
+                )}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="language"
+                control={control}
+                render={({ field }) => (
+                  <FormControl fullWidth>
+                    <InputLabel id="language">Language</InputLabel>
+                    <Select
+                      {...field}
+                      labelId="language"
+                      id="language"
+                      label="Language"
+                      placeholder="Select Language"
+                    >
+                      <MenuItem value={'hindi'}>Hindi</MenuItem>
+                      <MenuItem value={'english'}>English</MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <Controller
+                name="bookSubcategory"
+                control={control}
+                render={({ field }) => (
+                  <FormControl fullWidth>
+                    <InputLabel id="bookSubcategory">Book Subcategory</InputLabel>
+                    <Select
+                      {...field}
+                      labelId="bookSubcategory"
+                      id="bookSubcategory"
+                      label="Book Subcategory"
+                      placeholder="Select Book Subcategory"
+                    >
+                      <MenuItem value={'artBook'}>Art Book</MenuItem>
+                      <MenuItem value={'otherBook'}>Other Book</MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
+              />
             </div>
 
             {/* Upload Photos Section */}
