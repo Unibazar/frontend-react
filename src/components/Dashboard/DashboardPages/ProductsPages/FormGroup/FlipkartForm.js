@@ -30,29 +30,31 @@ function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, produ
       <div>
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel-product-identity" id="panel-product-identity">
-            Product Identity
+          Price, Stock and Shipping Information (0/21)
           </AccordionSummary>
           <AccordionDetails className="flex flex-col gap-4">
             <div className="flex gap-7 flex-wrap">
               <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <div >Listing information</div>
                 <Controller
-                  name="itemName"
+                  name="sellerSKUID"
                   control={control}
                   render={({ field }) => (
                     <TextField
                       {...field}
-                      error={!!errors.itemName}
-                      helperText={errors.itemName ? errors.itemName.message : ""}
-                      label="Item Name"
-                      placeholder="Enter Item Name"
+                      error={!!errors.sellerSKUID}
+                      helperText={errors.sellerSKUID ? errors.sellerSKUID.message : ""}
+                      label="Seller SKU ID"
+                      placeholder="Enter Seller SKU ID"
                       className="border-2 text-sm md:text-lg p-2 rounded-lg"
                     />
                   )}
                 />
               </div>
               <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <div>Status Details</div>
                 <Controller
-                  name="productType"
+                  name="listingStatus"
                   control={control}
                   render={({ field }) => (
                     // <TextField
@@ -64,68 +66,108 @@ function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, produ
                     //   className="border-2 text-sm md:text-lg p-2 rounded-lg"
                     // />
                     <FormControl fullWidth>
-                      <InputLabel id="productType">Product Type</InputLabel>
+                      <InputLabel id="Listing Status">Listing Status</InputLabel>
                       <Select
                         {...field}
-                        labelId="productType"
-                        id="productType"
-                        label="Product Type"
-                        placeholder="Select Product Type"
+                        labelId="listingStatus"
+                        id="listingStatus"
+                        label="Listing Status"
+                        placeholder="Select listingStatus"
                       >
-                        <MenuItem value={'SPORTING_GOODS'}>SPORTING GOODS</MenuItem>
+                        <MenuItem value={'Active'}>Active</MenuItem>
+                        <MenuItem value={'Inactive'}>Inactive</MenuItem>
                       </Select>
                     </FormControl>
                   )}
                 />
               </div>
             </div>
+            <div>Price details</div>
             <div className="flex gap-7 flex-wrap">
               <div className="flex flex-col gap-2 md:flex-1 w-full">
-                <Controller name="browserNodes" control={control} render={({ field }) => <TextField {...field} error={!!errors.browserNodes} helperText={errors.browserNodes ? errors.browserNodes.message : ''} label="Browser Nodes" placeholder="Enter Browser Nodes" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+                
+                <Controller name="MRP" control={control} render={({ field }) => <TextField {...field} error={!!errors.MRP} helperText={errors.MRP ? errors.MRP.message : ''} label="MRP " placeholder="Enter MRP " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="yourSellingPrice" control={control} render={({ field }) => <TextField {...field} error={!!errors.yourSellingPrice} helperText={errors.yourSellingPrice ? errors.yourSellingPrice.message : ''} label="Your selling price " placeholder="Enter Your selling price " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
               </div>
             </div>
-            <div className="flex gap-2 items-center">
-              <label htmlFor="variations">Variations</label>
-              <FormControlLabel control={<Checkbox name="hasVariations" />} label="This Product Have Variations" />
-            </div>
-            <div className="flex gap-7 flex-wrap">
-              <div className="flex flex-col gap-2 w-full">
-                <Controller name="brandName" control={control} render={({ field }) => <TextField {...field} error={!!errors.brandName} helperText={errors.brandName ? errors.brandName.message : ''} label="Brand Name" placeholder="Enter Brand Name" className={`border-2 text-sm md:text-lg p-2 rounded-lg ${hasBrandName && 'bg-zinc-100'}`} disabled={hasBrandName} />} />
-                <Controller
-                  name="hasBrandName"
-                  control={control}
-                  render={({ field }) => (
-                    <FormControlLabel
-                      control={<Checkbox {...field} />}
-                      label="This Product Does Not Have Brand Name"
-                      className="w-fit"
-                    />
-                  )}
-                />
 
-              </div>
-            </div>
             <div className="flex gap-7 flex-wrap">
               <div className="flex flex-col gap-2 md:flex-1 w-full">
                 <Controller name="productID" control={control} render={({ field }) => <TextField {...field} error={!!errors.productID} helperText={errors.productID ? errors.productID.message : ''} label="Product ID" placeholder="Enter Product ID" className={`border-2 text-sm md:text-lg p-2 rounded-lg ${hasProductID && 'bg-zinc-100'}`} disabled={hasProductID} />} />
               </div>
               <div className="flex flex-col gap-2 md:flex-1 w-full">
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
                 <Controller
-                  name="productType"
+                  name="minimumOrderQuantity"
                   control={control}
                   render={({ field }) => (
                     <FormControl fullWidth>
-                      <InputLabel id="UPC">UPC</InputLabel>
-                      <Select {...field} label="UPC" className={`text-sm md:text-lg  rounded-lg ${hasProductID && "bg-zinc-100"}`} disabled={hasProductID}>
-                        <MenuItem Item value="asin">
-                          ASIN
-                        </MenuItem>
-                        <MenuItem value="upc">UPC/EAN/GTIN</MenuItem>
+                      <InputLabel id="Listing Status">Minimum Order Quantity (MinOQ)</InputLabel>
+                      <Select
+                        {...field}
+                        labelId="minimumOrderQuantity"
+                        id="minimumOrderQuantity"
+                        label="Minimum Order Quantity (MinOQ)"
+                        placeholder="Select Minimum Order Quantity (MinOQ)"
+                      >
+                        <MenuItem value={'1'}>1</MenuItem>
+                        <MenuItem value={'2'}>2</MenuItem>
                       </Select>
                     </FormControl>
                   )}
                 />
               </div>
+              <div>Inventory details</div>
+            <div className="flex gap-7 flex-wrap">
+              
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                  <Controller
+                  name="fullfilmentBy"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControl fullWidth>
+                      <InputLabel id="Fullfilment by">Fullfilment by</InputLabel>
+                      <Select
+                        {...field}
+                        labelId="Fullfilment by"
+                        id="Fullfilment by"
+                        label="Fullfilment by"
+                        placeholder="Select Fullfilment by"
+                      >
+                        <MenuItem value={'Seller'}>Seller</MenuItem>
+                      
+                      </Select>
+                    </FormControl>
+                  )}
+                />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                  <Controller
+                  name="procurementType"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControl fullWidth>
+                      <InputLabel id="Procurement type">Procurement type</InputLabel>
+                      <Select
+                        {...field}
+                        labelId="Procurement type"
+                        id="Procurement type"
+                        label="Procurement type"
+                        placeholder="Select Procurement type"
+                      >
+                        <MenuItem value={'In stock'}>In stock</MenuItem>
+                        <MenuItem value={'Express'}>Express</MenuItem>
+                        <MenuItem value={'Domestic Procurement'}>Domestic Procurement</MenuItem>
+                        <MenuItem value={'Made To Order'}>Made To Order</MenuItem>
+                      
+                      </Select>
+                    </FormControl>
+                  )}
+                />
+              </div>
+
             </div>
             <Controller
               name="hasProductID"
@@ -281,7 +323,68 @@ function FlipkartForm({ handleSubmit, onSubmit, control, ProductPhotoSrc1, produ
               />
             </div>
 
+            <div className="flex gap-7 flex-wrap">
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                
+                <Controller name="procurementSLA" control={control} render={({ field }) => <TextField {...field} error={!!errors.procurementSLA} helperText={errors.procurementSLA ? errors.procurementSLA.message : ''} label="Procurement SLA " placeholder="Enter Procurement SLA " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="Stock" control={control} render={({ field }) => <TextField {...field} error={!!errors.Stock} helperText={errors.Stock ? errors.Stock.message : ''} label="Stock" placeholder="Enter Stock " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+            </div>
+            <div>Shipping provider</div>
+            <div className="flex flex-col gap-2 md:flex-1 w-full">
+                  <Controller
+                  name="shippingProvider"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControl fullWidth>
+                      <InputLabel id="Shipping provider">Shipping provider</InputLabel>
+                      <Select
+                        {...field}
+                        labelId="Shipping provider"
+                        id="Shipping provider"
+                        label="Shipping provider"
+                        placeholder="Select Shipping provider"
+                      >
+                        <MenuItem value={'Flipkart'}>Flipkart</MenuItem>
+                      </Select>
+                    </FormControl>
+                  )}
+                />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <h1>Delivery charge to customer</h1>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="localDeliveryCharge" control={control} render={({ field }) => <TextField {...field} error={!!errors.localDeliveryCharge} helperText={errors.localDeliveryCharge ? errors.localDeliveryCharge.message : ''} label="Local delivery charge" placeholder="Enter Local delivery charge " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="zonalDeliveryCharge" control={control} render={({ field }) => <TextField {...field} error={!!errors.zonalDeliveryCharge} helperText={errors.zonalDeliveryCharge ? errors.zonalDeliveryCharge.message : ''} label="Zonal delivery charge" placeholder="Enter Zonal delivery charge " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="nationalDeliveryCharge" control={control} render={({ field }) => <TextField {...field} error={!!errors.nationalDeliveryCharge} helperText={errors.nationalDeliveryCharge ? errors.nationalDeliveryCharge.message : ''} label="National delivery charge" placeholder="National delivery charge " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              </div>
+              
 
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+              <h1>Package details
+              </h1>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="Length " control={control} render={({ field }) => <TextField {...field} error={!!errors.Length } helperText={errors.Length  ? errors.Length.message : ''} label="Length" placeholder="Enter Length" className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="Breadth " control={control} render={({ field }) => <TextField {...field} error={!!errors.Breadth} helperText={errors.Breadth ? errors.Breadth.message : ''} label="Breadth " placeholder="Enter Breadth " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="Height" control={control} render={({ field }) => <TextField {...field} error={!!errors.Height} helperText={errors.Height ? errors.Height.message : ''} label="Height " placeholder=" Enter Height " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              <div className="flex flex-col gap-2 md:flex-1 w-full">
+                <Controller name="Weight" control={control} render={({ field }) => <TextField {...field} error={!!errors.Weight} helperText={errors.Weight ? errors.Weight.message : ''} label="Weight " placeholder=" Enter Weight " className="border-2 text-sm md:text-lg p-2 rounded-lg" />} />
+              </div>
+              </div>
+              </div>
+            </div>
           </AccordionDetails>
         </Accordion>
 
