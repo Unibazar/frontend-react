@@ -12,13 +12,18 @@ const PersonalInformation = ({ nxt , setBusinessInfo }) => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     email: Yup.string().email('Invalid email format').required('Email is required'),
-    logo: Yup.mixed().required('Logo is required'),
     description: Yup.string().required('Description is required'),
   });
 
   // Set up the form using react-hook-form
-  const { control, handleSubmit, setValue, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue,  formState: { errors, isValid }  } = useForm({
     resolver: yupResolver(validationSchema),
+    mode: 'all',
+    defaultValues: {
+      name: '',
+      email: '',
+      description: '',
+    },
   });
 
   // Function to handle form submission
@@ -74,7 +79,7 @@ const PersonalInformation = ({ nxt , setBusinessInfo }) => {
             <input
               type="file"
               id="logo"
-              required className="hidden"
+              className="hidden"
               onChange={(e) => {
                 const file = e.target.files[0];
                 setValue('logo', file); // Set the file value in the form state
@@ -92,7 +97,6 @@ const PersonalInformation = ({ nxt , setBusinessInfo }) => {
             </svg>
           </div>
         </label>
-        {errors.logo && <p className="text-red-500">{errors.logo.message}</p>}
 
         <label htmlFor="description" className="mt-4 text-[rgba(0,_0,_0,_0.8)] text-[18px] font-semibold">
           Description:
@@ -112,7 +116,7 @@ const PersonalInformation = ({ nxt , setBusinessInfo }) => {
         />
         {errors.description && <p className="text-red-500">{errors.description.message}</p>}
 
-        <button type="submit" className="bg-teal-600 hover:bg-teal-800 w-full md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5">
+        <button disabled={!isValid} type="submit" className="bg-teal-600 hover:bg-teal-800 w-full md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5 disabled:bg-gray-300 disabled:cursor-not-allowed">
           NEXT
         </button>
       </form>

@@ -1,18 +1,49 @@
+import React, {useEffect} from "react"
 import Image from "next/image";
 import dashboardImage from "../../../public/dashboard-image1.png";
 import Head from "next/head";
 import { useState } from "react";
 import LinkAccount from "../../components/OnBoardScreen/LinkAccount/LinkAccount"
+import { useSelector, useDispatch } from "react-redux";
+import { loadUser } from "@/redux/slice/userSlice";
 
 
 
 export default function Dashboard() {
   const [isLinkAccountOpen, setIsLinkAccountOpen] = useState(false);
-  const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
-  const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });
+
+  const dispatch = useDispatch();
+
+  // State to track filled accounts
+  const [filledAccounts, setFilledAccounts] = useState({
+    amazon: false,
+    meesho: false,
+  });
 
 
-  const handleAddButton = (title, content) => {
+  const { user } = useSelector((state) => state.user);
+
+  
+  useEffect(() => {
+    dispatch(loadUser()); 
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user?.user?.businessInformation?.hasOwnProperty('amazon')) {
+      setFilledAccounts((prev) => ({ ...prev, amazon: true }));
+    }
+    if (user?.user?.businessInformation?.hasOwnProperty('meesho')) {
+      setFilledAccounts((prev) => ({ ...prev, meesho: true }));
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (filledAccounts.amazon || filledAccounts.meesho ) {
+      setIsLinkAccountOpen(true); // Automatically open the modal when Amazon || Meesho is linked
+    }
+  }, [filledAccounts.amazon, filledAccounts.meesho]);
+
+  const handleAddButton = () => {
 
     setIsLinkAccountOpen(true);
   };
@@ -28,7 +59,7 @@ export default function Dashboard() {
 
 
         {/* Hide the button if the modal is open */}
-        {!isLinkAccountOpen && (
+        {!isLinkAccountOpen ? (
           <>
             <div className="imageContainer w-[50vw] md:w-[50vh] mt-[5%]">
               <Image src={dashboardImage} width="auto" height="auto" alt="dashboard_image" className="w-full h-full object-contain" />
@@ -40,16 +71,16 @@ export default function Dashboard() {
               Add Account
             </button>
           </>
-
-        )}
-      </div>
-      <div className="flex flex-row justify-center items-center">
+        ):(
+          <div className="flex flex-row justify-center items-center">
         <LinkAccount
           isOpen={isLinkAccountOpen}
           onClose={() => setIsLinkAccountOpen(false)}
         />
       </div>
-
+        )}
+        
+      </div>
     </>
   );
 }
