@@ -1,24 +1,20 @@
-import { TextField, Select, MenuItem, FormControl, InputLabel, Input } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import React, { useEffect } from 'react'
+import { Controller } from 'react-hook-form'
+import { useDispatch } from 'react-redux';
+import getCountryList from 'react-select-country-list';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import getCountryList from 'react-select-country-list';
-import { useDispatch } from 'react-redux';
-import { saveCredentials } from '../../../redux/slice/credentialSlice';
+import { saveCredentials } from '@/redux/slice/credentialSlice';
+import { loadUser } from '@/redux/slice/userSlice';
 
-import { useRouter } from 'next/router';
+function BusinessInfomationForm({platform}) {
+    const countries = getCountryList().getData();
 
+    const dispatch = useDispatch();
 
-// Get the list of countries
-const countries = getCountryList().getData();
-
-const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, accountKey, setFilledAccounts }) => {
- 
-  const dispatch = useDispatch();
- 
-
-  // Define validation schema with Yup
+  // Validation schema
   const validationSchema = Yup.object().shape({
     sellerId: Yup.string().required('Seller ID is required'),
     clientId: Yup.string().required('Client ID is required'),
@@ -29,52 +25,62 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
   });
 
   // Set up the form using react-hook-form
-  const { control,reset, handleSubmit, formState: { errors } } = useForm({
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      region: 'IN' // Set default region to India
-    }
+      sellerId: '',
+      clientId: '',
+      clientSecret: '',
+      marketplace: '',
+      refreshToken: '',
+      region: 'IN',
+    },
   });
 
-  // Function to handle form submission
-  const onSubmit = async (data) => {
+
+  // Handle form submission
+  const onSubmit = (data) => {
     try {
-     
-      const FullBusinessInfo = {...businessInfo , [accountKey]: {...data}};
-      dispatch(saveCredentials(FullBusinessInfo)).then(res=>{
-        if(res.payload.success){
-          setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
-        }
-      });
-
-      reset()
-      onClose(); 
-
+      dispatch(saveCredentials(data));
+      console.log('Credentials saved:', data);
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
   };
-  // Return null if the dialog is not open
-  if (!isOpen) return null;
 
-  //credentials
+  useEffect(() => {
+    // Assuming `dispatch(loadUser())` is used to fetch user data
+    dispatch(loadUser()).then((data) => {
+      const businessInformation = data?.payload?.user?.businessInformation;
+
+      // Dynamically using the platform value to access platform-specific information
+      const platformData = businessInformation?.[platform] || {};
+
+      // Set values into the form fields after fetching the data
+      setValue('sellerId', platformData?.sellerId || ''); // Set name field
+      setValue('clientId', platformData?.clientId || ''); // Set email field
+      setValue('clientSecret', platformData?.clientSecret || ''); // Set phoneNumber field
+      setValue('marketplace', platformData?.marketplace || ''); // Set location field
+      setValue('refreshToken', platformData?.refreshToken || ''); // Set logo field (If it's null or needs updating)
+      setValue('region', platformData?.region || ''); // Set description field (default or fetched value)
+    });
+  }, [dispatch, setValue]);
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-5 w-1/3 gap-2 flex flex-col">
-        <div className="w-full flex flex-col justify-center items-center">
-          <h2 className="text-xl font-bold">{title}</h2>
-          <p className="mt-2">{content}</p>
-        </div>
-
-        <form className='w-full flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="sellerId"
             control={control}
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Seller Id'
-                variant='outlined'
+                label="Seller Id"
+                variant="outlined"
                 error={!!errors.sellerId}
                 helperText={errors.sellerId ? errors.sellerId.message : ''}
               />
@@ -86,8 +92,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Client Id'
-                variant='outlined'
+                label="Client Id"
+                variant="outlined"
                 error={!!errors.clientId}
                 helperText={errors.clientId ? errors.clientId.message : ''}
               />
@@ -99,8 +105,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Client Secret'
-                variant='outlined'
+                label="Client Secret"
+                variant="outlined"
                 error={!!errors.clientSecret}
                 helperText={errors.clientSecret ? errors.clientSecret.message : ''}
               />
@@ -112,8 +118,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Marketplace'
-                variant='outlined'
+                label="Marketplace"
+                variant="outlined"
                 error={!!errors.marketplace}
                 helperText={errors.marketplace ? errors.marketplace.message : ''}
               />
@@ -125,8 +131,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
             render={({ field }) => (
               <TextField
                 {...field}
-                label='Refresh Token'
-                variant='outlined'
+                label="Refresh Token"
+                variant="outlined"
                 error={!!errors.refreshToken}
                 helperText={errors.refreshToken ? errors.refreshToken.message : ''}
               />
@@ -153,31 +159,16 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
               </FormControl>
             )}
           />
-
-
-          {/* hidden - input  */}
-          
-           
-          
-          <div className='flex justify-between w-full'>
-            <button
-              type="button"
-              className="mt-4 py-2 px-4 rounded"
-              onClick={onClose}
-            >
+          <div className="flex justify-between w-full">
+            <button type="button" className="mt-4 py-2 px-4 rounded">
               Close
             </button>
-            <button
-              type="submit"
-              className="mt-4 bg-teal-600 text-white py-2 px-4 rounded"
-            >
+            <button type="submit" className="mt-4 bg-teal-600 text-white py-2 px-4 rounded">
               Save
             </button>
           </div>
         </form>
-      </div>
-    </div>
-  );
-};
+  )
+}
 
-export default CredentialDailog;
+export default BusinessInfomationForm

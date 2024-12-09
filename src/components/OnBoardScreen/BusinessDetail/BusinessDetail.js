@@ -59,8 +59,9 @@ const BusinessDetail = ({ nxt , setBusinessInfo }) => {
     address: Yup.string().required('Address is required'),
   });
 
-  const { control, handleSubmit, setValue, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue, formState: { errors, isValid } } = useForm({
     resolver: yupResolver(validationSchema),
+    mode:'all',
   });
 
   const onSubmit = (data) => {
@@ -149,7 +150,7 @@ const BusinessDetail = ({ nxt , setBusinessInfo }) => {
         />
         {errors.address && <p className="text-red-500">{errors.address.message}</p>}
 
-        <button type="submit" className="bg-teal-600 hover:bg-teal-800 w-full md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5">
+        <button disabled={!isValid} type="submit" className="bg-teal-600 hover:bg-teal-800 w-full md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5 disabled:bg-gray-300 disabled:cursor-not-allowed">
           NEXT
         </button>
       </form>
