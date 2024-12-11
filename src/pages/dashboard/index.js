@@ -14,12 +14,6 @@ export default function Dashboard() {
 
   const dispatch = useDispatch();
 
-  // State to track filled accounts
-  const [filledAccounts, setFilledAccounts] = useState({
-    amazon: false,
-    meesho: false,
-  });
-
 
   const { user } = useSelector((state) => state.user);
 
@@ -29,19 +23,10 @@ export default function Dashboard() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (user?.user?.businessInformation?.hasOwnProperty('amazon')) {
-      setFilledAccounts((prev) => ({ ...prev, amazon: true }));
-    }
-    if (user?.user?.businessInformation?.hasOwnProperty('meesho')) {
-      setFilledAccounts((prev) => ({ ...prev, meesho: true }));
+    if (user?.user?.businessInformation?.hasOwnProperty('amazon') || user?.user?.businessInformation?.hasOwnProperty('meesho')) {
+      setIsLinkAccountOpen(true)
     }
   }, [user]);
-
-  useEffect(() => {
-    if (filledAccounts.amazon || filledAccounts.meesho ) {
-      setIsLinkAccountOpen(true); // Automatically open the modal when Amazon || Meesho is linked
-    }
-  }, [filledAccounts.amazon, filledAccounts.meesho]);
 
   const handleAddButton = () => {
 
