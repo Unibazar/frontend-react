@@ -46,7 +46,8 @@ function BusinessInfomationForm({platform}) {
   // Handle form submission
   const onSubmit = (data) => {
     try {
-      dispatch(saveCredentials(data));
+      const finalData = {[platform]: {...data}};
+      dispatch(saveCredentials(finalData));
       console.log('Credentials saved:', data);
     } catch (error) {
       console.error('Error saving credentials:', error);
