@@ -86,11 +86,11 @@ console.log(data?.payload,"bus data")
 );
 
 // Example useEffect to trigger the API call
-useEffect(() => {
-  dispatch(loadProduct()).then((response) => {
-    console.log('Product listing response:', response);
-  });
-}, [dispatch]);
+// useEffect(() => {
+//   dispatch(loadProduct()).then((response) => {
+//     console.log('Product listing response:', response);
+//   });
+// }, [dispatch]);
 
 
 const productSlice = createSlice({
