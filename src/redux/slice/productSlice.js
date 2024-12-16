@@ -56,8 +56,7 @@ export const loadProduct = createAsyncThunk(
     const state = getState(); // Access the Redux state to get user data
     const businessInformation = state.user?.user?.user?.businessInformation;
     // const businessInformation = data?.payload?.user?.businessInformation
-console.log(businessInformation,"bus")
-console.log(state.user.user.user.businessInformation,"bus data")
+
     if (!businessInformation?.amazon) {
       return rejectWithValue('Amazon business information is missing!');
     }
