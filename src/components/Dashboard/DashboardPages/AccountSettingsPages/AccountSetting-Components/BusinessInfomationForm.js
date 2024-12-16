@@ -45,7 +45,8 @@ function BusinessInfomationForm({platform}) {
 
   // Handle form submission
   const onSubmit = (data) => {
-    const userId=data?.payload?.user?.businessInformation?._id
+    const userId = useSelector(state => state?.user?.user?.user?._id);
+    console.log(userId,"userid")
     try {
       const finalData = {userId:userId,[platform]: {...data}};
       dispatch(saveCredentials(finalData));
