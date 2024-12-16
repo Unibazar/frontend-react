@@ -45,8 +45,9 @@ function BusinessInfomationForm({platform}) {
 
   // Handle form submission
   const onSubmit = (data) => {
+    const userId=data?.payload?.user?.businessInformation?._id
     try {
-      const finalData = {[platform]: {...data}};
+      const finalData = {userId:userId,[platform]: {...data}};
       dispatch(saveCredentials(finalData));
       console.log('Credentials saved:', data);
     } catch (error) {
