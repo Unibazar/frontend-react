@@ -32,7 +32,7 @@ export default function Tags({ title, icon: Icon, subLinks ,to  , setShowSidebar
                 </Link>
                     {subLinks && <div className='rounded-lg ml-8 overflow-hidden bg-white ease-linear duration-500' style={{maxHeight:`${toggleLinks?"300px":"0px"}`}}>
                         {subLinks?.map((link) => (
-                            <h1 key={link} className='hover:bg-zinc-200 cursor-pointer rounded-md mt-1 text-sm lg:text-lg p-2 md:p-1'>{link}</h1>
+                            <Link key={link.title} href={link.to} className={`block bg-white hover:bg-zinc-200 cursor-pointer rounded-md mt-1 text-sm lg:text-lg p-2 md:p-1 ${path==link.to && styles.activeLink}`}>{link.title}</Link>
                         ))}
                     </div>}
             </div>
