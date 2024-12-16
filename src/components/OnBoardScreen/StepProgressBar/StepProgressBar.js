@@ -1,5 +1,5 @@
 const StepProgressBar = ({ currentStep, setCurrentStep }) => {
-  const steps = ['Basic Details', 'Business Details', 'Link Your E-commerce Platforms', 'Complete'];
+  const steps = [ 'Business Details', 'Link Your E-commerce Platforms', 'Complete'];
 
   const isStepCompleted = stepIndex => stepIndex < currentStep;
   const isStepActive = stepIndex => stepIndex === currentStep - 1;
