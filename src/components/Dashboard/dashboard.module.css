@@ -2,7 +2,7 @@
     --tw-border-opacity:1;
 }
 
-.activeLink a{
+.activeLink>a{
     background-color: rgb(228 228 231);
 }
 
