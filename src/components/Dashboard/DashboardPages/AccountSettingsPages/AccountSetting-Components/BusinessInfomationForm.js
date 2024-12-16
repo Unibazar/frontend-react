@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 import { useDispatch } from 'react-redux';
 import getCountryList from 'react-select-country-list';
@@ -11,7 +11,7 @@ import { loadUser } from '@/redux/slice/userSlice';
 
 function BusinessInfomationForm({platform}) {
     const countries = getCountryList().getData();
-
+const [userId,setUserId]=useState("")
     const dispatch = useDispatch();
 
   // Validation schema
@@ -45,7 +45,7 @@ function BusinessInfomationForm({platform}) {
 
   // Handle form submission
   const onSubmit = (data) => {
-    const userId = useSelector(state => state?.user?.user?.user?._id);
+    // const userId = useSelector(state => state?.user?.user?.user?._id);
     console.log(userId,"userid")
     try {
       const finalData = {userId:userId,[platform]: {...data}};
@@ -60,7 +60,8 @@ function BusinessInfomationForm({platform}) {
     // Assuming `dispatch(loadUser())` is used to fetch user data
     dispatch(loadUser()).then((data) => {
       const businessInformation = data?.payload?.user?.businessInformation;
-
+      setUserId(data?.payload?.user?._id)
+      console.log(businessInformation,"businessInformation")
       // Dynamically using the platform value to access platform-specific information
       const platformData = businessInformation?.[platform] || {};
 
