@@ -31,6 +31,9 @@ export default function BasicMenu() {
     if(router.pathname.startsWith('/dashboard')){
       router.push('/dashboard/accountsettings?q=profileManage');
     }
+    else{
+      router.push('/dashboard');
+    }
     
   };
 
@@ -40,7 +43,7 @@ export default function BasicMenu() {
           <Image height={40} width={40} className='rounded-full w-full h-full object-cover' src={userImage} alt="user Image" />
         </div>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose} >
-        <MenuItem onClick={()=>{handleClose(); handleManageAccount();}}>Manage account</MenuItem>
+        <MenuItem onClick={()=>{handleClose(); handleManageAccount();}}>{router.pathname.startsWith('/dashboard') ? "Manage Account":"Dashboard"}</MenuItem>
         <MenuItem onClick={()=>{handleClose(); handleLogout();}}>Logout</MenuItem>
       </Menu>
     </div>

@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AmazonLogo from '../../../assets/unibazar-home-images/amazon-logo.svg';
 import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser } from "@/redux/slice/userSlice";
 //link
 const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
   const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });
   const router = useRouter();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch])
+  
+  const {user} = useSelector(state=>state.user)
+
+  
+  
   // State to track filled accounts
   const [filledAccounts, setFilledAccounts] = useState({
     amazon: false,
     meesho: false,
   });
 
-  const handleImageClick = (title, content, accountKey) => {
-    setCredentialDailogContent({ title, content });
-    setIsCredentialDailogOpen(true);
+  useEffect(() => {
+    if(user?.user?.businessInformation?.hasOwnProperty('amazon')){
+      setFilledAccounts(prev=>({...prev , amazon:true}));
+    }
+    if(user?.user?.businessInformation?.hasOwnProperty('meesho')){
+      setFilledAccounts(prev=>({...prev , meesho:true}));
+    }
+  }, [user])
 
-    // Save the account key to track which account is being filled
-    setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
+  const handleImageClick = (title, content, accountKey) => {
+    setCredentialDailogContent({ title, content, accountKey });
+    setIsCredentialDailogOpen(true);
   };
 
   const handleNextClick = () => {
@@ -89,6 +106,8 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
         isOpen={isCredentialDailogOpen}
         onClose={() => setIsCredentialDailogOpen(false)}
         title={CredentialDailogContent.title}
+        setFilledAccounts={setFilledAccounts}
+        accountKey={CredentialDailogContent.accountKey}
         content={CredentialDailogContent.content}
         businessInfo={businessInfo}
       />

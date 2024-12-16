@@ -29,13 +29,14 @@ export default function PersonalInformation() {
 
   useEffect(() => {
     dispatch(loadUser()).then(data => {
+      const businessInformation = data?.payload?.user?.businessInformation
       setPersonalData({
-        name: data?.payload?.user?.businessInformation?.name,
-        email: data?.payload?.user?.businessInformation?.email,
-        number: data?.payload?.user?.businessInformation?.number,
-        address:data?.payload?.user?.businessInformation?.address,
+        name: businessInformation?.name,
+        email: businessInformation?.email,
+        number: businessInformation?.number,
+        address:businessInformation?.address,
         logo: null,
-        description: data?.payload?.user?.businessInformation?.description
+        description: businessInformation?.description
       })
     });
   }, [dispatch])
