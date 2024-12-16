@@ -46,6 +46,8 @@ export const loadProduct = createAsyncThunk('api/product', async (page, { reject
 });
 
 
+
+
 const productSlice = createSlice({
     name: 'product',
     initialState: {

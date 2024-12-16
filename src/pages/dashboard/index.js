@@ -12,6 +12,7 @@ import { GoGraph } from "react-icons/go";
 import { GiBackwardTime } from "react-icons/gi";
 import { FaUserGroup } from "react-icons/fa6";
 import Box from "../../components/Dashboard/Common-Components/Box";
+import Link from "next/link";
 
 
 
@@ -37,9 +38,6 @@ export default function Dashboard() {
     }
   }, [user]);
 
-  const handleAddButton = () => {
-    setIsLinkAccountOpen(true);
-  };
 
 
 
@@ -67,28 +65,18 @@ export default function Dashboard() {
 
         {/* Hide the button if the modal is open */}
 
-        {!isLinkAccountOpen ?
+        {!isLinkAccountOpen &&
           <>
             <div className="imageContainer w-[50vw] md:w-[50vh] mt-[5%]">
               <Image src={dashboardImage} width="auto" height="auto" alt="dashboard_image" className="w-full h-full object-contain" />
             </div>
-            <button
-              className="px-8 py-2 mt-[2%] bg-[#08A9A0] text-white rounded-md w-[50vw] md:w-[20vw] text-sm lg:text-lg"
-              onClick={handleAddButton}
+            <Link href="/dashboard/linkaccount"
+              className="px-8 py-2 mt-[2%] bg-[#08A9A0] text-white rounded-md w-[50vw] md:w-[20vw] text-sm lg:text-lg text-center"
             >
               Add Account
-            </button>
+            </Link>
           </>
-        : (
-          !showGraph && (
-            <div className="flex flex-row justify-center items-center">
-              <LinkAccount
-                isOpen={isLinkAccountOpen}
-                onClose={() => setIsLinkAccountOpen(false)}
-              />
-            </div>
-          )
-        )}
+        }
         
 
         {/* the graph section */}
@@ -111,6 +99,7 @@ export default function Dashboard() {
             </div>
 
             <div className="chart bg-white mt-10 rounded-lg overflow-hidden w-full">
+              <h1 className="md:text-2xl font-semibold m-5 mb-0">Sales Details</h1>
               <LineChart className="w-full p-2"
                 height={400}
                 series={[
