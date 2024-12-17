@@ -6,7 +6,6 @@ import ProductHomePage from "../../components/Dashboard/DashboardPages/ProductsP
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadProduct } from "@/redux/slice/productSlice";
-import ProductForm from "@/components/Dashboard/DashboardPages/ProductsPages/AddProduct/AddProduct";
 import Loader from "@/components/Loader/Loader";
 
 
@@ -28,8 +27,7 @@ function Products() {
 
   useEffect(() => {
     setProductData(product || []);
-    setTotalProducts(product?.numberOfResults);
-
+    setTotalProducts(product?.numberOfResults)
   }, [product])
 
   useEffect(() => {

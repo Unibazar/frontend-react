@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import Image from "next/image";
 import dashboardImage from "../../../public/dashboard-image1.png";
-import LinkAccount from "../../components/OnBoardScreen/LinkAccount/LinkAccount"
 import Head from "next/head";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,36 +9,46 @@ import { LineChart } from "@mui/x-charts";
 import { RiBox3Fill } from "react-icons/ri";
 import { GoGraph } from "react-icons/go";
 import { GiBackwardTime } from "react-icons/gi";
-import { FaUserGroup } from "react-icons/fa6";
+import { LuBoxes } from "react-icons/lu";
 import Box from "../../components/Dashboard/Common-Components/Box";
 import Link from "next/link";
+import { loadProduct } from "../../redux/slice/productSlice";
+import { getOrders } from "../../redux/slice/productOrderSlice";
 
 
 
 export default function Dashboard() {
-  const [isLinkAccountOpen, setIsLinkAccountOpen] = useState(false);
   const [showGraph, setShowGraph] = useState(false);
+  const [noOfOrders, setNoOfOrders] = useState(0);
+  const [noOfProducts, setNoOfProducts] = useState(0);
 
   const dispatch = useDispatch();
 
 
   const { user } = useSelector((state) => state.user);
+  const {product } = useSelector(state=>state.product);
+  const {orders} = useSelector(state=>state.orders);
   const businessInformation = user?.user?.businessInformation;
 
 
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadUser()).then(data=>{
+      dispatch(getOrders());
+      dispatch(loadProduct());
+    })
   }, [dispatch]);
-
+  
   useEffect(() => {
     if (businessInformation?.hasOwnProperty('amazon') || businessInformation?.hasOwnProperty('meesho')) {
-      setIsLinkAccountOpen(true);
       setShowGraph(true);
     }
   }, [user]);
 
-
-
+  useEffect(() => {
+    setNoOfProducts(product?.numberOfResults)
+    setNoOfOrders(orders?.orders?.payload?.Orders?.length);
+  }, [product , orders])
+  
 
   const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
   const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
@@ -65,7 +74,7 @@ export default function Dashboard() {
 
         {/* Hide the button if the modal is open */}
 
-        {!isLinkAccountOpen &&
+        {!showGraph &&
           <>
             <div className="imageContainer w-[50vw] md:w-[50vh] mt-[5%]">
               <Image src={dashboardImage} width="auto" height="auto" alt="dashboard_image" className="w-full h-full object-contain" />
@@ -77,7 +86,7 @@ export default function Dashboard() {
             </Link>
           </>
         }
-        
+
 
         {/* the graph section */}
 
@@ -89,13 +98,13 @@ export default function Dashboard() {
             </div>
 
             <div className="boxes flex gap-5 mt-10 flex-wrap">
-              <Box title="Total Session" count="40,689" bgColor="#E4E4FF" textColor="#8280FF" description="Logo up from yesterday" Icon={FaUserGroup}/>
+              <Box title="Total Session" count={noOfProducts} bgColor="#E4E4FF" textColor="#8280FF" description="Logo up from yesterday" Icon={LuBoxes} textSize="3xl" />
 
-              <Box title="Total Order" count="10,399" bgColor="#FEF2D6" textColor="#FEC53D" description="Logo up from yesterday" Icon={RiBox3Fill} textSize="3xl"/>
+              <Box title="Total Order" count={noOfOrders} bgColor="#FEF2D6" textColor="#FEC53D" description="Logo up from yesterday" Icon={RiBox3Fill} textSize="3xl" />
 
-              <Box title="Total Sales" count="$89,000" bgColor="#D9F7E7" textColor="#4AD991" description="Logo up from yesterday" Icon={GoGraph} textSize="2xl"/>
+              <Box title="Total Sales" count="$89,000" bgColor="#D9F7E7" textColor="#4AD991" description="Logo up from yesterday" Icon={GoGraph} textSize="2xl" />
 
-              <Box title="Total Pending" count="2040" bgColor="#FFDED2" textColor="#FFA583" description="Logo up from yesterday" Icon={GiBackwardTime} textSize="3xl"/>
+              <Box title="Total Pending" count="2040" bgColor="#FFDED2" textColor="#FFA583" description="Logo up from yesterday" Icon={GiBackwardTime} textSize="3xl" />
             </div>
 
             <div className="chart bg-white mt-10 rounded-lg overflow-hidden w-full">

@@ -4,8 +4,6 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { savePersonalInformation } from '../../../../../redux/slice/personalInfoSlice';
-import { IoIosCloseCircle } from "react-icons/io";
 import { loadUser } from "@/redux/slice/userSlice";
 import { saveCredentials } from "@/redux/slice/credentialSlice";
 
@@ -29,10 +27,11 @@ export default function PersonalInformation() {
 
   useEffect(() => {
     dispatch(loadUser()).then(data => {
+      const user = data?.payload?.user;
       const businessInformation = data?.payload?.user?.businessInformation
       setPersonalData({
-        name: businessInformation?.name,
-        email: businessInformation?.email,
+        name: user?.name,
+        email: user?.email,
         number: businessInformation?.number,
         address:businessInformation?.address,
         logo: null,
