@@ -16,7 +16,8 @@ const countries = getCountryList().getData();
 const CredentialDailog = ({ isOpen, onClose, title, content }) => {
   const dispatch = useDispatch();
 
-
+  const userId = useSelector(state => state?.user?.user?.user?._id);
+console.log(userId,"user")
 
 
   // Define validation schema with Yup
@@ -38,7 +39,10 @@ const CredentialDailog = ({ isOpen, onClose, title, content }) => {
   });
 
   // Function to handle form submission
-  const onSubmit = async (data) => {
+  const onSubmit = async (payload) => {
+    const data={...payload,id:userId}
+    console.log(userId,"userId")
+    console.log(payload,"payload")
     try {
       await dispatch(saveCredentials(data)).unwrap(); // Dispatch the action and wait for it to resolve
       console.log('Credentials saved:', data);
