@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { fetchBusinessDetails, saveBusinessDetails } from '../../../redux/slice/businessSlice'
+import { useNavigate } from 'react-router-dom';
 //buss
 const BusinessDetail = ({ nxt }) => {
   // const dispatch = useDispatch();

@@ -43,7 +43,7 @@ const LinkAccount = ({ isOpen, onClose }) => {
           onClick={() => !filledAccounts.amazon && handleImageClick('Amazon', 'Amazon is an Indian fashion e-commerce platform.', 'amazon')}>
           <Image src={AmazonLogo} alt='AmazonLogo' className="w-[48px] h-[48px] rounded-full " />
           <div className="h-6 mt-2">
-            <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Amazon</span>
+            <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Amazon Account</span>
           </div>
           {/* Conditionally render check icon and linked message */}
           {filledAccounts.amazon && (

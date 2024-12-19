@@ -10,6 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 
 const CustomAccordion = styled(Accordion)(() => {
@@ -28,6 +29,8 @@ const CustomAccordion = styled(Accordion)(() => {
 export default function AccountSettings() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q');
+  const userInformation = useSelector(state => state?.user?.user?.user);
+  console.log(userInformation,"userInformation")
 
   const [expanded, setExpanded] = useState(false);
 
@@ -69,7 +72,7 @@ export default function AccountSettings() {
           <p className="w-full font-semibold text-left capitalize">business inforamtion</p>
         </AccordionSummary>
         <AccordionDetails className="text-sm md:text-xl">
-          <BusinessInformation />
+          <BusinessInformation data={userInformation} />
         </AccordionDetails>
       </CustomAccordion>
       
