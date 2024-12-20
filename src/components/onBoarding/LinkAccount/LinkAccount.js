@@ -28,15 +28,36 @@ console.log(user?.user,"user info")
     meesho: false,
   });
 
+  // useEffect(() => {
+  //   if (user?.user?.hasOwnProperty('amazon') && user.user.amazon?.clientId) {
+  //     setFilledAccounts(prev => ({ ...prev, amazon: true }));
+  //   }
+  //   if (user?.user?.hasOwnProperty('meesho') && user.user.meesho?.merchantId) {
+  //     setFilledAccounts(prev => ({ ...prev, meesho: true }));
+  //   }
+  // }, [user]);
   useEffect(() => {
-    if(user?.user?.hasOwnProperty('amazon')){
-      setFilledAccounts(prev=>({...prev , amazon:true}));
+    // Check for Amazon account linking
+    if (
+      user?.user?.hasOwnProperty("amazon") &&
+      user.user.amazon?.clientId !== null &&
+      user.user.amazon?.clientId !== undefined &&
+      user.user.amazon?.clientId !== ""
+    ) {
+      setFilledAccounts((prev) => ({ ...prev, amazon: true }));
     }
-    if(user?.user?.hasOwnProperty('meesho')){
-      setFilledAccounts(prev=>({...prev , meesho:true}));
+  
+    // Check for Meesho account linking
+    if (
+      user?.user?.hasOwnProperty("meesho") &&
+      user.user.meesho?.merchantId !== null &&
+      user.user.meesho?.merchantId !== undefined &&
+      user.user.meesho?.merchantId !== ""
+    ) {
+      setFilledAccounts((prev) => ({ ...prev, meesho: true }));
     }
-  }, [user])
-
+  }, [user]);
+  
   const handleImageClick = (title, content, accountKey) => {
     setCredentialDailogContent({ title, content, accountKey });
     setIsCredentialDailogOpen(true);
