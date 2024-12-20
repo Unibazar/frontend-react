@@ -4,6 +4,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 import getConfig from 'next/config';
+import { useEffect } from 'react';
 
 const { publicRuntimeConfig } = getConfig();
 const apiUrl = publicRuntimeConfig.API_BASE_URL;
@@ -34,16 +35,61 @@ export const addProduct = createAsyncThunk('product/add', async (productData, { 
 //         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
 //     }
 // });
-export const loadProduct = createAsyncThunk('api/product', async (page, { rejectWithValue }) => {
+// export const loadProduct = createAsyncThunk('api/product', async (page, { rejectWithValue }) => {
+//     const token = localStorage.getItem('jwtToken');
+
+//     try {
+//         const response = await axios.get(`${url}/api/productList/getListing`, {}, { headers: { token } , withCredentials:true });
+//         return response.data;
+//     } catch (error) {
+//         return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
+//     }
+// });
+
+
+
+
+export const loadProduct = createAsyncThunk(
+  'api/product',
+  async (page, { rejectWithValue, getState }) => {
     const token = localStorage.getItem('jwtToken');
+    const state = getState(); // Access the Redux state to get user data
+    const businessInformation = state.user?.user?.user?.businessInformation;
+    // const businessInformation = data?.payload?.user?.businessInformation
+
+    if (!businessInformation?.amazon) {
+      return rejectWithValue('Amazon business information is missing!');
+    }
+
+    const sellerId = businessInformation.amazon.sellerId;
+    const marketplaceId = businessInformation.amazon.marketplace;
 
     try {
-        const response = await axios.get(`${url}/api/productList/getListing`, {}, { headers: { token } , withCredentials:true });
-        return response.data;
+      const response = await axios.get(
+        `${url}/api/productList/getListing`,
+        {
+          params: {
+            sellerId,
+            marketplaceId,
+          },
+        },
+        { headers: { token }, withCredentials: true }
+      );
+      return response.data;
     } catch (error) {
-        return rejectWithValue(error.response?.data || 'Somwthing went wrong please referesh the page !');
+      return rejectWithValue(
+        error.response?.data || 'Something went wrong, please refresh the page!'
+      );
     }
-});
+  }
+);
+
+// Example useEffect to trigger the API call
+// useEffect(() => {
+//   dispatch(loadProduct()).then((response) => {
+//     console.log('Product listing response:', response);
+//   });
+// }, [dispatch]);
 
 
 

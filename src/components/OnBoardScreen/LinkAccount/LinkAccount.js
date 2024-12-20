@@ -20,7 +20,6 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   const {user} = useSelector(state=>state.user)
 
   
-  
   // State to track filled accounts
   const [filledAccounts, setFilledAccounts] = useState({
     amazon: false,
@@ -28,10 +27,10 @@ const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   });
 
   useEffect(() => {
-    if(user?.user?.businessInformation?.hasOwnProperty('amazon')){
+    if(user?.user?.businessInformation?.amazon?.clientId){
       setFilledAccounts(prev=>({...prev , amazon:true}));
     }
-    if(user?.user?.businessInformation?.hasOwnProperty('meesho')){
+    if(user?.user?.businessInformation?.meesho?.clientId){
       setFilledAccounts(prev=>({...prev , meesho:true}));
     }
   }, [user])

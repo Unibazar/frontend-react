@@ -48,7 +48,6 @@ function BusinessInfomationForm({platform}) {
     try {
       const finalData = {[platform]: {...data}};
       dispatch(saveCredentials(finalData));
-      console.log('Credentials saved:', data);
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
