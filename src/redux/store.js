@@ -4,6 +4,7 @@ import productReducer from './slice/productSlice';
 import credentialReducer from './slice/credentialSlice';
 import businessReducer from './slice/businessSlice';
 import personalInfoReducer from './slice/personalInfoSlice';
+import orderReducer from './slice/orderSlice';
 
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
         credentials: credentialReducer,
         business: businessReducer,
         personalInfo: personalInfoReducer,
+        orders:orderReducer,
     }
 })
 
