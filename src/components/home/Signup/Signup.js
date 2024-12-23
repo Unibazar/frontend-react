@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import SignupImage from '../../../assets/unibazar-contactus-images/signup-img.svg';
 import Link from 'next/link';
+
+import { loadUser } from '@/redux/slice/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 const Signup = () => {
+
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+ 
+ 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <>
       <div className="bg-teal-100 w-full flex md:flex-row flex-col justify-center md:pl-32 ">
@@ -16,11 +28,13 @@ const Signup = () => {
           <p className="p-5">
             Organize your business with 24/7 automated yor products, <br /> reminders, payments, and more.
           </p>
+          {!user?.user.verified &&
           <div className="p-5">
             <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
               Signup for Free
             </Link>
           </div>
+          }
         </div>
       </div>
     </>

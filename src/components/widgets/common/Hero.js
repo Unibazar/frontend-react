@@ -13,6 +13,7 @@ const Hero = ({ img, title, detail, buttonText }) => {
     dispatch(loadUser());
   }, [dispatch]);
   
+  // console.log(user,"user")
   console.log(user,"user")
   return (
     <>
