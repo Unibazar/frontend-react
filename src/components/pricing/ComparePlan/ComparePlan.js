@@ -23,7 +23,7 @@ const ComparePlan = () => {
                     <p className='text-lg font-normal'>Free</p>
                     <p className='text-lg  font-bold'>$0 <span className='font-normal'>/month</span></p>
                   </div>
-                  <button type='button' className='bg-teal-600 w-full text-center rounded py-2 text-white'>
+                  <button type='button' className='bg-teal-600 hover:bg-teal-800 w-full text-center rounded py-2 text-white'>
                     Sign Up for Free
                   </button>
                 </TableCell>
@@ -32,7 +32,7 @@ const ComparePlan = () => {
                     <p className='text-lg font-normal'>Pro</p>
                     <p className='text-lg  font-bold'>$10 <span className='font-normal'>/month</span></p>
                   </div>
-                  <button type='button' className='bg-teal-600 w-full text-center rounded py-2 text-white'>
+                  <button type='button' className='bg-teal-600 hover:bg-teal-800 w-full text-center rounded py-2 text-white'>
                     Upgrade to Pro
                   </button>
                 </TableCell>
@@ -41,7 +41,7 @@ const ComparePlan = () => {
                     <p className='text-lg font-normal'>Enterprise</p>
                     <p className='text-lg  font-bold'>Custom</p>
                   </div>
-                  <button type='button' className='bg-teal-600 w-full text-center rounded py-2 text-white'>
+                  <button type='button' className='bg-teal-600 hover:bg-teal-800 w-full text-center rounded py-2 text-white'>
                     Contact Us
                   </button>
                 </TableCell>

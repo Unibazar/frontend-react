@@ -36,7 +36,7 @@ export default function Dashboard() {
       setIsLinkAccountOpen(true);
       setShowGraph(true);
     }
-  }, [user]);
+  }, [user, businessInformation]);
 
 
 

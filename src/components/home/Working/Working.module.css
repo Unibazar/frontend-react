@@ -33,7 +33,8 @@
 .work {
   max-width: 240px;
   padding: 2rem;
-  box-shadow: 0 0.12rem 0.25rem rgba(0, 0, 0, 0.1);
+  background-color: #F5FDFD;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -43,6 +44,8 @@
 
 .workIcon {
   width: 30px;
+  background-color: #F5FDFD;
+ 
 }
 .work p {
   text-align: center;

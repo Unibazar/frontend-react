@@ -52,11 +52,11 @@ const FAQ = () => {
   ];
 
   return (
-    <div className=" w-full  flex-col justify-center px-10 ">
+    <div className=" w-full  flex-col justify-center pb-10 ">
       <h2 className="w-full font-bold text-center  text-3xl py-10">Frequently Asked Questions</h2>
-      <div className='px-[5vw]'>
+     
         <FAQAccordion FAQ={FrequentlyAskedQuestion} />
-      </div>
+      
     </div>
   );
 };

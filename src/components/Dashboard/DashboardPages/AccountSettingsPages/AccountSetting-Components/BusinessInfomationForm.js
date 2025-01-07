@@ -70,7 +70,7 @@ function BusinessInfomationForm({platform}) {
       setValue('refreshToken', platformData?.refreshToken || ''); // Set logo field (If it's null or needs updating)
       setValue('region', platformData?.region || ''); // Set description field (default or fetched value)
     });
-  }, [dispatch, setValue]);
+  }, [dispatch, setValue, platform]);
 
   return (
     <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>

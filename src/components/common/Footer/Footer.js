@@ -50,11 +50,11 @@ const Footer = () => {
         <div className={`${styles.contactInfo} p-5`}>
           <ul>
             <p className="text-gray-800 font-bold text-1xl pb-4 ">CONTACT INFO</p>
-            <li className="text-gray-600 text-md pb-2 font-light ">Phone: <span className='hover:text-teal-500 cursor-pointer'><Link href="tel:+91-747-723-7960">+91-747-723-7960</Link></span></li>
+            <li className="text-gray-600 text-md pb-2 font-light ">Phone: <span className='hover:text-teal-500 cursor-pointer'><Link href="tel:+08069641420">+08069641420</Link></span></li>
             <li className="text-gray-600 text-md pb-2 font-light ">
-              Email: <span className='hover:text-teal-500 cursor-pointer'><Link href="mailto:support@unibazar.com">support@unibazar.com</Link></span>
+              Email: <span className='hover:text-teal-500 cursor-pointer'><Link href="mailto:support@unibazar.in">support@unibazar.in</Link></span>
             </li>
-            <li className="text-gray-600 text-md pb-2 font-light ">Location: <span className='hover:text-teal-500 cursor-pointer'><Link href="https://www.google.com/maps/search/lucknow" target='_blank' rel='noopener noreferrer'>123 E-commerce St,lucknow, India</Link></span></li>
+            <li className="text-gray-600 text-md pb-2 font-light ">Location: <span className='hover:text-teal-500 cursor-pointer'><Link href="https://www.google.com/maps/search/lucknow" target='_blank' rel='noopener noreferrer'>AIC-MUJ, Vinayak Marg, Jaipur, Rajsthan 303007</Link></span></li>
           </ul>
         </div>
       </div>

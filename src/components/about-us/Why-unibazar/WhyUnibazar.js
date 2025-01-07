@@ -16,7 +16,7 @@ const WhyUnibazar = () => {
               <br />
               LISTING
             </p>
-            <p className="text-lg">List your products across various platforms with a single click.</p>
+            <p className="text-lg px-2">List your products across various platforms with a single click.</p>
           </div>
           <div className=" rounded-xl border border-gray-200 p-1.5 md:w-96">
             <p className="text-lg font-bold p-3">
@@ -24,7 +24,7 @@ const WhyUnibazar = () => {
               <br />
               MANAGEMENT
             </p>
-            <p className="text-lg">Monitor sales, inventory, and orders from one comprehensive dashboard.</p>
+            <p className="text-lg px-2">Monitor sales, inventory, and orders from one comprehensive dashboard.</p>
           </div>
           <div className=" rounded-xl border border-gray-200 p-1.5 md:w-96">
             <p className="text-lg font-bold p-3">
@@ -32,7 +32,7 @@ const WhyUnibazar = () => {
               <br />
               INSIGHT
             </p>
-            <p className="text-lg">Leverage real-time analytics to make informed business decisions</p>
+            <p className="text-lg px-2">Leverage real-time analytics to make informed business decisions</p>
           </div>
         </div>
       </div>

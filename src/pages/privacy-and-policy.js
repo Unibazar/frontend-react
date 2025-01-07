@@ -78,7 +78,7 @@ const privacy = () => {
               <li>Object to the processing of your data in certain circumstances.</li>
               <li>Withdraw consent for data processing at any time.</li>
             </ul>
-            {`To exercise any of these rights, please contact us at ${<Link href='mailto:support@unibazar.com'></Link>}[support@unibazar.com]. `}
+            {`To exercise any of these rights, please contact us at ${<Link href='mailto:support@unibazar.in'></Link>}[support@unibazar.in]. `}
           </div>
         </div>
         <div className='w-full flex flex-col justify-start text-left outline outline-1 outline-gray-300 rounded-xl p-5'>

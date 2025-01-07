@@ -21,15 +21,15 @@ const Contactinfo = () => {
         <div className='p-5'>
           <div className='flex md:flex-row'>
             <PhoneInTalkIcon className='filled'></PhoneInTalkIcon>
-            <p className='text-normal pl-2'>+91-747-723-7960</p>
+            <p className='text-normal pl-2'>+08069641420</p>
           </div>
           <div className='flex md:flex-row '>
             <EmailIcon className='filled'></EmailIcon>
-            <p className='text-normal pl-2'>support@unibazar.com</p>
+            <p className='text-normal pl-2'>support@unibazar.in</p>
           </div>
           <div className='flex md:flex-row '>
             <LocationOnIcon className='filled '></LocationOnIcon>
-            <p className='text-normal pl-2'>123 E-commerce St, Business City, India</p>
+            <p className='text-normal pl-2'>AIC-MUJ, Vinayak Marg, Jaipur, Rajsthan 303007</p>
           </div>
         </div>
         <div className='p-5'>

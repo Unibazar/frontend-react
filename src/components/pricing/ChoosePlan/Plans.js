@@ -16,7 +16,7 @@ export default function Plans({ pricingType }) {
             <span className="text-sm font-normal text-gray-400 pl-1">/month</span>
           </p>
           <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <Link href='/register'><button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
+          <Link href='/register'><button type="button" className="bg-teal-600 hover:bg-teal-800 w-full py-3 my-2 text-base text-white rounded-lg text-center">
             Sign Up for Free
           </button></Link>
         </div>
@@ -49,7 +49,7 @@ export default function Plans({ pricingType }) {
             <span className="text-sm font-normal text-gray-400 pl-1">/month</span>
           </p>
           <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <Link href='/register'><button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
+          <Link href='/register'><button type="button" className="bg-teal-600 hover:bg-teal-800 w-full py-3 my-2 text-base text-white rounded-lg text-center">
             Upgrade to Pro
           </button></Link>
         </div>
@@ -79,7 +79,7 @@ export default function Plans({ pricingType }) {
           </div>
           <p className="text-2xl md:text-4xl font-semibold flex items-center gap-1">Custom Price</p>
           <p className="text-base text-gray-500">Just using this for yourself? Lite is the way to go for the lites platform.</p>
-          <Link href='/contact-us'><button type="button" className="bg-teal-600 w-full py-3 text-base text-white rounded-xl text-center">
+          <Link href='/contact-us'><button type="button" className="hover:bg-teal-800 bg-teal-600 w-full py-3 my-2 text-base text-white rounded-lg text-center">
             Contact Us
           </button></Link>
         </div>
