@@ -566,6 +566,7 @@ export default function AddProductPage() {
                 <TabList onChange={handleTabChange} aria-label="lab API tabs example">
                   <Tab label="Amazon" value="amazon" />
                   <Tab label="Flipkart" value="flipkart" />
+                  <Tab label="Myntra" value="myntra" />
                   <Tab label="Meesho" value="meesho" />
                   <Tab label="Others" value="others" />
                 </TabList>
