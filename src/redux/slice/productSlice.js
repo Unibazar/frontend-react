@@ -54,7 +54,7 @@ export const loadProduct = createAsyncThunk(
   async (page, { rejectWithValue, getState }) => {
     const token = localStorage.getItem('jwtToken');
     const state = getState(); // Access the Redux state to get user data
-    const businessInformation = state.user?.user?.user?.businessInformation;
+    const businessInformation = state.user?.user?.user;
     // const businessInformation = data?.payload?.user?.businessInformation
 
     if (!businessInformation?.amazon) {
@@ -63,16 +63,31 @@ export const loadProduct = createAsyncThunk(
 
     const sellerId = businessInformation.amazon.sellerId;
     const marketplaceId = businessInformation.amazon.marketplace;
+    const refreshToken = businessInformation.amazon.refreshToken;
+    const clientSecret = businessInformation.amazon.clientSecret;
+    const clientId = businessInformation.amazon.clientId;
 
     try {
-      const response = await axios.get(
+      const payload={
+        sellerId:sellerId,
+            marketplaceId:marketplaceId,
+            refreshToken,
+            clientSecret,
+            clientId
+      }
+      console.log(payload,"payload")
+      const response = await axios.post(
         `${url}/api/productList/getListing`,
-        {
-          params: {
-            sellerId,
-            marketplaceId,
-          },
-        },
+        // {
+        //   // params: {
+        //     sellerId:sellerId,
+        //     marketplaceId:marketplaceId,
+        //     refreshToken,
+        //     clientSecret,
+        //     clientId
+        //   // },
+        // },
+        payload,
         { headers: { token }, withCredentials: true }
       );
       return response.data;

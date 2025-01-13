@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import getCountryList from 'react-select-country-list';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,7 +12,9 @@ import { loadUser } from '@/redux/slice/userSlice';
 function BusinessInfomationForm({platform,data}) {
   console.log(data,"data")
     const countries = getCountryList().getData();
-const [userId,setUserId]=useState("")
+// const [userId,setUserId]=useState("")
+const userId = useSelector(state => state?.user?.user?.user?._id);
+
     const dispatch = useDispatch();
 
   // Validation schema
