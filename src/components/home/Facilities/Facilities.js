@@ -10,7 +10,7 @@ const Facilities = () => {
   return (
     <>
       <div className={styles.facility}>
-        <div className={`${styles.facilities} ${styles.wrap}`}>
+        <div className={`${styles.facilities} ${styles.wrap} md:py-1 py-5`}>
           <div className={styles.facilitiesImg}>
             <Image src={FacilityImg1} alt="wait.."></Image>
           </div>
@@ -24,7 +24,7 @@ const Facilities = () => {
           </div>
         </div>
 
-        <div className={`${styles.facilities} ${styles.down}`}>
+        <div className={`${styles.facilities} ${styles.down} md:py-1 py-10`}>
           <div className={styles.info}>
             <p className={styles.infoColor}>Keep Your Stock in Sync</p>
             <h2>Inventory Management</h2>
@@ -39,7 +39,7 @@ const Facilities = () => {
           </div>
         </div>
 
-        <div className={`${styles.facilities} ${styles.wrap}`}>
+        <div className={`${styles.facilities} ${styles.wrap} md:py-1 py-10`}>
           <div className={styles.facilitiesImg}>
             <Image src={FacilityImg3} alt="wait.."></Image>
           </div>
@@ -52,7 +52,7 @@ const Facilities = () => {
           </div>
         </div>
 
-        <div className={`${styles.facilities} ${styles.down}`}>
+        <div className={`${styles.facilities} ${styles.down} md:py-1  py-5`}>
           <div className={styles.info}>
             <p className={styles.infoColor}>Operations</p>
             <h2>Optimize your day-to-day operations</h2>

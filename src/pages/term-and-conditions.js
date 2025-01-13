@@ -87,7 +87,7 @@ const privacy = () => {
           <p className='w-full font-bold text-xl flex flex-row gap-2 items-center'><FaArrowRightLong />Changes to Terms</p>
 
           <div className='w-full text-[14px] opacity-70 pt-2 pr-0 md:pr-32'>We reserve the right to modify these Terms of Service at any time. Any changes will be effective immediately upon posting, and continued use of the platform constitutes acceptance of the revised terms.
-            For any questions regarding these Terms of Service, please contact us at <Link className='text-teal-700' href="mailto:support@unibazar.com">{`[support@unibazar.com]`}</Link>.
+            For any questions regarding these Terms of Service, please contact us at <Link className='text-teal-700' href="mailto:support@unibazar.in">{`[support@unibazar.in]`}</Link>.
           </div>
         </div>
       </div>

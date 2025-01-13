@@ -1,7 +1,16 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import { loadUser } from '@/redux/slice/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material'
 
 const ComparePlan = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+ 
+ 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
   return (
     <>
       <div className="w-full py-5 md:mt-5 ">
@@ -23,16 +32,18 @@ const ComparePlan = () => {
                     <p className='text-lg font-normal'>Free</p>
                     <p className='text-lg  font-bold'>$0 <span className='font-normal'>/month</span></p>
                   </div>
+                  {!user?.user.verified &&
                   <button type='button' className='bg-teal-600 w-full text-center rounded py-2 text-white'>
                     Sign Up for Free
                   </button>
+                  }
                 </TableCell>
                 <TableCell className='text-left outline outline-1 outline-gray-100 w-1/4'>
                   <div className='w-full justify-center items-center flex flex-col p-5'>
                     <p className='text-lg font-normal'>Pro</p>
                     <p className='text-lg  font-bold'>$10 <span className='font-normal'>/month</span></p>
                   </div>
-                  <button type='button' className='bg-teal-600 w-full text-center rounded py-2 text-white'>
+                  <button type='button' className='bg-teal-600 hover:bg-teal-800 w-full text-center rounded py-2 text-white'>
                     Upgrade to Pro
                   </button>
                 </TableCell>
@@ -41,7 +52,7 @@ const ComparePlan = () => {
                     <p className='text-lg font-normal'>Enterprise</p>
                     <p className='text-lg  font-bold'>Custom</p>
                   </div>
-                  <button type='button' className='bg-teal-600 w-full text-center rounded py-2 text-white'>
+                  <button type='button' className='bg-teal-600 hover:bg-teal-800 w-full text-center rounded py-2 text-white'>
                     Contact Us
                   </button>
                 </TableCell>

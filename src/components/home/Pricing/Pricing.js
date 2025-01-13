@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Pricing.module.css';
 import Link from 'next/link';
+import { loadUser } from '@/redux/slice/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Pricing = () => {
+
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+ 
+ 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <>
       <div className={styles.pricing}>
@@ -24,11 +35,13 @@ const Pricing = () => {
               Inventory Management  <b>- No</b> <br />
               Customer Support Level  <b> basic</b> <br />
             </p>
+            {!user?.user.verified &&
             <div className={`${styles.btn} ${styles.navButtons} md:w-full md:h-full items-end flex justify-center`}>
               <Link href="/register" className="px-4 py-2 text-white bg-teal-700 rounded hover:bg-teal-800 ">
                 Get started
               </Link>
             </div>
+            }
           </div>
           <div className={styles.temp}>
             <h1>PRO</h1>

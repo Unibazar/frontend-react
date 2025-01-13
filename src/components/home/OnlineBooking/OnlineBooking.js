@@ -1,7 +1,17 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import styles from './OnlineBooking.module.css';
 import Link from 'next/link';
+import { loadUser } from '@/redux/slice/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 const OnlineBooking = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
+ 
+ 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <>
       <div className={styles.onlineBooking}>
@@ -12,7 +22,7 @@ const OnlineBooking = () => {
             from a single interface
           </p>
         </div>
-
+        {!user?.user.verified &&
         <div className="flex md:flex-row flex-col gap-4">
           <Link href="/register" className=" px-16 py-4 text-white bg-teal-700 rounded-xl hover:bg-teal-800 ">
             Signup for free
@@ -21,6 +31,7 @@ const OnlineBooking = () => {
             Contact Now
           </Link>
         </div>
+        }
       </div>
     </>
   );

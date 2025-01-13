@@ -46,7 +46,7 @@ export default function Dashboard() {
       setIsLinkAccountOpen(true);
       setShowGraph(true);
     }
-  }, [user]);
+  }, [user, businessInformation]);
 
   useEffect(() => {
     setNoOfProducts(product?.numberOfResults)
@@ -72,7 +72,7 @@ export default function Dashboard() {
     dispatch(loadProduct());
     dispatch(fetchOrders());
 
-  }, [user]);
+  }, [user, dispatch]);
   // // console.log(orders?.orders?.payload?.Orders,"orders")
   //   useEffect(() => {
   //     dispatch(fetchOrders());

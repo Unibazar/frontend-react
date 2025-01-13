@@ -71,7 +71,7 @@ const userId = useSelector(state => state?.user?.user?.user?._id);
       setValue('refreshToken', data?.refreshToken || ''); // Set logo field (If it's null or needs updating)
       setValue('region', data?.region || ''); // Set description field (default or fetched value)
     // });
-  }, [dispatch, setValue]);
+  }, [dispatch, setValue, data]);
 
   return (
     <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>

@@ -16,15 +16,15 @@ const ChoosePlan = () => {
           </p>
           <div className='w-full justify-center flex flex-row     '>
           
-            <p className={`cursor-pointer w-auto px-10 md:px-20 py-2 outline-sky-900 outline-2 outline outline-offset-0 ${
-                pricingType === 'monthly' ? 'bg-sky-900 text-white' : ''
+            <p className={`cursor-pointer w-auto px-10 md:px-20 py-2 outline-teal-900 outline-2 outline outline-offset-0 ${
+                pricingType === 'monthly' ? 'bg-teal-900 text-white' : ''
               }`}
               onClick={() => handlePricingTypeChange('monthly')}
             >
               Monthly
             </p>
-            <p className={`cursor-pointer w-auto px-10 md:px-20 py-2 outline-sky-900 outline-2 outline outline-offset-0 ${
-                pricingType === 'yearly' ? 'bg-sky-900 text-white' : ''
+            <p className={`cursor-pointer w-auto px-10 md:px-20 py-2 outline-teal-900 outline-2 outline outline-offset-0 ${
+                pricingType === 'yearly' ? 'bg-teal-900 text-white' : ''
               }`}
               onClick={() => handlePricingTypeChange('yearly')}
             >
