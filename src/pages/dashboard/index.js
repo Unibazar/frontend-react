@@ -21,6 +21,7 @@ export default function Dashboard() {
   const [showGraph, setShowGraph] = useState(false);
   const [noOfOrders, setNoOfOrders] = useState(0);
   const [noOfProducts, setNoOfProducts] = useState(0);
+  const [isLinkAccountOpen, setIsLinkAccountOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -46,7 +47,7 @@ export default function Dashboard() {
       setIsLinkAccountOpen(true);
       setShowGraph(true);
     }
-  }, [user, businessInformation]);
+  }, [user]);
 
   useEffect(() => {
     setNoOfProducts(product?.numberOfResults)
@@ -72,7 +73,7 @@ export default function Dashboard() {
     dispatch(loadProduct());
     dispatch(fetchOrders());
 
-  }, [user, dispatch]);
+  }, [user]);
   // // console.log(orders?.orders?.payload?.Orders,"orders")
   //   useEffect(() => {
   //     dispatch(fetchOrders());
