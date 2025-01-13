@@ -7,7 +7,7 @@ import BusinessInfomationForm from './BusinessInfomationForm';
 
 
 
-export default function BusinessInformation() {
+export default function BusinessInformation({data}) {
   const [platform, setPlatform] = useState('amazon');
 
   const handleChangePlatform = (event, newValue) => {
@@ -27,7 +27,7 @@ export default function BusinessInformation() {
               </TabList>
             </Box>
             <TabPanel value="amazon">
-              <BusinessInfomationForm platform={platform} />
+              <BusinessInfomationForm platform={platform} data={data?.amazon} />
             </TabPanel>
             <TabPanel value="meesho">
               <BusinessInfomationForm platform={platform} />

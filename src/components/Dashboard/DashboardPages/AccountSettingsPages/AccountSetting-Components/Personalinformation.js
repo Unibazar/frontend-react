@@ -87,7 +87,7 @@ export default function PersonalInformation() {
         </div>
 
         <div className="flex gap-7 flex-wrap">
-          <div className="flex flex-1 flex-col gap-2">
+          {/* <div className="flex flex-1 flex-col gap-2">
             <label htmlFor="name">Full Name:</label>
             <input
               id="name"
@@ -98,7 +98,7 @@ export default function PersonalInformation() {
               onChange={handleChange}
               className="border-2 text-sm md:text-lg p-2 rounded-lg"
             />
-          </div>
+          </div> */}
           <div className="flex flex-1 flex-col gap-2">
             <label htmlFor="number">Phone Number:</label>
             <input
@@ -126,7 +126,7 @@ export default function PersonalInformation() {
               className="border-2 text-sm md:text-lg p-2 rounded-lg"
             />
           </div>
-          <div className="flex flex-1 flex-col gap-2">
+          {/* <div className="flex flex-1 flex-col gap-2">
             <label htmlFor="email">Email:</label>
             <input
               id="email"
@@ -137,7 +137,7 @@ export default function PersonalInformation() {
               onChange={handleChange}
               className="border-2 text-sm md:text-lg p-2 rounded-lg"
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col gap-2 flex-1 w-full mt-7">

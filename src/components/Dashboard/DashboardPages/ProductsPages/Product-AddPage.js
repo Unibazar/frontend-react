@@ -303,7 +303,8 @@ export default function AddProductPage() {
       productType: data.productType,
       sku: data.sku,
       requirements:data.requirements,
-
+      marketplaceId:userData?.amazon.marketplace,
+      sellerId : userData?.amazon?.sellerId,
       conditionType:data.conditionType,
       itemName: data.itemName,
       mainImage: {
@@ -317,113 +318,113 @@ export default function AddProductPage() {
           {
             language_tag: data.language_tag,
             value: data.color ,
-            marketplace_id:data.marketplace_id,
+            marketplace_id:userData?.amazon?.marketplace,
           },
         ],
         item_type_name: [
           {
             language_tag: data.language_tag,
             value: data.itemTypeName,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         included_components: [
           {
             language_tag: data.language_tag,
             value:data.value,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         fulfillment_availability: [
           {
             fulfillment_channel_code: data.fulfillment_channel_code,
             quantity: data.quantity,
-            marketplace_id:data.marketplace_id,
+            marketplace_id:userData?.amazon?.marketplace,
           },
         ],
         manufacturer: [
           {
             language_tag: data.language_tag,
             value: data.manufacturer,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         item_weight: [
           {
             unit:data.unit,
             value: data.item_weight,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         recommended_browse_nodes: [
           {
             value: data.browserNodes ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         bullet_point: [
           {
             language_tag: data.language_tag,
             value: data.bulletPoint ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         product_description: [
           {
             language_tag: data.language_tag,
             value: data.description ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         brand: [
           {
             language_tag: data.language_tag,
             value: data.brandName,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         supplier_declared_has_product_identifier_exemption: [
           {
             value:data.value,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         country_of_origin: [
           {
             value: data.value,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         rtip_manufacturer_contact_information: [
           {
             value: data.manufacturerContactInfo ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         merchant_shipping_group: [
           {
             value: data.value,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         item_name: [
           {
             language_tag: data.language_tag,
             value: data.itemName ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         condition_type: [
           {
             value: data.condition_type,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         material: [
           {
             language_tag: data.language_tag,
             value: data.material ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         department: [
@@ -465,39 +466,39 @@ export default function AddProductPage() {
         part_number: [
           {
             value: data.partNumber ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         external_product_information: [
           {
             entity: data.entity,
             value: data.external_product_information,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         unit_count: [
           {
             value: data.noOfPieces ,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         packer_contact_information: [
           {
             language_tag:data.language_tag,
             value:data.packer_contact_information,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         other_product_image_locator_1: [
           {
             media_location: data.other_product_image_locator_1,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
         main_product_image_locator: [
           {
             media_location: data.main_product_image_locator,
-            marketplace_id: data.marketplace_id,
+            marketplace_id: userData?.amazon?.marketplace,
           },
         ],
       },

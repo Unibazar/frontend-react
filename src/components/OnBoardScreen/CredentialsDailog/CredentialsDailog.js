@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import getCountryList from 'react-select-country-list';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveCredentials } from '../../../redux/slice/credentialSlice';
 
 import { useRouter } from 'next/router';
@@ -16,7 +16,8 @@ const countries = getCountryList().getData();
 const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, accountKey, setFilledAccounts }) => {
  
   const dispatch = useDispatch();
- 
+  const userId = useSelector(state => state?.user?.user?.user?._id);
+  console.log(userId,"user")
 
   // Define validation schema with Yup
   const validationSchema = Yup.object().shape({
@@ -38,9 +39,11 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
 
   // Function to handle form submission
   const onSubmit = async (data) => {
+    console.log(userId,"userId")
+
     try {
      
-      const FullBusinessInfo = {...businessInfo , [accountKey]: {...data}};
+      const FullBusinessInfo = {...businessInfo ,id:userId, [accountKey]: {...data}};
       dispatch(saveCredentials(FullBusinessInfo)).then(res=>{
         if(res.payload.success){
           setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));

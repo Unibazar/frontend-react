@@ -1,27 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AmazonLogo from '../../../assets/unibazar-home-images/amazon-logo.svg';
 import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser } from "@/redux/slice/userSlice";
 //link
-const LinkAccount = ({ isOpen, onClose }) => {
+const LinkAccount = ({ isOpen, onClose , businessInfo }) => {
   const [isCredentialDailogOpen, setIsCredentialDailogOpen] = useState(false);
   const [CredentialDailogContent, setCredentialDailogContent] = useState({ title: '', content: '' });
   const router = useRouter();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch])
+  
+  const {user} = useSelector(state=>state.user)
+  // const userInformation = useSelector(state => state?.user?.user?.user);
+console.log(user?.user,"user info")
+  // console.log(userInformation,"userInformation2")
+  
   // State to track filled accounts
   const [filledAccounts, setFilledAccounts] = useState({
     amazon: false,
     meesho: false,
   });
 
+  // useEffect(() => {
+  //   if (user?.user?.hasOwnProperty('amazon') && user.user.amazon?.clientId) {
+  //     setFilledAccounts(prev => ({ ...prev, amazon: true }));
+  //   }
+  //   if (user?.user?.hasOwnProperty('meesho') && user.user.meesho?.merchantId) {
+  //     setFilledAccounts(prev => ({ ...prev, meesho: true }));
+  //   }
+  // }, [user]);
+  useEffect(() => {
+    // Check for Amazon account linking
+    if (
+      user?.user?.hasOwnProperty("amazon") &&
+      user.user.amazon?.clientId !== null &&
+      user.user.amazon?.clientId !== undefined &&
+      user.user.amazon?.clientId !== ""
+    ) {
+      setFilledAccounts((prev) => ({ ...prev, amazon: true }));
+    }
+  
+    // Check for Meesho account linking
+    if (
+      user?.user?.hasOwnProperty("meesho") &&
+      user.user.meesho?.merchantId !== null &&
+      user.user.meesho?.merchantId !== undefined &&
+      user.user.meesho?.merchantId !== ""
+    ) {
+      setFilledAccounts((prev) => ({ ...prev, meesho: true }));
+    }
+  }, [user]);
+  
   const handleImageClick = (title, content, accountKey) => {
-    setCredentialDailogContent({ title, content });
+    setCredentialDailogContent({ title, content, accountKey });
     setIsCredentialDailogOpen(true);
-
-    // Save the account key to track which account is being filled
-    setFilledAccounts(prev => ({ ...prev, [accountKey]: true }));
   };
 
   const handleNextClick = () => {
@@ -43,7 +82,7 @@ const LinkAccount = ({ isOpen, onClose }) => {
           onClick={() => !filledAccounts.amazon && handleImageClick('Amazon', 'Amazon is an Indian fashion e-commerce platform.', 'amazon')}>
           <Image src={AmazonLogo} alt='AmazonLogo' className="w-[48px] h-[48px] rounded-full " />
           <div className="h-6 mt-2">
-            <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Amazon</span>
+            <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Amazon Account</span>
           </div>
           {/* Conditionally render check icon and linked message */}
           {filledAccounts.amazon && (
@@ -89,7 +128,10 @@ const LinkAccount = ({ isOpen, onClose }) => {
         isOpen={isCredentialDailogOpen}
         onClose={() => setIsCredentialDailogOpen(false)}
         title={CredentialDailogContent.title}
+        setFilledAccounts={setFilledAccounts}
+        accountKey={CredentialDailogContent.accountKey}
         content={CredentialDailogContent.content}
+        businessInfo={businessInfo}
       />
     </div>
   );

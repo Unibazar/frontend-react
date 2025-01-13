@@ -13,6 +13,8 @@ import { GiBackwardTime } from "react-icons/gi";
 import { FaUserGroup } from "react-icons/fa6";
 import Box from "../../components/Dashboard/Common-Components/Box";
 import Link from "next/link";
+import { loadProduct } from "@/redux/slice/productSlice";
+import { fetchOrders } from "@/redux/slice/orderSlice";
 
 
 
@@ -32,7 +34,10 @@ export default function Dashboard() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (businessInformation?.hasOwnProperty('amazon') || businessInformation?.hasOwnProperty('meesho')) {
+    if ( user?.user?.hasOwnProperty("amazon") &&
+    user.user.amazon?.clientId !== null &&
+    user.user.amazon?.clientId !== undefined &&
+    user.user.amazon?.clientId !== "") {
       setIsLinkAccountOpen(true);
       setShowGraph(true);
     }
@@ -52,7 +57,18 @@ export default function Dashboard() {
     'Page F',
     'Page G',
   ];
+  const { product , isLoading ,error } = useSelector((state) => state.product);
 
+  const { orders } = useSelector((state) => state.orders);
+  useEffect(() => {
+    dispatch(loadProduct());
+    dispatch(fetchOrders());
+
+  }, [user]);
+  // // console.log(orders?.orders?.payload?.Orders,"orders")
+  //   useEffect(() => {
+  //     dispatch(fetchOrders());
+  //   }, []);
   return (
     <>
       <Head>
@@ -65,7 +81,7 @@ export default function Dashboard() {
 
         {/* Hide the button if the modal is open */}
 
-        {!isLinkAccountOpen &&
+        {!isLinkAccountOpen ?
           <>
             <div className="imageContainer w-[50vw] md:w-[50vh] mt-[5%]">
               <Image src={dashboardImage} width="auto" height="auto" alt="dashboard_image" className="w-full h-full object-contain" />
@@ -75,13 +91,42 @@ export default function Dashboard() {
             >
               Add Account
             </Link>
-          </>
+          </>:<div className="w-full px-4 py-4 md:px-7 md:py-7">
+            <div className='title flex flex-wrap items-center'>
+              <h1 className='md:text-3xl text-lg font-semibold text-green-600 '>Welcome {user?.user?.name}</h1>
+            </div>
+
+            <div className="boxes flex gap-5 mt-10 flex-wrap">
+              <Box title="Total Products" count={product?.items?.length} bgColor="#E4E4FF" textColor="#8280FF" description="Logo up from yesterday" Icon={FaUserGroup}/>
+
+              <Box title="Total Order" count={orders?.orders?.payload?.Orders?.length} bgColor="#FEF2D6" textColor="#FEC53D" description="Logo up from yesterday" Icon={RiBox3Fill} textSize="3xl"/>
+
+              <Box title="Total Sales" count="$89,000" bgColor="#D9F7E7" textColor="#4AD991" description="Logo up from yesterday" Icon={GoGraph} textSize="2xl"/>
+
+              <Box title="Total Pending" count="2040" bgColor="#FFDED2" textColor="#FFA583" description="Logo up from yesterday" Icon={GiBackwardTime} textSize="3xl"/>
+            </div>
+
+            <div className="chart bg-white mt-10 rounded-lg overflow-hidden w-full">
+              <h1 className="md:text-2xl font-semibold m-5 mb-0">Sales Details</h1>
+              <LineChart className="w-full p-2"
+                height={400}
+                series={[
+                  { data: pData, label: 'pv' },
+                  { data: uData, label: 'uv' },
+                ]}
+                xAxis={[{ scaleType: 'point', data: xLabels }]}
+
+                grid={{ horizontal: true }}
+              />
+            </div>
+
+          </div>
         }
         
 
         {/* the graph section */}
 
-        {showGraph &&
+        {/* {showGraph &&
 
           <div className="w-full px-4 py-4 md:px-7 md:py-7">
             <div className='title flex flex-wrap items-center'>
@@ -113,7 +158,7 @@ export default function Dashboard() {
             </div>
 
           </div>
-        }
+        } */}
 
       </div>
     </>

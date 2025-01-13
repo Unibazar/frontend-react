@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import getCountryList from 'react-select-country-list';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,8 +9,11 @@ import * as Yup from 'yup';
 import { saveCredentials } from '@/redux/slice/credentialSlice';
 import { loadUser } from '@/redux/slice/userSlice';
 
-function BusinessInfomationForm({platform}) {
+function BusinessInfomationForm({platform,data}) {
+  console.log(data,"data")
     const countries = getCountryList().getData();
+// const [userId,setUserId]=useState("")
+const userId = useSelector(state => state?.user?.user?.user?._id);
 
     const dispatch = useDispatch();
 
@@ -33,11 +36,7 @@ function BusinessInfomationForm({platform}) {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      sellerId: '',
-      clientId: '',
-      clientSecret: '',
-      marketplace: '',
-      refreshToken: '',
+      data,
       region: 'IN',
     },
   });
@@ -45,8 +44,10 @@ function BusinessInfomationForm({platform}) {
 
   // Handle form submission
   const onSubmit = (data) => {
+    // const userId = useSelector(state => state?.user?.user?.user?._id);
+    console.log(userId,"userid")
     try {
-      const finalData = {[platform]: {...data}};
+      const finalData = {userId:userId,[platform]: {...data}};
       dispatch(saveCredentials(finalData));
       console.log('Credentials saved:', data);
     } catch (error) {
@@ -56,21 +57,22 @@ function BusinessInfomationForm({platform}) {
 
   useEffect(() => {
     // Assuming `dispatch(loadUser())` is used to fetch user data
-    dispatch(loadUser()).then((data) => {
-      const businessInformation = data?.payload?.user?.businessInformation;
-
-      // Dynamically using the platform value to access platform-specific information
-      const platformData = businessInformation?.[platform] || {};
+    // dispatch(loadUser()).then((data) => {
+    //   const businessInformation = data?.payload?.user?.businessInformation;
+    //   setUserId(data?.payload?.user?._id)
+    //   console.log(businessInformation,"businessInformation")
+    //   // Dynamically using the platform value to access platform-specific information
+    //   const platformData = businessInformation?.[platform] || {};
 
       // Set values into the form fields after fetching the data
-      setValue('sellerId', platformData?.sellerId || ''); // Set name field
-      setValue('clientId', platformData?.clientId || ''); // Set email field
-      setValue('clientSecret', platformData?.clientSecret || ''); // Set phoneNumber field
-      setValue('marketplace', platformData?.marketplace || ''); // Set location field
-      setValue('refreshToken', platformData?.refreshToken || ''); // Set logo field (If it's null or needs updating)
-      setValue('region', platformData?.region || ''); // Set description field (default or fetched value)
-    });
-  }, [dispatch, setValue, platform]);
+      setValue('sellerId', data?.sellerId || ''); // Set name field
+      setValue('clientId', data?.clientId || ''); // Set email field
+      setValue('clientSecret', data?.clientSecret || ''); // Set phoneNumber field
+      setValue('marketplace', data?.marketplace || ''); // Set location field
+      setValue('refreshToken', data?.refreshToken || ''); // Set logo field (If it's null or needs updating)
+      setValue('region', data?.region || ''); // Set description field (default or fetched value)
+    // });
+  }, [dispatch, setValue, data]);
 
   return (
     <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
