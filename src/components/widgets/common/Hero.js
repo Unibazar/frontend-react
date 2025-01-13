@@ -18,7 +18,7 @@ const Hero = ({ img, title, detail, buttonText }) => {
   return (
     <>
       <div className=" w-full md:h-1/2 flex md:flex-row flex-col justify-between ">
-        <div className=" w-full justify-center md:text-left text-center flex  flex-col  md:h-full md:w-1/2 md:pt-10 items-end ">
+        <div className=" w-full  md:text-left text-center flex  flex-col  md:h-full md:w-1/2 md:pt-10 md:items-start items-center ">
           <h1 className="w-full font-bold uppercase text-4xl p-3">
             {title}
           </h1>
