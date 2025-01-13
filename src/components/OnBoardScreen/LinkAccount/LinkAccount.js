@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AmazonLogo from '../../../assets/unibazar-home-images/amazon-logo.svg';
 import MeeshoLogo from '../../../assets/unibazar-home-images/meesho-logo.png';
+import MyntraLogo from '../../../assets/unibazar-home-images/myntra-logo.png';
 import CredentialDailog from "../CredentialsDailog/CredentialsDailog";
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +27,8 @@ console.log(user?.user,"user info")
   const [filledAccounts, setFilledAccounts] = useState({
     amazon: false,
     meesho: false,
+    myntra: false,
+    flipkart: false,
   });
 
   useEffect(() => {
@@ -47,6 +50,26 @@ console.log(user?.user,"user info")
       user.user.meesho?.merchantId !== ""
     ) {
       setFilledAccounts((prev) => ({ ...prev, meesho: true }));
+    }
+
+    // Check for myntra account linking
+    if (
+      user?.user?.hasOwnProperty("myntra") &&
+      user.user.myntra?.merchantId !== null &&
+      user.user.myntra?.merchantId !== undefined &&
+      user.user.myntra?.merchantId !== ""
+    ) {
+      setFilledAccounts((prev) => ({ ...prev, myntra: true }));
+    }
+
+    // Check for flipkart account linking
+    if (
+      user?.user?.hasOwnProperty("flipkart") &&
+      user.user.flipkart?.merchantId !== null &&
+      user.user.flipkart?.merchantId !== undefined &&
+      user.user.flipkart?.merchantId !== ""
+    ) {
+      setFilledAccounts((prev) => ({ ...prev, flipkart: true }));
     }
   }, [user]);
 
@@ -78,6 +101,21 @@ console.log(user?.user,"user info")
           </div>
           {/* Conditionally render check icon and linked message */}
           {filledAccounts.amazon && (
+            <div className="flex items-center mt-2">
+              {/*<Image src={CheckIcon} alt="Linked" className="w-5 h-5 text-green-500" />  Adjust size as needed */}
+              <span className="ml-1 text-green-500">Linked</span>
+            </div>
+          )}
+        </div>
+
+        <div className={`flex flex-col items-center w-[144px] h-[130px] py-3 bg-[rgba(255,_255,_255,_1)] rounded-xl ${filledAccounts.myntra ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+          onClick={() => !filledAccounts.myntra && handleImageClick('Myntra', 'Myntra is an Indian fashion e-commerce platform.', 'myntra')}>
+          <Image src={MyntraLogo} alt='MyntraLogo' className="w-[48px] h-[48px] rounded-full " />
+          <div className="h-6 mt-2">
+            <span className="font-bold text-[16px] leading-[17px] text-[rgba(0,_0,_0,_0.7)]">Myntra</span>
+          </div>
+          {/* Conditionally render check icon and linked message */}
+          {filledAccounts.myntra && (
             <div className="flex items-center mt-2">
               {/*<Image src={CheckIcon} alt="Linked" className="w-5 h-5 text-green-500" />  Adjust size as needed */}
               <span className="ml-1 text-green-500">Linked</span>

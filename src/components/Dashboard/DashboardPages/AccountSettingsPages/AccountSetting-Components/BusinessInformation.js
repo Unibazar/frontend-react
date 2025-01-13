@@ -22,6 +22,7 @@ export default function BusinessInformation({data}) {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList onChange={handleChangePlatform} aria-label="lab API tabs example">
                 <Tab label="Amazon" value="amazon" />
+                <Tab label="Myntra" value="myntra" />
                 <Tab label="Meesho" value="meesho" />
                 <Tab label="Other" value="other" />
               </TabList>

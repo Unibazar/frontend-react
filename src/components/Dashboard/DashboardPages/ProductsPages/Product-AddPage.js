@@ -24,6 +24,8 @@ import * as yup from 'yup';
 import { DataArray } from '@mui/icons-material';
 import AmazonForm from './FormGroup/AmazonForm';
 import FlipkartForm from './FormGroup/FlipkartForm';
+import MeeshoForm from './FormGroup/MeeshoForm';
+import MyntraForm from './FormGroup/MyntraForm';
 
 // const validationSchema = yup.object().shape({
 //   itemName: yup.string().required("Item Name is required."),
@@ -565,6 +567,8 @@ export default function AddProductPage() {
                 <TabList onChange={handleTabChange} aria-label="lab API tabs example">
                   <Tab label="Amazon" value="amazon" />
                   <Tab label="Flipkart" value="flipkart" />
+                  <Tab label="Myntra" value="myntra" />
+                  <Tab label="Meesho" value="meesho" />
                   <Tab label="Others" value="others" />
                 </TabList>
               </Box>
@@ -572,6 +576,9 @@ export default function AddProductPage() {
                 <AmazonForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors} watch={watch} setValue={setValue}/>
               </TabPanel>
               <TabPanel value="flipkart"><FlipkartForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors} watch={watch} setValue={setValue}/></TabPanel>
+              <TabPanel value="myntra"><MyntraForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors} watch={watch} setValue={setValue}/> </TabPanel>
+              
+              <TabPanel value="meesho"><MeeshoForm handleSubmit={handleSubmit} onSubmit={onSubmit} control={control} ProductPhotoSrc1={ProductPhotoSrc1} productPhoto1={productPhoto1} ProductPhotoSrc2={ProductPhotoSrc2} productPhoto2={productPhoto2} ProductPhotoSrc3={ProductPhotoSrc3} productPhoto3={productPhoto3} ProductPhotoSrc4={ProductPhotoSrc4} productPhoto4={productPhoto4} errors={errors} watch={watch} setValue={setValue}/> </TabPanel>
               <TabPanel value="others">Coming soon</TabPanel>
             </TabContext>
           </Box>

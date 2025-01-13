@@ -56,7 +56,7 @@ const BusinessDetail = ({ nxt , setBusinessInfo }) => {
       .matches(/^[0-9]+$/, 'Contact number must be numeric')
       .min(10, 'Contact number must be at least 10 digits')
       .max(10, 'Contact number must be at most 10 digits'),
-    address: Yup.string().required('Address is required'),
+    // address: Yup.string().required('Address is required'),
   });
 
   const { control, handleSubmit, setValue, formState: { errors, isValid } } = useForm({
@@ -132,7 +132,7 @@ const BusinessDetail = ({ nxt , setBusinessInfo }) => {
         />
         {errors.number && <p className="text-red-500">{errors.number.message}</p>}
 
-        <label htmlFor="logo" className="text-[rgba(0,_0,_0,_0.8)] text-[18px] font-semibold">
+        {/* <label htmlFor="logo" className="text-[rgba(0,_0,_0,_0.8)] text-[18px] font-semibold">
           Logo:
           <div className="mb-4 w-full flex items-center justify-between border-[1px] border-solid border-[#e0e0e038] px-[10px] py-3 bg-[#f5f5f5]">
             <input
@@ -191,7 +191,7 @@ const BusinessDetail = ({ nxt , setBusinessInfo }) => {
             />
           )}
         />
-        {errors.address && <p className="text-red-500">{errors.address.message}</p>}
+        {errors.address && <p className="text-red-500">{errors.address.message}</p>} */}
 
         <button disabled={!isValid} type="submit" className="bg-teal-600 hover:bg-teal-800 w-full md:px-24 px-12 py-4 text-[22px] font-normal text-white tracking-[0.05rem] rounded-lg mt-5 disabled:bg-gray-300 disabled:cursor-not-allowed">
           NEXT
