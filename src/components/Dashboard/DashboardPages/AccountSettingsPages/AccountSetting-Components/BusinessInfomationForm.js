@@ -47,7 +47,6 @@ const [userId,setUserId]=useState("")
     try {
       const finalData = {userId:userId,[platform]: {...data}};
       dispatch(saveCredentials(finalData));
-      console.log('Credentials saved:', data);
     } catch (error) {
       console.error('Error saving credentials:', error);
     }
