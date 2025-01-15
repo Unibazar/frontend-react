@@ -70,6 +70,8 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
         </div>
 
         <form className='w-full flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
+        {accountKey !== 'myntra' ? (
+          <>
           <Controller
             name="sellerId"
             control={control}
@@ -156,6 +158,38 @@ const CredentialDailog = ({ isOpen, onClose, title, content , businessInfo, acco
               </FormControl>
             )}
           />
+          </>
+        ):(
+          <>
+          <Controller
+            name="secret_key"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label='Secret Key'
+                variant='outlined'
+                error={!!errors.secret_key}
+                helperText={errors.secret_key ? errors.secret_key.message : ''}
+              />
+            )}
+          />
+          <Controller
+            name="merchant_id"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label='Merchant Id'
+                variant='outlined'
+                error={!!errors.merchant_id}
+                helperText={errors.merchant_id ? errors.merchant_id.message : ''}
+              />
+            )}
+          />
+          </>
+        )}
+          
 
 
           {/* hidden - input  */}
