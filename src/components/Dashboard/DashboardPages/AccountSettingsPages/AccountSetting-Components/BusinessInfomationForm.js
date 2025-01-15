@@ -76,92 +76,125 @@ const userId = useSelector(state => state?.user?.user?.user?._id);
 
   return (
     <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-          <Controller
-            name="sellerId"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Seller Id"
-                variant="outlined"
-                error={!!errors.sellerId}
-                helperText={errors.sellerId ? errors.sellerId.message : ''}
-              />
-            )}
-          />
-          <Controller
-            name="clientId"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Client Id"
-                variant="outlined"
-                error={!!errors.clientId}
-                helperText={errors.clientId ? errors.clientId.message : ''}
-              />
-            )}
-          />
-          <Controller
-            name="clientSecret"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Client Secret"
-                variant="outlined"
-                error={!!errors.clientSecret}
-                helperText={errors.clientSecret ? errors.clientSecret.message : ''}
-              />
-            )}
-          />
-          <Controller
-            name="marketplace"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Marketplace"
-                variant="outlined"
-                error={!!errors.marketplace}
-                helperText={errors.marketplace ? errors.marketplace.message : ''}
-              />
-            )}
-          />
-          <Controller
-            name="refreshToken"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Refresh Token"
-                variant="outlined"
-                error={!!errors.refreshToken}
-                helperText={errors.refreshToken ? errors.refreshToken.message : ''}
-              />
-            )}
-          />
-          <Controller
-            name="region"
-            control={control}
-            render={({ field }) => (
-              <FormControl variant="outlined" error={!!errors.region} fullWidth>
-                <InputLabel>Region</InputLabel>
-                <Select
-                  {...field}
-                  label="Region"
-                  onChange={(event) => field.onChange(event.target.value)}
-                >
-                  {countries.map((country) => (
-                    <MenuItem key={country.value} value={country.value}>
-                      {country.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-                {errors.region && <p className="text-red-500">{errors.region.message}</p>}
-              </FormControl>
-            )}
-          />
+          {accountKey !== 'myntra' ? (
+                    <>
+                    <Controller
+                      name="sellerId"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Seller Id'
+                          variant='outlined'
+                          error={!!errors.sellerId}
+                          helperText={errors.sellerId ? errors.sellerId.message : ''}
+                        />
+                      )}
+                    />
+                    <Controller
+                      name="clientId"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Client Id'
+                          variant='outlined'
+                          error={!!errors.clientId}
+                          helperText={errors.clientId ? errors.clientId.message : ''}
+                        />
+                      )}
+                    />
+                    <Controller
+                      name="clientSecret"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Client Secret'
+                          variant='outlined'
+                          error={!!errors.clientSecret}
+                          helperText={errors.clientSecret ? errors.clientSecret.message : ''}
+                        />
+                      )}
+                    />
+                    <Controller
+                      name="marketplace"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Marketplace'
+                          variant='outlined'
+                          error={!!errors.marketplace}
+                          helperText={errors.marketplace ? errors.marketplace.message : ''}
+                        />
+                      )}
+                    />
+                    <Controller
+                      name="refreshToken"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Refresh Token'
+                          variant='outlined'
+                          error={!!errors.refreshToken}
+                          helperText={errors.refreshToken ? errors.refreshToken.message : ''}
+                        />
+                      )}
+                    />
+                    <Controller
+                      name="region"
+                      control={control}
+                      render={({ field }) => (
+                        <FormControl variant="outlined" error={!!errors.region} fullWidth>
+                          <InputLabel>Region</InputLabel>
+                          <Select
+                            {...field}
+                            label="Region"
+                            onChange={(event) => field.onChange(event.target.value)}
+                          >
+                            {countries.map((country) => (
+                              <MenuItem key={country.value} value={country.value}>
+                                {country.label}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                          {errors.region && <p className="text-red-500">{errors.region.message}</p>}
+                        </FormControl>
+                      )}
+                    />
+                    </>
+                  ):(
+                    <>
+                    <Controller
+                      name="secret_key"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Secret Key'
+                          variant='outlined'
+                          error={!!errors.secret_key}
+                          helperText={errors.secret_key ? errors.secret_key.message : ''}
+                        />
+                      )}
+                    />
+                    <Controller
+                      name="merchant_id"
+                      control={control}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label='Merchant Id'
+                          variant='outlined'
+                          error={!!errors.merchant_id}
+                          helperText={errors.merchant_id ? errors.merchant_id.message : ''}
+                        />
+                      )}
+                    />
+                    </>
+                  )}
           <div className="flex justify-between w-full">
             <button type="button" className="mt-4 py-2 px-4 rounded">
               Close
